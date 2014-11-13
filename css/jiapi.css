@@ -140,7 +140,7 @@ Author URI: http://www.bgcc.at
 ***************************************************************/
 .JiApiWpSearchBarWidget {
     float: right;
-    width: 230px !important;
+    width: 260px !important;
 }
 
 #immobilien_schnellsuche {
@@ -189,3 +189,34 @@ body .bg_formInput .bg_fluidTextfield {
     float: right;
     margin-top: 8px;
 }
+
+.bg_property_request input, .bg_property_request textarea {
+    width: 100%;
+}
+
+.alert-danger {
+    background-color: #F2DEDE;
+    border-color: #EBCCD1;
+    color: #A94442;
+}
+.alert {
+    border: 1px solid rgba(0, 0, 0, 0);
+    border-radius: 4px;
+    margin-bottom: 20px;
+    padding: 15px;
+}
+
+.alert-success {
+    background-color: #DFF0D8;
+    border-color: #D6E9C6;
+    color: #3C763D;
+}
+
+.bg_property_request div.alert {
+    margin-top: 20px;
+}
+
+.bg_objectDetailMetaNav ul, .bg_objectDetailInformation ul {
+    list-style: outside none none;
+}
+

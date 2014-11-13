@@ -41,11 +41,13 @@ class JiApiWpSearchBarWidget extends WP_Widget
         if (!empty($title)) {
             echo $before_title . $title . $after_title;
         }
-        ;
 
-        // WIDGET CODE GOES HERE
         global $ji_api_wp_plugin;
         $ji_obj_list = $ji_api_wp_plugin->getObjektList();
+
+        $objektarten = $ji_api_wp_plugin->getObjektarten();
+        $regions = $ji_api_wp_plugin->getFilteredRegions(isset($ji_obj_list->filter['bundesland_id']) ? $ji_obj_list->filter['bundesland_id'] : null);
+
         include JI_API_WP_PLUGIN_DIR . '/widget/ji_searchbox_widget.php';
 
         echo $after_widget;
@@ -53,4 +55,3 @@ class JiApiWpSearchBarWidget extends WP_Widget
 }
 
 add_action('widgets_init', create_function('', 'return register_widget("JiApiWpSearchBarWidget");'));
-

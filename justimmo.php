@@ -29,19 +29,31 @@ class JiApiWpPlugin
     {
         error_reporting(E_ALL ^ (E_NOTICE | E_WARNING));
 
-        //add_action('activate_justimmo/justimmo.php', array(&$this,'install'));
-        //add_filter( 'page_template', 'list_page_template' );
+        add_filter('query_vars', array($this, 'queryVars'));
+        add_filter('parse_query', array($this, 'parseQuery'));
 
-        add_action('init', array(&$this, 'initSession'), 1);
-        add_action('admin_menu', array(&$this, 'adminMenu'));
-        add_action('template_redirect', array(&$this, 'templateRedirect'));
-        add_action('wp_print_styles', array(&$this, 'addStylesheets'), 100);
-        //add_action('init', array(&$this, 'add_my_styles'));
-        //add_action('wp_header', 'jiapi');
+        //add_filter('rewrite_rules_array', array(&$this, 'rewriteRules'));
 
-        add_action('widgets_init', array(&$this, 'registerSidebars'));
+        add_action('init', array($this, 'init'));
+        add_action('admin_menu', array($this, 'adminMenu'));
+        add_action('wp_print_styles', array($this, 'addStylesheets'));
 
-        add_shortcode('justimmo_list', array(&$this, 'jiapi_list'));
+        add_action('widgets_init', array($this, 'registerSidebars'));
+
+        add_shortcode('justimmo_realty_list', array($this, 'realtyListShortcode'));
+        add_shortcode('justimmo_search_form', array($this, 'searchFormShortcode'));
+
+        add_action( 'wp_ajax_ji_api_regions', array($this, 'getAjaxRegions'));
+        add_action( 'wp_ajax_nopriv_ji_api_regions', array($this, 'getAjaxRegions'));
+
+        add_action( 'wp_ajax_ji_api_federal_states', array($this, 'getAjaxFederalStates'));
+        add_action( 'wp_ajax_nopriv_ji_federal_states', array($this, 'getAjaxFederalStates'));
+
+        wp_enqueue_script( 'justimmo-api', plugin_dir_url( __FILE__ ).'js/justimmo.js', array('jquery'), 1.0 );
+        wp_localize_script( 'justimmo-api', 'justimmoApi', array( 'ajaxurl' => admin_url( 'admin-ajax.php' ) ) );
+
+        add_action( 'wp_ajax_ji_api_widget_render_regions', array($this, 'renderRegions'));
+        add_action( 'wp_ajax_nopriv_ji_api_widget_render_regions', array($this, 'renderRegions'));
     }
 
     /**
@@ -58,6 +70,45 @@ class JiApiWpPlugin
         return self::$instance;
     }
 
+    function queryVars($query_vars)
+    {
+        $new_vars = array(
+            'ji_plugin',
+            'ji_property_id',
+            'ji_page'
+          );
+
+        return array_merge( $query_vars, $new_vars );
+    }
+
+    function parseQuery()
+    {
+        global $wp_query;
+
+        if (get_query_var('ji_plugin') != '') {
+            $wp_query->is_single = false;
+            $wp_query->is_page = false;
+            $wp_query->is_archive = false;
+            $wp_query->is_search = false;
+            $wp_query->is_home = false;
+
+            add_action('template_redirect', array(&$this, 'templateRedirect'));
+        }
+    }
+
+    /*
+    function rewriteRules($rules) {
+        //add_rewrite_rule("immobilien/(.+?)/?$", "index.php?ji_plugin=\$matches[1]", $after = 'top');
+        //add_rewrite_rule("immobilien/(.+?)/page/?([0-9]{1,})/?$", "index.php?ji_plugin=\$matches[1]&paged=\$matches[2]", $after = 'top');
+
+        $rules[]["immobilien/(.+?)/page/?([0-9]{1,})/?$"] = "index.php?bmDomain=\$matches[1]&paged=\$matches[2]";
+        $rules[]["immobilien/(.+?)$"] = "index.php?ji_plugin=index";
+        $rules[]["immobilien$"] = "index.php?ji_plugin=index";
+        print_r($rules);exit;
+        return $rules;
+    }
+    */
+
     function getClient()
     {
         if (!$this->ji_api_client instanceof justimmoApiClient)
@@ -72,7 +123,7 @@ class JiApiWpPlugin
     {
         if (!$this->ji_objekt_list instanceof justimmoObjektList)
         {
-            $this->ji_objekt_list = new justimmoObjektList($this->getClient(), $defaults);
+            $this->ji_objekt_list = new justimmoObjektList($this->getClient());
         }
 
         return $this->ji_objekt_list;
@@ -84,42 +135,32 @@ class JiApiWpPlugin
         add_filter('wp_title', array(&$this, 'titleTagFilter'));
     }
 
+    function getUrlPrefix()
+    {
+        return 'index.php?';
+    }
+
     function templateRedirect()
     {
         global $wp;
         global $wp_query;
 
-        $tokens = explode('/', $wp->request);
-
-        if ('immobilien-ji' != $tokens[0])
-        {
-            return false; // Request is not for this plugin
-        }
-
-        try {
-            switch ($tokens[1])
+        if (get_query_var('ji_plugin') !== '') {
+            switch (get_query_var('ji_plugin'))
             {
                 case 'property':
-                    header(':', true, 200);
                     $this->propertyPage();
                     exit;
                     break;
                 case 'expose':
-                    header(':', true, 200);
                     $this->exposeDownload();
                     exit;
                     break;
                 default:
-                    header(':', true, 200);
                     $this->indexPage();
                     exit;
                     break;
             }
-        } catch (Exception $e)
-        {
-            header(':', true, 200);
-            $this->errorPage();
-            exit;
         }
     }
 
@@ -148,13 +189,15 @@ class JiApiWpPlugin
         {
             update_option('justimmo_plugin_username', $_POST['ji_admin_form']['user']);
             update_option('justimmo_plugin_password', $_POST['ji_admin_form']['password']);
+            update_option('justimmo_plugin_url_prefix', $_POST['ji_admin_form']['url_prefix']);
         }
 
         include JI_API_WP_PLUGIN_DIR . '/admin/options.php';
     }
 
-    function initSession()
+    function init()
     {
+        // start session
         if (!session_id())
         {
             session_start();
@@ -171,14 +214,14 @@ class JiApiWpPlugin
             $ji_obj_list->resetFilter();
         }
 
-        if (isset($_REQUEST['page_ji']))
+        if (isset($_REQUEST['ji_page']))
         {
-            $ji_obj_list->setPage($_REQUEST['page_ji']);
+            $ji_obj_list->setPage($_REQUEST['ji_page']);
         }
 
         if (isset($_REQUEST['filter']))
         {
-            $ji_obj_list->setFilter($_REQUEST['filter']);
+            $ji_obj_list->mergeFilter($_REQUEST['filter']);
         }
         if (isset($_REQUEST['orderby']))
         {
@@ -196,13 +239,13 @@ class JiApiWpPlugin
     function propertyPage()
     {
         global $ji_api_wp_plugin;
-        $ji_obj_list = new justimmoObjektList($this->getClient(), $defaults);
+        $ji_obj_list = new justimmoObjektList($this->getClient(), array());
 
         $pos = $_REQUEST['pos'];
 
-        if (isset($_REQUEST['id']))
+        if (isset($_REQUEST['ji_property_id']))
         {
-            $immobilie = $ji_obj_list->fetchItemById($_REQUEST['id']);
+            $immobilie = $ji_obj_list->fetchItemById($_REQUEST['ji_property_id']);
         }
         elseif ($_REQUEST['pos'])
         {
@@ -212,13 +255,53 @@ class JiApiWpPlugin
 
         $this->setPageTitle($immobilie->freitexte->objekttitel);
 
+        if(isset($_REQUEST['request']))
+        {
+            $request_form_error = '';
+
+            $request_form = $_REQUEST['request'];
+
+            if(!isset($request_form['name']) || !$request_form['name']) {
+                $request_form_error .= "Bitte geben Sie ihren Namen ein.\n";
+            }
+            if(!isset($request_form['email']) || !$request_form['email']) {
+                $request_form_error .= "Bitte geben Sie ihre E-Mailadresse ein.\n";
+            }
+            if(!isset($request_form['text']) || !$request_form['text']) {
+                $request_form_error .= "Bitte geben Sie einen Text für die Objektanfrage ein.\n";
+            }
+            if( function_exists( 'cptch_check_custom_form' ) && cptch_check_custom_form() !== true ) {
+                $request_form_error .= "Bitte füllen Sie die Sicherheitsabfrage aus.\n";
+            }
+
+            if(!$request_form_error) {
+                $this->ji_api_client->pushAnfrage(
+                    array(
+                        'objekt_id' => $immobilie->verwaltung_techn->objektnr_intern,
+                        'first_name' => $request_form['name'],
+                        'last_name' => $request_form['name'],
+                        'email' => $request_form['email'],
+                        'message' => $request_form['text']
+                    )
+                );
+                $request_form_success = true;
+            }
+        } else {
+            $request_form = array(
+                'name' => '',
+                'email' => '',
+                'text' => 'Ich interessiere mich für die Immobilie mit der Nummer '.$immobilie->verwaltung_techn->objektnr_extern.' und ersuche um Kontaktaufnahme.',
+            );
+            $request_form_error = '';
+            $request_form_success = false;
+        }
+
         include(JI_API_WP_PLUGIN_DIR . '/templates/property.php');
     }
 
-
     function exposeDownload()
     {
-        $id = $_REQUEST['id'];
+        $id = $_REQUEST['ji_property_id'];
         header('Content-type: application/pdf');
         header('Content-Disposition: attachment; filename="expose-' . $id . '-' . time() . '.pdf"');
 
@@ -233,17 +316,17 @@ class JiApiWpPlugin
 
     function getPropertyUrl($id)
     {
-        return '/immobilien-ji/property?id=' . $id;
+        return $this->getUrlPrefix().'ji_plugin=property&ji_property_id=' . $id;
     }
 
     function getIndexUrl()
     {
-        return '/immobilien-ji/index';
+        return $this->getUrlPrefix().'ji_plugin=search';
     }
 
     function getExposeUrl($id)
     {
-        return '/immobilien-ji/expose?id=' . $id;
+        return $this->getUrlPrefix().'ji_plugin=expose&ji_property_id=' . $id;
     }
 
     function addStylesheets()
@@ -265,6 +348,91 @@ class JiApiWpPlugin
                 'after_title'   => '</h3>'
             )
         );
+    }
+
+    function realtyListShortcode($atts, $content = null)
+    {
+        extract(shortcode_atts(array(
+              'category' => 'Topobjekte',
+              'limit' => '2',
+           ), $atts));
+
+        global $ji_api_wp_plugin;
+        $ji_obj_list = new justimmoObjektList($this->getClient());
+        $ji_obj_list->setFilter(array('tag_name' => $category));
+        $ji_obj_list->setMaxPerPage($limit);
+
+        $objekte = $ji_obj_list->fetchList(array('picturesize=s220x155'));
+
+        ob_start();
+        include(JI_API_WP_PLUGIN_DIR . '/templates/_realty_list.php');
+        return ob_get_clean();
+    }
+
+    function getObjektarten()
+    {
+        $xml = $this->getClient()->getObjektarten();
+
+        $objektarten = array();
+        foreach ($xml as $art) {
+            $objektarten[(int)$art->id] = (string)$art->name;
+        }
+
+        /*
+        unset($objektarten[7]);
+        unset($objektarten[8]);
+        unset($objektarten[11]);
+        $objektarten[6] = "Gewerbe";
+        */
+
+        return $objektarten;
+    }
+
+    function searchFormShortcode($atts, $content = null)
+    {
+        global $ji_api_wp_plugin;
+
+        $objektarten =  $this->getObjektarten();
+
+        ob_start();
+        include(JI_API_WP_PLUGIN_DIR . '/templates/_search_form.php');
+        return ob_get_clean();
+    }
+
+    function getAjaxFederalStates() {
+        echo json_encode($this->getClient()->getData('/objekt/bundeslaender'));
+    	die();
+    }
+
+    function getAjaxRegions() {
+        echo json_encode($this->getClient()->getRegionen());
+    	die();
+    }
+
+    function renderRegions()
+    {
+        global $ji_api_wp_plugin;
+
+        $data = $_POST['data'];
+
+        $regions = $this->getFilteredRegions($data);
+        $ji_obj_list = $ji_api_wp_plugin->getObjektList();
+
+        include JI_API_WP_PLUGIN_DIR . '/widget/_searchbar_regions.php';
+        die();
+    }
+
+    function getFilteredRegions($data = null)
+    {
+        if($data == "FOREIGN") {
+            return array();
+        } elseif(is_numeric($data) && intval($data) > 0) {
+            return $this->getClient()->getRegionen(intval($data), 'AT')->region;
+        } elseif($data == null) {
+            return $this->getClient()->getRegionen()->region;
+        } else {
+            return $this->getClient()->getRegionen(null, 'AT')->region;
+        }
     }
 }
 

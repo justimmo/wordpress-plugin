@@ -1,55 +1,5 @@
 <?php get_header(); ?>
 
-<script type="text/javascript">
-	var myScroll = false;
-	var tmyscrollresize = function(){
-		var cur_cont_height = jQuery('.customScrollBox').height();
-		var cur_viewport_height = jQuery(window).height()*0.8;
-		if(myScroll){
-			if(cur_cont_height >= cur_viewport_height){
-				jQuery('#mcs_container').height(cur_viewport_height);
-				myScroll.refresh();
-			}else{
-				jQuery('#mcs_container').height(cur_cont_height);
-				myScroll.scrollTo(0, 0, 10);
-				myScroll.destroy();
-				myScroll = false;
-			}
-		}else{
-			if(cur_cont_height >= cur_viewport_height){
-				jQuery('#mcs_container').height(cur_viewport_height);
-				myScroll = new iScroll('mcs_container', { zoom: true, vScroll: true, onBeforeScrollStart: function(e){var target = e.target;while (target.nodeType != 1) target = target.parentNode;if (target.tagName != 'SELECT' && target.tagName != 'INPUT' && target.tagName != 'TEXTAREA'){/*e.preventDefault();*/ }} });
-			}
-		}
-	}
-	jQuery(document).ready(function() {
-		var cur_cont_height = jQuery('#mcs_container').height();
-		var cur_viewport_height = jQuery(window).height()*0.8;
-		var cur_cont_height2 = jQuery('.customScrollBox').height();
-		if(cur_cont_height >= cur_viewport_height){
-			//alert(cur_cont_height);
-			jQuery('#mcs_container').height(cur_viewport_height);
-			//jQuery('#mcs_container .customScrollBox').height(cur_cont_height2+50);
-			//jQuery('#mcs_container .customScrollBox').css({'-moz-transform': 'translate(0px, '+cur_cont_height+'px) scale(1)'});
-				//jQuery('#mcs_container').css({'opacity':'0'});
-			setTimeout(function () {
-				myScroll = new iScroll('mcs_container', { zoom: true, vScroll: true, onBeforeScrollStart: function(e){var target = e.target;while (target.nodeType != 1) target = target.parentNode;if (target.tagName != 'SELECT' && target.tagName != 'INPUT' && target.tagName != 'TEXTAREA'){/*e.preventDefault();*/ }} });
-				jQuery(window).resize(tmyscrollresize);
-			}, 100);
-		}else{
-			jQuery(window).resize(tmyscrollresize);
-		}
-	});
-</script>
-
-<div id="content">
-<div id="mcs_container">
-<div class="customScrollBox">
-<div class="container">
-<div class="content">
-	<div class="container_12">
-		<div class="grid_12">
-
 <div <?php if (is_active_sidebar('jiapi')) : ?>class="bg_content"<?php endif; ?>>
     <div class="clear"></div>
     <div id="jsHolder" style="display: none"></div>
@@ -68,14 +18,12 @@
                 <div style="float:left;">
                     <h1 class="bg_numberObject"><?php echo $ji_obj_list->getTotalCount() ?> Objekte </h1>
                 </div>
-                <div style="float:right;">
+                <div style="float:left;">
                     Sortieren nach:
-                    <a href="?orderby=ort">Ort</a> |
-                    <a href="?orderby=kaufpreis">Kaufpreis</a> |
-                    <a href="?orderby=gesamtmiete">Miete</a> |
-                    <a href="?orderby=wohnflaeche">Fläche</a> |
-                    <a href="?orderby=zimmer">Zimmer</a> |
-                    <a href="?orderby=plz">PLZ</a>
+                    <a href="<?php echo $ji_api_wp_plugin->getIndexUrl(); ?>&orderby=sort_preis">Preis</a> |
+                    <a href="<?php echo $ji_api_wp_plugin->getIndexUrl(); ?>&orderby=sort_flaeche">Fläche</a> |
+                    <a href="<?php echo $ji_api_wp_plugin->getIndexUrl(); ?>&orderby=ort">Ort</a> |
+                    <a href="<?php echo $ji_api_wp_plugin->getIndexUrl(); ?>&orderby=plz">PLZ</a>
                 </div>
 
                 <div class="clear"></div>
@@ -120,7 +68,7 @@
                                 <?php if ($immobilie->wohnflaeche): ?>
                                 <tr>
                                     <td>Wohnfläche:</td>
-                                    <td>ca. <?php echo number_format((float)$immobilie->wohnflaeche, 2, ',', '.'); ?> m²</td>
+                                    <td><?php echo number_format((float)$immobilie->wohnflaeche, 2, ',', '.'); ?> m²</td>
                                 </tr>
                                 <?php endif; ?>
                                 <?php if ($immobilie->grundstuecksflaeche): ?>
@@ -194,13 +142,5 @@
 <?php else : ?>
 <!-- Create some custom HTML or call the_widget().  It's up to you. -->
 <?php endif; ?>
-
-		</div><!-- /.grid_12 -->
-	</div><!-- /.container -->
-</div>
-</div>
-</div>
-</div>
-</div><!-- /#content -->
-
+<div style="clear: both"></div>
 <?php get_footer(); ?>

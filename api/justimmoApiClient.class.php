@@ -2,12 +2,24 @@
 
 class justimmoApiClient
 {
-    function __construct($user1, $pass1)
+    private static $instance;
+
+    public static function getInstance($classname = __CLASS__)
     {
-        $this->username = $user1;
-        $this->password = $pass1;
+         if (!isset(self::$instance))
+         {
+             self::$instance = new $classname;
+         }
+         return self::$instance;
+    }
+
+    function __construct($username, $password)
+    {
+        $this->username = $username;
+        $this->password = $password;
         $this->baseUrl = 'http://api.justimmo.at/rest/v1';
         $this->debug = false;
+        $this->culture = 'de';
     }
 
     function setDebug($state = true)
@@ -15,44 +27,22 @@ class justimmoApiClient
         $this->debug = $state;
     }
 
-    function loadData($url)
+    function getProjektList($params = array(), $filter = array())
     {
-        $ch = curl_init();
-
-        curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-        curl_setopt($ch, CURLOPT_URL, $this->baseUrl.$url);
-        curl_setopt($ch, CURLOPT_USERPWD, $this->username . ':' . $this->password);
-        curl_setopt($ch, CURLOPT_FOLLOWLOCATION,1);
-        curl_setopt($ch, CURLOPT_HTTPAUTH, CURLAUTH_ANY);
-
-        if($this->debug)
-        {
-            echo "Fetch: ".$url;
-        }
-        $result = curl_exec($ch);
-
-        if(curl_errno($ch) || strlen($result) < 1)
-        {
-            throw new Exception('Fehler bei dem Abruf der API-Daten: '.curl_errno($ch));
-        }
-
-        curl_close($ch);
-
-        if($this->debug)
-        {
-            echo "Fetch-Result: ".$result;
-        }
-
-        return $result;
+        return new SimpleXMLElement($this->loadData('/projekt/list?'.implode('&', $this->generateParams($params, $filter))));
     }
 
-
-    function getData($url)
+    function getProjektDetail($id)
     {
-        return simplexml_load_string($this->loadData($url));
+        return new SimpleXMLElement($this->loadData('/projekt/detail?id=' . $id . '&culture=' . $this->culture));
     }
 
-    function getList($params = array(), $filter = array(), $orderby = null, $offset = 0, $limit = 0)
+    function getProjektChoices()
+    {
+        return $this->loadData('/projekt/');
+    }
+
+    function generateParams($params, $filter, $orderby=null, $offset=null, $limit=null)
     {
         if(is_array($filter))
         {
@@ -84,12 +74,94 @@ class justimmoApiClient
             $params[] = 'limit='.$limit;
         }
 
+        $params[] = 'culture=' . $this->culture;
+
+        return $params;
+    }
+
+
+    function loadData($url)
+    {
+        $ch = curl_init();
+
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+        curl_setopt($ch, CURLOPT_URL, $this->baseUrl.$url);
+        curl_setopt($ch, CURLOPT_USERPWD, $this->username . ':' . $this->password);
+        curl_setopt($ch, CURLOPT_FOLLOWLOCATION,1);
+        curl_setopt($ch, CURLOPT_HTTPAUTH, CURLAUTH_ANY);
+
+        if($this->debug)
+        {
+            echo "Fetch: ".$url;
+        }
+
+        $result = curl_exec($ch);
+        curl_close($ch);
+
+        if($this->debug)
+        {
+            echo "Fetch-Result: ".$result;
+        }
+
+        return $result;
+    }
+
+
+    function getData($url)
+    {
+        return simplexml_load_string($this->loadData($url));
+    }
+
+    function getList($params = array(), $filter = array(), $orderby = null, $offset = 0, $limit = 0, $ordertype = null)
+    {
+        if(is_array($filter))
+        {
+            foreach ($filter as $key => $value)
+            {
+                if (is_array($value))
+                {
+                    foreach ($value as $key1 => $value1)
+                    {
+                        $params[] = 'filter['.$key.'][]='.$value1;
+                    }
+                }
+                else
+                {
+                    $params[] = 'filter['.$key.']='.$value;
+                }
+            }
+        }
+
+        if($orderby)
+        {
+            $params[] = 'orderby='.$orderby;
+
+            if ($ordertype)
+            {
+                $params[] = 'ordertype='.$ordertype;
+            }
+            else
+            {
+                $params[] = 'ordertype=asc';
+            }
+        }
+        if($offset)
+        {
+            $params[] = 'offset='.$offset;
+        }
+        if($limit)
+        {
+            $params[] = 'limit='.$limit;
+        }
+
+        $params[] = 'culture=' . $this->culture;
+
         return new SimpleXMLElement($this->loadData('/objekt/list?'.implode('&', $params)));
     }
 
     function getDetail($id)
     {
-        return $this->getData('/objekt/detail/objekt_id/'.$id);
+        return $this->getData('/objekt/detail?objekt_id=' . $id . '&culture=' . $this->culture);
     }
 
     function getTeamList()
@@ -97,13 +169,87 @@ class justimmoApiClient
         return $this->getData('/team/list');
     }
 
-    function getExpose($id)
+    function getTeamDetail($id)
     {
-        return $this->loadData('/objekt/expose?objekt_id='.$id);
+        return $this->getData('/team/detail/id/' . $id);
     }
 
-    function getBundeslaender()
+    function getExpose($id, $expose = null, $culture = 'de')
     {
-        return $this->loadData('/objekt/bundeslaender');
+        return $this->loadData('/objekt/expose?objekt_id=' . $id . ($expose ? '&expose=' . $expose : '').'&culture='.$culture);
+    }
+
+    function pushAnfrage($values)
+    {
+        $ch = curl_init();
+
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+        curl_setopt($ch, CURLOPT_URL, $this->baseUrl.'/objekt/anfrage');
+        curl_setopt($ch, CURLOPT_USERPWD, $this->username . ':' . $this->password);
+        curl_setopt($ch, CURLOPT_FOLLOWLOCATION,1);
+        curl_setopt($ch, CURLOPT_HTTPAUTH, CURLAUTH_ANY);
+
+        curl_setopt($ch, CURLOPT_POST, true);
+        curl_setopt($ch, CURLOPT_POSTFIELDS, implode('&', array(
+            'objekt_id='.$values['objekt_id'],
+            'vorname='.$values['first_name'],
+            'nachname='.$values['last_name'],
+            'email='.$values['email'],
+            'tel='.$values['phone'],
+            'message='.$values['message']
+        )));
+
+        if($this->debug)
+        {
+            echo "Fetch: /objekt/anfrage ";
+        }
+
+        $result = curl_exec($ch);
+        curl_close($ch);
+
+        if($this->debug)
+        {
+            echo "Fetch-Result: ".$result;
+        }
+
+        return $result;
+    }
+
+    function getObjektarten()
+    {
+        return $this->getData('/objekt/objektarten');
+    }
+
+    function getRegionen($bundesland = null, $land = null)
+    {
+        $params = array();
+        if($bundesland) {
+            $params[] = 'bundesland='.$bundesland;
+        }
+
+        if($land) {
+            $params[] = 'land='.$land;
+        }
+
+        return $this->getData('/objekt/regionen?'.implode('&', $params));
+    }
+
+    function getBundeslaender($land = null)
+    {
+        return $this->getData('/objekt/bundeslaender');
+    }
+
+    function getLaender()
+    {
+        return $this->getData('/objekt/laender');
+    }
+
+    function getPlzsUndOrte($bundesland = null)
+    {
+        if (empty($bundesland)) {
+            return $this->getData('/objekt/plzsUndOrte?alle=1');
+        } else {
+            return $this->getData('/objekt/plzsUndOrte?bundesland='.$bundesland);
+        }
     }
 }

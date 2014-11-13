@@ -6,13 +6,22 @@
 
     <form name="ji_admin_form" method="post" action="<?php echo str_replace('%7E', '~', $_SERVER['REQUEST_URI']); ?>"
           style="background-color: #efefef; padding: 10px;">
+        <p>
         <input type="hidden" name="ji_admin_form[action]" value="Y">
-        <label for="api-user"><strong>Username</strong></label>
+        <label for="ji_admin_form[user]"><strong>Username</strong></label>
         <input type="text" name="ji_admin_form[user]" value="<?php echo get_option('justimmo_plugin_username'); ?>">
-        <label for="api-pass"><strong>Passwort</strong></label>
-        <input type="password" name="ji_admin_form[password]"
-               value="<?php echo get_option('justimmo_plugin_password'); ?>">
+        <label for="ji_admin_form[password]"><strong>Passwort</strong></label>
+        <input type="password" name="ji_admin_form[password]" value="<?php echo get_option('justimmo_plugin_password'); ?>">
+        </p>
+<?php /*
+        <p>
+        <label for="ji_admin_form[url_prefix]"><strong>Url-Prefix</strong></label>
+        <input type="text" name="ji_admin_form[url_prefix]" value="<?php echo get_option('justimmo_plugin_url_prefix', 'immobilien'); ?>">
+        </p>
+ */ ?>
+        <p>
         <input type="submit" value="speichern" class="button">
+        </p>
     </form>
 
     <div style="float: left; width: 300px; margin-right: 15px;"><h3>Das JUSTIMMO API Plugin</h3>
@@ -45,7 +54,7 @@
 
         <p>
             Bitte navigieren Sie zu dem Menüpunkt "Design &raquo; Menüs". Hier finden Sie die Box "Links" fügen Sie dort
-            folgenden Text ein "/immobilien" und geben Sie z.B. als Titel Immobilien an. Nun klicken Sie auf den Button
+            folgenden Text ein "index.php?ji_plugin=search&reset=filter" und geben Sie z.B. als Titel Immobilien an. Nun klicken Sie auf den Button
             "Zum Menü hinzufügen" und speichern Sie Ihre Änderungen.
         </p>
 
@@ -58,6 +67,16 @@
             Bitte navigieren Sie zum dem Menüpunkt "Design &raquo; Widgets" und ziehen einfach das Widget "JUSTIMMO
             Suchbox" in die JUSTIMMO Sidebar. Hier haben Sie noch die Möglichkeit, einen Titel für die Suchbox zu
             vergeben.
+        </p>
+
+        <h4>4.) Shortcodes</h4>
+
+        <p>
+            Das Plugin stellt auch zwei Shortcodes zur Verfügung:<br/><br/>
+            [justimmo_realty_list]<br/>
+            Liste von Immobilien die als Seiteninhalt verwendet werden können (zb. Topimmobilien)<br/><br/>
+            [justimmo_search_form]<br/>
+            Suchformular das zb. als schneller Einstieg in der Startseite verwendet werden kann.<br/>
         </p>
     </div>
     <div style="border-top:1px solid #efefef; padding-top: 10px;">

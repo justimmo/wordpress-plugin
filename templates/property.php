@@ -8,82 +8,40 @@
     //]]>
 </script>
 
-<script type="text/javascript">
-	var myScroll = false;
-	var tmyscrollresize = function(){
-		var cur_cont_height = jQuery('.customScrollBox').height();
-		var cur_viewport_height = jQuery(window).height()*0.8;
-		if(myScroll){
-			if(cur_cont_height >= cur_viewport_height){
-				jQuery('#mcs_container').height(cur_viewport_height);
-				myScroll.refresh();
-			}else{
-				jQuery('#mcs_container').height(cur_cont_height);
-				myScroll.scrollTo(0, 0, 10);
-				myScroll.destroy();
-				myScroll = false;
-			}
-		}else{
-			if(cur_cont_height >= cur_viewport_height){
-				jQuery('#mcs_container').height(cur_viewport_height);
-				myScroll = new iScroll('mcs_container', { zoom: true, vScroll: true, onBeforeScrollStart: function(e){var target = e.target;while (target.nodeType != 1) target = target.parentNode;if (target.tagName != 'SELECT' && target.tagName != 'INPUT' && target.tagName != 'TEXTAREA'){/*e.preventDefault();*/ }} });
-			}
-		}
-	}
-	jQuery(document).ready(function() {
-		var cur_cont_height = jQuery('#mcs_container').height();
-		var cur_viewport_height = jQuery(window).height()*0.8;
-		var cur_cont_height2 = jQuery('.customScrollBox').height();
-		if(cur_cont_height >= cur_viewport_height){
-			//alert(cur_cont_height);
-			jQuery('#mcs_container').height(cur_viewport_height);
-			//jQuery('#mcs_container .customScrollBox').height(cur_cont_height2+50);
-			//jQuery('#mcs_container .customScrollBox').css({'-moz-transform': 'translate(0px, '+cur_cont_height+'px) scale(1)'});
-				//jQuery('#mcs_container').css({'opacity':'0'});
-			setTimeout(function () {
-				myScroll = new iScroll('mcs_container', { zoom: true, vScroll: true, onBeforeScrollStart: function(e){var target = e.target;while (target.nodeType != 1) target = target.parentNode;if (target.tagName != 'SELECT' && target.tagName != 'INPUT' && target.tagName != 'TEXTAREA'){/*e.preventDefault();*/ }} });
-				jQuery(window).resize(tmyscrollresize);
-			}, 100);
-		}else{
-			jQuery(window).resize(tmyscrollresize);
-		}
-	});
-</script>
-
-<div id="content">
-<div id="mcs_container">
-<div class="customScrollBox">
-<div class="container">
-<div class="content">
-	<div class="container_12">
-		<div class="grid_12">
-
 <div id="bg_AllContent">
+    <?php if($request_form_error): ?>
+        <div class="alert alert-danger">Es ist ein Fehler bei der Objektanfrage aufgetreten!<br/><?php echo nl2br($request_form_error); ?></div>
+    <?php endif; ?>
+    <?php if($request_form_success): ?>
+        <div class="alert alert-success">Objektanfrage wurde versendet!</div>
+    <?php endif; ?>
     <div id="bg_objectDetailMetaNav">
         <ul>
             <li>
-                <a href="/immobilien-ji/">zurück zur Übersicht</a>
+                <a href="<?php echo $ji_api_wp_plugin->getIndexUrl() ?>">Zurück zur Übersicht</a>
             </li>
             <li>
                 <a href="<?php echo $ji_api_wp_plugin->getExposeUrl($immobilie->verwaltung_techn->objektnr_intern); ?>">EXPOSÉ</a>
             </li>
         </ul>
+        <div style="clear: both"></div>
     </div>
 
     <div id="bg_objectDetailContent">
 
-                <h1><?php echo $immobilie->freitexte->objekttitel; ?></h1>
+                <h2><?php echo $immobilie->freitexte->objekttitel; ?></h2>
 
                 <h3 class="bg_address">
                     <?php echo $immobilie->geo->plz; ?>
-                    <?php echo $immobilie->geo->ort; ?><?php if ($immobilie->freitexte->lage): ?>
-                    , <?php echo $immobilie->freitexte->lage; ?><?php endif; ?>
+                    <?php echo $immobilie->geo->ort; ?><?php if ($immobilie->geo->regionaler_zusatz): ?>
+                    , <?php echo $immobilie->geo->regionaler_zusatz; ?>
+                    <?php endif; ?>
                 </h3>
 
                 <div class="bg_content">
                     <?php if (count($immobilie->anhaenge->anhang)): ?>
                     <div id="detailImage">
-                        <a href="<?php echo $immobilie->anhaenge->anhang[0]->daten->pfad; ?>" rel="fancybox" target="_blank">
+                        <a href="<?php echo $immobilie->anhaenge->anhang[0]->daten->pfad; ?>" rel="prettyPhoto[gallery1]" target="_blank">
                             <img src="<?php echo $immobilie->anhaenge->anhang[0]->daten->pfad; ?>"/>
                         </a>
                     </div>
@@ -92,7 +50,7 @@
                         <?php $i = 0; ?>
                         <?php foreach ($immobilie->anhaenge->anhang as $anhang): ?>
                         <?php $i++ ?>
-                        <a href="<?php echo $anhang->daten->pfad; ?>" rel="fancybox" target="_blank">
+                        <a href="<?php echo $anhang->daten->pfad; ?>" rel="prettyPhoto[gallery1]" target="_blank">
                             <img class="bg_smallImageDetail" src="<?php echo $anhang->daten->small; ?>" alt="immobilie"/>
                         </a>
                         <?php endforeach; ?>
@@ -102,8 +60,15 @@
                     <?php endif ?>
 
                     <div id="bg_objektBeschreibung">
+                        <h2>Beschreibung</h2>
                         <?php echo $immobilie->freitexte->objektbeschreibung; ?>
                     </div>
+                    <?php if($immobilie->freitexte->lage): ?>
+                        <div id="bg_objektLage">
+                            <h2>Lage</h2>
+                            <?php echo $immobilie->freitexte->lage; ?>
+                        </div>
+                    <?php endif ?>
 
                     <?php if (count($immobilie->dokumente->dokument)): ?>
                     <div id="bg_objektDokumente">
@@ -122,7 +87,7 @@
                 </div>
 
                 <div id="bg_objectDetailInformation" class="JiApiWpSearchBarWidget">
-                    <h2>Eckdaten Objektnummer <?php echo $immobilie->verwaltung_techn->objektnr_extern; ?></h2>
+                    <h2>Objektnummer <?php echo $immobilie->verwaltung_techn->objektnr_extern; ?></h2>
                     <ul>
                         <li>
                             <?php if ($immobilie->objektkategorie->objektart->children()->getName()): ?>
@@ -188,37 +153,61 @@
 
                     <h2>Preisinformation</h2>
                     <ul>
-                        <?php if (isset($immobilie->preise->kaufpreis)): ?>
-                        <li>
-                            <strong>Kaufpreis:</strong> <?php echo number_format((float)$immobilie->preise->kaufpreis, 2, ',', '.'); ?> &euro;
-                        </li>
-                        <?php endif; ?>
-                        <?php if (isset($immobilie->preise->nettokaltmiete) && $immobilie->preise->nettokaltmiete > 0): ?>
-                        <li>
-                            <strong>Nettomiete:</strong> <?php echo number_format((float)$immobilie->preise->nettokaltmiete, 2, ',', '.') ?> &euro;
-                        </li>
-                        <?php elseif (isset($immobilie->preise->kaltmiete)): ?>
-                        <li>
-                            <strong>Nettomiete:</strong> <?php echo number_format((float)$immobilie->preise->kaltmiete, 2, ',', '.') ?> &euro;
-                        </li>
-                        <?php endif; ?>
-                        <?php if (isset($immobilie->preise->nebenkosten)): ?>
-                        <li>
-                            <strong>Betriebskosten:</strong> <?php echo number_format((float)$immobilie->preise->nebenkosten, 2, ',', '.'); ?> &euro;
-                        </li>
-                        <?php endif; ?>
-                        <?php if (isset($immobilie->preise->warmmiete)): ?>
-                        <li><strong>Gesamtmiete: (inkl. USt. &
-                            BK):</strong> <?php echo number_format((float)$immobilie->preise->warmmiete, 2, ',', '.'); ?> &euro;
-                        </li>
-                        <?php endif; ?>
-                        <?php if (isset($immobilie->preise->kaution)): ?>
-                        <li>
-                            <strong>Kaution:</strong> <?php echo number_format((float)$immobilie->preise->kaution, 2, ',', '.'); ?> &euro;
-                        </li>
+                        <?php if(isset($immobilie->objektkategorie->vermarktungsart["KAUF"]) && ($immobilie->objektkategorie->vermarktungsart["KAUF"] == 1 || $immobilie->objektkategorie->vermarktungsart["KAUF"] == "true")): ?>
+                            <?php if (isset($immobilie->preise->kaufpreis)): ?>
+                            <li>
+                                <strong>Kaufpreis:</strong> <?php echo number_format((float)$immobilie->preise->kaufpreis, 2, ',', '.'); ?> &euro;
+                            </li>
+                            <?php endif; ?>
+                            <?php foreach($immobilie->xpath('.//preise/user_defined_simplefield[@feldname="monatlichekostenbrutto"]') as $monatliche_kosten): ?>
+                            <li>
+                                <strong>Monatliche Kosten:</strong> <?php echo number_format((float)$monatliche_kosten, 2, ',', '.'); ?> &euro;
+                            </li>
+                            <?php endforeach; ?>
+                        <?php else: ?>
+                            <?php if (isset($immobilie->preise->kaltmiete) && $immobilie->preise->kaltmiete > 0): ?>
+                                <li>
+                                    <strong>Gesamtmiete:</strong> <?php echo number_format((float)$immobilie->preise->kaltmiete, 2, ',', '.') ?> &euro;<br />
+                                    (ohne Heizkosten inkl. USt)
+                                </li>
+                                <li>&nbsp;</li>
+                            <?php endif; ?>
+
+
+                            <?php if (isset($immobilie->preise->nettokaltmiete) && $immobilie->preise->nettokaltmiete > 0): ?>
+                            <li>
+                                <strong>Miete:</strong> <?php echo number_format((float)$immobilie->preise->nettokaltmiete, 2, ',', '.') ?> &euro;
+                            </li>
+                            <?php endif; ?>
+                            <?php if (isset($immobilie->preise->nebenkosten)): ?>
+                            <li>
+                                <strong>Betriebskosten:</strong> <?php echo number_format((float)$immobilie->preise->nebenkosten, 2, ',', '.'); ?> &euro;
+                            </li>
+                            <?php endif; ?>
+                            <?php foreach($immobilie->xpath('.//preise/user_defined_anyfield/sonstige_kosten') as $sonstige_kosten): ?>
+                            <li>
+                                <strong>Sonstige Kosten:</strong> <?php echo number_format((float)$sonstige_kosten, 2, ',', '.'); ?> &euro;
+                            </li>
+                            <?php endforeach; ?>
+                            <?php foreach($immobilie->xpath('.//preise/user_defined_anyfield/mwst_gesamt') as $mwst_gesamt): ?>
+                            <li>
+                                <strong>USt:</strong> <?php echo number_format((float)$mwst_gesamt, 2, ',', '.'); ?> &euro;
+                            </li>
+                            <?php endforeach; ?>
+                            <?php if (isset($immobilie->preise->warmmiete)): ?>
+                                <li><strong>Gesamtbelastung:</strong> <?php echo number_format((float)$immobilie->preise->warmmiete, 2, ',', '.'); ?> &euro;
+                                </li>
+                            <?php endif; ?>
+                            <?php if (isset($immobilie->preise->kaution)): ?>
+                                <li>&nbsp;</li>
+                                <li>
+                                    <strong>Kaution:</strong> <?php echo number_format((float)$immobilie->preise->kaution, 2, ',', '.'); ?> &euro;
+                                </li>
+                            <?php endif; ?>
                         <?php endif; ?>
                         <?php if (isset($immobilie->preise->aussen_courtage)): ?>
-                        <li><strong>Provision:</strong> <?php echo $immobilie->preise->aussen_courtage; ?></li>
+                            <li>&nbsp;</li>
+                            <li><strong>Provision:</strong> <?php echo $immobilie->preise->aussen_courtage; ?></li>
                         <?php endif; ?>
                     </ul>
                     <div class="clear"></div>
@@ -233,7 +222,7 @@
                         <?php endif; ?>
                         <?php if ($immobilie->flaechen->wohnflaeche): ?>
                         <li>
-                            <strong>Wohnfl&auml;che:</strong> ca. <?php echo number_format((float)$immobilie->flaechen->wohnflaeche, 2, ',', '.'); ?>
+                            <strong>Wohnfl&auml;che:</strong> <?php echo number_format((float)$immobilie->flaechen->wohnflaeche, 2, ',', '.'); ?>
                             m<sup>2</sup></li>
                         <?php endif; ?>
                         <?php if ($immobilie->flaechen->nutzflaeche): ?>
@@ -316,6 +305,10 @@
                         <h2>Ihr Ansprechpartner</h2>
 
                         <p>
+                            <?php if ($immobilie->kontaktperson->bild): ?>
+                                <img src="<?php echo $immobilie->kontaktperson->bild->small; ?>"/>
+                            <?php endif; ?>
+
                             <?php echo $immobilie->kontaktperson->vorname . ' ' . $immobilie->kontaktperson->name; ?><br/>
                             <a href="mailto:<?php echo $immobilie->kontaktperson->email_direkt; ?>">E-Mail
                                 an <?php echo $immobilie->kontaktperson->vorname . ' ' . $immobilie->kontaktperson->name; ?></a><br/>
@@ -328,6 +321,26 @@
                             <?php if ($immobilie->kontaktperson->tel_fax && $immobilie->kontaktperson->tel_fax != 0): ?>
                             Fax: <?php echo $immobilie->kontaktperson->tel_fax; ?>
                             <?php endif; ?>
+
+                            <?php /* ?>
+                            <form class="bg_property_request" action="<?php echo $ji_api_wp_plugin->getPropertyUrl($immobilie->verwaltung_techn->objektnr_intern) ?>" method="post">
+                                <label>Name:</label>
+                                <input type="text" name="request[name]" value="<?php isset($request_form['name']) and print $request_form['name']; ?>" class="request[name]" />
+                                <label>E-Mail:</label>
+                                <input type="text" name="request[email]" value="<?php isset($request_form['email']) and print $request_form['email']; ?>" class="request[email]" />
+                                <label>Nachricht:</label>
+                                <textarea name="request[text]" class="request[email]" /><?php isset($request_form['text']) and print $request_form['text']; ?></textarea>
+                                <?php if( function_exists( 'cptch_display_captcha_custom' ) ): ?>
+                                    <label>Sicherheitsabfrage:</label><br />
+                                    <input type='hidden' name='cntctfrm_contact_action' value='true' />
+                                    <?php echo cptch_display_captcha_custom(); ?>
+                                <?php endif; ?>
+                                <input type="submit" class="request[submit]"/>
+                                <?php if($request_form_error): ?>
+                                    <div class="alert alert-danger"><?php echo nl2br($request_form_error); ?></div>
+                                <?php endif; ?>
+                            </form>
+                            <?php */ ?>
                         </p>
                     </div>
                 </div>
@@ -335,13 +348,5 @@
     </div>
     <div class="clear"></div>
 </div>
-
-		</div><!-- /.grid_12 -->
-	</div><!-- /.container -->
-</div>
-</div>
-</div>
-</div>
-</div><!-- /#content -->
 
 <?php get_footer(); ?>

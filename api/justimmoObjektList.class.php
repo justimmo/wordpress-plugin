@@ -2,7 +2,7 @@
 
 class justimmoObjektList
 {
-    public function __construct($ji_client, $defaults = array())
+    public function __construct($ji_client, $defaults = array('filter' => array()))
     {
         $this->ji_client = $ji_client;
         $this->max_per_page = 10;
@@ -68,6 +68,11 @@ class justimmoObjektList
         $this->filter = $filter;
     }
 
+    public function mergeFilter($filter)
+    {
+        $this->filter = $filter + $this->filter;
+    }
+
     public function setOrderBy($orderby)
     {
         $this->orderby = $orderby;
@@ -80,7 +85,57 @@ class justimmoObjektList
 
     public function fetchList($params = array())
     {
-        $obj_list = $this->ji_client->getList($params, $this->filter, $this->orderby, $this->max_per_page * ($this->page -1), $this->max_per_page);
+        $filter = $this->filter;
+
+        if(isset($filter['bundesland_id'])) {
+            if($filter['bundesland_id'] == "") {
+                unset($filter['bundesland_id']);
+            } elseif($filter['bundesland_id'] == "FOREIGN") {
+                $filter['not_land_id'] = 17;
+                unset($filter['bundesland_id']);
+            } elseif(isset($filter['bundesland_id']) && !is_numeric($filter['bundesland_id'])) {
+                $filter['land_iso2'] = $filter['bundesland_id'];
+                unset($filter['bundesland_id']);
+            }
+        }
+
+        if(isset($filter['balkon'])) {
+            $filter['terrasse'] = 1;
+            $filter['loggia'] = 1;
+        }
+
+        /*
+        if(isset($filter['objektart_id'][0]) && $filter['objektart_id'][0] == '') {
+            unset($filter['objektart_id']);
+        }
+
+        if(isset($filter['objektart_id'][0]) && $filter['objektart_id'][0] == 6) {
+            $filter['objektart_id'][] = 7;
+            $filter['objektart_id'][] = 8;
+            $filter['objektart_id'][] = 11;
+        }
+        */
+
+        if((isset($filter['preis_von']))) {
+            $filter['preis_von'] = intval($filter['preis_von']) ? intval($filter['preis_von']) : '';
+        }
+        if((isset($filter['preis_bis']))) {
+            $filter['preis_bis'] = intval($filter['preis_bis']) ? intval($filter['preis_bis']) : '';
+        }
+        if((isset($filter['flaeche_von']))) {
+            $filter['flaeche_von'] = intval($filter['flaeche_von']) ? intval($filter['flaeche_von']) : '';
+        }
+        if((isset($filter['flaeche_bis']))) {
+            $filter['flaeche_bis'] = intval($filter['flaeche_bis']) ? intval($filter['flaeche_bis']) : '';
+        }
+        if((isset($filter['zimmer_von']))) {
+            $filter['zimmer_von'] = intval($filter['zimmer_von']) ? intval($filter['zimmer_von']) : '';
+        }
+        if((isset($filter['zimmer_bis']))) {
+            $filter['zimmer_bis'] = intval($filter['zimmer_bis']) ? intval($filter['zimmer_bis']) : '';
+        }
+
+        $obj_list = $this->ji_client->getList($params, $filter, $this->orderby, $this->max_per_page * ($this->page -1), $this->max_per_page);
         $this->total_count = (int) $obj_list->{'query-result'}->count;
         return $obj_list;
     }
