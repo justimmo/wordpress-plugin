@@ -104,11 +104,11 @@ class justimmoObjektList
             $filter['loggia'] = 1;
         }
 
-        /*
         if(isset($filter['objektart_id'][0]) && $filter['objektart_id'][0] == '') {
             unset($filter['objektart_id']);
         }
 
+        /*
         if(isset($filter['objektart_id'][0]) && $filter['objektart_id'][0] == 6) {
             $filter['objektart_id'][] = 7;
             $filter['objektart_id'][] = 8;
