@@ -227,6 +227,10 @@ class JiApiWpPlugin
         {
             $ji_obj_list->setOrderBy($_REQUEST['orderby']);
         }
+        if (isset($_REQUEST['ordertype']))
+        {
+            $ji_obj_list->setOrderType($_REQUEST['ordertype']);
+        }
 
         $objekte = $ji_obj_list->fetchList(array('picturesize=s220x155'));
         $ji_obj_list->saveToSession();

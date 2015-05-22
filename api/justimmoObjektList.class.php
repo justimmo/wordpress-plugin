@@ -2,7 +2,7 @@
 
 class justimmoObjektList
 {
-    public function __construct($ji_client, $defaults = array('filter' => array()))
+    public function __construct($ji_client, $defaults = array('filter' => array(), 'orderby' => 'objektnummer', 'ordertype' => 'desc'))
     {
         $this->ji_client = $ji_client;
         $this->max_per_page = 10;
@@ -26,6 +26,7 @@ class justimmoObjektList
     {
         $this->filter = $this->defaults['filter'];
         $this->orderby = $this->defaults['orderby'];
+        $this->ordertype = $this->defaults['ordertype'];
         $this->page = 1;
         $this->total_count = 0;
     }
@@ -43,6 +44,7 @@ class justimmoObjektList
 
         $this->filter = $objekt_list_params['filter'];
         $this->orderby = $objekt_list_params['orderby'];
+        $this->ordertype = $objekt_list_params['ordertype'];
 
         if(isset($objekt_list_params['page']))
         {
@@ -60,6 +62,7 @@ class justimmoObjektList
         $_SESSION['ji_objekt_list']['filter'] = $this->filter;
         $_SESSION['ji_objekt_list']['page'] = $this->page;
         $_SESSION['ji_objekt_list']['orderby'] = $this->orderby;
+        $_SESSION['ji_objekt_list']['ordertype'] = $this->ordertype;
         $_SESSION['ji_objekt_list']['total_count'] = $this->total_count;
     }
 
@@ -76,6 +79,11 @@ class justimmoObjektList
     public function setOrderBy($orderby)
     {
         $this->orderby = $orderby;
+    }
+
+    public function setOrderType($ordertype)
+    {
+        $this->ordertype = $ordertype;
     }
 
     public function getTotalCount()
@@ -135,7 +143,7 @@ class justimmoObjektList
             $filter['zimmer_bis'] = intval($filter['zimmer_bis']) ? intval($filter['zimmer_bis']) : '';
         }
 
-        $obj_list = $this->ji_client->getList($params, $filter, $this->orderby, $this->max_per_page * ($this->page -1), $this->max_per_page);
+        $obj_list = $this->ji_client->getList($params, $filter, $this->orderby, $this->max_per_page * ($this->page -1), $this->max_per_page, $this->ordertype);
         $this->total_count = (int) $obj_list->{'query-result'}->count;
         return $obj_list;
     }
