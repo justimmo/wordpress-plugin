@@ -8,7 +8,7 @@
  */
 class JiApiWpSearchBarWidget extends WP_Widget
 {
-    function JiApiWpSearchBarWidget()
+    public function __construct()
     {
         $widget_ops = array('classname'   => 'JiApiWpSearchBarWidget',
                             'description' => 'Widget für die JUSTIMMO Suchbox'
