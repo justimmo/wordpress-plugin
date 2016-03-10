@@ -6,7 +6,7 @@
             <label class="control-label">Objektnummer</label>
             <input type="text" class="numberDE bg_textfield" size="10" value="" id="object_own_id" name="filter[objektnummer]">
 
-            <input type="submit" class="bg_button" value="Suchen">
+            <input type="submit" class="fusion-button button-flat button-round button-large button-default" value="Suchen">
         </div>
     </form>
     <hr>
@@ -14,15 +14,22 @@
         <input type="hidden" value="filter" name="reset">
         <div class="form-group">
             <label class="control-label">Erwerb:</label>
+            <ul>
+                <li>
+                    <input type="checkbox" value="1" id="filters_miete" name="filter[miete]">
+                    <label for="filters_miete">Miete</label>
+                </li>
 
-            <input type="checkbox" value="1" id="filters_miete" name="filter[miete]">
-            <label for="filters_miete">Miete</label>
+                <li>
+                    <input type="checkbox" value="anlage" id="filters_investment" name="filter[nutzungsart]">
+                    <label for="filters_investment">Investment</label>
+                </li>
 
-            <input type="checkbox" value="anlage" id="filters_investment" name="filter[nutzungsart]">
-            <label for="filters_investment">Investment</label>
-
-            <input type="checkbox" value="1" id="filters_kauf" name="filter[kauf]">
-            <label for="filters_kauf">Kauf</label>
+                <li>
+                    <input type="checkbox" value="1" id="filters_kauf" name="filter[kauf]">
+                    <label for="filters_kauf">Kauf</label>
+                </li>
+            </ul>
         </div>
         <div class="form-group">
             <label class="control-label">Objektart:</label>
@@ -60,7 +67,7 @@
 
             */ ?>
 
-            <input type="submit" class="bg_button" value="Suchen">
+            <input type="submit" class="fusion-button button-flat button-round button-large button-default" value="Suchen">
         </div>
     </form>
 </div>

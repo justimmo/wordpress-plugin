@@ -17,7 +17,7 @@ class justimmoApiClient
     {
         $this->username = $username;
         $this->password = $password;
-        $this->baseUrl = 'http://api.justimmo.at/rest/v1';
+        $this->baseUrl = 'https://api.justimmo.at/rest/v1';
         $this->debug = false;
         $this->culture = 'de';
     }

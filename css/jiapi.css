@@ -1,5 +1,5 @@
 /*
-Plugin Name: Justimmo Api Plugin CSS
+Plugin Name: JUSTIMMO Api Plugin CSS
 Plugin URI: http://www.justimmo.at/wordpress-api-plugin
 Description: Plugin is showing the Justimmo API results
 Author: bgcc
@@ -7,25 +7,26 @@ Version: 1.0
 Author URI: http://www.bgcc.at
 */
 
+/* JUSTIMMO Objekt Liste
+-------------------------------------------------------------------------*/
 
-/* Justimmo Objekt Liste
-***************************************************************/
 .bg_content {
-    float: left;
-    width: 70%;
+}
+
+.bg_numberObject {
+    float: right;
+    padding: 0;
+    margin: 0;
 }
 
 .bg_listTitle {
-    margin-bottom: 10px;
 }
 
 .bg_listTitle a {
-    text-decoration: none;
 }
 
 #bg_compactInfos {
     float: left;
-    width: 390px;
 }
 
 .bg_smallImage {
@@ -44,12 +45,16 @@ Author URI: http://www.bgcc.at
     float: left;
 }
 
+.bg_objectSearchListEntry a {
+    display: inline-block;
+}
+
 .bg_listAddress {
     margin-bottom: 10px;
 }
 
 .bg_objectSearchListMeta table td {
-    padding: 3px 3px 5px 0;
+    padding: 0;
 }
 
 .bg_pager01 {
@@ -67,8 +72,6 @@ Author URI: http://www.bgcc.at
 .bg_pager02 span {
     display: inline-block;
     border: 1px solid #ccc;
-    width: 16px;
-    height: 16px;
     padding: 5px 3px 1px 3px;
     text-align: center;
     font-size: 12px;
@@ -78,23 +81,19 @@ Author URI: http://www.bgcc.at
 .bg_pager01 a, .bg_pager03 a {
     display: inline-block;
     border: 1px solid #ccc;
-    width: 16px;
-    height: 16px;
     padding: 3px;
-    line-height: 13px;
     text-align: center;
     text-decoration: none;
     font-weight: bold;
     font-size: 16px;
 }
 
-/* Justimmo Objekt Detailseite
-***************************************************************/
+/* JUSTIMMO Objekt Detailseite
+-------------------------------------------------------------------------*/
 
-#bg_objectDetailMetaNav ul li {
-    float: left;
-    margin-right: 15px;
-    margin-bottom: 20px;
+#bg_objectDetailMetaNav {
+    float: right;
+    display: inline-block;
 }
 
 #bg_objektBeschreibung p {
@@ -111,7 +110,7 @@ Author URI: http://www.bgcc.at
 
 #objekt_vorschaubilder a {
     text-decoration: none;
-    height:65px;
+    height: 65px;
     display: block;
     width: 100px;
     overflow: hidden;
@@ -134,13 +133,13 @@ Author URI: http://www.bgcc.at
     margin-bottom: 15px;
 }
 
-.bg_address { margin-bottom: 10px;}
+.bg_address {
+    margin-bottom: 10px;
+}
 
-/* Justimmo Searchbox Widget
-***************************************************************/
+/* JUSTIMMO Searchbox Widget
+-------------------------------------------------------------------------*/
 .JiApiWpSearchBarWidget {
-    float: right;
-    width: 260px !important;
 }
 
 #immobilien_schnellsuche {
@@ -179,31 +178,31 @@ body .bg_formInput .bg_fluidTextfield {
     width: 100%;
 }
 
-/* Justimmo sonstige Helper
-***************************************************************/
+/* JUSTIMMO sonstige Helper
+-------------------------------------------------------------------------*/
+
 .clear {
     clear: both;
-}
-
-.bg_rightLink {
-    float: right;
-    margin-top: 8px;
 }
 
 .bg_property_request input, .bg_property_request textarea {
     width: 100%;
 }
 
-.alert-danger {
-    background-color: #F2DEDE;
-    border-color: #EBCCD1;
-    color: #A94442;
-}
+/* Warnungen
+-------------------------------------------------------------------------*/
+
 .alert {
     border: 1px solid rgba(0, 0, 0, 0);
     border-radius: 4px;
     margin-bottom: 20px;
     padding: 15px;
+}
+
+.alert-danger {
+    background-color: #F2DEDE;
+    border-color: #EBCCD1;
+    color: #A94442;
 }
 
 .alert-success {
@@ -216,7 +215,148 @@ body .bg_formInput .bg_fluidTextfield {
     margin-top: 20px;
 }
 
-.bg_objectDetailMetaNav ul, .bg_objectDetailInformation ul {
-    list-style: outside none none;
+/* Allgemein
+-------------------------------------------------------------------------*/
+
+/* Objektdetail
+-------------------------------------------------------------------------*/
+
+#bg_objectDetailInformation ul {
+    list-style: none;
+    padding-left: 0;
 }
 
+#detailImage {
+    margin-bottom: 15px;
+}
+
+#bg_objectDetailInformation {
+    margin-top: 43px;
+}
+
+#cptch_input_13 {
+    height: 20px;
+}
+
+/* ----- Objektangebot ----- */
+
+.bg_content {
+    margin: 0 !important;
+}
+
+#listDiv #bg_compactInfos {
+    width: 490px
+}
+
+#listDiv .bg_objectSearchListHeader div:first-child {
+    width: 220px;
+    margin-right: 10px;
+}
+
+#listDiv .bg_objectSearchListHeader div:first-child h1 {
+    margin-top: 0;
+}
+
+#listDiv .bg_objectSearchListHeader div:last-child {
+    font-size: 16px;
+}
+
+/* ----   Sidebar ----*/
+#text-2 ul, #immobilien_schnellsuche li {
+    list-style: none;
+    padding: 0;
+}
+
+form[action="index.php?ji_plugin=search"] div:last-child {
+    margin-bottom: 20px;
+}
+
+#text-2 {
+    width: 260px;
+    float: right;
+    margin-top: 48px;
+}
+
+.bg_formRow input[type="text"] {
+    border-radius: 5px;
+}
+
+.bg_formRow label, .bg_formRow input {
+    display: inline-block;
+}
+
+/* JUSTIMMO Immocard
+-------------------------------------------------------------------------*/
+
+@media screen and (max-width: 335px) {
+
+    .post-content h1 {
+        font-size: 18px;
+    }
+}
+
+.ji_immoCard {
+    background-color: #f6f6f6;
+}
+
+.ji_realty_shortlist {
+
+}
+
+.ji_immoCard_content {
+    background-color: #fff;
+    margin: -50px 20px 20px 20px;
+    padding: 15px;
+    position: relative;
+    z-index: 5;
+    min-height: 300px;
+}
+
+.ji_immoCard_content h2 {
+    text-align: center;
+    margin: 5% 0% 2.75% 0%;
+    word-wrap: break-word;
+}
+
+.ji_immoCard_content h2:hover a{
+    color: #000;
+}
+
+.ji_immoCard_content p {
+    text-align: center;
+    padding: 0 0 5px 0;
+    margin-bottom: 0;
+    margin-top: 0;
+}
+
+.ji_immoCard_content .fusion-button {
+    color: #fff;
+    position: absolute;
+    bottom: 15px;
+    left: 50%;
+    width: 150px;
+    margin-left: -75px;
+    background: #FF9933 none repeat scroll 0 0;
+}
+
+#bg_AllContent .fusion-button {
+    color: #fff;
+    background: #FF9933 none repeat scroll 0 0;
+}
+
+.ji_immoCard_content .fusion-button:hover, #bg_AllContent .fusion-button:hover {
+    color: #fff;
+    background: #000 none repeat scroll 0 0;
+}
+
+.post-12407 .post-content p:first-child {
+    display: none;
+}
+
+.bg_objectSearchList div.bg_objectSearchListEntry:nth-child(2n+0) {
+    background: #f6f6f6 none repeat scroll 0 0;
+}
+
+.fusion-footer .fusion-widget-area {
+    border-top-width: 0 !important;
+}

@@ -1,14 +1,16 @@
 <?php
 /*
-Plugin Name: Justimmo Api Plugin
+Plugin Name: JUSTIMMO API Plugin
 Plugin URI: http://www.justimmo.at/wordpress-api-plugin
-Description: Plugin is showing the Justimmo API results
+Description: Plugin is showing the JUSTIMMO API results
 Author: bgcc
 Version: 1.0
 Author URI: http://www.bgcc.at
 */
-if (!defined('JI_API_WP_PLUGIN_NAME'))
-{
+
+defined('ABSPATH') or die('No script kiddies please!');
+
+if (!defined('JI_API_WP_PLUGIN_NAME')) {
     define('JI_API_WP_PLUGIN_NAME', pathinfo(__FILE__, PATHINFO_FILENAME));
     define('JI_API_WP_PLUGIN_DIR', pathinfo(__FILE__, PATHINFO_DIRNAME));
 }
@@ -40,20 +42,21 @@ class JiApiWpPlugin
 
         add_action('widgets_init', array($this, 'registerSidebars'));
 
+        add_shortcode('justimmo_list', array($this, 'justimmoListShortcode'));
         add_shortcode('justimmo_realty_list', array($this, 'realtyListShortcode'));
         add_shortcode('justimmo_search_form', array($this, 'searchFormShortcode'));
 
-        add_action( 'wp_ajax_ji_api_regions', array($this, 'getAjaxRegions'));
-        add_action( 'wp_ajax_nopriv_ji_api_regions', array($this, 'getAjaxRegions'));
+        add_action('wp_ajax_ji_api_regions', array($this, 'getAjaxRegions'));
+        add_action('wp_ajax_nopriv_ji_api_regions', array($this, 'getAjaxRegions'));
 
-        add_action( 'wp_ajax_ji_api_federal_states', array($this, 'getAjaxFederalStates'));
-        add_action( 'wp_ajax_nopriv_ji_federal_states', array($this, 'getAjaxFederalStates'));
+        add_action('wp_ajax_ji_api_federal_states', array($this, 'getAjaxFederalStates'));
+        add_action('wp_ajax_nopriv_ji_federal_states', array($this, 'getAjaxFederalStates'));
 
-        wp_enqueue_script( 'justimmo-api', plugin_dir_url( __FILE__ ).'js/justimmo.js', array('jquery'), 1.0 );
-        wp_localize_script( 'justimmo-api', 'justimmoApi', array( 'ajaxurl' => admin_url( 'admin-ajax.php' ) ) );
+        wp_enqueue_script('justimmo-api', plugin_dir_url(__FILE__) . 'js/justimmo.js', array('jquery'), 1.0);
+        wp_localize_script('justimmo-api', 'justimmoApi', array('ajaxurl' => admin_url('admin-ajax.php')));
 
-        add_action( 'wp_ajax_ji_api_widget_render_regions', array($this, 'renderRegions'));
-        add_action( 'wp_ajax_nopriv_ji_api_widget_render_regions', array($this, 'renderRegions'));
+        add_action('wp_ajax_ji_api_widget_render_regions', array($this, 'renderRegions'));
+        add_action('wp_ajax_nopriv_ji_api_widget_render_regions', array($this, 'renderRegions'));
     }
 
     /**
@@ -63,8 +66,7 @@ class JiApiWpPlugin
      */
     public static function getInstance($classname = __CLASS__)
     {
-        if (!isset(self::$instance))
-        {
+        if (!isset(self::$instance)) {
             self::$instance = new $classname;
         }
         return self::$instance;
@@ -76,9 +78,9 @@ class JiApiWpPlugin
             'ji_plugin',
             'ji_property_id',
             'ji_page'
-          );
+        );
 
-        return array_merge( $query_vars, $new_vars );
+        return array_merge($query_vars, $new_vars);
     }
 
     function parseQuery()
@@ -111,8 +113,7 @@ class JiApiWpPlugin
 
     function getClient()
     {
-        if (!$this->ji_api_client instanceof justimmoApiClient)
-        {
+        if (!$this->ji_api_client instanceof justimmoApiClient) {
             $this->ji_api_client = new justimmoApiClient(get_option('justimmo_plugin_username'), get_option('justimmo_plugin_password'));
         }
 
@@ -121,8 +122,7 @@ class JiApiWpPlugin
 
     function getObjektList()
     {
-        if (!$this->ji_objekt_list instanceof justimmoObjektList)
-        {
+        if (!$this->ji_objekt_list instanceof justimmoObjektList) {
             $this->ji_objekt_list = new justimmoObjektList($this->getClient());
         }
 
@@ -146,8 +146,7 @@ class JiApiWpPlugin
         global $wp_query;
 
         if (get_query_var('ji_plugin') !== '') {
-            switch (get_query_var('ji_plugin'))
-            {
+            switch (get_query_var('ji_plugin')) {
                 case 'property':
                     $this->propertyPage();
                     exit;
@@ -166,8 +165,7 @@ class JiApiWpPlugin
 
     function titleTagFilter($title, $separator, $separator_location)
     {
-        if ($this->page_titel != null)
-        {
+        if ($this->page_titel != null) {
             return $this->page_titel;
         }
         return $title;
@@ -175,18 +173,16 @@ class JiApiWpPlugin
 
     function adminMenu()
     {
-        add_options_page("Justimmo API Settings", "JI API Settings", 1, "Settings", array(&$this, "adminOptionPage"));
+        add_options_page("JUSTIMMO API Settings", "JI API Settings", 1, "Settings", array(&$this, "adminOptionPage"));
     }
 
     function adminOptionPage()
     {
-        if(!is_admin())
-        {
+        if (!is_admin()) {
             return;
         }
 
-        if (isset($_POST['ji_admin_form']['action']) && $_POST['ji_admin_form']['action'] == 'Y')
-        {
+        if (isset($_POST['ji_admin_form']['action']) && $_POST['ji_admin_form']['action'] == 'Y') {
             update_option('justimmo_plugin_username', $_POST['ji_admin_form']['user']);
             update_option('justimmo_plugin_password', $_POST['ji_admin_form']['password']);
             update_option('justimmo_plugin_url_prefix', $_POST['ji_admin_form']['url_prefix']);
@@ -198,8 +194,7 @@ class JiApiWpPlugin
     function init()
     {
         // start session
-        if (!session_id())
-        {
+        if (!session_id()) {
             session_start();
         }
     }
@@ -209,26 +204,21 @@ class JiApiWpPlugin
         global $ji_api_wp_plugin;
         $ji_obj_list = $this->getObjektList();
 
-        if ($_REQUEST['reset'] == 'filter')
-        {
+        if ($_REQUEST['reset'] == 'filter') {
             $ji_obj_list->resetFilter();
         }
 
-        if (isset($_REQUEST['ji_page']))
-        {
+        if (isset($_REQUEST['ji_page'])) {
             $ji_obj_list->setPage($_REQUEST['ji_page']);
         }
 
-        if (isset($_REQUEST['filter']))
-        {
+        if (isset($_REQUEST['filter'])) {
             $ji_obj_list->mergeFilter($_REQUEST['filter']);
         }
-        if (isset($_REQUEST['orderby']))
-        {
+        if (isset($_REQUEST['orderby'])) {
             $ji_obj_list->setOrderBy($_REQUEST['orderby']);
         }
-        if (isset($_REQUEST['ordertype']))
-        {
+        if (isset($_REQUEST['ordertype'])) {
             $ji_obj_list->setOrderType($_REQUEST['ordertype']);
         }
 
@@ -247,38 +237,34 @@ class JiApiWpPlugin
 
         $pos = $_REQUEST['pos'];
 
-        if (isset($_REQUEST['ji_property_id']))
-        {
+        if (isset($_REQUEST['ji_property_id'])) {
             $immobilie = $ji_obj_list->fetchItemById($_REQUEST['ji_property_id']);
-        }
-        elseif ($_REQUEST['pos'])
-        {
+        } elseif ($_REQUEST['pos']) {
             $immobilie = $ji_obj_list->fetchItemByPosition($pos);
         }
         $_SESSION['ji_objekt_list']['pos'] = $pos;
 
         $this->setPageTitle($immobilie->freitexte->objekttitel);
 
-        if(isset($_REQUEST['request']))
-        {
+        if (isset($_REQUEST['request'])) {
             $request_form_error = '';
 
             $request_form = $_REQUEST['request'];
 
-            if(!isset($request_form['name']) || !$request_form['name']) {
+            if (!isset($request_form['name']) || !$request_form['name']) {
                 $request_form_error .= "Bitte geben Sie ihren Namen ein.\n";
             }
-            if(!isset($request_form['email']) || !$request_form['email']) {
+            if (!isset($request_form['email']) || !$request_form['email']) {
                 $request_form_error .= "Bitte geben Sie ihre E-Mailadresse ein.\n";
             }
-            if(!isset($request_form['text']) || !$request_form['text']) {
+            if (!isset($request_form['text']) || !$request_form['text']) {
                 $request_form_error .= "Bitte geben Sie einen Text für die Objektanfrage ein.\n";
             }
-            if( function_exists( 'cptch_check_custom_form' ) && cptch_check_custom_form() !== true ) {
+            if (function_exists('cptch_check_custom_form') && cptch_check_custom_form() !== true) {
                 $request_form_error .= "Bitte füllen Sie die Sicherheitsabfrage aus.\n";
             }
 
-            if(!$request_form_error) {
+            if (!$request_form_error) {
                 $this->ji_api_client->pushAnfrage(
                     array(
                         'objekt_id' => $immobilie->verwaltung_techn->objektnr_intern,
@@ -294,7 +280,7 @@ class JiApiWpPlugin
             $request_form = array(
                 'name' => '',
                 'email' => '',
-                'text' => 'Ich interessiere mich für die Immobilie mit der Nummer '.$immobilie->verwaltung_techn->objektnr_extern.' und ersuche um Kontaktaufnahme.',
+                'text' => 'Ich interessiere mich für die Immobilie mit der Nummer ' . $immobilie->verwaltung_techn->objektnr_extern . ' und ersuche um Kontaktaufnahme.',
             );
             $request_form_error = '';
             $request_form_success = false;
@@ -320,17 +306,17 @@ class JiApiWpPlugin
 
     function getPropertyUrl($id)
     {
-        return $this->getUrlPrefix().'ji_plugin=property&ji_property_id=' . $id;
+        return $this->getUrlPrefix() . 'ji_plugin=property&ji_property_id=' . $id;
     }
 
     function getIndexUrl()
     {
-        return $this->getUrlPrefix().'ji_plugin=search';
+        return $this->getUrlPrefix() . 'ji_plugin=search';
     }
 
     function getExposeUrl($id)
     {
-        return $this->getUrlPrefix().'ji_plugin=expose&ji_property_id=' . $id;
+        return $this->getUrlPrefix() . 'ji_plugin=expose&ji_property_id=' . $id;
     }
 
     function addStylesheets()
@@ -343,13 +329,13 @@ class JiApiWpPlugin
     {
         register_sidebar(
             array(
-                'id'            => 'jiapi',
-                'name'          => __('Justimmo Sidebar'),
-                'description'   => __('Justimmo Sidebar. Posititon in der Listenansicht'),
+                'id' => 'jiapi',
+                'name' => __('Justimmo Sidebar'),
+                'description' => __('Justimmo Sidebar. Posititon in der Listenansicht'),
                 'before_widget' => '<div id="%1$s" class="widget-area %2$s" role="complimentary">',
-                'after_widget'  => '</div>',
-                'before_title'  => '<h3 class="widget-title">',
-                'after_title'   => '</h3>'
+                'after_widget' => '</div>',
+                'before_title' => '<h3 class="widget-title">',
+                'after_title' => '</h3>'
             )
         );
     }
@@ -357,16 +343,21 @@ class JiApiWpPlugin
     function realtyListShortcode($atts, $content = null)
     {
         extract(shortcode_atts(array(
-              'category' => 'Topobjekte',
-              'limit' => '2',
-           ), $atts));
+            'category' => '',
+            'limit' => '',
+            'occupancy' => '',
+            'rent' => '',
+            'buy' => '',
+			'realty_type_id' => '',
+			'exclude_country_id' => ''
+        ), $atts));
 
         global $ji_api_wp_plugin;
         $ji_obj_list = new justimmoObjektList($this->getClient());
-        $ji_obj_list->setFilter(array('tag_name' => $category));
+        $ji_obj_list->setFilter(array('tag_name' => $category, 'nutzungsart' => $occupancy, 'not_land_id' => $exclude_country_id, 'miete' => $rent, 'kauf' => $buy, 'objektart_id' => explode(",", $realty_type_id)));
         $ji_obj_list->setMaxPerPage($limit);
 
-        $objekte = $ji_obj_list->fetchList(array('picturesize=s220x155'));
+        $objekte = $ji_obj_list->fetchList(array('picturesize=s800x600bc'));
 
         ob_start();
         include(JI_API_WP_PLUGIN_DIR . '/templates/_realty_list.php');
@@ -396,21 +387,37 @@ class JiApiWpPlugin
     {
         global $ji_api_wp_plugin;
 
-        $objektarten =  $this->getObjektarten();
+        $objektarten = $this->getObjektarten();
 
         ob_start();
         include(JI_API_WP_PLUGIN_DIR . '/templates/_search_form.php');
         return ob_get_clean();
     }
 
-    function getAjaxFederalStates() {
-        echo json_encode($this->getClient()->getData('/objekt/bundeslaender'));
-    	die();
+    function justimmoListShortcode($atts, $content = null)
+    {
+        global $ji_api_wp_plugin;
+        $ji_obj_list = new justimmoObjektList($this->getClient());
+        //$ji_obj_list->setFilter(array('tag_name' => $category));
+        //$ji_obj_list->setMaxPerPage($limit);
+
+        $objekte = $ji_obj_list->fetchList(array('picturesize=s220x155'));
+
+        ob_start();
+        include(JI_API_WP_PLUGIN_DIR . '/templates/index.php');
+        return ob_get_clean();
     }
 
-    function getAjaxRegions() {
+    function getAjaxFederalStates()
+    {
+        echo json_encode($this->getClient()->getData('/objekt/bundeslaender'));
+        die();
+    }
+
+    function getAjaxRegions()
+    {
         echo json_encode($this->getClient()->getRegionen());
-    	die();
+        die();
     }
 
     function renderRegions()
@@ -428,11 +435,11 @@ class JiApiWpPlugin
 
     function getFilteredRegions($data = null)
     {
-        if($data == "FOREIGN") {
+        if ($data == "FOREIGN") {
             return array();
-        } elseif(is_numeric($data) && intval($data) > 0) {
+        } elseif (is_numeric($data) && intval($data) > 0) {
             return $this->getClient()->getRegionen(intval($data), 'AT')->region;
-        } elseif($data == null) {
+        } elseif ($data == null) {
             return $this->getClient()->getRegionen()->region;
         } else {
             return $this->getClient()->getRegionen(null, 'AT')->region;

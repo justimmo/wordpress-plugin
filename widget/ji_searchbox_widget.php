@@ -7,7 +7,7 @@
             <div class="bg_formRow">
                 <div class="bg_formInput">
                     <input type="text" class="numberDE bg_textfield" size="10" value="<?php isset($ji_obj_list->filter['objektnummer']) and print $ji_obj_list->filter['objektnummer']; ?>" id="object_own_id" name="filter[objektnummer]">
-                    <input type="submit" class="bg_button" value="Suchen">
+                    <input type="submit" class="fusion-button button-flat button-round button-small button-default button-20" value="Suchen">
                 </div>
             </div>
         </form><br />
@@ -16,12 +16,18 @@
             <input type="hidden" value="filter" name="reset">
             <h3>Immobilien Schnellsuche</h3>
             <div class="bg_formRow">
-                <input type="checkbox" value="1" id="filters_miete" name="filter[miete]" <?php isset($ji_obj_list->filter['miete']) && $ji_obj_list->filter['miete'] and print 'checked="checked"'; ?>>
-                <label for="filters_miete">Miete</label>
-                <input type="checkbox" value="1" id="filters_kauf" name="filter[kauf]" <?php isset($ji_obj_list->filter['kauf']) && $ji_obj_list->filter['kauf'] and print 'checked="checked"'; ?>>
-                <label for="filters_kauf">Kauf</label>
-                <input type="checkbox" value="anlage" id="filters_investment" name="filter[nutzungsart]" <?php isset($ji_obj_list->filter['nutzungsart']) && $ji_obj_list->filter['nutzungsart'] == "anlage" and print 'checked="checked"'; ?>>
-                <label for="filters_investment">Investment</label>
+                    <li>
+                        <input type="checkbox" value="1" id="filters_miete" name="filter[miete]" <?php isset($ji_obj_list->filter['miete']) && $ji_obj_list->filter['miete'] and print 'checked="checked"'; ?>>
+                        <label for="filters_miete">Miete</label>
+                    </li>
+                    <li>
+                        <input type="checkbox" value="1" id="filters_kauf" name="filter[kauf]" <?php isset($ji_obj_list->filter['kauf']) && $ji_obj_list->filter['kauf'] and print 'checked="checked"'; ?>>
+                        <label for="filters_kauf">Kauf</label>
+                    </li>
+                    <li>
+                        <input type="checkbox" value="anlage" id="filters_investment" name="filter[nutzungsart]" <?php isset($ji_obj_list->filter['nutzungsart']) && $ji_obj_list->filter['nutzungsart'] == "anlage" and print 'checked="checked"'; ?>>
+                        <label for="filters_investment">Investment</label>
+                    </li>
             </div>
             <div class="bg_formRow">
                 <label class="control-label">Objektart:</label>
@@ -81,19 +87,25 @@
             </div>
 
             <div id="bg_formRow">
-                <input type="checkbox" value="1" id="filters_garten" name="filter[garten]" <?php isset($ji_obj_list->filter['garten']) and print 'checked="checked"'; ?>>
-                &nbsp;
-                <label for="filters_garten">Garten</label>
-                <input type="checkbox" value="1" id="filters_garage" name="filter[garage]" <?php isset($ji_obj_list->filter['garage']) and print 'checked="checked"'; ?>>
-                &nbsp;
-                <label for="filters_garage">Garage</label>
-                <input type="checkbox" value="1" id="filters_balkon" name="filter[balkon]" <?php isset($ji_obj_list->filter['balkon']) and print 'checked="checked"'; ?>>
-                &nbsp;
-                <label for="filters_balkon">Balkon/Terrasse</label>
+                    <li>
+                        <input type="checkbox" value="1" id="filters_garten" name="filter[garten]" <?php isset($ji_obj_list->filter['garten']) and print 'checked="checked"'; ?>>
+                        &nbsp;
+                        <label for="filters_garten">Garten</label>
+                    </li>
+                    <li>
+                        <input type="checkbox" value="1" id="filters_garage" name="filter[garage]" <?php isset($ji_obj_list->filter['garage']) and print 'checked="checked"'; ?>>
+                        &nbsp;
+                        <label for="filters_garage">Garage</label>
+                    </li>
+                    <li>
+                        <input type="checkbox" value="1" id="filters_balkon" name="filter[balkon]" <?php isset($ji_obj_list->filter['balkon']) and print 'checked="checked"'; ?>>
+                        &nbsp;
+                        <label for="filters_balkon">Balkon/Terrasse</label>
+                    </li>
             </div>
 
 
-            <input type="submit" class="bg_button" value="Suchen">
+            <input type="submit" class="fusion-button button-flat button-round button-small button-default button-20" value="Suchen">
             <a href="<?php echo $ji_api_wp_plugin->getIndexUrl(); ?>&reset=filter" class="bg_rightLink">Suche l&ouml;schen</a>
             </li>
         </form>

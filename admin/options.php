@@ -1,27 +1,25 @@
 <div class="wrap" style="margin-top: 15px;">
     <h2><a href="http://www.justimmo.at"><img src="/wp-content/plugins/justimmo/img/logo.png" alt=""
                                               style="vertical-align: middle; margin-right: 15px"></a>
-        Justimmo API Settings Page</h2>
+        JUSTIMMO API Settings</h2>
     <br>
 
-    <form name="ji_admin_form" method="post" action="<?php echo str_replace('%7E', '~', $_SERVER['REQUEST_URI']); ?>"
-          style="background-color: #efefef; padding: 10px;">
+    <form name="ji_admin_form" method="post" action="<?php echo str_replace('%7E', '~', $_SERVER['REQUEST_URI']); ?>">
         <p>
-        <input type="hidden" name="ji_admin_form[action]" value="Y">
-        <label for="ji_admin_form[user]"><strong>Username</strong></label>
-        <input type="text" name="ji_admin_form[user]" value="<?php echo get_option('justimmo_plugin_username'); ?>">
-        <label for="ji_admin_form[password]"><strong>Passwort</strong></label>
-        <input type="password" name="ji_admin_form[password]" value="<?php echo get_option('justimmo_plugin_password'); ?>">
+            <input type="hidden" name="ji_admin_form[action]" value="Y">
+            <label for="ji_admin_form[user]"><strong>Benutzername</strong></label>
+            <input type="text" name="ji_admin_form[user]" value="<?php echo get_option('justimmo_plugin_username'); ?>">
+            <label for="ji_admin_form[password]"><strong>Passwort</strong></label>
+            <input type="password" name="ji_admin_form[password]"
+                   value="<?php echo get_option('justimmo_plugin_password'); ?>">
+            <input type="submit" value="Speichern" class="button">
         </p>
-<?php /*
+        <?php /*
         <p>
         <label for="ji_admin_form[url_prefix]"><strong>Url-Prefix</strong></label>
         <input type="text" name="ji_admin_form[url_prefix]" value="<?php echo get_option('justimmo_plugin_url_prefix', 'immobilien'); ?>">
         </p>
- */ ?>
-        <p>
-        <input type="submit" value="speichern" class="button">
-        </p>
+        */ ?>
     </form>
 
     <div style="float: left; width: 300px; margin-right: 15px;"><h3>Das JUSTIMMO API Plugin</h3>
@@ -54,7 +52,8 @@
 
         <p>
             Bitte navigieren Sie zu dem Menüpunkt "Design &raquo; Menüs". Hier finden Sie die Box "Links" fügen Sie dort
-            folgenden Text ein "index.php?ji_plugin=search&reset=filter" und geben Sie z.B. als Titel Immobilien an. Nun klicken Sie auf den Button
+            folgenden Text ein "index.php?ji_plugin=search&reset=filter" und geben Sie z.B. als Titel Immobilien an. Nun
+            klicken Sie auf den Button
             "Zum Menü hinzufügen" und speichern Sie Ihre Änderungen.
         </p>
 
@@ -80,6 +79,6 @@
         </p>
     </div>
     <div style="border-top:1px solid #efefef; padding-top: 10px;">
-        &copy; 2012 by justimmo.at | <a href="http://www.bgcc.at" target="_blank">bgcc.at</a>
+        &copy; 2015 by justimmo.at | <a href="http://www.bgcc.at" target="_blank">bgcc.at</a>
     </div>
 </div>
