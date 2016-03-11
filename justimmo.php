@@ -1,11 +1,25 @@
 <?php
 /*
 Plugin Name: JUSTIMMO API Plugin
-Plugin URI: http://www.justimmo.at/wordpress-api-plugin
+Plugin URI: https://github.com/justimmo/wordpress-plugin
 Description: Plugin is showing the JUSTIMMO API results
 Author: bgcc
 Version: 1.0
-Author URI: http://www.bgcc.at
+Author URI: http://www.justimmo.at
+License: GPL2
+{Plugin Name} is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 2 of the License, or
+any later version.
+
+{Plugin Name} is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with {Plugin Name}. If not, see {License URI}.
+License URI: https://www.gnu.org/licenses/gpl-2.0.html
 */
 
 defined('ABSPATH') or die('No script kiddies please!');
@@ -20,7 +34,7 @@ include_once(JI_API_WP_PLUGIN_DIR . '/api/justimmoObjektList.class.php');
 
 class JiApiWpPlugin
 {
-    /** @var $instance jiApiWpPlugin */
+    /** @var $instance JiApiWpPlugin */
     private static $instance;
     /** @var $ji_api_client justimmoApiClient */
     public $ji_api_client;
@@ -348,8 +362,8 @@ class JiApiWpPlugin
             'occupancy' => '',
             'rent' => '',
             'buy' => '',
-			'realty_type_id' => '',
-			'exclude_country_id' => ''
+            'realty_type_id' => '',
+            'exclude_country_id' => ''
         ), $atts));
 
         global $ji_api_wp_plugin;

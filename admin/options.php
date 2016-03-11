@@ -1,6 +1,6 @@
 <div class="wrap" style="margin-top: 15px;">
-    <h2><a href="http://www.justimmo.at"><img src="/wp-content/plugins/justimmo/img/logo.png" alt=""
-                                              style="vertical-align: middle; margin-right: 15px"></a>
+    <h2>
+        <a href="http://www.justimmo.at"><img src="/wp-content/plugins/justimmo/img/logo.png" alt="" style="vertical-align: middle; margin-right: 15px"></a>
         JUSTIMMO API Settings</h2>
     <br>
 
@@ -25,7 +25,8 @@
     <div style="float: left; width: 300px; margin-right: 15px;"><h3>Das JUSTIMMO API Plugin</h3>
 
         <p>Um dieses Plugin erfolgreich nutzen zu können, benötigen Sie einen gültigen JUSTIMMO Zugang.<br/>Ihre API
-            Zugangsdaten finden Sie unter: <br/><em>Exporte &raquo; JUSTIMMO API</em></p>
+            Zugangsdaten finden Sie unter:
+            <br/><em>Exporte &raquo; JUSTIMMO API</em></p>
     </div>
 
     <div style="float: left; width: 250px;">
@@ -79,6 +80,6 @@
         </p>
     </div>
     <div style="border-top:1px solid #efefef; padding-top: 10px;">
-        &copy; 2015 by justimmo.at | <a href="http://www.bgcc.at" target="_blank">bgcc.at</a>
+        &copy; 2016 by justimmo.at | <a href="http://www.bgcc.at" target="_blank">bgcc.at</a>
     </div>
 </div>

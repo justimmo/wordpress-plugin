@@ -18,7 +18,7 @@
                 <p class="bg_numberObject"><?php echo $ji_obj_list->getTotalCount() ?> Objekte </p>
                 <div style="float:left;">
                     Sortieren nach:
-                    <a href="<?php echo esc_url( get_permalink().'&orderby=sort_preis' ); ?>">Preis</a> |
+                    <a href="<?php echo esc_url(get_permalink() . '&orderby=sort_preis'); ?>">Preis</a> |
                     <a href="<?php echo $ji_api_wp_plugin->getIndexUrl(); ?>&orderby=sort_flaeche">Fläche</a> |
                     <a href="<?php echo $ji_api_wp_plugin->getIndexUrl(); ?>&orderby=ort">Ort</a> |
                     <a href="<?php echo $ji_api_wp_plugin->getIndexUrl(); ?>&orderby=plz">PLZ</a>

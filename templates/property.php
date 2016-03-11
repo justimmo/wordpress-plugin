@@ -9,9 +9,10 @@
     </script>
 
     <div id="bg_AllContent">
-        <div style="border-color:#eae9e9; border-bottom-width: 0px; border-top-width: 0px;border-bottom-style: solid;border-top-style: solid;padding-bottom:20px;padding-top:20px;padding-left:px;padding-right:px;" class="fusion-fullwidth fullwidth-box fusion-fullwidth-1  fusion-parallax-none nonhundred-percent-fullwidth">
+        <div style="border-color:#eae9e9; border-bottom-width: 0; border-top-width: 0;border-bottom-style: solid; border-top-style: solid; padding-bottom:20px; padding-top:20px; padding-left:px;padding-right:px;" class="fusion-fullwidth fullwidth-box fusion-fullwidth-1  fusion-parallax-none nonhundred-percent-fullwidth">
             <div id="bg_objectDetailMetaNav">
-                <a class="fusion-button button-flat button-round button-large button-default" href="<?php echo $ji_api_wp_plugin->getIndexUrl() ?>">Zurück zur Übersicht</a>
+                <a class="fusion-button button-flat button-round button-large button-default" href="<?php echo $ji_api_wp_plugin->getIndexUrl() ?>">Zurück
+                    zur Übersicht</a>
                 <a class="fusion-button button-flat button-round button-large button-default" href="<?php echo $ji_api_wp_plugin->getExposeUrl($immobilie->verwaltung_techn->objektnr_intern); ?>">EXPOSÉ</a>
                 <div class="clear"></div>
             </div>
@@ -19,7 +20,7 @@
             <h2><?php echo $immobilie->freitexte->objekttitel; ?></h2>
 
             <div class="fusion-row">
-                <div style="margin-top:0px;margin-bottom:20px;" class="fusion-two-third fusion-layout-column fusion-spacing-yes">
+                <div style="margin-top:0; margin-bottom:20px;" class="fusion-two-third fusion-layout-column fusion-spacing-yes">
                     <div class="fusion-column-wrapper">
 
                         <?php if ($request_form_error): ?>
@@ -56,8 +57,9 @@
                                         <?php $i = 0; ?>
                                         <?php foreach ($immobilie->anhaenge->anhang as $anhang): ?>
                                             <?php $i++ ?>
+                                            <?php if ($i == 1) continue; ?>
                                             <a href="<?php echo $anhang->daten->pfad; ?>" rel="prettyPhoto[gallery1]" target="_blank">
-                                                <img alt="<?php echo $immobilie->freitexte->objekttitel; ?>" class="bg_smallImageDetail" src="<?php echo $anhang->daten->small; ?>" alt="immobilie"/>
+                                                <img alt="<?php echo $immobilie->freitexte->objekttitel; ?>" class="bg_smallImageDetail" src="<?php echo $anhang->daten->small; ?>" alt="Immobilie"/>
                                             </a>
                                         <?php endforeach; ?>
                                         <div class="clear"></div>
@@ -338,7 +340,7 @@
                                     <?php endif; ?>
                                 </p>
                                 <div style="clear: both;"></div>
-                                <br />
+                                <br/>
                                 <h2>Nehmen Sie Kontakt auf</h2>
                                 <form class="bg_property_request" action="<?php echo $ji_api_wp_plugin->getPropertyUrl($immobilie->verwaltung_techn->objektnr_intern) ?>" method="post">
                                     <label>Name:</label>
@@ -358,7 +360,7 @@
                                     <br><br>
                                     <input type="submit" class="fusion-button button-flat button-round button-large button-default"/>
                                 </form>
-
+                               asdasdasd <?php echo get_permalink(); ?>
                             </div>
                         </div>
                         <div class="fusion-clearfix"></div>
