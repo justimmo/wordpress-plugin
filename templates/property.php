@@ -360,7 +360,6 @@
                                     <br><br>
                                     <input type="submit" class="fusion-button button-flat button-round button-large button-default"/>
                                 </form>
-                               asdasdasd <?php echo get_permalink(); ?>
                             </div>
                         </div>
                         <div class="fusion-clearfix"></div>
