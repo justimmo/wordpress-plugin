@@ -370,6 +370,8 @@ class JiApiWpPlugin
         $ji_obj_list = new justimmoObjektList($this->getClient());
         $ji_obj_list->setFilter(array('tag_name' => $category, 'nutzungsart' => $occupancy, 'not_land_id' => $exclude_country_id, 'miete' => $rent, 'kauf' => $buy, 'objektart_id' => explode(",", $realty_type_id)));
         $ji_obj_list->setMaxPerPage($limit);
+	$ji_obj_list->setOrderBy('plz');
+	$ji_obj_list->setOrderType('asc');
 
         $objekte = $ji_obj_list->fetchList(array('picturesize=s800x600bc'));
 

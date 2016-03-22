@@ -185,7 +185,16 @@ body .bg_formInput .bg_fluidTextfield {
     clear: both;
 }
 
-.bg_property_request input, .bg_property_request textarea {
+.bg_property_request input[type=text], .bg_property_request textarea {
+    width: 100%;
+	border: 1px solid #B3B3B3;
+}
+
+.bg_property_request textarea {
+    height: 90px;
+}
+
+.bg_property_request input[type=submit] {
     width: 100%;
 }
 
@@ -288,10 +297,9 @@ form[action="index.php?ji_plugin=search"] div:last-child {
 /* JUSTIMMO Immocard
 -------------------------------------------------------------------------*/
 
-@media screen and (max-width: 335px) {
-
+@media screen and (max-width: 800px) {
     .post-content h1 {
-        font-size: 18px;
+        font-size: 28px!important;
     }
 }
 
@@ -318,7 +326,7 @@ form[action="index.php?ji_plugin=search"] div:last-child {
     word-wrap: break-word;
 }
 
-.ji_immoCard_content h2:hover a{
+.ji_immoCard_content h2 a:hover {
     color: #000;
 }
 
