@@ -10,43 +10,68 @@ Author URI: http://www.bgcc.at
 /* JUSTIMMO Objekt Liste
 -------------------------------------------------------------------------*/
 
-.bg_content {
+#ji_listings {
+    width: 100%;
+    margin-bottom: 15px;
+    border-collapse: separate;
 }
 
-.bg_numberObject {
+.ji_withSideBar {
+}
+
+.ji_listingsHeader {
+    margin-bottom: 20px;
+}
+
+.ji_listingsCount {
     float: right;
+    display: inline;
     padding: 0;
     margin: 0;
 }
 
-.bg_listTitle {
-}
-
-.bg_listTitle a {
-}
-
-#bg_compactInfos {
+.ji_listingsSort {
     float: left;
+    display: inline;
 }
 
-.bg_smallImage {
-    float: left;
-    width: 220px;
-    margin-right: 10px;
+.ji_listing {
 }
 
-.bg_objectSearchListHeader {
-    margin-bottom: 20px;
-}
+.ji_listing > td {
+    padding: 15px 0;
+    vertical-align: top;
+    border-bottom: 1px solid #ccc!important;
 
-.bg_objectSearchListEntry {
-    margin-bottom: 20px;
-    width: 100%;
-    float: left;
 }
+/*
+tr.ji_listing:nth-of-type(even) td {
+    background: #f6f6f6 none repeat scroll 0 0;
+}*/
 
-.bg_objectSearchListEntry a {
+.ji_listing a {
     display: inline-block;
+}
+
+.ji_listingPreviewImage {
+    width: 220px;
+    height: 155px;
+    overflow: hidden;
+    margin-right: 15px;
+}
+
+#ji_listingInfos {
+    display: inline-block;
+    float: left;
+}
+
+#ji_listingInfos .bg_listTitle:hover a{
+    color: #000;
+}
+
+.ji_rowSeparator{
+    padding-bottom: 10px;
+    border-bottom:1px solid #FF9935;
 }
 
 .bg_listAddress {
@@ -57,8 +82,31 @@ Author URI: http://www.bgcc.at
     padding: 0;
 }
 
+/* Realty list pager
+-------------------------------------------------------------------------*/
+
+.ji_listingsFooter {
+    text-align: center;
+    display: block;
+    width: 280px;
+    margin: 0 auto;
+ }   
+
+.ji_listingsFooter > div a {
+    width: 50px;
+    height: 50px;
+    line-height: 43px;
+    border-radius: 2px;
+    display: inline-block;
+}
+
 .bg_pager01 {
     float: left;
+    height: 50px;
+}
+
+.bg_pager01 a:hover {
+    color: #000;
 }
 
 .bg_pager02 {
@@ -69,23 +117,29 @@ Author URI: http://www.bgcc.at
     float: left;
 }
 
+.bg_pager03 a:hover {
+    color: #000;
+}
+
 .bg_pager02 span {
     display: inline-block;
     border: 1px solid #ccc;
-    padding: 5px 3px 1px 3px;
     text-align: center;
     font-size: 12px;
     font-weight: bold;
+    width: 50px;
+    height: 50px;
+    line-height: 47px;
+    border-radius: 2px;
 }
 
 .bg_pager01 a, .bg_pager03 a {
     display: inline-block;
     border: 1px solid #ccc;
-    padding: 3px;
     text-align: center;
     text-decoration: none;
     font-weight: bold;
-    font-size: 16px;
+    font-size: 20px;
 }
 
 /* JUSTIMMO Objekt Detailseite
@@ -134,16 +188,23 @@ Author URI: http://www.bgcc.at
 }
 
 .bg_address {
-    margin-bottom: 10px;
+    margin: 0 0 25px 0;
+}
+
+.ji_realtiyState {
+    font-family: "Open Sans",Arial,Helvetica,sans-serif;
+    font-size: 14px;
+    line-height: 14px;
+    font-weight: 500;
+    color: #fff;
+    background: #00e562 none repeat scroll 0 0;
+    padding: 9px 20px;
+    text-align: center;
 }
 
 /* JUSTIMMO Searchbox Widget
 -------------------------------------------------------------------------*/
 .JiApiWpSearchBarWidget {
-}
-
-#immobilien_schnellsuche {
-    font-size: 13px;
 }
 
 #immobilien_schnellsuche h3 {
@@ -158,7 +219,10 @@ Author URI: http://www.bgcc.at
     display: block;
     margin-bottom: 5px;
     font-weight: bold;
-    font-size: 13px;
+}
+
+.bg_formRow label, .bg_formRow input {
+    display: inline-block;
 }
 
 #bg_formInputMiete {
@@ -167,11 +231,11 @@ Author URI: http://www.bgcc.at
 }
 
 .bg_formInput .bg_textfield {
-    width: 34%;
+    width: 39%;
 }
 
 #object_own_id {
-    width: 60%;
+    width: 100%;
 }
 
 body .bg_formInput .bg_fluidTextfield {
@@ -181,11 +245,7 @@ body .bg_formInput .bg_fluidTextfield {
 /* JUSTIMMO sonstige Helper
 -------------------------------------------------------------------------*/
 
-.clear {
-    clear: both;
-}
-
-.bg_property_request input[type=text], .bg_property_request textarea {
+.bg_property_request input[type=text], .bg_property_request input[type=email], .bg_property_request textarea {
     width: 100%;
 	border: 1px solid #B3B3B3;
 }
@@ -227,6 +287,10 @@ body .bg_formInput .bg_fluidTextfield {
 /* Allgemein
 -------------------------------------------------------------------------*/
 
+.clear {
+    clear: both;
+}
+
 /* Objektdetail
 -------------------------------------------------------------------------*/
 
@@ -240,38 +304,38 @@ body .bg_formInput .bg_fluidTextfield {
 }
 
 #bg_objectDetailInformation {
-    margin-top: 43px;
 }
 
-#cptch_input_13 {
-    height: 20px;
+.JiApiWpSearchBarWidget .zurueckliefertewerte_right{
+    float: right;
 }
 
-/* ----- Objektangebot ----- */
-
-.bg_content {
-    margin: 0 !important;
-}
-
-#listDiv #bg_compactInfos {
-    width: 490px
-}
-
-#listDiv .bg_objectSearchListHeader div:first-child {
-    width: 220px;
-    margin-right: 10px;
-}
-
-#listDiv .bg_objectSearchListHeader div:first-child h1 {
+#total_berechnet_separator {
+    margin-bottom: 2px;
     margin-top: 0;
 }
 
-#listDiv .bg_objectSearchListHeader div:last-child {
-    font-size: 16px;
+/* JUSTIMMO Sidebar
+-------------------------------------------------------------------------*/
+
+.JiApiWpSearchBarWidget h3.widget-title {
+    display: none;
 }
 
-/* ----   Sidebar ----*/
-#text-2 ul, #immobilien_schnellsuche li {
+#ji_sideBar .bg_formRow label{
+    margin-bottom: 0;
+}
+
+#ji_sideBar h3 {
+    margin-top: 0;
+    margin-bottom: 15px;
+    border-bottom: 1px solid #ccc;
+    padding-bottom: 5px;
+    font-size: 18px;
+    font-weight: 300;
+}
+
+#ji_sideBar li {
     list-style: none;
     padding: 0;
 }
@@ -280,35 +344,34 @@ form[action="index.php?ji_plugin=search"] div:last-child {
     margin-bottom: 20px;
 }
 
-#text-2 {
-    width: 260px;
-    float: right;
-    margin-top: 48px;
+#ji_searchbar_regions {
+    height: 178px;
+    overflow-y: scroll;
 }
 
-.bg_formRow input[type="text"] {
-    border-radius: 5px;
+.bg_formRow .bg_formInput input[type="text"]{
+    border-radius: 4px;
 }
 
-.bg_formRow label, .bg_formRow input {
-    display: inline-block;
+.bg_formRow select{
+    width: 100%;
 }
 
+#ji_sideBar input[type="submit"]{
+    margin-top: 5px;
+    margin-bottom: 5px;
+    width: 100%;
+}
+
+#ji_sideBar .button-default:hover{
+    background: #000;
+    color: #fff;
+}
 /* JUSTIMMO Immocard
 -------------------------------------------------------------------------*/
 
-@media screen and (max-width: 800px) {
-    .post-content h1 {
-        font-size: 28px!important;
-    }
-}
-
 .ji_immoCard {
     background-color: #f6f6f6;
-}
-
-.ji_realty_shortlist {
-
 }
 
 .ji_immoCard_content {
@@ -322,7 +385,7 @@ form[action="index.php?ji_plugin=search"] div:last-child {
 
 .ji_immoCard_content h2 {
     text-align: center;
-    margin: 5% 0% 2.75% 0%;
+    margin: 5% 0 2.75% 0;
     word-wrap: break-word;
 }
 
@@ -347,24 +410,33 @@ form[action="index.php?ji_plugin=search"] div:last-child {
     background: #FF9933 none repeat scroll 0 0;
 }
 
-#bg_AllContent .fusion-button {
+.ji_immoCard_content .fusion-button:hover, #ji_content .fusion-button:hover {
+    color: #fff;
+    background: #000 none repeat scroll 0 0;
+}
+
+#ji_content h1 {
+    font-weight: lighter;
+    line-height: normal;
+}
+
+#ji_content .fusion-button {
     color: #fff;
     background: #FF9933 none repeat scroll 0 0;
 }
 
-.ji_immoCard_content .fusion-button:hover, #bg_AllContent .fusion-button:hover {
-    color: #fff;
-    background: #000 none repeat scroll 0 0;
-}
+/* Bugfix for empty p on startoage */
 
 .post-12407 .post-content p:first-child {
     display: none;
 }
 
-.bg_objectSearchList div.bg_objectSearchListEntry:nth-child(2n+0) {
-    background: #f6f6f6 none repeat scroll 0 0;
-}
-
 .fusion-footer .fusion-widget-area {
     border-top-width: 0 !important;
+}
+
+@media screen and (max-width: 800px) {
+    .post-content h1 {
+        font-size: 28px!important;
+    }
 }

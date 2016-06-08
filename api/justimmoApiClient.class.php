@@ -192,10 +192,11 @@ class justimmoApiClient
         curl_setopt($ch, CURLOPT_POST, true);
         curl_setopt($ch, CURLOPT_POSTFIELDS, implode('&', array(
             'objekt_id='.$values['objekt_id'],
-            'vorname='.$values['first_name'],
-            'nachname='.$values['last_name'],
+            'vorname='.$values['firstname'],
+            'nachname='.$values['lastname'],
             'email='.$values['email'],
             'tel='.$values['phone'],
+            'strasse='.$values['address'],
             'message='.$values['message']
         )));
 

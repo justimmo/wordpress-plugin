@@ -33,9 +33,10 @@
         </div>
         <div class="form-group">
             <label class="control-label">Objektart:</label>
+            <br>
             <select name="filter[objektart_id][]" size="1">
                 <option value=""></option>
-                <?php foreach($objektarten as $i => $objektart): ?>
+                <?php foreach ($objektarten as $i => $objektart): ?>
                     <option value="<?php echo $i ?>"><?php echo $objektart ?></option>
                 <?php endforeach; ?>
             </select>
@@ -45,7 +46,7 @@
             <select id="ji_searchbar_states" name="filter[bundesland_id]">
                 <option value=""></option>
                 <option value="AT">Österreich</option>
-                <?php foreach($ji_api_wp_plugin->getClient()->getBundeslaender()->bundesland as $bundesland): ?>
+                <?php foreach ($ji_api_wp_plugin->getClient()->getBundeslaender()->bundesland as $bundesland): ?>
                     <option value="<?php echo $bundesland->id ?>">&nbsp;&nbsp;<?php echo $bundesland->name ?></option>
                 <?php endforeach; ?>
                 <option value="FOREIGN">Ausland</option>
