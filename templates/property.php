@@ -1,7 +1,7 @@
 ﻿<?php get_header(); ?>
 
 <?php
-//print_r($immobilie);
+print_r($immobilie);
 //$ji_api_wp_plugin->setPageTitle($immobilie->freitexte->objekttitel);
 ?>
 <script type="text/javascript">
@@ -31,13 +31,15 @@
                             <div class="alert alert-success">
                                 Objektanfrage wurde versendet!
                             </div>
-                        <?php endif; ?>
+                        <?php endif; ?> 
 
                         <div id="bg_objectDetailContent">
 
                             <div id="bg_objectDetailMetaNav">
                                 <a class="fusion-button button-flat button-round button-small button-default" href="<?php echo $ji_api_wp_plugin->getIndexUrl() ?>">Übersicht</a>
-                                <a class="fusion-button button-flat button-round button-small button-default" href="<?php echo $ji_api_wp_plugin->getExposeUrl($immobilie->verwaltung_techn->objektnr_intern); ?>">EXPOSÉ</a>
+                                <?php if ($immobilie->verwaltung_objekt->status != vermittelt): ?>
+                                    <a class="fusion-button button-flat button-round button-small button-default" href="<?php echo $ji_api_wp_plugin->getExposeUrl($immobilie->verwaltung_techn->objektnr_intern); ?>">EXPOSÉ</a>
+                                <?php endif; ?>
                                 <div class="clear"></div>
                             </div>
 
@@ -180,75 +182,75 @@
                                         </span>
                                     <?php endif; ?>
                                 </li>
-                                <li>
-                                    <?php if ($immobilie->flaechen->grundstuecksflaeche): ?>
-                                <li>
-                                    <strong>Grundfl&auml;che:</strong>
-                                    <span class="zurueckliefertewerte_right">
-                                        ca. <?php echo number_format((float)$immobilie->flaechen->grundstuecksflaeche, 2, ',', '.'); ?> m<sup>2</sup>
-                                    </span>
-                                </li>
+                                <?php if (isset($immobilie->objektkategorie->vermarktungsart["KAUF"]) && ($immobilie->objektkategorie->vermarktungsart["KAUF"] == 1 || $immobilie->objektkategorie->vermarktungsart["KAUF"] == "true")): ?>
+                                    <?php if (isset($immobilie->preise->kaufpreis) && $immobilie->verwaltung_objekt->status != vermittelt): ?>
+                                        <li>
+                                            <strong>Kaufpreis:</strong>
+                                            <span class="zurueckliefertewerte_right">
+                                                <?php echo number_format((float)$immobilie->preise->kaufpreis, 2, ',', '.'); ?> &euro;
+                                            </span>
+                                        </li>
+                                    <?php endif; ?>
+                                <?php else: ?>
+                                    <?php if (isset($immobilie->preise->warmmiete) && $immobilie->verwaltung_objekt->status != vermittelt): ?>
+                                        <li>
+                                            <strong>Gesamtbelastung:</strong>
+                                                    <span class="zurueckliefertewerte_right">
+                                                        <?php echo number_format((float)$immobilie->preise->warmmiete, 2, ',', '.'); ?> &euro;
+                                                    </span>
+                                        </li>
+                                    <?php endif; ?>
                                 <?php endif; ?>
-                                </li>
+
+                                <?php if ($immobilie->flaechen->grundstuecksflaeche): ?>
+                                    <li>
+                                        <strong>Grundfl&auml;che:</strong>
+                                        <span class="zurueckliefertewerte_right">
+                                            ca. <?php echo number_format((float)$immobilie->flaechen->grundstuecksflaeche, 2, ',', '.'); ?> m<sup>2</sup>
+                                        </span>
+                                    </li>
+                                <?php endif; ?>
 
                                 <?php if ($immobilie->flaechen->wohnflaeche): ?>
                                     <li>
-                                        <strong>Wohnfl&auml;che:</strong> ca. <?php echo number_format((float)$immobilie->flaechen->wohnflaeche, 0, ',', '.'); ?> m<sup>2</sup>
+                                        <strong>Wohnfl&auml;che:</strong> 
+                                        <span class="zurueckliefertewerte_right">
+                                            ca. <?php echo number_format((float)$immobilie->flaechen->wohnflaeche, 0, ',', '.'); ?> m<sup>2</sup>
+                                        </span>
                                     </li>
                                 <?php endif; ?>
+
                                 <?php if ($immobilie->flaechen->nutzflaeche): ?>
                                     <li>
-                                        <strong>Nutzfl&auml;che:</strong> ca. <?php echo number_format((float)$immobilie->flaechen->nutzflaeche, 0, ',', '.'); ?> m<sup>2</sup>
+                                        <strong>Nutzfl&auml;che:</strong> 
+                                        <span class="zurueckliefertewerte_right">
+                                            ca. <?php echo number_format((float)$immobilie->flaechen->nutzflaeche, 0, ',', '.'); ?> m<sup>2</sup>
+                                        </span>
                                     </li>
                                 <?php endif; ?>
+
                                 <?php if ($immobilie->flaechen->gesamtflaeche): ?>
                                     <li>
-                                        <strong>Gesamtfl&auml;che:</strong> ca. <?php echo number_format((float)$immobilie->flaechen->gesamtflaeche, 0, ',', '.'); ?> m<sup>2</sup>
-                                    </li>
-                                <?php endif; ?>
-                                <li>
-                                    <?php if (isset($immobilie->objektkategorie->vermarktungsart["KAUF"]) && ($immobilie->objektkategorie->vermarktungsart["KAUF"] == 1 || $immobilie->objektkategorie->vermarktungsart["KAUF"] == "true")): ?>
-                                    <?php if (isset($immobilie->preise->kaufpreis)): ?>
-                                <li>
-                                    <strong>Kaufpreis:</strong>
+                                        <strong>Gesamtfl&auml;che:</strong> 
                                         <span class="zurueckliefertewerte_right">
-                                            <?php echo number_format((float)$immobilie->preise->kaufpreis, 2, ',', '.'); ?> &euro;
+                                            ca. <?php echo number_format((float)$immobilie->flaechen->gesamtflaeche, 0, ',', '.'); ?> m<sup>2</sup>
                                         </span>
-                                </li>
-                            <?php endif; ?>
-                            <?php else: ?>
-                                <?php if (isset($immobilie->preise->warmmiete)): ?>
-                                    <li>
-                                        <strong>Gesamtbelastung:</strong>
-                                                <span class="zurueckliefertewerte_right">
-                                                    <?php echo number_format((float)$immobilie->preise->warmmiete, 2, ',', '.'); ?> &euro;
-                                                </span>
                                     </li>
                                 <?php endif; ?>
-                            <?php endif; ?>
-                                </li>
-                                <li>
-                                    <?php if ($immobilie->flaechen->anzahl_zimmer): ?>
-                                <li><strong>Zimmer:</strong>
+                                
+                                <?php if ($immobilie->flaechen->anzahl_zimmer): ?>
+                                    <li><strong>Zimmer:</strong>
                                         <span class="zurueckliefertewerte_right">
                                             <?php echo $immobilie->flaechen->anzahl_zimmer; ?>
                                         </span>
-                                </li>
-                            <?php endif; ?>
-                                </li>
+                                    </li>
+                                <?php endif; ?>
+                                
                             </ul>
                             <?php if ((int)$immobilie->verwaltung_objekt->status_id == 5): ?>
                                 <h2>Nebengebühren</h2>
                                 <ul>
                                     <?php if (isset($immobilie->objektkategorie->vermarktungsart["KAUF"]) && ($immobilie->objektkategorie->vermarktungsart["KAUF"] == 1 || $immobilie->objektkategorie->vermarktungsart["KAUF"] == "true")): ?>
-                                        <?php if (isset($immobilie->preise->kaufpreis)): ?>
-                                            <li>
-                                                <strong>Kaufpreis:</strong>
-                                            <span class="zurueckliefertewerte_right">
-                                                <?php echo number_format((float)$immobilie->preise->kaufpreis, 2, ',', '.'); ?> &euro;
-                                            </span>
-                                            </li>
-                                        <?php endif; ?>
 
                                         <?php $zusatzkostenCounter = 0; ?>
                                         <?php foreach ($immobilie->preise->zusatzkosten[0] as $zusatzkost): ?>
@@ -289,12 +291,17 @@
                                             <li>
                                                 <strong>Gesamtmiete:</strong>
                                             <span class="zurueckliefertewerte_right">
-                                                <?php echo number_format((float)$immobilie->preise->kaltmiete, 2, ',', '.') ?> &euro;<br/>
-                                                (ohne Heizkosten inkl. USt.)
+                                                <span style="float: right;">
+                                                <?php echo number_format((float)$immobilie->preise->kaltmiete, 2, ',', '.') ?>
+                                                &euro;
+                                                </span>  <br/> (ohne Heizkosten inkl. USt.)
+
                                             </span>
                                             </li>
                                         <?php endif; ?>
 
+                                        <br/>
+                                        
                                         <?php if (isset($immobilie->preise->nettokaltmiete) && $immobilie->preise->nettokaltmiete > 0): ?>
                                             <li>
                                                 <strong>Miete:</strong>

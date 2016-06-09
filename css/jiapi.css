@@ -197,7 +197,7 @@ tr.ji_listing:nth-of-type(even) td {
     line-height: 14px;
     font-weight: 500;
     color: #fff;
-    background: #00e562 none repeat scroll 0 0;
+    background: #FF9933 none repeat scroll 0 0;
     padding: 9px 20px;
     text-align: center;
 }
@@ -244,6 +244,15 @@ body .bg_formInput .bg_fluidTextfield {
 
 /* JUSTIMMO sonstige Helper
 -------------------------------------------------------------------------*/
+
+.bg_property_request input[type=email]{
+    font-size: 13px;
+    color: #aaa9a9;
+    padding-right: 15px;
+    padding-left: 15px;
+    width: 100%;
+    height: 35px;
+}
 
 .bg_property_request input[type=text], .bg_property_request input[type=email], .bg_property_request textarea {
     width: 100%;
