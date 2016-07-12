@@ -79,7 +79,6 @@ class justimmoApiClient
         return $params;
     }
 
-
     function loadData($url)
     {
         $ch = curl_init();
@@ -105,7 +104,6 @@ class justimmoApiClient
 
         return $result;
     }
-
 
     function getData($url)
     {

@@ -436,10 +436,6 @@ form[action="index.php?ji_plugin=search"] div:last-child {
 
 /* Bugfix for empty p on startoage */
 
-.post-12407 .post-content p:first-child {
-    display: none;
-}
-
 .fusion-footer .fusion-widget-area {
     border-top-width: 0 !important;
 }

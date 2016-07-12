@@ -1,7 +1,7 @@
 ﻿<?php get_header(); ?>
 
 <?php
-print_r($immobilie);
+// print_r($immobilie);
 //$ji_api_wp_plugin->setPageTitle($immobilie->freitexte->objekttitel);
 ?>
 <script type="text/javascript">
@@ -49,26 +49,24 @@ print_r($immobilie);
                             </h3>
 
                             <div class="bg_content">
-                                <?php if (count($immobilie->anhaenge->anhang)): ?>
+                                <?php $anhaenge = $immobilie->xpath('.//anhaenge/anhang[@gruppe="TITELBILD"]'); ?>
+                                <?php if(count($anhaenge)): ?>
                                     <div id="detailImage">
-                                        <a href="<?php echo preg_replace('/(.:\/\/[^\/]*\/[^\/]*\/[^\/]*)\/[^\/]*\/(.*)/', '$1/fullhd/$2', $immobilie->anhaenge->anhang[0]->daten->pfad); ?>" rel="prettyPhoto[gallery1]" target="_blank">
-                                            <img alt="<?php echo $immobilie->freitexte->objekttitel; ?>" src="<?php echo $immobilie->anhaenge->anhang[0]->daten->pfad; ?>"/>
+                                        <a href="<?php echo preg_replace('/(.:\/\/[^\/]*\/[^\/]*\/[^\/]*)\/[^\/]*\/(.*)/', '$1/fullhd/$2', $anhaenge[0]->daten->pfad); ?>" rel="prettyPhoto[gallery1]" target="_blank">
+                                            <img alt="<?php echo $immobilie->freitexte->objekttitel; ?>" src="<?php echo $anhaenge[0]->daten->pfad; ?>"/>
                                         </a>
                                     </div>
-
-                                    <div id="objekt_vorschaubilder">
-                                        <?php $i = 0; ?>
-                                        <?php foreach ($immobilie->anhaenge->anhang as $anhang): ?>
-                                            <?php $i++ ?>
-                                            <?php if ($i == 1) continue; ?>
-                                            <a href="<?php echo preg_replace('/(.:\/\/[^\/]*\/[^\/]*\/[^\/]*)\/[^\/]*\/(.*)/', '$1/fullhd/$2', $anhang->daten->small); ?>" rel="prettyPhoto[gallery1]" target="_blank">
-                                                <img alt="<?php echo $immobilie->freitexte->objekttitel; ?>" class="bg_smallImageDetail" src="<?php echo $anhang->daten->small; ?>"/>
-                                            </a>
-                                        <?php endforeach; ?>
-                                        <div class="clear"></div>
-
-                                    </div>
                                 <?php endif ?>
+
+                                <div id="objekt_vorschaubilder">
+                                    <?php foreach ($immobilie->anhaenge->anhang as $anhang): ?>
+                                        <?php if(isset($anhang['gruppe']) && (!in_array($anhang['gruppe'],array('GRUNDRISS', 'BILD', 'KARTEN_LAGEPLAN', 'INNENANSICHTEN', 'AUSSENANSICHTEN', 'EPASS-SKALA')))) continue; ?>
+                                        <a href="<?php echo preg_replace('/(.:\/\/[^\/]*\/[^\/]*\/[^\/]*)\/[^\/]*\/(.*)/', '$1/fullhd/$2', $anhang->daten->small); ?>" rel="prettyPhoto[gallery1]" target="_blank">
+                                            <img alt="<?php echo $immobilie->freitexte->objekttitel; ?>" class="bg_smallImageDetail" src="<?php echo $anhang->daten->small; ?>"/>
+                                        </a>
+                                    <?php endforeach; ?>
+                                    <div class="clear"></div>
+                                </div>
 
                                 <div id="bg_objektBeschreibung">
                                     <h2>Beschreibung</h2>
@@ -111,14 +109,26 @@ print_r($immobilie);
                                     </script>
                                 <?php endif; ?>
 
-                                <?php if (count($immobilie->dokumente->dokument)): ?>
+                                <?php $anhaenge = $immobilie->xpath('.//anhaenge/anhang[@gruppe="DOKUMENTE"]'); ?>
+                                <?php if(count($anhaenge)): ?>
                                     <div id="bg_objektDokumente">
                                         <h2>Dokumente</h2>
-                                        <?php $i = 0; ?>
-                                        <?php foreach ($immobilie->dokumente->dokument as $anhang): ?>
-                                            <?php $i++ ?>
-                                            <a href="<?php echo $anhang->pfad ?>" target="_blank">
-                                                <?php echo $anhang->titel ?>
+                                        <?php foreach ($anhaenge as $anhang): ?>
+                                            <a href="<?php echo $anhang->daten->pfad ?>" target="_blank">
+                                                <?php echo $anhang->anhangtitel ?>
+                                            </a>
+                                            <br/>
+                                        <?php endforeach; ?>
+                                    </div>
+                                    <div class="bg_clear"></div>
+                                <?php endif ?>
+                                <?php $anhaenge = $immobilie->xpath('.//anhaenge/anhang[@gruppe="LINKS"]'); ?>
+                                <?php if(count($anhaenge)): ?>
+                                    <div id="bg_objektLinks">
+                                        <h2>Links</h2>
+                                        <?php foreach ($anhaenge as $anhang): ?>
+                                            <a href="<?php echo $anhang->daten->pfad ?>" target="_blank">
+                                                <?php echo $anhang->anhangtitel ?>
                                             </a>
                                             <br/>
                                         <?php endforeach; ?>
