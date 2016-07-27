@@ -1,9 +1,13 @@
-DEPRECATED
-==================
+# Justimmo WP Plugin #
 
-This plugin has been deprecated and will not be maintained or supported anymore.
+The Justimmo WP Plugin allows brokers to list their properties stored on the Justimmo platform on their own Wordpress website.
 
-Please use a third party solution.
+## Installation ##
 
-* https://www.wp-immomakler.de/
-* https://plugins.inveris.de/shop/immonex-openimmo2wp/
+This section describes how to install the plugin and get it working.
+
+e.g.
+
+1. Upload the plugin folder `jiwp` to the `/wp-content/plugins/` directory
+2. Activate the plugin through the 'Plugins' menu in WordPress
+3. Search through the plugin's settings menus for more information on the various shortcodes and widgets and how to use them
