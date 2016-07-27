@@ -1,0 +1,99 @@
+/**
+ * All of the CSS for your public-facing functionality should be
+ * included in this file.
+ */
+
+.ji-realties-container {
+
+}
+
+.ji-realty-list {
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+}
+
+.ji-realty {
+
+}
+
+.ji-realty--list-item {
+	margin-bottom: 25px;
+}
+
+.ji-realty--list-item .ji-realty__header {
+	position: relative;
+	padding: 0 0 0 220px;
+	min-height: 200px;
+}
+
+.ji-realty--list-item .ji-realty__featured-img {
+	position: absolute;
+	max-width: 200px;
+	max-height: 200px;
+	top: 0;
+	left: 0;
+}
+
+.ji-realty--list-item h1.ji-realty__title {
+	font-size: 1.2em;
+	margin: 0 0 15px 0;
+}
+
+h1.ji-realty__title a {
+	text-decoration: none;
+}
+
+.ji-info-list {
+	list-style-type: none;
+	margin: 0 0 20px 0;
+	padding: 0;
+}
+
+.ji-info-list--extended {
+}
+
+.ji-info {
+	border-bottom: 1px solid #ddd;
+}
+
+.ji-info__label {
+	font-weight: 600;
+}
+
+.ji-pagination {
+	text-align: center;
+}
+
+.ji-photos-list {
+	list-style-type: none;
+	overflow: hidden;
+	margin-bottom: 20px;
+}
+
+.ji-photos-list__item {
+	width: 25%;
+	height: 150px;
+	padding: 0 10px;
+	margin: 0 0 20px 0;
+	float: left;
+	text-align: center;
+	overflow: hidden;
+}
+
+.ji-photos-list__item:nth-child(4n+1) {
+	clear: left;
+}
+
+.ji-photos-list__item img {
+	width: auto;
+	height: 100%;
+}
+
+.ji-info-section {
+	margin-bottom: 30px;
+}
+
+.ji-info-section__title {
+	margin: 15px 0;
+}
