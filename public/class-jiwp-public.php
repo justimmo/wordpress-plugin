@@ -468,6 +468,24 @@ class Jiwp_Public {
 
 		$plugin_name = $this->plugin_name;
 
+		try 
+		{
+			$realty_types 	= Jiwp_Public::$ji_basic_query->all()->findRealtyTypes();
+			$countries  	= Jiwp_Public::$ji_basic_query->all()->findCountries();
+			$states 		= [];
+			$cities 		= [];
+
+			if ( $_GET[ 'filter' ][ 'country' ] ) 
+			{
+				$states = Jiwp_Public::get_states( $_GET[ 'filter' ][ 'country' ] );
+				$cities = Jiwp_Public::get_cities( $_GET[ 'filter' ][ 'country' ] );
+			}
+		} 
+		catch (Exception $e) 
+		{
+			error_log( $e->getMessage() );
+		}
+
 		ob_start();
 		include( 'partials/_search-form.php' );
 		return ob_get_clean();
