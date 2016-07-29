@@ -25,4 +25,4 @@
 	</li>
 </ol>
 
-<p><?php _e( 'Path to the templates from your wordpress plugins directory: <code>jiwp/public/partials</code>', 'jiwp' ); ?></p>
+<p><?php _e( 'You can find the templates listed above inside the <code>/public/partials</code> folder in your plugin folder', 'jiwp' ); ?></p>
