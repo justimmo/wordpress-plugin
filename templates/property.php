@@ -82,32 +82,63 @@
 
                                 <?php $lat = $immobilie->geo->geokoordinaten['breitengrad']; ?>
                                 <?php $lng = $immobilie->geo->geokoordinaten['laengengrad']; ?>
-                                <?php if ($lat && $lng): ?>
+
+                                <div id="lageplan"<?php !($lat && $lng) and print ' class="inaccurate"'; ?>>
                                     <br>
                                     <h2>Lageplan</h2>
+
                                     <div id="map-canva<?php echo(stripos($_SERVER["HTTP_USER_AGENT"], "Googlebot") ? 't' : 's'); ?>" class="map-detail" style="height: 450px">
                                         Lageplan wird geladen ...
                                     </div>
 
-                                    <script src="https://maps.googleapis.com/maps/api/js?sensor=false" type="text/javascript"></script>
-                                    <script>
-                                        jQuery(document).ready(function () {
-                                            var myLatlng = new google.maps.LatLng(<?php echo $lat; ?>, <?php echo $lng; ?>);
-                                            var mapOptions = {
-                                                zoom: 14,
-                                                center: myLatlng,
-                                                mapTypeId: google.maps.MapTypeId.ROADMAP
-                                            };
-                                            var map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
+                                    <script type="text/javascript">
+                                    var map, geocoder, myLatLng, marker;
 
-                                            var marker = new google.maps.Marker({
-                                                position: myLatlng,
-                                                map: map,
-                                                title: '<?php echo $immobilie->freitexte->objekttitel; ?>'
-                                            });
+                                    function initMap() {
+                                        map = new google.maps.Map(document.getElementById('map-canvas'), {
+                                            zoom: 14,
+                                            mapTypeId: google.maps.MapTypeId.ROADMAP
                                         });
+
+                                        geocoder = new google.maps.Geocoder();
+
+                                        geocodeAddress(geocoder, map);
+                                    }
+
+                                    function geocodeAddress(geocoder, map) {
+                                        <?php if ($lat && $lng): ?>
+                                        myLatLng = new google.maps.LatLng(<?php echo $lat; ?>, <?php echo $lng; ?>);
+
+                                        map.setCenter(myLatLng);
+
+                                        marker = new google.maps.Marker({
+                                            position: myLatLng,
+                                            map:      map,
+                                            title:    '<?php echo json_encode($immobilie->freitexte->objekttitel); ?>'
+                                        });
+                                        <?php else: ?>
+                                        <?php $address = $immobilie->geo->strasse && $immobilie->geo->hausnummer ? $immobilie->geo->strasse . ' ' . $immobilie->geo->hausnummer . ', ' : ''; ?>
+                                        <?php $address .= $immobilie->geo->plz . ' ' . $immobilie->geo->ort; ?>
+
+                                        address = '<?php echo $address; ?>';
+
+                                        geocoder.geocode({'address': address}, function (results, status) {
+                                            if (status === google.maps.GeocoderStatus.OK) {
+                                                map.setCenter(results[0].geometry.location);
+
+                                                marker = new google.maps.Marker({
+                                                    position: results[0].geometry.location,
+                                                    map:      map,
+                                                    title:    '<?php echo json_encode($immobilie->freitexte->objekttitel); ?>'
+                                                });
+                                            } else {
+                                                alert('Geocode was not successful for the following reason: ' + status);
+                                            }
+                                        });
+                                        <?php endif; ?>
+                                    }
                                     </script>
-                                <?php endif; ?>
+                                </div>
 
                                 <?php $anhaenge = $immobilie->xpath('.//anhaenge/anhang[@gruppe="DOKUMENTE"]'); ?>
                                 <?php if(count($anhaenge)): ?>
@@ -577,4 +608,6 @@
         <?php endif; ?>
     </div>
 </div>
+
+<script src="https://maps.googleapis.com/maps/api/js?key=&callback=initMap" async defer></script>
 <?php get_footer(); ?>
