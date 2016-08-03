@@ -57,7 +57,7 @@ class Jiwp_Public {
 	 * @since  1.0.0
 	 * @var object
 	 */
-	private $ji_realty_query;
+	private $ji_realty_query = null;
 
 	/**
 	 * Justimmo basic query object
@@ -65,7 +65,7 @@ class Jiwp_Public {
 	 * @since 1.0.0
 	 * @var object
 	 */
-	public static $ji_basic_query;
+	public static $ji_basic_query = null;
 
 	/**
 	 * Initialize the class and set its properties.
