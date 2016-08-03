@@ -375,16 +375,14 @@ class Jiwp_Public {
 
         try 
         {
-        	// This method does not pass `culture` param to `JustimmoApi` class 
-        	// and neither does the `/objekt/detail` endpoint retrieve translated data. 
-        	$realty = $this->ji_realty_query->findPk( $realty_id );
+        	$realty = $this->get_realty( $realty_id );
 
         	if ( $new_template ) 
 	        {
 	        	include( $new_template );
 	        }
         } 
-        catch (Exception $e) 
+        catch ( Exception $e ) 
         {
         	self::jiwp_error_log( $e );
         }
@@ -419,7 +417,7 @@ class Jiwp_Public {
 	        	include( $new_template );
 	        }			
 		}
-		catch (Exception $e) 
+		catch ( Exception $e ) 
 		{
 			self::jiwp_error_log( $e );
 		}        
@@ -489,7 +487,7 @@ class Jiwp_Public {
 			include( 'partials/_realty-list.php' );
 			return ob_get_clean();
 		} 
-		catch (Exception $e) 
+		catch ( Exception $e ) 
 		{
 			self::jiwp_error_log( $e );
 		}		
@@ -522,7 +520,7 @@ class Jiwp_Public {
 			include( 'partials/_search-form.php' );
 			return ob_get_clean();
 		} 
-		catch (Exception $e) 
+		catch ( Exception $e ) 
 		{
 			self::jiwp_error_log( $e );
 		}
@@ -621,6 +619,26 @@ class Jiwp_Public {
 	}
 
 	/**
+	 * Retrieves single realty from Justimmo API.
+	 *
+	 * @since  1.0.0
+	 * @param  integer $realty_id 	Realty id
+	 * @return object            	Realty object
+	 */
+	private function get_realty( $realty_id ) {
+
+		if ( $this->ji_realty_query == null ) 
+		{
+			return null;
+		}
+		
+		// This method does not pass `culture` param to `JustimmoApi` class 
+		// and neither does the `/objekt/detail` endpoint retrieve translated data. 
+		return $this->ji_realty_query->findPk( $realty_id );
+
+	}
+
+	/**
 	 * Returns states based on country id.
 	 * 
 	 * @since  1.0.0
@@ -638,7 +656,7 @@ class Jiwp_Public {
 							->filterByCountry( $selected_country_id )
 							->findFederalStates();	
 		}
-		catch (Exception $e) 
+		catch ( Exception $e ) 
 		{
 			self::jiwp_error_log( $e->getMessage() );
 		}
@@ -666,7 +684,7 @@ class Jiwp_Public {
 							->filterByCountry( $selected_country_id )
 							->findZipCodes();
 		}
-		catch (Exception $e) 
+		catch ( Exception $e ) 
 		{
 			self::jiwp_error_log( $e->getMessage() );
 		}
