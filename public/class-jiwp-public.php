@@ -712,36 +712,36 @@ class Jiwp_Public {
 
 		if ( !empty( $filter_params[ 'price_min' ] ) ) 
 		{
-			$this->ji_realty_query->filterByPrice( [ 'min' => $filter_params[ 'price_min' ] ] );
+			$this->ji_realty_query->filterByPrice( array( 'min' => $filter_params[ 'price_min' ] ) );
 		}
 
 		if ( !empty( $filter_params[ 'price_max' ] ) ) 
 		{
-			$this->ji_realty_query->filterByPrice( [ 'max' => $filter_params[ 'price_max' ] ] );
+			$this->ji_realty_query->filterByPrice( array( 'max' => $filter_params[ 'price_max' ] ) );
 		}
 
 		// rooms
 
 		if ( !empty( $filter_params[ 'rooms_min' ] ) ) 
 		{
-			$this->ji_realty_query->filterByRooms( [ 'min' => $filter_params[ 'rooms_min' ] ] );
+			$this->ji_realty_query->filterByRooms( array( 'min' => $filter_params[ 'rooms_min' ] ) );
 		}
 
 		if ( !empty( $filter_params[ 'rooms_max' ] ) ) 
 		{
-			$this->ji_realty_query->filterByRooms( [ 'max' => $filter_params[ 'rooms_max' ] ] );
+			$this->ji_realty_query->filterByRooms( array( 'max' => $filter_params[ 'rooms_max' ] ) );
 		}
 
 		// surface
 
 		if ( !empty( $filter_params[ 'surface_min' ] ) ) 
 		{
-			$this->ji_realty_query->filterByLivingArea( [ 'min' => $filter_params[ 'surface_min' ] ] );
+			$this->ji_realty_query->filterByLivingArea( array( 'min' => $filter_params[ 'surface_min' ] ) );
 		}
 
 		if ( !empty( $filter_params[ 'surface_max' ] ) ) 
 		{
-			$this->ji_realty_query->filterByLivingArea( [ 'max' => $filter_params[ 'surface_max' ] ] );
+			$this->ji_realty_query->filterByLivingArea( array( 'max' => $filter_params[ 'surface_max' ] ) );
 		}
 
 		// country
