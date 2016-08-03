@@ -406,9 +406,7 @@ class Jiwp_Public {
 
 			$pager_url = $this->build_pager_url( $_GET );
 
-			$realties = array();
-
-			$realties = $this->ji_realty_query->paginate( $page, get_option('posts_per_page') );
+			$realties = $this->get_realties( $page, get_option('posts_per_page') );
 
 			$new_template = self::get_template( 'search-results-template.php' );
 
@@ -479,9 +477,7 @@ class Jiwp_Public {
 
 			$pager_url = $this->build_pager_url();
 
-			$realties = array();
-
-			$realties = $this->ji_realty_query->paginate( $page, $atts[ 'max_per_page' ] );
+			$realties = $this->get_realties( $page, $atts[ 'max_per_page' ] );
 
 			ob_start();
 			include( 'partials/_realty-list.php' );
@@ -635,6 +631,24 @@ class Jiwp_Public {
 		// This method does not pass `culture` param to `JustimmoApi` class 
 		// and neither does the `/objekt/detail` endpoint retrieve translated data. 
 		return $this->ji_realty_query->findPk( $realty_id );
+
+	}
+
+	/**
+	 * Retrieves realties from Justimmo API.
+	 *
+	 * @since  1.0.0
+	 * @param  integer $page 	Current page
+	 * @return object       	Pager object containing realties array
+	 */
+	private function get_realties( $page, $max_per_page ) {
+
+		if ( $this->ji_realty_query == null ) 
+		{
+			return array();
+		}
+
+		return $this->ji_realty_query->paginate( $page, $max_per_page );
 
 	}
 
