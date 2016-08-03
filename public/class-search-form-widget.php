@@ -25,8 +25,8 @@ class Justimmo_Search_Form_Widget extends WP_Widget {
 		
 		try 
 		{
-			$realty_types 	= Jiwp_Public::$ji_basic_query->all()->findRealtyTypes();
-			$countries  	= Jiwp_Public::$ji_basic_query->all()->findCountries();
+			$realty_types 	= Jiwp_Public::$ji_basic_query->all( false )->findRealtyTypes();
+			$countries  	= Jiwp_Public::$ji_basic_query->all( false )->findCountries();
 			$states 		= [];
 			$cities 		= [];
 
