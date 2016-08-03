@@ -79,17 +79,9 @@ class Jiwp_Public {
 		$this->plugin_name 	= $plugin_name;
 		$this->version  	= $version;
 
-		$username = get_option( 'ji_api_username' );
-		$password = get_option( 'ji_api_password' );
-
-		$this->ji_realty_query = $this->get_justimmo_realty_query( 
-			$username,
-			$password 
-		);
-
-		self::$ji_basic_query = $this->get_justimmo_basic_query( 
-			$username,
-			$password
+		$this->init_query_objects( 
+			get_option( 'ji_api_username' ), 
+			get_option( 'ji_api_password' )
 		);
 
 		$this->init_shortcodes();
@@ -204,6 +196,51 @@ class Jiwp_Public {
             	'ajax_nonce' 	=> wp_create_nonce( 'justimmo_ajax' )
             ) 
 		);
+	}
+
+	/**
+	 * Instantiates and sets Justimmo query objects if username and password are set.
+	 * Sets admin notice otherwise.
+	 *
+	 * @since  1.0.0
+	 * @param  string $username 	Justimmo API username
+	 * @param  string $password 	Justimmo API password
+	 */
+	private function init_query_objects( $username, $password ) {
+
+		if ( !empty( $username ) && !empty( $password ) ) 
+		{
+			$this->ji_realty_query = $this->get_justimmo_realty_query( 
+				$username,
+				$password 
+			);
+
+			self::$ji_basic_query = $this->get_justimmo_basic_query( 
+				$username,
+				$password
+			);
+		}
+		else 
+		{
+			add_action( 'admin_notices', array( $this, 'api_credentials_notification' ) );
+		}
+
+	}
+
+	/**
+	 * Shows admin notice that prompts user to complete their
+	 * Justimmo API credentials
+	 *
+	 * @since 1.0.0
+	 */
+	public function api_credentials_notification() {
+
+		$class 				= 'notice notice-error';
+		$message 			= __( 'Please set your Justimmo API username and password in the', 'jiwp' );
+		$admin_link_text 	= __('Justimmo settings panel');
+
+		printf( '<div class="%1$s"><p>%2$s <a href=' . get_admin_url( null, 'admin.php?page=jiwp' ) . '>%3$s</a></p></div>', $class, $message, $admin_link_text );
+
 	}
 
 	/**
