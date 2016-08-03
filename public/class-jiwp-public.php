@@ -378,15 +378,15 @@ class Jiwp_Public {
         	// This method does not pass `culture` param to `JustimmoApi` class 
         	// and neither does the `/objekt/detail` endpoint retrieve translated data. 
         	$realty = $this->ji_realty_query->findPk( $realty_id );
+
+        	if ( $new_template ) 
+	        {
+	        	include( $new_template );
+	        }
         } 
         catch (Exception $e) 
         {
         	self::jiwp_error_log( $e );
-        }
-
-        if ( $new_template ) 
-        {
-        	include( $new_template );
         }
 
 	}
@@ -400,29 +400,29 @@ class Jiwp_Public {
 
 		$filter_params = $_GET[ 'filter' ];
 
-		$this->set_realty_query_filters( $filter_params );
-
-		$page = get_query_var( 'page', 1 );
-
-		$pager_url = $this->build_pager_url( $_GET );
-
-		$realties = array();
-
 		try 
 		{
-			$realties = $this->ji_realty_query->paginate( $page, get_option('posts_per_page') );			
+			$this->set_realty_query_filters( $filter_params );
+
+			$page = get_query_var( 'page', 1 );
+
+			$pager_url = $this->build_pager_url( $_GET );
+
+			$realties = array();
+
+			$realties = $this->ji_realty_query->paginate( $page, get_option('posts_per_page') );
+
+			$new_template = self::get_template( 'search-results-template.php' );
+
+	        if ( $new_template ) 
+	        {
+	        	include( $new_template );
+	        }			
 		}
 		catch (Exception $e) 
 		{
-			self::jiwp_error_log( $e->getMessage() );
-		}
-
-        $new_template = self::get_template( 'search-results-template.php' );
-
-        if ( $new_template ) 
-        {
-        	include( $new_template );
-        }
+			self::jiwp_error_log( $e );
+		}        
 
 	}
 
@@ -471,28 +471,28 @@ class Jiwp_Public {
 			'ji_property_list' 
 		);
 
-		$this->set_realty_query_filters( $atts );
-
-		$this->set_realty_query_ordering( $atts );
-
-		$page = get_query_var( 'page', 1 );
-
-		$pager_url = $this->build_pager_url();
-
-		$realties = array();
-
 		try 
 		{
+			$this->set_realty_query_filters( $atts );
+
+			$this->set_realty_query_ordering( $atts );
+
+			$page = get_query_var( 'page', 1 );
+
+			$pager_url = $this->build_pager_url();
+
+			$realties = array();
+
 			$realties = $this->ji_realty_query->paginate( $page, $atts[ 'max_per_page' ] );
+
+			ob_start();
+			include( 'partials/_realty-list.php' );
+			return ob_get_clean();
 		} 
 		catch (Exception $e) 
 		{
-			self::jiwp_error_log( $e->getMessage() );
-		}
-
-		ob_start();
-		include( 'partials/_realty-list.php' );
-		return ob_get_clean();
+			self::jiwp_error_log( $e );
+		}		
 
 	}
 
@@ -517,15 +517,15 @@ class Jiwp_Public {
 				$states = Jiwp_Public::get_states( $_GET[ 'filter' ][ 'country' ] );
 				$cities = Jiwp_Public::get_cities( $_GET[ 'filter' ][ 'country' ] );
 			}
+
+			ob_start();
+			include( 'partials/_search-form.php' );
+			return ob_get_clean();
 		} 
 		catch (Exception $e) 
 		{
-			error_log( $e->getMessage() );
+			self::jiwp_error_log( $e );
 		}
-
-		ob_start();
-		include( 'partials/_search-form.php' );
-		return ob_get_clean();
 
 	}
 
@@ -862,7 +862,7 @@ class Jiwp_Public {
 	private static function jiwp_error_log( $error ) {
 
 		file_put_contents( 
-			plugin_dir_path( __FILE__ ) . 'error_log', json_encode( $error ) . "\n\n", 
+			plugin_dir_path( __FILE__ ) . 'error_log', json_encode( $error->getMessage() ) . "\n\n", 
 			FILE_APPEND
 		);
 
