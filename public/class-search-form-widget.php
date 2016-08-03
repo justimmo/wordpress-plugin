@@ -38,7 +38,7 @@ class Justimmo_Search_Form_Widget extends WP_Widget {
 		} 
 		catch (Exception $e) 
 		{
-			error_log( $e->getMessage() );
+			Jiwp_Public::jiwp_error_log( $e );
 		}
 
 		// Widget output		
