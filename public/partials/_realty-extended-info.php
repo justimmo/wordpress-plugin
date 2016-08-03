@@ -30,7 +30,7 @@
 			<span class="ji-info__value">
 				<?php
 
-					$address_array = [];
+					$address_array = array();
 
 					if ( !empty( $realty->getZipCode() ) ) 
 					{

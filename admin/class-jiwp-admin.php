@@ -236,10 +236,10 @@ class Jiwp_Admin {
 	 */
 	private function get_api_credentials() {
 
-		return [ 
+		return array( 
 			'api_username' => get_option( 'ji_api_username'), 
 			'api_password' => get_option( 'ji_api_password' ) 
-		];
+		);
 
 	}
 

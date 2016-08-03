@@ -361,7 +361,7 @@ class Jiwp_Public {
 	 */
 	private function search_results_page() {
 
-		$filter_params = $_GET['filter'];
+		$filter_params = $_GET[ 'filter' ];
 
 		$this->set_realty_query_filters( $filter_params );
 
@@ -369,7 +369,7 @@ class Jiwp_Public {
 
 		$pager_url = $this->build_pager_url( $_GET );
 
-		$realties = [];
+		$realties = array();
 
 		try 
 		{
@@ -442,7 +442,7 @@ class Jiwp_Public {
 
 		$pager_url = $this->build_pager_url();
 
-		$realties = [];
+		$realties = array();
 
 		try 
 		{
@@ -472,8 +472,8 @@ class Jiwp_Public {
 		{
 			$realty_types 	= Jiwp_Public::$ji_basic_query->all( false )->findRealtyTypes();
 			$countries  	= Jiwp_Public::$ji_basic_query->all( false )->findCountries();
-			$states 		= [];
-			$cities 		= [];
+			$states 		= array();
+			$cities 		= array();
 
 			if ( $_GET[ 'filter' ][ 'country' ] ) 
 			{
@@ -544,7 +544,7 @@ class Jiwp_Public {
 
 		$plugin_name = $this->plugin_name;
 
-		$states = [];
+		$states = array();
 
 		if ( !empty( $_POST['country'] ) ) 
 		{
@@ -570,7 +570,7 @@ class Jiwp_Public {
 
 		$plugin_name = $this->plugin_name;
 
-		$cities = [];
+		$cities = array();
 
 		if ( !empty( $_POST['country'] ) )
 		{
@@ -592,7 +592,7 @@ class Jiwp_Public {
 	 */
 	public static function get_states( $selected_country_id ) {
 
-		$states = [];
+		$states = array();
 
 		try 
 		{
@@ -620,7 +620,7 @@ class Jiwp_Public {
 	 */
 	public static function get_cities( $selected_country_id ) {
 
-		$cities = [];
+		$cities = array();
 
 		try 
 		{
@@ -645,7 +645,7 @@ class Jiwp_Public {
 	 * @param  array  $query_params query string parameters
 	 * @return string               url to be used by pagination partial
 	 */
-	private function build_pager_url( $query_params = [] ) {
+	private function build_pager_url( $query_params = array() ) {
 
 		$url = get_permalink();
 
@@ -668,7 +668,7 @@ class Jiwp_Public {
 	 * @since 1.0.0
 	 * @param array $filter_params Array containing the search form filter options.
 	 */
-	private function set_realty_query_filters( $filter_params = [] ) {
+	private function set_realty_query_filters( $filter_params = array() ) {
 
 		// realty number
 
