@@ -501,15 +501,15 @@ class Jiwp_Public {
 
 		try 
 		{
-			$realty_types 	= Jiwp_Public::$ji_basic_query->all( false )->findRealtyTypes();
-			$countries  	= Jiwp_Public::$ji_basic_query->all( false )->findCountries();
+			$realty_types 	= self::get_realty_types();
+			$countries  	= self::get_countries();
 			$states 		= array();
 			$cities 		= array();
 
 			if ( $_GET[ 'filter' ][ 'country' ] ) 
 			{
-				$states = Jiwp_Public::get_states( $_GET[ 'filter' ][ 'country' ] );
-				$cities = Jiwp_Public::get_cities( $_GET[ 'filter' ][ 'country' ] );
+				$states = self::get_states( $_GET[ 'filter' ][ 'country' ] );
+				$cities = self::get_cities( $_GET[ 'filter' ][ 'country' ] );
 			}
 
 			ob_start();
@@ -661,19 +661,17 @@ class Jiwp_Public {
 	 */
 	public static function get_states( $selected_country_id ) {
 
-		$states = array();
+		if ( self::$ji_basic_query == null ) 
+		{
+			return array();
+		}
 
-		try 
-		{
-			$states = self::$ji_basic_query
-							->all( false )
-							->filterByCountry( $selected_country_id )
-							->findFederalStates();	
-		}
-		catch ( Exception $e ) 
-		{
-			self::jiwp_error_log( $e->getMessage() );
-		}
+		$states = array();
+		
+		$states = self::$ji_basic_query
+						->all( false )
+						->filterByCountry( $selected_country_id )
+						->findFederalStates();
 
 		return $states;
 
@@ -689,21 +687,53 @@ class Jiwp_Public {
 	 */
 	public static function get_cities( $selected_country_id ) {
 
-		$cities = array();
+		if ( self::$ji_basic_query == null ) 
+		{
+			return array();
+		}
 
-		try 
-		{
-			$cities = self::$ji_basic_query
-							->all( false )
-							->filterByCountry( $selected_country_id )
-							->findZipCodes();
-		}
-		catch ( Exception $e ) 
-		{
-			self::jiwp_error_log( $e->getMessage() );
-		}
+		$cities = array();
+		
+		$cities = self::$ji_basic_query
+						->all( false )
+						->filterByCountry( $selected_country_id )
+						->findZipCodes();		
 
 		return $cities;
+
+	}
+
+	/**
+	 * Retrieves realty types from Justimmo API.
+	 *
+	 * @since  1.0.0
+	 * @return array 	Array containing realty types
+	 */
+	public static function get_realty_types() {
+
+		if ( self::$ji_basic_query == null ) 
+		{
+			return array();
+		}
+
+		return self::$ji_basic_query->all( false )->findRealtyTypes();
+
+	}
+
+	/**
+	 * Retrieves countries from Justimmo API
+	 *
+	 * @since 1.0.0
+	 * @return array 	Array containing countries
+	 */
+	public static function get_countries() {
+
+		if ( self::$ji_basic_query == null ) 
+		{
+			return array();
+		}
+
+		return self::$ji_basic_query->all( false )->findCountries();
 
 	}
 
