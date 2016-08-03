@@ -769,6 +769,11 @@ class Jiwp_Public {
 	 */
 	private function set_realty_query_filters( $filter_params = array() ) {
 
+		if ( $this->ji_realty_query == null ) 
+		{
+			return;
+		}
+
 		// realty number
 
 		if ( !empty( $filter_params[ 'objektnummer' ] )  ) 
@@ -895,6 +900,11 @@ class Jiwp_Public {
 	 * @param string $direction Direction of ordering ('asc' or 'desc')
 	 */
 	private function set_realty_query_ordering( $order_params ) {
+
+		if ( $this->ji_realty_query == null )
+		{
+			return;
+		}
 
 		if ( !empty( $order_params['price_order'] ) ) 
 		{
