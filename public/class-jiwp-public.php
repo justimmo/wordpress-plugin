@@ -470,8 +470,8 @@ class Jiwp_Public {
 
 		try 
 		{
-			$realty_types 	= Jiwp_Public::$ji_basic_query->all()->findRealtyTypes();
-			$countries  	= Jiwp_Public::$ji_basic_query->all()->findCountries();
+			$realty_types 	= Jiwp_Public::$ji_basic_query->all( false )->findRealtyTypes();
+			$countries  	= Jiwp_Public::$ji_basic_query->all( false )->findCountries();
 			$states 		= [];
 			$cities 		= [];
 
@@ -597,7 +597,7 @@ class Jiwp_Public {
 		try 
 		{
 			$states = self::$ji_basic_query
-							->all()
+							->all( false )
 							->filterByCountry( $selected_country_id )
 							->findFederalStates();	
 		}
@@ -625,7 +625,7 @@ class Jiwp_Public {
 		try 
 		{
 			$cities = self::$ji_basic_query
-							->all()
+							->all( false )
 							->filterByCountry( $selected_country_id )
 							->findZipCodes();
 		}
@@ -696,7 +696,7 @@ class Jiwp_Public {
 		if ( !empty( $filter_params[ 'type' ] ) ) 
 		{
 			// find realty type `id` from `key` value
-			$property_types = self::$ji_basic_query->all()->findRealtyTypes();
+			$property_types = self::$ji_basic_query->all( false )->findRealtyTypes();
 			
 			foreach ($property_types as $property_type_id => $property_type) 
 			{
