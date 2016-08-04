@@ -224,7 +224,9 @@ class Jiwp_Admin {
 		update_option( 'ji_api_username', $_REQUEST['api_credentials']['api_username'] );
 		update_option( 'ji_api_password', $_REQUEST['api_credentials']['api_password'] );
 
-		wp_redirect( admin_url() . 'admin.php?page=jiwp', 200 );
+        header( 'Location: ' . admin_url() . 'admin.php?page=jiwp' );
+
+		//wp_redirect( admin_url() . 'admin.php?page=jiwp', 200 );
 
 	}
 
