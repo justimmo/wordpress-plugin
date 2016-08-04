@@ -8,7 +8,7 @@
 		<li class="ji-info">
 			<label class="ji-info__label">
 				<?php _e( 'Realty Number:', 'jiwp' ); ?>
-			</label>			
+			</label>
 			<span class="ji-info__value">
 				<?php echo $realty->getPropertyNumber(); ?>
 			</span>
@@ -17,7 +17,7 @@
 		<li class="ji-info">
 			<label class="ji-info__label">
 				<?php _e( 'Country / State:', 'jiwp' ); ?>
-			</label>			
+			</label>
 			<span class="ji-info__value">
 				<?php echo $realty->getCountry() . ' / ' . $realty->getFederalState(); ?>
 			</span>
@@ -26,38 +26,42 @@
 		<li class="ji-info">
 			<label class="ji-info__label">
 				<?php _e( 'Address:', 'jiwp' ); ?>
-			</label>			
+			</label>
 			<span class="ji-info__value">
 				<?php
 
 					$address_array = array();
 
-					if ( !empty( $realty->getZipCode() ) ) 
+					$zipCode =  $realty->getZipCode();
+
+					if ( !empty( $zipCode ) )
 					{
 						$address_array[] = $realty->getZipCode();
 					}
 
-					if ( !empty( $realty->getPlace() ) ) 
+					$place = $realty->getPlace();
+
+					if ( !empty( $place ) )
 					{
 						$address_array[] = $realty->getPlace();
 					}
 
-					if ( !empty( $realty->getStreet() ) ) 
+					if ( !empty( $realty->getStreet() ) )
 					{
 						$address_array[] = $realty->getStreet();
 					}
 
-					if ( !empty( $realty->getHouseNumber() ) ) 
+					if ( !empty( $realty->getHouseNumber() ) )
 					{
 						$address_array[] = $realty->getHouseNumber();
 					}
 
-					if ( !empty( $realty->getStair() ) ) 
+					if ( !empty( $realty->getStair() ) )
 					{
 						$address_array[] = $realty->getStair();
 					}
 
-					if ( !empty( $realty->getDoorNumber() ) ) 
+					if ( !empty( $realty->getDoorNumber() ) )
 					{
 						$address_array[] = $realty->getDoorNumber();
 					}
@@ -67,33 +71,33 @@
 				?>
 			</span>
 		</li>
-		
+
 		<?php if ( !empty( $locality = $realty->getLocality() ) ): ?>
 			<li class="ji-info">
 				<label class="ji-info__label">
 					<?php _e( 'Location:', 'jiwp' ); ?>
-				</label>			
+				</label>
 				<span class="ji-info__value">
 					<?php echo $locality; ?>
 				</span>
 			</li>
 		<?php endif; ?>
-		
+
 		<?php if ( !empty( $proximity = $realty->getProximity() ) ): ?>
 			<li class="ji-info">
 				<label class="ji-info__label">
 					<?php _e( 'Proximity:', 'jiwp' ); ?>
-				</label>			
+				</label>
 				<span class="ji-info__value">
 					<?php echo $proximity; ?>
 				</span>
 			</li>
 		<?php endif; ?>
-		
+
 		<li class="ji-info">
 			<label class="ji-info__label">
 				<?php _e( 'Commercial Type:', 'jiwp' ); ?>
-			</label>			
+			</label>
 			<span class="ji-info__value">
 				<?php echo $realty->getRealtyTypeName(); ?>
 			</span>
@@ -102,12 +106,12 @@
 		<li class="ji-info">
 			<label class="ji-info__label">
 				<?php _e( 'Realty Type:', 'jiwp' ); ?>
-			</label>			
+			</label>
 			<span class="ji-info__value">
 				<?php echo $realty->getSubRealtyTypeName(); ?>
 			</span>
 		</li>
-	
+
 		<?php if ( !empty( $building_age = $realty->getStyleOfBuilding() ) ): ?>
 
 			<li class="ji-info">
@@ -120,13 +124,13 @@
 			</li>
 
 		<?php endif; ?>
-		
+
 		<?php if ( !empty( $categories = $realty->getCategories() ) ): ?>
 
 			<li class="ji-info">
 				<label class="ji-info__label">
 					<?php _e( 'Categories:', 'jiwp' ); ?>
-				</label>			
+				</label>
 				<span class="ji-info__value">
 					<?php echo implode( ', ', $categories ); ?>
 				</span>
@@ -137,18 +141,18 @@
 		<li class="ji-info">
 			<label class="ji-info__label">
 				<?php _e( 'For:', 'jiwp' ); ?>
-			</label>			
+			</label>
 			<span class="ji-info__value">
 				<?php
 
-					$is_for_rent = true; 
+					$is_for_rent = true;
 
-					if ( $realty->getMarketingType()['KAUF'] == true ) 
+					if ( $realty->getMarketingType()['KAUF'] == true )
 					{
 						$is_for_rent = false;
 						_e( 'Purchase', 'jiwp' );
 					}
-					else 
+					else
 					{
 						_e( 'Rent', 'jiwp' );
 					}
@@ -170,20 +174,20 @@
 			<li class="ji-info">
 				<label class="ji-info__label">
 					<?php _e( 'Floor Area:', 'jiwp' ); ?>
-				</label>				
+				</label>
 				<span class="ji-info__value">
 					<?php echo $floor_area . ' m&sup2;'; ?>
 				</span>
 			</li>
 
 		<?php endif; ?>
-		
+
 		<?php if ( $surface_area = $realty->getSurfaceArea() ): ?>
 
 			<li class="ji-info">
 				<label class="ji-info__label">
 					<?php _e( 'Surface Area:', 'jiwp' ); ?>
-				</label>				
+				</label>
 				<span class="ji-info__value">
 					<?php echo $surface_area . ' m&sup2;'; ?>
 				</span>
@@ -196,7 +200,7 @@
 			<li class="ji-info">
 				<label class="ji-info__label">
 					<?php _e( 'Living Area:', 'jiwp' ); ?>
-				</label>				
+				</label>
 				<span class="ji-info__value">
 					<?php echo $living_area . ' m&sup2;'; ?>
 				</span>
@@ -209,7 +213,7 @@
 			<li class="ji-info">
 				<label class="ji-info__label">
 					<?php _e( 'Total Area:', 'jiwp' ); ?>
-				</label>				
+				</label>
 				<span class="ji-info__value">
 					<?php echo $total_area . ' m&sup2;'; ?>
 				</span>
@@ -222,7 +226,7 @@
 			<li class="ji-info">
 				<label class="ji-info__label">
 					<?php _e( 'Balcony Area:', 'jiwp' ); ?>
-				</label>				
+				</label>
 				<span class="ji-info__value">
 					<?php echo $balcony_area . ' m&sup2;'; ?>
 				</span>
@@ -235,7 +239,7 @@
 			<li class="ji-info">
 				<label class="ji-info__label">
 					<?php _e( 'Terrace Area:', 'jiwp' ); ?>
-				</label>				
+				</label>
 				<span class="ji-info__value">
 					<?php echo $terrace_area . ' m&sup2;'; ?>
 				</span>
@@ -248,7 +252,7 @@
 			<li class="ji-info">
 				<label class="ji-info__label">
 					<?php _e( 'Garden Area:', 'jiwp' ); ?>
-				</label>				
+				</label>
 				<span class="ji-info__value">
 					<?php echo $garden_area . ' m&sup2;'; ?>
 				</span>
@@ -261,7 +265,7 @@
 			<li class="ji-info">
 				<label class="ji-info__label">
 					<?php _e( 'Cellar Area:', 'jiwp' ); ?>
-				</label>				
+				</label>
 				<span class="ji-info__value">
 					<?php echo $cellar_area . ' m&sup2;'; ?>
 				</span>
@@ -274,7 +278,7 @@
 			<li class="ji-info">
 				<label class="ji-info__label">
 					<?php _e( 'Office Area:', 'jiwp' ); ?>
-				</label>				
+				</label>
 				<span class="ji-info__value">
 					<?php echo $office_area . ' m&sup2;'; ?>
 				</span>
@@ -287,7 +291,7 @@
 			<li class="ji-info">
 				<label class="ji-info__label">
 					<?php _e( 'Storage Area:', 'jiwp' ); ?>
-				</label>				
+				</label>
 				<span class="ji-info__value">
 					<?php echo $storage_area . ' m&sup2;'; ?>
 				</span>
@@ -300,7 +304,7 @@
 			<li class="ji-info">
 				<label class="ji-info__label">
 					<?php _e( 'Loggia Area:', 'jiwp' ); ?>
-				</label>				
+				</label>
 				<span class="ji-info__value">
 					<?php echo $loggia_area . ' m&sup2;'; ?>
 				</span>
@@ -313,7 +317,7 @@
 			<li class="ji-info">
 				<label class="ji-info__label">
 					<?php _e( 'Garage Area:', 'jiwp' ); ?>
-				</label>				
+				</label>
 				<span class="ji-info__value">
 					<?php echo $garage_area . ' m&sup2;'; ?>
 				</span>
@@ -326,7 +330,7 @@
 			<li class="ji-info">
 				<label class="ji-info__label">
 					<?php _e( 'Parking Area:', 'jiwp' ); ?>
-				</label>				
+				</label>
 				<span class="ji-info__value">
 					<?php echo $parking_area . ' m&sup2;'; ?>
 				</span>
@@ -339,7 +343,7 @@
 			<li class="ji-info">
 				<label class="ji-info__label">
 					<?php _e( 'Buildable Area:', 'jiwp' ); ?>
-				</label>				
+				</label>
 				<span class="ji-info__value">
 					<?php echo $buildable_area . ' m&sup2;'; ?>
 				</span>
@@ -361,7 +365,7 @@
 			<li class="ji-info">
 				<label class="ji-info__label">
 					<?php _e( 'Rooms:', 'jiwp' ); ?>
-				</label>				
+				</label>
 				<span class="ji-info__value">
 					<?php echo $room_count; ?>
 				</span>
@@ -374,7 +378,7 @@
 			<li class="ji-info">
 				<label class="ji-info__label">
 					<?php _e( 'Bathrooms:', 'jiwp' ); ?>
-				</label>				
+				</label>
 				<span class="ji-info__value">
 					<?php echo $bathroom_count; ?>
 				</span>
@@ -387,7 +391,7 @@
 			<li class="ji-info">
 				<label class="ji-info__label">
 					<?php _e( 'Toilet Rooms:', 'jiwp' ); ?>
-				</label>				
+				</label>
 				<span class="ji-info__value">
 					<?php echo $toiletroom_count; ?>
 				</span>
@@ -400,7 +404,7 @@
 			<li class="ji-info">
 				<label class="ji-info__label">
 					<?php _e( 'Balconies:', 'jiwp' ); ?>
-				</label>				
+				</label>
 				<span class="ji-info__value">
 					<?php echo $balcony_count; ?>
 				</span>
@@ -413,7 +417,7 @@
 			<li class="ji-info">
 				<label class="ji-info__label">
 					<?php _e( 'Terraces:', 'jiwp' ); ?>
-				</label>				
+				</label>
 				<span class="ji-info__value">
 					<?php echo $terrace_count; ?>
 				</span>
@@ -426,7 +430,7 @@
 			<li class="ji-info">
 				<label class="ji-info__label">
 					<?php _e( 'Loggias:', 'jiwp' ); ?>
-				</label>				
+				</label>
 				<span class="ji-info__value">
 					<?php echo $loggia_count; ?>
 				</span>
@@ -439,7 +443,7 @@
 			<li class="ji-info">
 				<label class="ji-info__label">
 					<?php _e( 'Loggias:', 'jiwp' ); ?>
-				</label>				
+				</label>
 				<span class="ji-info__value">
 					<?php echo $loggia_count; ?>
 				</span>
@@ -452,7 +456,7 @@
 			<li class="ji-info">
 				<label class="ji-info__label">
 					<?php _e( 'Garages:', 'jiwp' ); ?>
-				</label>				
+				</label>
 				<span class="ji-info__value">
 					<?php echo $garage_count; ?>
 				</span>
@@ -465,7 +469,7 @@
 			<li class="ji-info">
 				<label class="ji-info__label">
 					<?php _e( 'Parking Spaces:', 'jiwp' ); ?>
-				</label>				
+				</label>
 				<span class="ji-info__value">
 					<?php echo $parking_count; ?>
 				</span>
@@ -478,7 +482,7 @@
 			<li class="ji-info">
 				<label class="ji-info__label">
 					<?php _e( 'Store Rooms:', 'jiwp' ); ?>
-				</label>				
+				</label>
 				<span class="ji-info__value">
 					<?php echo $storeroom_count; ?>
 				</span>
@@ -522,7 +526,7 @@
 					<?php echo money_format( "%!i $currency" , $realty->getPurchasePrice() ); ?>
 				</span>
 			</li>
-	
+
 		<?php endif; ?>
 
 		<li class="ji-info">
@@ -540,7 +544,7 @@
 				<label class="ji-info__label">
 					<?php _e( 'Additional Costs:', 'jiwp' ); ?>
 				</label>
-				
+
 				<ul>
 					<?php foreach ( $additional_costs as $key => $additional_cost ): ?>
 
@@ -676,7 +680,7 @@
 			</label>
 			<span class="ji-info__value">
 				<?php echo $energy_pass->getThermalHeatRequirementValue(); ?> kWh/m&sup2;a
-				(<?php _e( 'class', 'jiwp' ); ?> 
+				(<?php _e( 'class', 'jiwp' ); ?>
 				<?php echo $energy_pass->getThermalHeatRequirementClass(); ?>)
 			</span>
 		</li>
@@ -690,7 +694,7 @@
 				(<?php _e( 'class', 'jiwp' ); ?>
 				<?php echo $energy_pass->getEnergyEfficiencyFactorClass(); ?>)
 			</span>
-		</li>		
+		</li>
 	</ul>
 </section>
 

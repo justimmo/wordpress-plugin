@@ -21,9 +21,11 @@
 		<span class="ji-info__value">
 			<?php
 
-				$is_for_rent = true; 
+				$is_for_rent = true;
 
-				if ( $realty->getMarketingType()['KAUF'] == true ) 
+				$marketingType = $realty->getMarketingType();
+
+				if ( $marketingType['KAUF'] == true )
 				{
 					$is_for_rent = false;
 					_e( 'Purchase', 'jiwp' );

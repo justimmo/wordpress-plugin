@@ -1,47 +1,47 @@
 <section class="ji-realties-container">
 
-	<?php if ( !empty( $realties ) && !empty( $realties->getNbResults() ) ): ?>
+	<?php// if ( !empty( $realties ) && !empty( $realties->getNbResults() ) ): ?>
 
-		<ul class="ji-realty-list">
-		
-			<?php foreach ( $realties as $realty ): ?>
+	<ul class="ji-realty-list">
 
-				<li class="ji-realty-list__item">
+		<?php foreach ( $realties as $realty ): ?>
 
-					<article class="ji-realty ji-realty--list-item">
+		<li class="ji-realty-list__item">
 
-						<header class="ji-realty__header">
+			<article class="ji-realty ji-realty--list-item">
 
-							<?php $photos_array = $realty->getPictures(); ?>
+				<header class="ji-realty__header">
 
-							<img src="<?php echo $photos_array[0]->getUrl('medium'); ?>" class="ji-realty__featured-img" alt=''/>
+					<?php $photos_array = $realty->getPictures(); ?>
 
-							<h1 class="ji-realty__title">
+					<img src="<?php echo $photos_array[0]->getUrl('medium'); ?>" class="ji-realty__featured-img" alt=''/>
 
-								<a href="<?php echo get_bloginfo('url') . '/realties/' . $realty->getId() ?>">
-									<?php echo $realty->getTitle(); ?>
-								</a>
+					<h1 class="ji-realty__title">
 
-							</h1>
+						<a href="<?php echo get_bloginfo('url') . '/realties/' . $realty->getId() ?>">
+							<?php echo $realty->getTitle(); ?>
+						</a>
 
-							<?php include( Jiwp_Public::get_template( '_realty-info.php' ) ); ?>
+					</h1>
 
-						</header>
+					<?php include( Jiwp_Public::get_template( '_realty-info.php' ) ); ?>
 
-					</article>
+				</header>
 
-				</li>
+			</article>
 
-			<?php endforeach; ?>
+		</li>
 
-		</ul>
+		<?php endforeach; ?>
 
-		<?php include( Jiwp_Public::get_template( '_pagination.php' ) ); ?>
+	</ul>
 
-	<?php else: ?>
-		
-		<h3 class="ji-no-realties"><?php _e( 'No realties found', 'jiwp' ); ?></h3>
+	<?php include( Jiwp_Public::get_template( '_pagination.php' ) ); ?>
 
-	<?php endif; ?>
-	
+	<?php //else: ?>
+
+	<h3 class="ji-no-realties"><?php _e( 'No realties found', 'jiwp' ); ?></h3>
+
+	<?php //endif; ?>
+
 </section>
