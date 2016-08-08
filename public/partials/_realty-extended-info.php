@@ -36,34 +36,42 @@
 
 					if ( !empty( $zipCode ) )
 					{
-						$address_array[] = $realty->getZipCode();
+						$address_array[] = $zipCode;
 					}
 
 					$place = $realty->getPlace();
 
 					if ( !empty( $place ) )
 					{
-						$address_array[] = $realty->getPlace();
+						$address_array[] = $place;
 					}
 
-					if ( !empty( $realty->getStreet() ) )
+					$street = $realty->getStreet();
+
+					if ( !empty( $street ) )
 					{
-						$address_array[] = $realty->getStreet();
+						$address_array[] = $street;
 					}
 
-					if ( !empty( $realty->getHouseNumber() ) )
+					$houseNumber = $realty->getHouseNumber();
+
+					if ( !empty( $houseNumber ) )
 					{
-						$address_array[] = $realty->getHouseNumber();
+						$address_array[] = $houseNumber;
 					}
 
-					if ( !empty( $realty->getStair() ) )
+					$stair = $realty->getStair();
+
+					if ( !empty( $stair ) )
 					{
-						$address_array[] = $realty->getStair();
+						$address_array[] = $stair;
 					}
 
-					if ( !empty( $realty->getDoorNumber() ) )
+					$doorNumber = $realty->getDoorNumber();
+
+					if ( !empty( $doorNumber ) )
 					{
-						$address_array[] = $realty->getDoorNumber();
+						$address_array[] = $doorNumber;
 					}
 
 					echo implode( ', ', $address_array );
@@ -72,7 +80,10 @@
 			</span>
 		</li>
 
-		<?php if ( !empty( $locality = $realty->getLocality() ) ): ?>
+		<?php
+			$locality = $realty->getLocality(); 
+			if ( !empty( $locality ) ):
+		?>
 			<li class="ji-info">
 				<label class="ji-info__label">
 					<?php _e( 'Location:', 'jiwp' ); ?>
@@ -83,7 +94,10 @@
 			</li>
 		<?php endif; ?>
 
-		<?php if ( !empty( $proximity = $realty->getProximity() ) ): ?>
+		<?php 
+			$proximity = $realty->getProximity(); 
+			if ( !empty( $proximity ) ):
+		?>
 			<li class="ji-info">
 				<label class="ji-info__label">
 					<?php _e( 'Proximity:', 'jiwp' ); ?>
@@ -112,7 +126,10 @@
 			</span>
 		</li>
 
-		<?php if ( !empty( $building_age = $realty->getStyleOfBuilding() ) ): ?>
+		<?php 		
+			$building_age = $realty->getStyleOfBuilding(); 
+			if ( !empty( $building_age ) ): 
+		?>
 
 			<li class="ji-info">
 				<label class="ji-info__label">
@@ -125,7 +142,10 @@
 
 		<?php endif; ?>
 
-		<?php if ( !empty( $categories = $realty->getCategories() ) ): ?>
+		<?php 
+			$categories = $realty->getCategories(); 
+			if ( !empty( $categories ) ): 
+		?>
 
 			<li class="ji-info">
 				<label class="ji-info__label">
@@ -538,7 +558,10 @@
 			</span>
 		</li>
 
-		<?php if ( !empty( $additional_costs = $realty->getAdditionalCosts() ) ): ?>
+		<?php 
+			$additional_costs = $realty->getAdditionalCosts(); 
+			if ( !empty( $additional_costs ) ): 
+		?>
 
 			<li class="ji-info">
 				<label class="ji-info__label">
@@ -563,7 +586,10 @@
 
 		<?php endif; ?>
 
-		<?php if ( !empty( $contract_establishment_costs = $realty->getContractEstablishmentCosts() ) ): ?>
+		<?php
+			$contract_establishment_costs = $realty->getContractEstablishmentCosts(); 
+			if ( !empty( $contract_establishment_costs ) ):
+		?>
 
 			<li class="ji-info">
 				<label class="ji-info__label">
@@ -576,7 +602,10 @@
 
 		<?php endif; ?>
 
-		<?php if ( !empty( $land_registration_tax = $realty->getLandRegistration() ) ): ?>
+		<?php 
+			$land_registration_tax = $realty->getLandRegistration();
+			if ( !empty( $land_registration_tax ) ):
+		?>
 
 			<li class="ji-info">
 				<label class="ji-info__label">
@@ -589,7 +618,10 @@
 
 		<?php endif; ?>
 
-		<?php if ( !empty( $transfer_tax = $realty->getTransferTax() ) ): ?>
+		<?php 
+			$transfer_tax = $realty->getTransferTax(); 
+			if ( !empty( $transfer_tax ) ): 
+		?>
 
 			<li class="ji-info">
 				<label class="ji-info__label">
@@ -602,7 +634,10 @@
 
 		<?php endif; ?>
 
-		<?php if ( !empty( $additional_charges = $realty->getAdditionalCharges() ) ): ?>
+		<?php 
+			$additional_charges = $realty->getAdditionalCharges(); 
+			if ( !empty( $additional_charges ) ): 
+		?>
 
 			<li class="ji-info">
 				<label class="ji-info__label">
@@ -617,7 +652,10 @@
 
 		<hr>
 
-		<?php if ( !empty( $yearly_net_earn = $realty->getNetEarningYearly() ) ): ?>
+		<?php 
+			$yearly_net_earn = $realty->getNetEarningYearly(); 
+			if ( !empty( $yearly_net_earn ) ): 
+		?>
 
 			<li class="ji-info">
 				<label class="ji-info__label">
@@ -630,7 +668,10 @@
 
 		<?php endif; ?>
 
-		<?php if ( !empty( $building_subsidence = $realty->getBuildingSubsidies() ) ): ?>
+		<?php 
+			$building_subsidence = $realty->getBuildingSubsidies(); 
+			if ( !empty( $building_subsidence ) ): 
+		?>
 
 			<li class="ji-info">
 				<label class="ji-info__label">
@@ -643,7 +684,10 @@
 
 		<?php endif; ?>
 
-		<?php if ( !empty( $net_yield = $realty->getYield() ) ): ?>
+		<?php 
+			$net_yield = $realty->getYield(); 
+			if ( !empty( $net_yield ) ): 
+		?>
 
 			<li class="ji-info">
 				<label class="ji-info__label">
@@ -705,7 +749,10 @@
 </section>
 
 <!-- Other Information Text -->
-<?php if ( !empty( $other_information = $realty->getOtherInformation() ) ): ?>
+<?php 
+	$other_information = $realty->getOtherInformation();
+	if ( !empty( $other_information ) ): 
+?>
 	<section class="ji-info-section">
 		<h3 class="ji-info-section__title"><?php _e( 'Other Information', 'jiwp' ); ?></h3>
 		<?php echo $other_information; ?>
