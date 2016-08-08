@@ -479,9 +479,9 @@ class Jiwp_Public {
 
 			$realties = $this->get_realties( $page, $atts[ 'max_per_page' ] );
 
-			//ob_start();
+			ob_start();
 			include( 'partials/_realty-list.php' );
-			//return ob_get_clean();
+			return ob_get_clean();
 		} 
 		catch ( Exception $e ) 
 		{
@@ -512,9 +512,9 @@ class Jiwp_Public {
 				$cities = self::get_cities( $_GET[ 'filter' ][ 'country' ] );
 			}
 
-			//ob_start();
+			ob_start();
 			include( 'partials/_search-form.php' );
-			//return ob_get_clean();
+			return ob_get_clean();
 		} 
 		catch ( Exception $e ) 
 		{
