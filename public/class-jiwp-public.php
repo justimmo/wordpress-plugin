@@ -817,13 +817,11 @@ class Jiwp_Public {
 		if ( !empty( $filter_params[ 'price_min' ] ) ) 
 		{
 			$this->ji_realty_query->filterByPrice( array( 'min' => $filter_params[ 'price_min' ] ) );
-			//$this->ji_realty_query->filterByRent( array( 'min' => $filter_params[ 'price_min' ] ) );
 		}
 
 		if ( !empty( $filter_params[ 'price_max' ] ) ) 
 		{
 			$this->ji_realty_query->filterByPrice( array( 'max' => $filter_params[ 'price_max' ] ) );
-			//$this->ji_realty_query->filterByRent( array( 'max' => $filter_params[ 'price_max' ] ) );
 		}
 
 		// rooms
