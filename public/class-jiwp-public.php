@@ -591,7 +591,7 @@ class Jiwp_Public {
 			$states 		= array();
 			$cities 		= array();
 
-			if ( $_GET[ 'filter' ][ 'country' ] ) 
+			if ( !empty( $_GET[ 'filter' ] ) && $_GET[ 'filter' ][ 'country' ] ) 
 			{
 				$states = self::get_states( $_GET[ 'filter' ][ 'country' ] );
 				$cities = self::get_cities( $_GET[ 'filter' ][ 'country' ] );
