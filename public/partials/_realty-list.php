@@ -1,6 +1,8 @@
 <section class="ji-realties-container">
 
-	<?php// if ( !empty( $realties ) && !empty( $realties->getNbResults() ) ): ?>
+	<?php $realties_count = $realties->getNbResults(); ?>
+
+	<?php if ( !empty( $realties ) && !empty( $realties_count ) ): ?>
 
 	<ul class="ji-realty-list">
 
@@ -38,10 +40,10 @@
 
 	<?php include( Jiwp_Public::get_template( '_pagination.php' ) ); ?>
 
-	<?php //else: ?>
+	<?php else: ?>
 
 	<h3 class="ji-no-realties"><?php _e( 'No realties found', 'jiwp' ); ?></h3>
 
-	<?php //endif; ?>
+	<?php endif; ?>
 
 </section>
