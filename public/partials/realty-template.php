@@ -14,11 +14,11 @@
 
 		<section class="ji-info-section ji-info-section--photos">
 
-			<h3 class="ji-info-section__title"><?php _e( 'Photo Gallery', 'jiwp' ); ?></h3>
-
 			<?php $photos_array = $realty->getPictures(); ?>
 
 			<?php if ( !empty( $photos_array ) ): ?>
+				
+				<h3 class="ji-info-section__title"><?php _e( 'Photo Gallery', 'jiwp' ); ?></h3>
 
 				<ul class="ji-photos-list">
 
