@@ -6,34 +6,7 @@
 
 			<?php foreach ( $pager as $realty ): ?>
 
-				<li class="ji-realty-list__item">
-
-					<article class="ji-realty ji-realty--list-item">
-
-						<header class="ji-realty__header">
-
-							<?php $photos_array = $realty->getPictures(); ?>
-
-							<img 
-								src="<?php echo $photos_array[0]->getUrl('medium'); ?>" 
-								class="ji-realty__featured-img" 
-								alt=''/>
-
-							<h1 class="ji-realty__title">
-
-								<a href="<?php echo get_bloginfo('url') . '/realties/' . $realty->getId() ?>">
-									<?php echo $realty->getTitle(); ?>
-								</a>
-
-							</h1>
-
-							<?php include( Jiwp_Public::get_template( '_realty-info.php' ) ); ?>
-
-						</header>
-
-					</article>
-
-				</li>
+				<?php include( Jiwp_Public::get_template( '_realty-list__item.php' ) ); ?>
 
 			<?php endforeach; ?>
 
