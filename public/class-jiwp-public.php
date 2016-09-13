@@ -283,7 +283,7 @@ class Jiwp_Public {
 		$wrapper 	= new RealtyWrapper( $mapper );
 		$query  	= new RealtyQuery( $api, $wrapper, $mapper );
 
-		$query->set( 'culture', substr( get_locale(), 0, 2 ) );
+		$query->setCulture( substr( get_locale(), 0, 2 ) );
 
 		return $query;
 
@@ -309,7 +309,7 @@ class Jiwp_Public {
 		$wrapper 	= new ProjectWrapper( $mapper );
 		$query  	= new ProjectQuery( $api, $wrapper, $mapper );
 
-		$query->set( 'culture', substr( get_locale(), 0, 2 ) );
+		$query->setCulture( substr( get_locale(), 0, 2 ) );
 
 		return $query;
 
@@ -788,7 +788,7 @@ class Jiwp_Public {
 		{
 			return null;
 		}
-		
+
 		return $this->ji_project_query->findPk( $project_id );
 
 	}
@@ -1098,7 +1098,7 @@ class Jiwp_Public {
 	 * @since 1.0.0
 	 * @param array $order_params  array containing ordering params
 	 */
-	private function set_project_query_ordering( $order_params ) {		
+	private function set_project_query_ordering( $order_params ) {
 	}
 
 	/**
