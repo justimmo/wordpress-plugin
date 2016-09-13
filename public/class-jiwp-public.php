@@ -124,7 +124,7 @@ class Jiwp_Public {
 		 * class.
 		 */
 		
-		if ( get_query_var( 'ji_page', false ) == 'realty' ) 
+		if ( get_query_var( 'ji_page', false ) == 'realty' || get_query_var( 'ji_page', false ) == 'project' ) 
 		{
 			wp_enqueue_style( 
 				'featherlight',
@@ -173,7 +173,7 @@ class Jiwp_Public {
 			'1.7.0'
 		);
 		
-		if ( get_query_var( 'ji_page', false ) == 'realty' ) 
+		if ( get_query_var( 'ji_page', false ) == 'realty' || get_query_var( 'ji_page', false ) == 'project' ) 
 		{
 			wp_enqueue_script( 
 				'featherlight',
