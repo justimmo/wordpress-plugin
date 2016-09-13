@@ -24,12 +24,18 @@
 use Justimmo\Api\JustimmoApi;
 use Psr\Log\NullLogger;
 use Justimmo\Cache\NullCache;
+
 use Justimmo\Model\RealtyQuery;
 use Justimmo\Model\Wrapper\V1\RealtyWrapper;
 use Justimmo\Model\Mapper\V1\RealtyMapper;
+
 use Justimmo\Model\Query\BasicDataQuery;
 use Justimmo\Model\Wrapper\V1\BasicDataWrapper;
 use Justimmo\Model\Mapper\V1\BasicDataMapper;
+
+use Justimmo\Model\ProjectQuery;
+use Justimmo\Model\Wrapper\V1\ProjectWrapper;
+use Justimmo\Model\Mapper\V1\ProjectMapper;
 
 class Jiwp_Public {
 
@@ -55,15 +61,23 @@ class Jiwp_Public {
 	 * Justimmo realty query object
 	 * 
 	 * @since  1.0.0
-	 * @var object
+	 * @var RealtyQuery
 	 */
 	private $ji_realty_query = null;
+
+	/**
+	 * Justimmo project query object
+	 * 
+	 * @since  1.0.0
+	 * @var ProjectQuery
+	 */
+	private $ji_project_query = null;
 
 	/**
 	 * Justimmo basic query object
 	 *
 	 * @since 1.0.0
-	 * @var object
+	 * @var BasicDataQuery
 	 */
 	public static $ji_basic_query = null;
 
@@ -196,6 +210,7 @@ class Jiwp_Public {
             	'ajax_nonce' 	=> wp_create_nonce( 'justimmo_ajax' )
             ) 
 		);
+
 	}
 
 	/**
@@ -211,6 +226,11 @@ class Jiwp_Public {
 		if ( !empty( $username ) && !empty( $password ) ) 
 		{
 			$this->ji_realty_query = $this->get_justimmo_realty_query( 
+				$username,
+				$password 
+			);
+
+			$this->ji_project_query = $this->get_justimmo_project_query( 
 				$username,
 				$password 
 			);
@@ -270,11 +290,37 @@ class Jiwp_Public {
 	}
 
 	/**
-	 * Creates and returns a Justimmo BasicQuery instance
+	 * Creates and returns a Justimmo ProjectQuery instance.
 	 * Also sets the `culture` parameter to wordpress locale.
 	 *
 	 * @since  1.0.0
-	 * @return object
+	 * @return ProjectQuery
+	 */
+	private function get_justimmo_project_query( $username, $password ) {
+
+		$api = new JustimmoApi(
+			$username,
+			$password,
+			new NullLogger(),
+			new NullCache()
+		);
+
+		$mapper 	= new ProjectMapper();
+		$wrapper 	= new ProjectWrapper( $mapper );
+		$query  	= new ProjectQuery( $api, $wrapper, $mapper );
+
+		$query->set( 'culture', substr( get_locale(), 0, 2 ) );
+
+		return $query;
+
+	}
+
+	/**
+	 * Creates and returns a Justimmo BasicDataQuery instance
+	 * Also sets the `culture` parameter to wordpress locale.
+	 *
+	 * @since  1.0.0
+	 * @return BasicDataQuery
 	 */
 	private function get_justimmo_basic_query( $username, $password ) {
 
@@ -290,6 +336,7 @@ class Jiwp_Public {
 		$query->set( 'culture', substr( get_locale(), 0, 2 ) );
 
 		return $query;
+
 	}
 
 	/**
@@ -302,8 +349,11 @@ class Jiwp_Public {
 		// realty detail rule
 		add_rewrite_rule( 'realties/(\d+)', 'index.php?ji_page=realty&ji_realty_id=$matches[1]', 'top' );
 
-		// search results rule
-		add_rewrite_rule( 'realties/search', 'index.php?ji_page=search', 'top' );
+		// project detail rule
+		add_rewrite_rule( 'projects/(\d+)', 'index.php?ji_page=project&ji_project_id=$matches[1]', 'top' );
+
+		// realty search results rule
+		add_rewrite_rule( 'realties/search', 'index.php?ji_page=realty-search', 'top' );
 
 		if ( get_transient( 'rewrite_rules_check' ) ) 
 		{
@@ -326,6 +376,9 @@ class Jiwp_Public {
 		// realty id tag
 		add_rewrite_tag( '%ji_realty_id%', '([^&]+)' );
 
+		// project id tag
+		add_rewrite_tag( '%ji_project_id%', '([^&]+)' );
+
 	}
 
 	/**
@@ -346,9 +399,15 @@ class Jiwp_Public {
 
 				return;
 
-			case 'search':
+			case 'project':
 				
-				$this->search_results_page();
+				$this->project_page();
+
+				return;
+
+			case 'realty-search':
+				
+				$this->realty_search_results_page();
 
 				return;
 			
@@ -363,7 +422,7 @@ class Jiwp_Public {
 	}
 
 	/**
-	 * Displays single property template
+	 * Displays single realty template
 	 * 
 	 * @since 1.0.0
 	 */
@@ -390,11 +449,38 @@ class Jiwp_Public {
 	}
 
 	/**
-	 * Displays search results template
+	 * Displays single project template
+	 * 
+	 * @since 1.0.0
+	 */
+	private function project_page() {
+
+		$project_id = get_query_var( 'ji_project_id', false );
+
+        $new_template = self::get_template( 'project-template.php' );
+
+        try 
+        {
+        	$project = $this->get_project( $project_id );
+
+        	if ( $new_template ) 
+	        {
+	        	include( $new_template );
+	        }
+        } 
+        catch ( Exception $e ) 
+        {
+        	self::jiwp_error_log( $e );
+        }
+
+	}
+
+	/**
+	 * Displays realty search results template
 	 * 
 	 * @since 1.0.0.
 	 */
-	private function search_results_page() {
+	private function realty_search_results_page() {
 
 		$filter_params = $_GET[ 'filter' ];
 
@@ -432,7 +518,7 @@ class Jiwp_Public {
 		// Enable shortcodes in widgets
 		add_filter('widget_text', 'do_shortcode');
 
-		add_shortcode( 'ji_property_list', array( $this, 'property_list_shortcode_output' ) );
+		add_shortcode( 'ji_realty_list', array( $this, 'realty_list_shortcode_output' ) );
 		add_shortcode( 'ji_project_list', array( $this, 'project_list_shortcode_output' ) );
 		add_shortcode( 'ji_search_form', array( $this, 'search_form_shortcode_output' ) );
 
@@ -443,7 +529,7 @@ class Jiwp_Public {
 	 *
 	 * @since 1.0.0
 	 */
-	public function property_list_shortcode_output( $atts ) {
+	public function realty_list_shortcode_output( $atts ) {
 
 		$atts = shortcode_atts( 
 			array(
@@ -465,7 +551,7 @@ class Jiwp_Public {
 				'surface_order' 		=> null
 			), 
 			$atts, 
-			'ji_property_list' 
+			'ji_realty_list' 
 		);
 
 		try 
@@ -478,16 +564,16 @@ class Jiwp_Public {
 
 			$pager_url = $this->build_pager_url();
 
-			$realties = $this->get_realties( $page, $atts[ 'max_per_page' ] );
+			$pager = $this->get_realties( $page, $atts[ 'max_per_page' ] );
 
 			ob_start();
 			include( 'partials/_realty-list.php' );
 			return ob_get_clean();
-		} 
-		catch ( Exception $e ) 
+		}
+		catch ( Exception $e )
 		{
 			self::jiwp_error_log( $e );
-		}		
+		}
 
 	}
 
@@ -522,7 +608,41 @@ class Jiwp_Public {
 
 	}
 
+	/**
+	 * Project list shortcode handler
+	 *
+	 * @since 1.0.0
+	 */
 	public function project_list_shortcode_output() {
+
+		$atts = shortcode_atts(
+			array(
+				'max_per_page' => 5,
+			),
+			$atts,
+			'ji_project_list'
+		);
+
+		try
+		{
+			$this->set_project_query_filters( $atts );
+
+			$this->set_project_query_ordering( $atts );
+
+			$page = get_query_var( 'page', 1 );
+
+			$pager_url = $this->build_pager_url();
+
+			$pager = $this->get_projects( $page, $atts[ 'max_per_page' ] );
+
+			ob_start();
+			include( 'partials/_project-list.php' );
+			return ob_get_clean();
+		}
+		catch ( Exception $e )
+		{
+			self::jiwp_error_log( $e );
+		}
 
 	}
 
@@ -622,7 +742,7 @@ class Jiwp_Public {
 	 *
 	 * @since  1.0.0
 	 * @param  integer $realty_id 	Realty id
-	 * @return object            	Realty object
+	 * @return Realty            	Realty object
 	 */
 	private function get_realty( $realty_id ) {
 
@@ -642,7 +762,7 @@ class Jiwp_Public {
 	 *
 	 * @since  1.0.0
 	 * @param  integer $page 	Current page
-	 * @return object       	Pager object containing realties array
+	 * @return ListPager       	Pager object containing realties array
 	 */
 	private function get_realties( $page, $max_per_page ) {
 
@@ -652,6 +772,42 @@ class Jiwp_Public {
 		}
 
 		return $this->ji_realty_query->paginate( $page, $max_per_page );
+
+	}
+
+	/**
+	 * Retrieves single project from Justimmo API.
+	 *
+	 * @since  1.0.0
+	 * @param  integer $project_id 	Project id
+	 * @return Project            	Project object
+	 */
+	private function get_project( $project_id ) {
+
+		if ( $this->ji_project_query == null ) 
+		{
+			return null;
+		}
+		
+		return $this->ji_project_query->findPk( $project_id );
+
+	}
+
+	/**
+	 * Retrieves projects from Justimmo API.
+	 *
+	 * @since  1.0.0
+	 * @param  integer $page 	Current page
+	 * @return ListPager       	Pager object containing projects array
+	 */
+	private function get_projects( $page, $max_per_page ) {
+
+		if ( $this->ji_project_query == null ) 
+		{
+			return array();
+		}
+
+		return $this->ji_project_query->paginate( $page, $max_per_page );
 
 	}
 
@@ -803,13 +959,13 @@ class Jiwp_Public {
 		if ( !empty( $filter_params[ 'type' ] ) ) 
 		{
 			// find realty type `id` from `key` value
-			$property_types = self::$ji_basic_query->all( false )->findRealtyTypes();
+			$realty_types = self::$ji_basic_query->all( false )->findRealtyTypes();
 			
-			foreach ($property_types as $property_type_id => $property_type) 
+			foreach ($realty_types as $realty_type_id => $realty_type) 
 			{
-				if ( $filter_params[ 'type' ] == $property_type[ 'key' ] ) 
+				if ( $filter_params[ 'type' ] == $realty_type[ 'key' ] ) 
 				{
-					$this->ji_realty_query->filterByRealtyTypeId( $property_type_id );
+					$this->ji_realty_query->filterByRealtyTypeId( $realty_type_id );
 					break;
 				}
 			}
@@ -899,8 +1055,7 @@ class Jiwp_Public {
 	 * Set Realty Query ordering
 	 *
 	 * @since 1.0.0
-	 * @param string $order_by  Type of ordering
-	 * @param string $direction Direction of ordering ('asc' or 'desc')
+	 * @param array $order_params  array containing ordering params
 	 */
 	private function set_realty_query_ordering( $order_params ) {
 
@@ -926,6 +1081,24 @@ class Jiwp_Public {
 			$this->ji_realty_query->orderBySurfaceArea( $order_params['surface_order'] );
 		}
 
+	}
+
+	/**
+	 * Sets Project Query filters
+	 *
+	 * @since 1.0.0
+	 * @param array $filter_params Array containing the search form filter options.
+	 */
+	private function set_project_query_filters( $filter_params = array() ) {
+	}
+
+	/**
+	 * Set Project Query ordering
+	 *
+	 * @since 1.0.0
+	 * @param array $order_params  array containing ordering params
+	 */
+	private function set_project_query_ordering( $order_params ) {		
 	}
 
 	/**
