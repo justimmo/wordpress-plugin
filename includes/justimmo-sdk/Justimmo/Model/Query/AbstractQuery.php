@@ -197,6 +197,20 @@ abstract class AbstractQuery implements QueryInterface
     }
 
     /**
+     * sets culture value for the JustimmoApi instance
+     *
+     * @param $value
+     *
+     * @return $this
+     */
+    public function setCulture($value) 
+    {
+        $this->api->setCulture($value);
+
+        return $this;
+    }
+
+    /**
      * adds a filter column
      *
      * @param $key

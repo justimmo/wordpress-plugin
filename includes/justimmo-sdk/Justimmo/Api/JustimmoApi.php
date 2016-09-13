@@ -137,7 +137,7 @@ class JustimmoApi implements JustimmoApiInterface
      */
     public function callRealtyDetail($pk)
     {
-        return $this->call('objekt/detail', array('objekt_id' => $pk));
+        return $this->call('objekt/detail', array('objekt_id' => $pk, 'culture' => $this->culture));
     }
 
     /**
@@ -149,7 +149,7 @@ class JustimmoApi implements JustimmoApiInterface
      */
     public function callEmployeeDetail($pk)
     {
-        return $this->call('team/detail', array('id' => $pk));
+        return $this->call('team/detail', array('id' => $pk, 'culture' => $this->culture));
     }
 
     /**
@@ -161,7 +161,7 @@ class JustimmoApi implements JustimmoApiInterface
      */
     public function callProjectDetail($pk)
     {
-        return $this->call('projekt/detail', array('id' => $pk));
+        return $this->call('projekt/detail', array('id' => $pk, 'culture' => $this->culture));
     }
 
     /**
