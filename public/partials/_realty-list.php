@@ -1,12 +1,12 @@
 <section class="ji-realties-container">
 
-	<?php $realties_count = $realties->getNbResults(); ?>
+	<?php $pager_count = $pager->getNbResults(); ?>
 
-	<?php if ( !empty( $realties ) && !empty( $realties_count ) ): ?>
+	<?php if ( !empty( $pager ) && !empty( $pager_count ) ): ?>
 
 	<ul class="ji-realty-list">
 
-		<?php foreach ( $realties as $realty ): ?>
+		<?php foreach ( $pager as $realty ): ?>
 
 		<li class="ji-realty-list__item">
 

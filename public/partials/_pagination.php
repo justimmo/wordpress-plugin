@@ -1,9 +1,9 @@
-<?php if ( $realties->haveToPaginate() ): ?>
+<?php if ( $pager->haveToPaginate() ): ?>
 
 	<?php
 
-		$current_page = $realties->getPage();
-		$max_page = $realties->getLastPage();
+		$current_page = $pager->getPage();
+		$max_page = $pager->getLastPage();
 
 	?>
 
