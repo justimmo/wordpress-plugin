@@ -433,6 +433,7 @@ class Jiwp_Public {
 		add_filter('widget_text', 'do_shortcode');
 
 		add_shortcode( 'ji_property_list', array( $this, 'property_list_shortcode_output' ) );
+		add_shortcode( 'ji_project_list', array( $this, 'project_list_shortcode_output' ) );
 		add_shortcode( 'ji_search_form', array( $this, 'search_form_shortcode_output' ) );
 
 	}
@@ -497,8 +498,6 @@ class Jiwp_Public {
 	 */
 	public function search_form_shortcode_output() {
 
-		$plugin_name = $this->plugin_name;
-
 		try 
 		{
 			$realty_types 	= self::get_realty_types();
@@ -520,6 +519,10 @@ class Jiwp_Public {
 		{
 			self::jiwp_error_log( $e );
 		}
+
+	}
+
+	public function project_list_shortcode_output() {
 
 	}
 

@@ -6,7 +6,7 @@
 
 		<header class="ji-realty__header">
 
-			<h1 class="ji-realty__title"><?php echo $realty->getTitle(); ?></h1>	
+			<h1 class="ji-realty__title"><?php echo $realty->getTitle(); ?></h1>
 
 		</header>
 

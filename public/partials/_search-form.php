@@ -1,6 +1,6 @@
 <form action="<?php bloginfo( 'url' ); ?>/realties/search" class="ji-search-form">
     
-    <h3><?php _e( 'Realty Number:', $plugin_name ); ?></h3>
+    <h3><?php _e( 'Realty Number:', 'jiwp' ); ?></h3>
     
     <input 
     	type 	= "number" 
@@ -10,13 +10,13 @@
     	value 	= "<?php echo $_GET[ 'filter' ][ 'objektnummer' ] ?>" 
     	name 	= "filter[objektnummer]" />
 
-    <input type="submit" class="ji-input ji-input--submit" value="<?php _e( 'Search', $plugin_name ); ?>" />
+    <input type="submit" class="ji-input ji-input--submit" value="<?php _e( 'Search', 'jiwp' ); ?>" />
 
 </form>
 
 <form action="<?php bloginfo( 'url' ); ?>/realties/search" class="ji-search-form">
 
-	<h3><?php _e( 'Advanced Realty Search', $plugin_name ); ?></h3>
+	<h3><?php _e( 'Advanced Realty Search', 'jiwp' ); ?></h3>
 
 	<p class="ji-search-form__row">
 		
@@ -27,7 +27,7 @@
 			name 	= "filter[rent]"
 			<?php echo isset( $_GET[ 'filter' ][ 'rent' ] ) ? 'checked="checked"' : ''; ?> />
 
-		<label class="ji-label" for="filter_rent"><?php _e( 'Rent', $plugin_name ); ?></label>
+		<label class="ji-label" for="filter_rent"><?php _e( 'Rent', 'jiwp' ); ?></label>
 
 		<input 
 			type 	= "checkbox"
@@ -36,13 +36,13 @@
 			name 	= "filter[buy]"
 			<?php echo isset( $_GET[ 'filter' ][ 'buy' ] ) ? 'checked="checked"' : ''; ?> />
 
-		<label class="ji-label" for="filter_buy"><?php _e( 'Buy', $plugin_name ); ?></label>
+		<label class="ji-label" for="filter_buy"><?php _e( 'Buy', 'jiwp' ); ?></label>
 
 	</p>
 
 	<p class="ji-search-form__row">
 
-		<label class="ji-label" for="filter_property_type"><?php _e( 'Realty Type:', $plugin_name ); ?></label>
+		<label class="ji-label" for="filter_property_type"><?php _e( 'Realty Type:', 'jiwp' ); ?></label>
 
         <select id="filter_property_type" class="ji-input ji-input--select" name="filter[type]">
 
@@ -65,7 +65,7 @@
 
 	<p class="ji-search-form__row">
 
-		<label class="ji-label" for="filter_price"><?php _e( 'Price:', $plugin_name ); ?></label>
+		<label class="ji-label" for="filter_price"><?php _e( 'Price:', 'jiwp' ); ?></label>
 
 		<br/>
         
@@ -76,7 +76,7 @@
         	value 	= "<?php echo $_GET[ 'filter' ][ 'price_min' ] ?>"
         	name 	= "filter[price_min]" />
 
-        <?php _e( 'to', $plugin_name ); ?>
+        <?php _e( 'to', 'jiwp' ); ?>
 
         <input 
         	type 	= "number"
@@ -91,7 +91,7 @@
 
 	<p class="ji-search-form__row">
 
-		<label class="ji-label" for="filter_rooms"><?php _e( 'Rooms:', $plugin_name ); ?></label>
+		<label class="ji-label" for="filter_rooms"><?php _e( 'Rooms:', 'jiwp' ); ?></label>
 
 		<br/>
         
@@ -102,7 +102,7 @@
         	value 	= "<?php echo $_GET[ 'filter' ][ 'rooms_min' ] ?>"
         	name 	= "filter[rooms_min]" />
 
-        <?php _e( 'to', $plugin_name ); ?>
+        <?php _e( 'to', 'jiwp' ); ?>
 
         <input 
         	type 	= "number" 
@@ -115,7 +115,7 @@
 
 	<p class="ji-search-form__row">
 
-		<label class="ji-label" for="filter_surface"><?php _e( 'Surface:', $plugin_name ); ?></label>
+		<label class="ji-label" for="filter_surface"><?php _e( 'Surface:', 'jiwp' ); ?></label>
 
 		<br/>
         
@@ -126,7 +126,7 @@
         	value 	= "<?php echo $_GET[ 'filter' ][ 'surface_min' ] ?>"
         	name 	= "filter[surface_min]" />
 
-        <?php _e( 'to', $plugin_name ); ?>
+        <?php _e( 'to', 'jiwp' ); ?>
 
         <input
         	type 	= "number" 
@@ -141,7 +141,7 @@
 
 	<p class="ji-search-form__row">
 
-		<label class="ji-label"><?php _e( 'Country:', $plugin_name ) ?></label>
+		<label class="ji-label"><?php _e( 'Country:', 'jiwp' ) ?></label>
 
 		<select class="ji-input ji-input--select js-get-states" name="filter[country]">
 
@@ -164,7 +164,7 @@
 
 	<p class="ji-search-form__row">
 
-		<label class="ji-label"><?php _e( 'State:', $plugin_name ) ?></label>
+		<label class="ji-label"><?php _e( 'State:', 'jiwp' ) ?></label>
 		
 		<?php include( '_search-form__states.php' ); ?>
 
@@ -172,7 +172,7 @@
 
     <p class="ji-search-form__row">
 
-        <label class="ji-label"><?php _e( 'Zip Codes:', $plugin_name ) ?></label>
+        <label class="ji-label"><?php _e( 'Zip Codes:', 'jiwp' ) ?></label>
         
         <?php include( '_search-form__cities.php' ); ?>
 
@@ -187,7 +187,7 @@
         	name 	= "filter[garten]"
         	<?php echo isset( $_GET[ 'filter' ][ 'garden' ] ) ? 'checked="checked"' : ''; ?> />
 
-        <label class="ji-label" for="filter_garden"><?php _e( 'Garden', $plugin_name ); ?></label>
+        <label class="ji-label" for="filter_garden"><?php _e( 'Garden', 'jiwp' ); ?></label>
         
         <br>
         
@@ -198,7 +198,7 @@
         	name  	= "filter[garage]"
         	<?php echo isset( $_GET[ 'filter' ][ 'garage' ] ) ? 'checked="checked"' : ''; ?> />
 
-        <label class="ji-label" for="filters_garage"><?php _e( 'Garage', $plugin_name ); ?></label>
+        <label class="ji-label" for="filters_garage"><?php _e( 'Garage', 'jiwp' ); ?></label>
         
         <br>
         
@@ -209,16 +209,16 @@
         	name  	= "filter[balcony_terrace]"
         	<?php echo isset( $_GET[ 'filter' ][ 'balcony_terrace' ] ) ? 'checked="checked"' : ''; ?> />
 
-        <label class="ji-label" for="filters_balcony"><?php _e( 'Balcony/Terrace', $plugin_name ); ?></label>
+        <label class="ji-label" for="filters_balcony"><?php _e( 'Balcony/Terrace', 'jiwp' ); ?></label>
 
 	</p>
 
 	<p class="ji-search-form__row">
-		<input type="submit" class="ji-input ji-input--submit" value="<?php _e( 'Search', $plugin_name ); ?>" />
+		<input type="submit" class="ji-input ji-input--submit" value="<?php _e( 'Search', 'jiwp' ); ?>" />
 	</p>
 
 	<p class="ji-search-form__row">
-		<a href="/realties/search"><?php _e( 'Reset Filter', $plugin_name ); ?></a>
+		<a href="/realties/search"><?php _e( 'Reset Filter', 'jiwp' ); ?></a>
 	</p>
 	
 </form>

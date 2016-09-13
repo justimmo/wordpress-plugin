@@ -20,8 +20,6 @@ class Justimmo_Search_Form_Widget extends WP_Widget {
 	}
 
 	function widget( $args, $instance ) {
-
-		$plugin_name = 'jiwp';
 		
 		try 
 		{

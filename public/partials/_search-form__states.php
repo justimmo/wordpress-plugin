@@ -29,13 +29,13 @@
 		<?php if ( empty( $_POST[ 'country' ] ) ): ?>
 
 			<span class="ji-search-form__no-data-msg">
-				<?php _e( 'Please select a country first', $plugin_name ); ?>
+				<?php _e( 'Please select a country first', 'jiwp' ); ?>
 			</span>
 
 		<?php else: ?>
 			
 			<span class="ji-search-form__no-data-msg">
-				<?php _e( 'No states found for selected country', $plugin_name ); ?>
+				<?php _e( 'No states found for selected country', 'jiwp' ); ?>
 			</span>
 
 		<?php endif; ?>
