@@ -430,7 +430,7 @@ class Jiwp_Public {
 
 		$realty_id = get_query_var( 'ji_realty_id', false );
 
-        $new_template = self::get_template( 'realty-template.php' );
+        $new_template = self::get_template( 'realty/realty-template.php' );
 
         try 
         {
@@ -457,7 +457,7 @@ class Jiwp_Public {
 
 		$project_id = get_query_var( 'ji_project_id', false );
 
-        $new_template = self::get_template( 'project-template.php' );
+        $new_template = self::get_template( 'project/project-template.php' );
 
         try 
         {
@@ -494,7 +494,7 @@ class Jiwp_Public {
 
 			$realties = $this->get_realties( $page, get_option('posts_per_page') );
 
-			$new_template = self::get_template( 'search-results-template.php' );
+			$new_template = self::get_template( 'search-form/search-results-template.php' );
 
 	        if ( $new_template ) 
 	        {
@@ -567,7 +567,7 @@ class Jiwp_Public {
 			$pager = $this->get_realties( $page, $atts[ 'max_per_page' ] );
 
 			ob_start();
-			include( 'partials/_realty-list.php' );
+			include( 'partials/realty/_realty-list.php' );
 			return ob_get_clean();
 		}
 		catch ( Exception $e )
@@ -598,7 +598,7 @@ class Jiwp_Public {
 			}
 
 			ob_start();
-			include( 'partials/_search-form.php' );
+			include( 'partials/search-form/_search-form.php' );
 			return ob_get_clean();
 		} 
 		catch ( Exception $e ) 
@@ -636,7 +636,7 @@ class Jiwp_Public {
 			$pager = $this->get_projects( $page, $atts[ 'max_per_page' ] );
 
 			ob_start();
-			include( 'partials/_project-list.php' );
+			include( 'partials/project/_project-list.php' );
 			return ob_get_clean();
 		}
 		catch ( Exception $e )
@@ -705,7 +705,7 @@ class Jiwp_Public {
 			$states	= self::get_states( $_POST['country'] );
 		}
 
-		include( 'partials/_search-form__states.php' );
+		include( 'partials/search-form/_search-form__states.php' );
 
 		wp_die();
 
@@ -731,7 +731,7 @@ class Jiwp_Public {
 			$cities = self::get_cities( $_POST['country'] );
 		}
 
-		include( 'partials/_search-form__cities.php' );
+		include( 'partials/search-form/_search-form__cities.php' );
 
 		wp_die();
 

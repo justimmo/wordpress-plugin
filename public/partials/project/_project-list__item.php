@@ -30,7 +30,7 @@
 
             <?php endif; ?>
 
-            <?php include( Jiwp_Public::get_template( '_project-info.php' ) ); ?>
+            <?php include( Jiwp_Public::get_template( 'project/_project-info.php' ) ); ?>
 
         </header>
 

@@ -40,7 +40,7 @@ class Justimmo_Search_Form_Widget extends WP_Widget {
 		}
 
 		// Widget output		
-		include( 'partials/_search-form.php' );
+		include( 'partials/search-form/_search-form.php' );
 
 	}
 

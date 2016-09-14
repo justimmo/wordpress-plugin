@@ -10,7 +10,7 @@
 
 		</header>
 
-		<?php include( Jiwp_Public::get_template( '_realty-extended-info.php' ) ); ?>
+		<?php include( Jiwp_Public::get_template( 'realty/_realty-extended-info.php' ) ); ?>
 
 		<section class="ji-info-section ji-info-section--photos">
 

@@ -10,7 +10,7 @@
 
         </header>
 
-        <?php include( Jiwp_Public::get_template( '_project-extended-info.php' ) ); ?>
+        <?php include( Jiwp_Public::get_template( 'project/_project-extended-info.php' ) ); ?>
 
         <?php $realties_array = $project->getRealties(); ?>
 
@@ -24,7 +24,7 @@
 
                     <?php foreach ( $realties_array as $realty ): ?>
 
-                        <?php include( Jiwp_Public::get_template( '_realty-list__item.php' ) ); ?>
+                        <?php include( Jiwp_Public::get_template( 'realty/_realty-list__item.php' ) ); ?>
 
                     <?php endforeach; ?>
 

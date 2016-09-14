@@ -30,7 +30,7 @@
 
             </h1>
 
-            <?php include( Jiwp_Public::get_template( '_realty-info.php' ) ); ?>
+            <?php include( Jiwp_Public::get_template( 'realty/_realty-info.php' ) ); ?>
 
         </header>
 

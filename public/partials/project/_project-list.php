@@ -6,7 +6,7 @@
 
             <?php foreach ( $pager as $project ): ?>
 
-                <?php include( Jiwp_Public::get_template( '_project-list__item.php' ) ); ?>
+                <?php include( Jiwp_Public::get_template( 'project/_project-list__item.php' ) ); ?>
 
             <?php endforeach; ?>
 

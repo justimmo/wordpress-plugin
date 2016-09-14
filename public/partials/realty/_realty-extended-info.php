@@ -704,43 +704,45 @@
 </section>
 
 <!-- Energy Efficiency Certificate -->
-<section class="ji-info-section">
-	<h3 class="ji-info-section__title"><?php _e( 'Energy Efficiency Certificate:', 'jiwp' ); ?></h3>
-	<?php $energy_pass = $realty->getEnergyPass(); ?>
+<?php $energy_pass = $realty->getEnergyPass(); ?>
 
-	<ul class="ji-info-list">
-		<li class="ji-info">
-			<label class="ji-info__label">
-				<?php _e( 'Valid until:', 'jiwp' ); ?>
-			</label>
-			<span class="ji-info__value">
-				<?php echo $energy_pass->getValidUntil(); ?>
-			</span>
-		</li>
+<?php if ( !empty( $energy_pass ) ): ?>
+	<section class="ji-info-section">
+		<h3 class="ji-info-section__title"><?php _e( 'Energy Efficiency Certificate:', 'jiwp' ); ?></h3>	
+		<ul class="ji-info-list">
+			<li class="ji-info">
+				<label class="ji-info__label">
+					<?php _e( 'Valid until:', 'jiwp' ); ?>
+				</label>
+				<span class="ji-info__value">
+					<?php echo $energy_pass->getValidUntil(); ?>
+				</span>
+			</li>
 
-		<li class="ji-info">
-			<label class="ji-info__label">
-				<?php _e( 'Annual Thermal Energy Consumption:', 'jiwp' ); ?>
-			</label>
-			<span class="ji-info__value">
-				<?php echo $energy_pass->getThermalHeatRequirementValue(); ?> kWh/m&sup2;a
-				(<?php _e( 'class', 'jiwp' ); ?>
-				<?php echo $energy_pass->getThermalHeatRequirementClass(); ?>)
-			</span>
-		</li>
+			<li class="ji-info">
+				<label class="ji-info__label">
+					<?php _e( 'Annual Thermal Energy Consumption:', 'jiwp' ); ?>
+				</label>
+				<span class="ji-info__value">
+					<?php echo $energy_pass->getThermalHeatRequirementValue(); ?> kWh/m&sup2;a
+					(<?php _e( 'class', 'jiwp' ); ?>
+					<?php echo $energy_pass->getThermalHeatRequirementClass(); ?>)
+				</span>
+			</li>
 
-		<li class="ji-info">
-			<label class="ji-info__label">
-				<?php _e( 'Energy Efficiency Factor:', 'jiwp' ); ?>
-			</label>
-			<span class="ji-info__value">
-				<?php echo $energy_pass->getEnergyEfficiencyFactorValue(); ?>
-				(<?php _e( 'class', 'jiwp' ); ?>
-				<?php echo $energy_pass->getEnergyEfficiencyFactorClass(); ?>)
-			</span>
-		</li>
-	</ul>
-</section>
+			<li class="ji-info">
+				<label class="ji-info__label">
+					<?php _e( 'Energy Efficiency Factor:', 'jiwp' ); ?>
+				</label>
+				<span class="ji-info__value">
+					<?php echo $energy_pass->getEnergyEfficiencyFactorValue(); ?>
+					(<?php _e( 'class', 'jiwp' ); ?>
+					<?php echo $energy_pass->getEnergyEfficiencyFactorClass(); ?>)
+				</span>
+			</li>
+		</ul>
+	</section>
+<?php endif; ?>
 
 <!-- Description Text -->
 <section class="ji-info-section">

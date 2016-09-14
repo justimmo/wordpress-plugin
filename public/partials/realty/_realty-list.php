@@ -6,7 +6,7 @@
 
 			<?php foreach ( $pager as $realty ): ?>
 
-				<?php include( Jiwp_Public::get_template( '_realty-list__item.php' ) ); ?>
+				<?php include( Jiwp_Public::get_template( 'realty/_realty-list__item.php' ) ); ?>
 
 			<?php endforeach; ?>
 
