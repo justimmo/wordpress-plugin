@@ -202,6 +202,7 @@
 			<ul class="ji-shortcode-options">
 				<li class="ji-shortcode-option">
 					<code>id</code>: <?php _e( 'The project Justimmo ID (mandatory).', 'jiwp' ); ?>
+					<a class="featherlight-gallery" href="#" data-featherlight="<?php echo plugin_dir_url( __DIR__ ) ?>/img/justimmo-project-id.png"><?php _e( 'show image', 'jiwp' ); ?></a>
 					<p>
 						<?php _e( 'Example:', 'jiwp' ); ?>
 						<code>[ji_project_info id="5"]</code> <?php _e( 'shows information belonging to the project with the Justimmo ID of 5.', 'jiwp'); ?>
