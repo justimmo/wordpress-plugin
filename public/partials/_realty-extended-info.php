@@ -2,8 +2,6 @@
 <section class="ji-info-section">
 	<h3 class="ji-info-section__title"><?php _e( 'Basic details:', 'jiwp' ); ?></h3>
 
-	<?php $currency = $realty->getCurrency(); ?>
-
 	<ul class="ji-info-list ji-info-list--extended">
 		<li class="ji-info">
 			<label class="ji-info__label">
@@ -126,7 +124,7 @@
 			</span>
 		</li>
 
-		<?php 		
+		<?php
 			$building_age = $realty->getStyleOfBuilding(); 
 			if ( !empty( $building_age ) ): 
 		?>
@@ -523,6 +521,8 @@
 <section class="ji-info-section">
 	<h3 class="ji-info-section__title"><?php _e( 'Prices / Costs' ); ?></h3>
 
+	<?php $currency = $realty->getCurrency(); ?>
+
 	<ul class="ji-info-list">
 
 		<?php if ( $is_for_rent ): ?>
@@ -532,7 +532,7 @@
 					<?php _e( 'Price:', 'jiwp' ); ?>
 				</label>
 				<span class="ji-info__value">
-					<?php echo money_format( "%!i $currency" , $realty->getRentPerSqm() ) . ' / ' . 'm&sup2;'; ?>
+					<?php echo money_format( "%!i $currency" , $realty->getTotalRent() ); ?>
 				</span>
 			</li>
 

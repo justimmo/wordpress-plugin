@@ -49,14 +49,20 @@
 		<span class="ji-info__value">
 			<?php
 
+				$currency = $realty->getCurrency();
+
+				if ( empty( $currency ) ) 
+				{
+					$currency = 'EUR';
+				}
+
 				if ( $is_for_rent ) 
 				{
-					//echo money_format( '%i' , $realty->getRentPerSqm() ) . ' / ' . 'm&sup2;';
-					echo money_format( '%i' , $realty->getTotalRent() );
+					echo money_format( "%!i $currency" , $realty->getTotalRent() );
 				}
 				else 
 				{
-					echo money_format( '%i' , $realty->getPurchasePrice() );
+					echo money_format( "%!i $currency" , $realty->getPurchasePrice() );
 				}
 
 			?>
