@@ -39,6 +39,15 @@ use Justimmo\Model\Mapper\V1\ProjectMapper;
 
 class Jiwp_Public {
 
+	const PROJECT_INFO_TEMPLATES_MAPPING = array(
+		'address' 			=> '/project/_project-info__address.php',
+		'contact' 			=> '/project/_project-info__contact.php',
+		'description' 		=> '/project/_project-info__description.php',
+		'other-info' 		=> '/project/_project-info__other-info.php',
+		'photo-gallery' 	=> '/project/_project-info__photo-gallery.php',
+		'realties' 			=> '/project/_project-info__realties.php',
+	);
+
 	/**
 	 * The ID of this plugin.
 	 *
@@ -518,9 +527,10 @@ class Jiwp_Public {
 		// Enable shortcodes in widgets
 		add_filter('widget_text', 'do_shortcode');
 
+		add_shortcode( 'ji_search_form', array( $this, 'search_form_shortcode_output' ) );
 		add_shortcode( 'ji_realty_list', array( $this, 'realty_list_shortcode_output' ) );
 		add_shortcode( 'ji_project_list', array( $this, 'project_list_shortcode_output' ) );
-		add_shortcode( 'ji_search_form', array( $this, 'search_form_shortcode_output' ) );
+		add_shortcode( 'ji_project_info', array( $this, 'project_info_shortcode_output' ) );
 
 	}
 
@@ -582,7 +592,7 @@ class Jiwp_Public {
 	 *
 	 * @since 1.0.0
 	 */
-	public function search_form_shortcode_output() {
+	public function search_form_shortcode_output( $atts ) {
 
 		try 
 		{
@@ -613,7 +623,7 @@ class Jiwp_Public {
 	 *
 	 * @since 1.0.0
 	 */
-	public function project_list_shortcode_output() {
+	public function project_list_shortcode_output( $atts ) {
 
 		$atts = shortcode_atts(
 			array(
@@ -638,6 +648,52 @@ class Jiwp_Public {
 			ob_start();
 			include( 'partials/project/_project-list.php' );
 			return ob_get_clean();
+		}
+		catch ( Exception $e )
+		{
+			self::jiwp_error_log( $e );
+		}
+
+	}
+
+	/**
+	 * Project info shortcode handler
+	 *
+	 * @since 1.0.0
+	 */
+	public function project_info_shortcode_output( $atts ) {
+
+		$atts = shortcode_atts(
+			array(
+				'id' => null,
+				'info' => false,
+			),
+			$atts,
+			'ji_project_info'
+		);
+
+		if ( empty( $atts['id'] ) ) 
+		{
+			return;
+		}
+
+		try
+		{
+			if ( !empty( $this->cached_project ) ) 
+			{
+				$project = $this->cached_project;
+			}
+			else 
+			{
+				$project = $this->get_project( $atts['id'] );
+			}
+
+			if ( array_key_exists( $atts['info'], self::PROJECT_INFO_TEMPLATES_MAPPING ) )
+			{
+				ob_start();
+				include( self::get_template( self::PROJECT_INFO_TEMPLATES_MAPPING[ $atts['info'] ] ) );
+				return ob_get_clean();
+			}
 		}
 		catch ( Exception $e )
 		{
