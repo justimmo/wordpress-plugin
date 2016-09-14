@@ -25,9 +25,9 @@
 		<a href="?page=jiwp-shortcodes" class="nav-tab <?php echo 'justimmo_page_jiwp-shortcodes' == $current_screen->id ? 'nav-tab-active' : '' ?>">
 			<?php _e( 'Shortcodes', 'jiwp' ); ?>
 		</a>
-		<a href="?page=jiwp-theming" class="nav-tab <?php echo 'justimmo_page_jiwp-theming' == $current_screen->id ? 'nav-tab-active' : '' ?>">
+		<!-- <a href="?page=jiwp-theming" class="nav-tab <?php echo 'justimmo_page_jiwp-theming' == $current_screen->id ? 'nav-tab-active' : '' ?>">
 			<?php _e( 'Theming', 'jiwp' ); ?>
-		</a>
+		</a> -->
 	</h2>
 	
 	<section class="wrap"><?php include( $child_template ); ?></section>

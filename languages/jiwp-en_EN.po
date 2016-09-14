@@ -1,591 +1,318 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Justimmo WP Plugin\n"
-"POT-Creation-Date: 2016-07-29 11:32+0200\n"
-"PO-Revision-Date: 2016-07-29 11:33+0200\n"
+"POT-Creation-Date: 2016-09-14 15:22+0300\n"
+"PO-Revision-Date: 2016-09-14 15:22+0300\n"
 "Last-Translator: \n"
 "Language-Team: \n"
+"Language: en\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 1.5.5\n"
+"X-Generator: Poedit 1.8.9\n"
 "X-Poedit-KeywordsList: _;gettext;gettext_noop;_e\n"
-"X-Poedit-Basepath: .\n"
-"X-Poedit-SearchPath-0: C:\\Users\\Razvan\\Desktop\\justimmo\\jiwp\n"
+"X-Poedit-Basepath: ../admin\n"
+"X-Poedit-SearchPath-0: .\n"
 
-#: C:\Users\Razvan\Desktop\justimmo\jiwp/admin/partials/admin-template.php:18
+#: partials/admin-template.php:18
 msgid "Justimmo Settings"
 msgstr ""
 
-#: C:\Users\Razvan\Desktop\justimmo\jiwp/admin/partials/admin-template.php:23
+#: partials/admin-template.php:23
 msgid "API Settings"
 msgstr ""
 
-#: C:\Users\Razvan\Desktop\justimmo\jiwp/admin/partials/admin-template.php:26
+#: partials/admin-template.php:26
 msgid "Shortcodes"
 msgstr ""
 
-#: C:\Users\Razvan\Desktop\justimmo\jiwp/admin/partials/admin-template.php:29
+#: partials/admin-template.php:29
 msgid "Theming"
 msgstr ""
 
-#: C:\Users\Razvan\Desktop\justimmo\jiwp/admin/partials/api-settings-template.php:1
+#: partials/api-settings-template.php:1
 msgid "Please enter your Justimmo API credentials:"
 msgstr ""
 
-#: C:\Users\Razvan\Desktop\justimmo\jiwp/admin/partials/api-settings-template.php:7
+#: partials/api-settings-template.php:7
 msgid "Username"
 msgstr ""
 
-#: C:\Users\Razvan\Desktop\justimmo\jiwp/admin/partials/api-settings-template.php:18
+#: partials/api-settings-template.php:18
 msgid "Password"
 msgstr ""
 
-#: C:\Users\Razvan\Desktop\justimmo\jiwp/admin/partials/api-settings-template.php:34
+#: partials/api-settings-template.php:34
 msgid "How to obtain your Justimmo API credentials:"
 msgstr ""
 
-#: C:\Users\Razvan\Desktop\justimmo\jiwp/admin/partials/api-settings-template.php:39
+#: partials/api-settings-template.php:39
 msgid "Log into the Justimmo platform using your account."
 msgstr ""
 
-#: C:\Users\Razvan\Desktop\justimmo\jiwp/admin/partials/api-settings-template.php:40
-#: C:\Users\Razvan\Desktop\justimmo\jiwp/admin/partials/api-settings-template.php:44
-#: C:\Users\Razvan\Desktop\justimmo\jiwp/admin/partials/api-settings-template.php:48
-#: C:\Users\Razvan\Desktop\justimmo\jiwp/admin/partials/api-settings-template.php:52
-#: C:\Users\Razvan\Desktop\justimmo\jiwp/admin/partials/api-settings-template.php:56
-#: C:\Users\Razvan\Desktop\justimmo\jiwp/admin/partials/api-settings-template.php:60
+#: partials/api-settings-template.php:40 partials/api-settings-template.php:44
+#: partials/api-settings-template.php:48 partials/api-settings-template.php:52
+#: partials/api-settings-template.php:56 partials/api-settings-template.php:60
 msgid "show image"
 msgstr ""
 
-#: C:\Users\Razvan\Desktop\justimmo\jiwp/admin/partials/api-settings-template.php:43
+#: partials/api-settings-template.php:43
 msgid "From the main menu go to \"more\" > \"Exports\"."
 msgstr ""
 
-#: C:\Users\Razvan\Desktop\justimmo\jiwp/admin/partials/api-settings-template.php:47
+#: partials/api-settings-template.php:47
 msgid "Switch to the \"Custom Exports\" tab."
 msgstr ""
 
-#: C:\Users\Razvan\Desktop\justimmo\jiwp/admin/partials/api-settings-template.php:51
+#: partials/api-settings-template.php:51
 msgid "Click the \"Create JUSTIMMO API\" button."
 msgstr ""
 
-#: C:\Users\Razvan\Desktop\justimmo\jiwp/admin/partials/api-settings-template.php:55
+#: partials/api-settings-template.php:55
 msgid "Complete the form with your desired options. Click the \"Save\" button."
 msgstr ""
 
-#: C:\Users\Razvan\Desktop\justimmo\jiwp/admin/partials/api-settings-template.php:59
+#: partials/api-settings-template.php:59
 msgid ""
 "You should now have a username and password in your export settings form."
 msgstr ""
 
-#: C:\Users\Razvan\Desktop\justimmo\jiwp/admin/partials/api-settings-template.php:63
+#: partials/api-settings-template.php:63
 msgid "You should use these credentials to complete the above form."
 msgstr ""
 
-#: C:\Users\Razvan\Desktop\justimmo\jiwp/admin/partials/shortcodes-template.php:1
+#: partials/shortcodes-template.php:1
 msgid "The following shortcodes are made available by the Justimmo API Plugin:"
 msgstr ""
 
-#: C:\Users\Razvan\Desktop\justimmo\jiwp/admin/partials/shortcodes-template.php:6
-msgid "The property listing shortcode:"
+#: partials/shortcodes-template.php:8
+msgid "The realty listing shortcode:"
 msgstr ""
 
-#: C:\Users\Razvan\Desktop\justimmo\jiwp/admin/partials/shortcodes-template.php:11
+#: partials/shortcodes-template.php:13
 msgid ""
 "Paste this shortcode in any page, post or sidebar Text widget to output a "
 "list of your available realties."
 msgstr ""
 
-#: C:\Users\Razvan\Desktop\justimmo\jiwp/admin/partials/shortcodes-template.php:13
+#: partials/shortcodes-template.php:15 partials/shortcodes-template.php:175
+#: partials/shortcodes-template.php:200
 msgid "It has the following options which you can pass as parameters:"
 msgstr ""
 
-#: C:\Users\Razvan\Desktop\justimmo\jiwp/admin/partials/shortcodes-template.php:18
+#: partials/shortcodes-template.php:19
 msgid "Limits the number of realties displayed per page."
 msgstr ""
 
-#: C:\Users\Razvan\Desktop\justimmo\jiwp/admin/partials/shortcodes-template.php:19
-#: C:\Users\Razvan\Desktop\justimmo\jiwp/admin/partials/shortcodes-template.php:25
-#: C:\Users\Razvan\Desktop\justimmo\jiwp/admin/partials/shortcodes-template.php:31
-#: C:\Users\Razvan\Desktop\justimmo\jiwp/admin/partials/shortcodes-template.php:37
-#: C:\Users\Razvan\Desktop\justimmo\jiwp/admin/partials/shortcodes-template.php:43
-#: C:\Users\Razvan\Desktop\justimmo\jiwp/admin/partials/shortcodes-template.php:49
-#: C:\Users\Razvan\Desktop\justimmo\jiwp/admin/partials/shortcodes-template.php:55
-#: C:\Users\Razvan\Desktop\justimmo\jiwp/admin/partials/shortcodes-template.php:61
-#: C:\Users\Razvan\Desktop\justimmo\jiwp/admin/partials/shortcodes-template.php:67
-#: C:\Users\Razvan\Desktop\justimmo\jiwp/admin/partials/shortcodes-template.php:73
-#: C:\Users\Razvan\Desktop\justimmo\jiwp/admin/partials/shortcodes-template.php:79
-#: C:\Users\Razvan\Desktop\justimmo\jiwp/admin/partials/shortcodes-template.php:85
-#: C:\Users\Razvan\Desktop\justimmo\jiwp/admin/partials/shortcodes-template.php:91
-#: C:\Users\Razvan\Desktop\justimmo\jiwp/admin/partials/shortcodes-template.php:97
-#: C:\Users\Razvan\Desktop\justimmo\jiwp/admin/partials/shortcodes-template.php:103
-#: C:\Users\Razvan\Desktop\justimmo\jiwp/admin/partials/shortcodes-template.php:109
+#: partials/shortcodes-template.php:21 partials/shortcodes-template.php:29
+#: partials/shortcodes-template.php:37 partials/shortcodes-template.php:45
+#: partials/shortcodes-template.php:53 partials/shortcodes-template.php:61
+#: partials/shortcodes-template.php:69 partials/shortcodes-template.php:77
+#: partials/shortcodes-template.php:85 partials/shortcodes-template.php:93
+#: partials/shortcodes-template.php:101 partials/shortcodes-template.php:109
+#: partials/shortcodes-template.php:117 partials/shortcodes-template.php:125
+#: partials/shortcodes-template.php:133 partials/shortcodes-template.php:141
+#: partials/shortcodes-template.php:181 partials/shortcodes-template.php:206
+#: partials/shortcodes-template.php:214
 msgid "Example:"
 msgstr ""
 
-#: C:\Users\Razvan\Desktop\justimmo\jiwp/admin/partials/shortcodes-template.php:20
+#: partials/shortcodes-template.php:22
 msgid "shows 5 realties per page."
 msgstr ""
 
-#: C:\Users\Razvan\Desktop\justimmo\jiwp/admin/partials/shortcodes-template.php:24
+#: partials/shortcodes-template.php:27
 msgid "Lists only realties up for rent."
 msgstr ""
 
-#: C:\Users\Razvan\Desktop\justimmo\jiwp/admin/partials/shortcodes-template.php:30
+#: partials/shortcodes-template.php:35
 msgid "Lists only realties up for purchase."
 msgstr ""
 
-#: C:\Users\Razvan\Desktop\justimmo\jiwp/admin/partials/shortcodes-template.php:36
+#: partials/shortcodes-template.php:43
 msgid ""
 "Lists only realties of certain type. Available values: \"wohnung"
 "\" (Apartment), \"haus\" (House), \"buero_praxen\" (Bureau)."
 msgstr ""
 
-#: C:\Users\Razvan\Desktop\justimmo\jiwp/admin/partials/shortcodes-template.php:38
+#: partials/shortcodes-template.php:46
 msgid "shows only apartments."
 msgstr ""
 
-#: C:\Users\Razvan\Desktop\justimmo\jiwp/admin/partials/shortcodes-template.php:42
+#: partials/shortcodes-template.php:51
 msgid "Sets a minimum price (in euro)."
 msgstr ""
 
-#: C:\Users\Razvan\Desktop\justimmo\jiwp/admin/partials/shortcodes-template.php:44
+#: partials/shortcodes-template.php:54
 msgid "show realties with a minimum price of 100 euro."
 msgstr ""
 
-#: C:\Users\Razvan\Desktop\justimmo\jiwp/admin/partials/shortcodes-template.php:48
+#: partials/shortcodes-template.php:59
 msgid "Sets a maximum price (in euro)."
 msgstr ""
 
-#: C:\Users\Razvan\Desktop\justimmo\jiwp/admin/partials/shortcodes-template.php:50
+#: partials/shortcodes-template.php:62
 msgid "show realties with a maximum price of 100 euro."
 msgstr ""
 
-#: C:\Users\Razvan\Desktop\justimmo\jiwp/admin/partials/shortcodes-template.php:54
+#: partials/shortcodes-template.php:67
 msgid "Sets a minimum number of rooms."
 msgstr ""
 
-#: C:\Users\Razvan\Desktop\justimmo\jiwp/admin/partials/shortcodes-template.php:56
+#: partials/shortcodes-template.php:70
 msgid "shows realties with a minimum of 3 rooms."
 msgstr ""
 
-#: C:\Users\Razvan\Desktop\justimmo\jiwp/admin/partials/shortcodes-template.php:60
+#: partials/shortcodes-template.php:75
 msgid "Sets a maximum number of rooms."
 msgstr ""
 
-#: C:\Users\Razvan\Desktop\justimmo\jiwp/admin/partials/shortcodes-template.php:62
+#: partials/shortcodes-template.php:78
 msgid "shows realties with a maximum of 3 rooms."
 msgstr ""
 
-#: C:\Users\Razvan\Desktop\justimmo\jiwp/admin/partials/shortcodes-template.php:66
+#: partials/shortcodes-template.php:83
 msgid "Sets a minimum surface area (m&sup2;)."
 msgstr ""
 
-#: C:\Users\Razvan\Desktop\justimmo\jiwp/admin/partials/shortcodes-template.php:68
+#: partials/shortcodes-template.php:86
 msgid "shows realties with a minimum surface area of 100 m&sup2;"
 msgstr ""
 
-#: C:\Users\Razvan\Desktop\justimmo\jiwp/admin/partials/shortcodes-template.php:72
+#: partials/shortcodes-template.php:91
 msgid "Sets a maximum surface area (m&sup2;)."
 msgstr ""
 
-#: C:\Users\Razvan\Desktop\justimmo\jiwp/admin/partials/shortcodes-template.php:74
+#: partials/shortcodes-template.php:94
 msgid "shows realties with a maximum surface area of 100 m&sup2;"
 msgstr ""
 
-#: C:\Users\Razvan\Desktop\justimmo\jiwp/admin/partials/shortcodes-template.php:78
+#: partials/shortcodes-template.php:99
 msgid "Lists only realties that have a garden."
 msgstr ""
 
-#: C:\Users\Razvan\Desktop\justimmo\jiwp/admin/partials/shortcodes-template.php:84
+#: partials/shortcodes-template.php:107
 msgid "Lists only realties that have a garage."
 msgstr ""
 
-#: C:\Users\Razvan\Desktop\justimmo\jiwp/admin/partials/shortcodes-template.php:90
+#: partials/shortcodes-template.php:115
 msgid "Lists only realties that have a balcony/terrace."
 msgstr ""
 
-#: C:\Users\Razvan\Desktop\justimmo\jiwp/admin/partials/shortcodes-template.php:96
+#: partials/shortcodes-template.php:123
 msgid ""
 "Orders realties by price. Available values: \"asc\" (ascending), \"desc"
 "\" (descending)."
 msgstr ""
 
-#: C:\Users\Razvan\Desktop\justimmo\jiwp/admin/partials/shortcodes-template.php:98
+#: partials/shortcodes-template.php:126
 msgid "shows realties in descending price order."
 msgstr ""
 
-#: C:\Users\Razvan\Desktop\justimmo\jiwp/admin/partials/shortcodes-template.php:102
+#: partials/shortcodes-template.php:131
 msgid ""
 "Orders realties by entry date. Available values: \"asc\" (ascending), \"desc"
 "\" (descending)."
 msgstr ""
 
-#: C:\Users\Razvan\Desktop\justimmo\jiwp/admin/partials/shortcodes-template.php:104
+#: partials/shortcodes-template.php:134
 msgid "shows realties in descending date order."
 msgstr ""
 
-#: C:\Users\Razvan\Desktop\justimmo\jiwp/admin/partials/shortcodes-template.php:108
+#: partials/shortcodes-template.php:139
 msgid ""
 "Orders realties by surface. Available values: \"asc\" (ascending), \"desc"
 "\" (descending)."
 msgstr ""
 
-#: C:\Users\Razvan\Desktop\justimmo\jiwp/admin/partials/shortcodes-template.php:110
+#: partials/shortcodes-template.php:142
 msgid "shows realties in descending surface order."
 msgstr ""
 
-#: C:\Users\Razvan\Desktop\justimmo\jiwp/admin/partials/shortcodes-template.php:115
+#: partials/shortcodes-template.php:147
 msgid ""
 "(Note: you cannot combine multiple ordering attributes. Only the last one "
 "will be used)"
 msgstr ""
 
-#: C:\Users\Razvan\Desktop\justimmo\jiwp/admin/partials/shortcodes-template.php:120
+#: partials/shortcodes-template.php:155
 msgid "The search form shortcode:"
 msgstr ""
 
-#: C:\Users\Razvan\Desktop\justimmo\jiwp/admin/partials/shortcodes-template.php:125
+#: partials/shortcodes-template.php:160
 msgid ""
 "Paste this shortcode in any page, post or sidebar Text widget to output a "
 "realty search form. This can also be achieved by using the \"Justimmo Search "
 "Form\" widget."
 msgstr ""
 
-#: C:\Users\Razvan\Desktop\justimmo\jiwp/admin/partials/theming-template.php:1
+#: partials/shortcodes-template.php:168
+msgid "The project listing shortcode:"
+msgstr ""
+
+#: partials/shortcodes-template.php:173
+msgid ""
+"Paste this shortcode in any page, post or sidebar Text widget to output a "
+"list of your available projects."
+msgstr ""
+
+#: partials/shortcodes-template.php:179
+msgid "Limits the number of projects displayed per page."
+msgstr ""
+
+#: partials/shortcodes-template.php:182
+msgid "shows 5 projects per page."
+msgstr ""
+
+#: partials/shortcodes-template.php:193
+msgid "The project information shortcode:"
+msgstr ""
+
+#: partials/shortcodes-template.php:198
+msgid ""
+"Paste this shortcode in any page, post or sidebar Text widget to output "
+"various project information."
+msgstr ""
+
+#: partials/shortcodes-template.php:204
+msgid "The project Justimmo ID (mandatory)."
+msgstr ""
+
+#: partials/shortcodes-template.php:207
+msgid "shows information belonging to the project with the Justimmo ID of 5."
+msgstr ""
+
+#: partials/shortcodes-template.php:211
+msgid "The project information to be shown (mandatory)."
+msgstr ""
+
+#: partials/shortcodes-template.php:215
+msgid ""
+"shows project address information belonging to the project with the Justimmo "
+"ID of 5."
+msgstr ""
+
+#: partials/shortcodes-template.php:219
+msgid "Here is a list of all the values available for the \"info\" option:"
+msgstr ""
+
+#: partials/theming-template.php:1
 msgid "How to customize templates and styles"
 msgstr ""
 
-#: C:\Users\Razvan\Desktop\justimmo\jiwp/admin/partials/theming-template.php:3
+#: partials/theming-template.php:3
 msgid ""
 "To overwrite a template, create a folder named <code>jiwp-templates</code> "
 "inside your active theme's folder in which you should place a copy of that "
 "template (with the same name), modifying it to meet your requirements."
 msgstr ""
 
-#: C:\Users\Razvan\Desktop\justimmo\jiwp/admin/partials/theming-template.php:5
+#: partials/theming-template.php:5
 msgid " Here is a list of templates that can be overwritten:"
 msgstr ""
 
-#: C:\Users\Razvan\Desktop\justimmo\jiwp/admin/partials/theming-template.php:28
+#: partials/theming-template.php:28
 msgid ""
 "You can find the templates listed above inside the <code>/public/partials</"
 "code> folder in your plugin folder"
-msgstr ""
-
-#: C:\Users\Razvan\Desktop\justimmo\jiwp/public/partials/realty-template.php:17
-msgid "Photo Gallery"
-msgstr ""
-
-#: C:\Users\Razvan\Desktop\justimmo\jiwp/public/partials/realty-template.php:47
-msgid "No realty found."
-msgstr ""
-
-#: C:\Users\Razvan\Desktop\justimmo\jiwp/public/partials/_realty-extended-info.php:3
-msgid "Basic details:"
-msgstr ""
-
-#: C:\Users\Razvan\Desktop\justimmo\jiwp/public/partials/_realty-extended-info.php:10
-#: C:\Users\Razvan\Desktop\justimmo\jiwp/public/partials/_search-form.php:3
-msgid "Realty Number:"
-msgstr ""
-
-#: C:\Users\Razvan\Desktop\justimmo\jiwp/public/partials/_realty-extended-info.php:19
-msgid "Country / State:"
-msgstr ""
-
-#: C:\Users\Razvan\Desktop\justimmo\jiwp/public/partials/_realty-extended-info.php:28
-msgid "Address:"
-msgstr ""
-
-#: C:\Users\Razvan\Desktop\justimmo\jiwp/public/partials/_realty-extended-info.php:74
-msgid "Location:"
-msgstr ""
-
-#: C:\Users\Razvan\Desktop\justimmo\jiwp/public/partials/_realty-extended-info.php:85
-msgid "Proximity:"
-msgstr ""
-
-#: C:\Users\Razvan\Desktop\justimmo\jiwp/public/partials/_realty-extended-info.php:95
-msgid "Commercial Type:"
-msgstr ""
-
-#: C:\Users\Razvan\Desktop\justimmo\jiwp/public/partials/_realty-extended-info.php:104
-#: C:\Users\Razvan\Desktop\justimmo\jiwp/public/partials/_realty-info.php:6
-#: C:\Users\Razvan\Desktop\justimmo\jiwp/public/partials/_search-form.php:45
-msgid "Realty Type:"
-msgstr ""
-
-#: C:\Users\Razvan\Desktop\justimmo\jiwp/public/partials/_realty-extended-info.php:115
-msgid "Building Age:"
-msgstr ""
-
-#: C:\Users\Razvan\Desktop\justimmo\jiwp/public/partials/_realty-extended-info.php:128
-msgid "Categories:"
-msgstr ""
-
-#: C:\Users\Razvan\Desktop\justimmo\jiwp/public/partials/_realty-extended-info.php:139
-#: C:\Users\Razvan\Desktop\justimmo\jiwp/public/partials/_realty-info.php:18
-msgid "For:"
-msgstr ""
-
-#: C:\Users\Razvan\Desktop\justimmo\jiwp/public/partials/_realty-extended-info.php:149
-#: C:\Users\Razvan\Desktop\justimmo\jiwp/public/partials/_realty-info.php:29
-msgid "Purchase"
-msgstr ""
-
-#: C:\Users\Razvan\Desktop\justimmo\jiwp/public/partials/_realty-extended-info.php:153
-#: C:\Users\Razvan\Desktop\justimmo\jiwp/public/partials/_realty-info.php:33
-#: C:\Users\Razvan\Desktop\justimmo\jiwp/public/partials/_search-form.php:30
-msgid "Rent"
-msgstr ""
-
-#: C:\Users\Razvan\Desktop\justimmo\jiwp/public/partials/_realty-extended-info.php:164
-#: C:\Users\Razvan\Desktop\justimmo\jiwp/public/partials/_search-form.php:118
-msgid "Surface:"
-msgstr ""
-
-#: C:\Users\Razvan\Desktop\justimmo\jiwp/public/partials/_realty-extended-info.php:172
-msgid "Floor Area:"
-msgstr ""
-
-#: C:\Users\Razvan\Desktop\justimmo\jiwp/public/partials/_realty-extended-info.php:185
-#: C:\Users\Razvan\Desktop\justimmo\jiwp/public/partials/_realty-info.php:69
-msgid "Surface Area:"
-msgstr ""
-
-#: C:\Users\Razvan\Desktop\justimmo\jiwp/public/partials/_realty-extended-info.php:198
-msgid "Living Area:"
-msgstr ""
-
-#: C:\Users\Razvan\Desktop\justimmo\jiwp/public/partials/_realty-extended-info.php:211
-msgid "Total Area:"
-msgstr ""
-
-#: C:\Users\Razvan\Desktop\justimmo\jiwp/public/partials/_realty-extended-info.php:224
-msgid "Balcony Area:"
-msgstr ""
-
-#: C:\Users\Razvan\Desktop\justimmo\jiwp/public/partials/_realty-extended-info.php:237
-msgid "Terrace Area:"
-msgstr ""
-
-#: C:\Users\Razvan\Desktop\justimmo\jiwp/public/partials/_realty-extended-info.php:250
-msgid "Garden Area:"
-msgstr ""
-
-#: C:\Users\Razvan\Desktop\justimmo\jiwp/public/partials/_realty-extended-info.php:263
-msgid "Cellar Area:"
-msgstr ""
-
-#: C:\Users\Razvan\Desktop\justimmo\jiwp/public/partials/_realty-extended-info.php:276
-msgid "Office Area:"
-msgstr ""
-
-#: C:\Users\Razvan\Desktop\justimmo\jiwp/public/partials/_realty-extended-info.php:289
-msgid "Storage Area:"
-msgstr ""
-
-#: C:\Users\Razvan\Desktop\justimmo\jiwp/public/partials/_realty-extended-info.php:302
-msgid "Loggia Area:"
-msgstr ""
-
-#: C:\Users\Razvan\Desktop\justimmo\jiwp/public/partials/_realty-extended-info.php:315
-msgid "Garage Area:"
-msgstr ""
-
-#: C:\Users\Razvan\Desktop\justimmo\jiwp/public/partials/_realty-extended-info.php:328
-msgid "Parking Area:"
-msgstr ""
-
-#: C:\Users\Razvan\Desktop\justimmo\jiwp/public/partials/_realty-extended-info.php:341
-msgid "Buildable Area:"
-msgstr ""
-
-#: C:\Users\Razvan\Desktop\justimmo\jiwp/public/partials/_realty-extended-info.php:355
-msgid "Room Count:"
-msgstr ""
-
-#: C:\Users\Razvan\Desktop\justimmo\jiwp/public/partials/_realty-extended-info.php:363
-#: C:\Users\Razvan\Desktop\justimmo\jiwp/public/partials/_realty-info.php:85
-#: C:\Users\Razvan\Desktop\justimmo\jiwp/public/partials/_search-form.php:94
-msgid "Rooms:"
-msgstr ""
-
-#: C:\Users\Razvan\Desktop\justimmo\jiwp/public/partials/_realty-extended-info.php:376
-msgid "Bathrooms:"
-msgstr ""
-
-#: C:\Users\Razvan\Desktop\justimmo\jiwp/public/partials/_realty-extended-info.php:389
-msgid "Toilet Rooms:"
-msgstr ""
-
-#: C:\Users\Razvan\Desktop\justimmo\jiwp/public/partials/_realty-extended-info.php:402
-msgid "Balconies:"
-msgstr ""
-
-#: C:\Users\Razvan\Desktop\justimmo\jiwp/public/partials/_realty-extended-info.php:415
-msgid "Terraces:"
-msgstr ""
-
-#: C:\Users\Razvan\Desktop\justimmo\jiwp/public/partials/_realty-extended-info.php:428
-#: C:\Users\Razvan\Desktop\justimmo\jiwp/public/partials/_realty-extended-info.php:441
-msgid "Loggias:"
-msgstr ""
-
-#: C:\Users\Razvan\Desktop\justimmo\jiwp/public/partials/_realty-extended-info.php:454
-msgid "Garages:"
-msgstr ""
-
-#: C:\Users\Razvan\Desktop\justimmo\jiwp/public/partials/_realty-extended-info.php:467
-msgid "Parking Spaces:"
-msgstr ""
-
-#: C:\Users\Razvan\Desktop\justimmo\jiwp/public/partials/_realty-extended-info.php:480
-msgid "Store Rooms:"
-msgstr ""
-
-#: C:\Users\Razvan\Desktop\justimmo\jiwp/public/partials/_realty-extended-info.php:494
-msgid "Equipment Description"
-msgstr ""
-
-#: C:\Users\Razvan\Desktop\justimmo\jiwp/public/partials/_realty-extended-info.php:500
-msgid "Prices / Costs"
-msgstr ""
-
-#: C:\Users\Razvan\Desktop\justimmo\jiwp/public/partials/_realty-extended-info.php:508
-#: C:\Users\Razvan\Desktop\justimmo\jiwp/public/partials/_realty-extended-info.php:519
-#: C:\Users\Razvan\Desktop\justimmo\jiwp/public/partials/_realty-info.php:44
-#: C:\Users\Razvan\Desktop\justimmo\jiwp/public/partials/_search-form.php:68
-msgid "Price:"
-msgstr ""
-
-#: C:\Users\Razvan\Desktop\justimmo\jiwp/public/partials/_realty-extended-info.php:530
-msgid "Commission:"
-msgstr ""
-
-#: C:\Users\Razvan\Desktop\justimmo\jiwp/public/partials/_realty-extended-info.php:541
-msgid "Additional Costs:"
-msgstr ""
-
-#: C:\Users\Razvan\Desktop\justimmo\jiwp/public/partials/_realty-extended-info.php:566
-msgid "Contract Establishment Costs:"
-msgstr ""
-
-#: C:\Users\Razvan\Desktop\justimmo\jiwp/public/partials/_realty-extended-info.php:579
-msgid "Land Registration Tax:"
-msgstr ""
-
-#: C:\Users\Razvan\Desktop\justimmo\jiwp/public/partials/_realty-extended-info.php:592
-msgid "Transfer Tax:"
-msgstr ""
-
-#: C:\Users\Razvan\Desktop\justimmo\jiwp/public/partials/_realty-extended-info.php:605
-msgid "Additional Charges:"
-msgstr ""
-
-#: C:\Users\Razvan\Desktop\justimmo\jiwp/public/partials/_realty-extended-info.php:620
-msgid "Yearly Net Earning:"
-msgstr ""
-
-#: C:\Users\Razvan\Desktop\justimmo\jiwp/public/partials/_realty-extended-info.php:633
-msgid "Building Subsidence:"
-msgstr ""
-
-#: C:\Users\Razvan\Desktop\justimmo\jiwp/public/partials/_realty-extended-info.php:646
-msgid "Net Yield:"
-msgstr ""
-
-#: C:\Users\Razvan\Desktop\justimmo\jiwp/public/partials/_realty-extended-info.php:660
-msgid "Energy Efficiency Certificate:"
-msgstr ""
-
-#: C:\Users\Razvan\Desktop\justimmo\jiwp/public/partials/_realty-extended-info.php:666
-msgid "Valid until:"
-msgstr ""
-
-#: C:\Users\Razvan\Desktop\justimmo\jiwp/public/partials/_realty-extended-info.php:675
-msgid "Annual Thermal Energy Consumption:"
-msgstr ""
-
-#: C:\Users\Razvan\Desktop\justimmo\jiwp/public/partials/_realty-extended-info.php:679
-#: C:\Users\Razvan\Desktop\justimmo\jiwp/public/partials/_realty-extended-info.php:690
-msgid "class"
-msgstr ""
-
-#: C:\Users\Razvan\Desktop\justimmo\jiwp/public/partials/_realty-extended-info.php:686
-msgid "Energy Efficiency Factor:"
-msgstr ""
-
-#: C:\Users\Razvan\Desktop\justimmo\jiwp/public/partials/_realty-extended-info.php:699
-msgid "Description"
-msgstr ""
-
-#: C:\Users\Razvan\Desktop\justimmo\jiwp/public/partials/_realty-extended-info.php:706
-msgid "Other Information"
-msgstr ""
-
-#: C:\Users\Razvan\Desktop\justimmo\jiwp/public/partials/_realty-list.php:43
-msgid "No realties found"
-msgstr ""
-
-#: C:\Users\Razvan\Desktop\justimmo\jiwp/public/partials/_search-form.php:13
-#: C:\Users\Razvan\Desktop\justimmo\jiwp/public/partials/_search-form.php:217
-msgid "Search"
-msgstr ""
-
-#: C:\Users\Razvan\Desktop\justimmo\jiwp/public/partials/_search-form.php:19
-msgid "Advanced Realty Search"
-msgstr ""
-
-#: C:\Users\Razvan\Desktop\justimmo\jiwp/public/partials/_search-form.php:39
-msgid "Buy"
-msgstr ""
-
-#: C:\Users\Razvan\Desktop\justimmo\jiwp/public/partials/_search-form.php:79
-#: C:\Users\Razvan\Desktop\justimmo\jiwp/public/partials/_search-form.php:105
-#: C:\Users\Razvan\Desktop\justimmo\jiwp/public/partials/_search-form.php:129
-msgid "to"
-msgstr ""
-
-#: C:\Users\Razvan\Desktop\justimmo\jiwp/public/partials/_search-form.php:144
-msgid "Country:"
-msgstr ""
-
-#: C:\Users\Razvan\Desktop\justimmo\jiwp/public/partials/_search-form.php:167
-msgid "State:"
-msgstr ""
-
-#: C:\Users\Razvan\Desktop\justimmo\jiwp/public/partials/_search-form.php:175
-msgid "Zip Codes:"
-msgstr ""
-
-#: C:\Users\Razvan\Desktop\justimmo\jiwp/public/partials/_search-form.php:190
-msgid "Garden"
-msgstr ""
-
-#: C:\Users\Razvan\Desktop\justimmo\jiwp/public/partials/_search-form.php:201
-msgid "Garage"
-msgstr ""
-
-#: C:\Users\Razvan\Desktop\justimmo\jiwp/public/partials/_search-form.php:212
-msgid "Balcony/Terrace"
-msgstr ""
-
-#: C:\Users\Razvan\Desktop\justimmo\jiwp/public/partials/_search-form.php:221
-msgid "Reset Filter"
-msgstr ""
-
-#: C:\Users\Razvan\Desktop\justimmo\jiwp/public/partials/_search-form__cities.php:41
-#: C:\Users\Razvan\Desktop\justimmo\jiwp/public/partials/_search-form__states.php:32
-msgid "Please select a country first"
-msgstr ""
-
-#: C:\Users\Razvan\Desktop\justimmo\jiwp/public/partials/_search-form__cities.php:47
-msgid "No zip codes found for selected country"
-msgstr ""
-
-#: C:\Users\Razvan\Desktop\justimmo\jiwp/public/partials/_search-form__states.php:38
-msgid "No states found for selected country"
 msgstr ""
