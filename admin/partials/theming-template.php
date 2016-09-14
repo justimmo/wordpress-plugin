@@ -1,3 +1,4 @@
+<?php /*
 <h3><?php _e( 'How to customize templates and styles', 'jiwp' ); ?></h3>
 
 <p><?php _e( 'To overwrite a template, create a folder named <code>jiwp-templates</code> inside your active theme\'s folder in which you should place a copy of that template (with the same name), modifying it to meet your requirements.', 'jiwp' ); ?></p>
@@ -26,3 +27,6 @@
 </ol>
 
 <p><?php _e( 'You can find the templates listed above inside the <code>/public/partials</code> folder in your plugin folder', 'jiwp' ); ?></p>
+*/ ?>
+
+Coming soon
