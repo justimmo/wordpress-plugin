@@ -21,13 +21,10 @@
 		<span class="ji-info__value">
 			<?php
 
-				$is_for_rent = true;
-
 				$marketingType = $realty->getMarketingType();
 
 				if ( $marketingType['KAUF'] == true )
 				{
-					$is_for_rent = false;
 					_e( 'Purchase', 'jiwp' );
 				}
 				else 
@@ -56,13 +53,13 @@
 					$currency = 'EUR';
 				}
 
-				if ( $is_for_rent ) 
+				if ( $marketingType['KAUF'] == true ) 
 				{
-					echo money_format( "%!i $currency" , $realty->getTotalRent() );
+					echo money_format( "%!i $currency", $realty->getPurchasePrice() );
 				}
 				else 
 				{
-					echo money_format( "%!i $currency" , $realty->getPurchasePrice() );
+					echo money_format( "%!i $currency", $realty->getTotalRent() );
 				}
 
 			?>
