@@ -15,7 +15,7 @@
 
 <section class="wrap">
 	<header>
-		<h1><?php _e( 'Justimmo Settings', 'jiwp' ); ?></h1>
+		<h1><?php _e( 'JUSTIMMO Settings', 'jiwp' ); ?></h1>
 	</header>
 
 	<h2 class="nav-tab-wrapper">
