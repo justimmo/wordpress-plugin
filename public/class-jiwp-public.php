@@ -1163,7 +1163,7 @@ class Jiwp_Public {
 	 * @since  1.0.0
 	 * @param  object $error error object.
 	 */
-	private static function jiwp_error_log( $error ) {
+	public static function jiwp_error_log( $error ) {
 
 		file_put_contents( 
 			plugin_dir_path( __FILE__ ) . 'error_log', json_encode( $error->getMessage() ) . "\n\n", 
