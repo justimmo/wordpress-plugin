@@ -2,7 +2,7 @@
 
 <?php if ( !empty( $realty ) ): ?>
 
-	<article class="ji-realty content-area">
+	<article class="ji-realty">
 
 		<header class="ji-realty__header">
 

@@ -2,7 +2,7 @@
 
 <?php if ( !empty( $project ) ): ?>
 
-    <article class="ji-project content-area">
+    <article class="ji-project">
         <header class="ji-project__header">
             <h1 class="ji-project__title"><?php echo $project->getTitle(); ?></h1>
         </header>
