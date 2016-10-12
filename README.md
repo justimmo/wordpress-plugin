@@ -1,6 +1,6 @@
-# Justimmo WP Plugin #
+# JUSTIMMO WP Plugin #
 
-The Justimmo WP Plugin allows brokers to list their properties stored on the Justimmo platform on their own Wordpress website.
+The JUSTIMMO WP Plugin allows brokers to list their properties stored on the JUSTIMMO platform on their own Wordpress website.
 
 ## Installation ##
 
