@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Justimmo WP Plugin\n"
-"POT-Creation-Date: 2016-09-14 15:22+0300\n"
-"PO-Revision-Date: 2016-09-14 15:22+0300\n"
+"POT-Creation-Date: 2016-10-12 23:37+0300\n"
+"PO-Revision-Date: 2016-10-12 23:39+0300\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: en\n"
@@ -15,7 +15,7 @@ msgstr ""
 "X-Poedit-SearchPath-0: .\n"
 
 #: partials/admin-template.php:18
-msgid "Justimmo Settings"
+msgid "JUSTIMMO Settings"
 msgstr ""
 
 #: partials/admin-template.php:23
@@ -53,6 +53,7 @@ msgstr ""
 #: partials/api-settings-template.php:40 partials/api-settings-template.php:44
 #: partials/api-settings-template.php:48 partials/api-settings-template.php:52
 #: partials/api-settings-template.php:56 partials/api-settings-template.php:60
+#: partials/shortcodes-template.php:205
 msgid "show image"
 msgstr ""
 
@@ -112,8 +113,8 @@ msgstr ""
 #: partials/shortcodes-template.php:101 partials/shortcodes-template.php:109
 #: partials/shortcodes-template.php:117 partials/shortcodes-template.php:125
 #: partials/shortcodes-template.php:133 partials/shortcodes-template.php:141
-#: partials/shortcodes-template.php:181 partials/shortcodes-template.php:206
-#: partials/shortcodes-template.php:214
+#: partials/shortcodes-template.php:181 partials/shortcodes-template.php:207
+#: partials/shortcodes-template.php:215
 msgid "Example:"
 msgstr ""
 
@@ -278,21 +279,21 @@ msgstr ""
 msgid "The project Justimmo ID (mandatory)."
 msgstr ""
 
-#: partials/shortcodes-template.php:207
+#: partials/shortcodes-template.php:208
 msgid "shows information belonging to the project with the Justimmo ID of 5."
 msgstr ""
 
-#: partials/shortcodes-template.php:211
+#: partials/shortcodes-template.php:212
 msgid "The project information to be shown (mandatory)."
 msgstr ""
 
-#: partials/shortcodes-template.php:215
+#: partials/shortcodes-template.php:216
 msgid ""
 "shows project address information belonging to the project with the Justimmo "
 "ID of 5."
 msgstr ""
 
-#: partials/shortcodes-template.php:219
+#: partials/shortcodes-template.php:220
 msgid "Here is a list of all the values available for the \"info\" option:"
 msgstr ""
 
@@ -303,15 +304,15 @@ msgstr ""
 #: partials/theming-template.php:3
 msgid ""
 "To overwrite a template, create a folder named <code>jiwp-templates</code> "
-"inside your active theme's folder in which you should place a copy of that "
-"template (with the same name), modifying it to meet your requirements."
+"in your active theme's folder in which you should place a copy of that "
+"template along with it's parent folder if required."
 msgstr ""
 
 #: partials/theming-template.php:5
-msgid " Here is a list of templates that can be overwritten:"
+msgid "Here is a list of templates that can be overwritten:"
 msgstr ""
 
-#: partials/theming-template.php:28
+#: partials/theming-template.php:44
 msgid ""
 "You can find the templates listed above inside the <code>/public/partials</"
 "code> folder in your plugin folder"
