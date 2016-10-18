@@ -39,679 +39,691 @@ use Justimmo\Model\Mapper\V1\ProjectMapper;
 
 class Jiwp_Public {
 
-	const PROJECT_INFO_TEMPLATES_MAPPING = array(
-		'address' 			=> '/project/_project-info__address.php',
-		'contact' 			=> '/project/_project-info__contact.php',
-		'description' 		=> '/project/_project-info__description.php',
-		'other-info' 		=> '/project/_project-info__other-info.php',
-		'photo-gallery' 	=> '/project/_project-info__photo-gallery.php',
-		'realties' 			=> '/project/_project-info__realties.php',
-	);
+    const PROJECT_INFO_TEMPLATES_MAPPING = array(
+        'address'           => '/project/_project-info__address.php',
+        'contact'           => '/project/_project-info__contact.php',
+        'description'       => '/project/_project-info__description.php',
+        'other-info'        => '/project/_project-info__other-info.php',
+        'photo-gallery'     => '/project/_project-info__photo-gallery.php',
+        'realties'          => '/project/_project-info__realties.php',
+    );
 
-	/**
-	 * The ID of this plugin.
-	 *
-	 * @since    1.0.0
-	 * @access   private
-	 * @var      string    $plugin_name    The ID of this plugin.
-	 */
-	private $plugin_name;
+    /**
+     * The ID of this plugin.
+     *
+     * @since    1.0.0
+     * @access   private
+     * @var      string    $plugin_name    The ID of this plugin.
+     */
+    private $plugin_name;
 
-	/**
-	 * The version of this plugin.
-	 *
-	 * @since    1.0.0
-	 * @access   private
-	 * @var      string    $version    The current version of this plugin.
-	 */
-	private $version;
+    /**
+     * The version of this plugin.
+     *
+     * @since    1.0.0
+     * @access   private
+     * @var      string    $version    The current version of this plugin.
+     */
+    private $version;
 
-	/**
-	 * Justimmo realty query object
-	 * 
-	 * @since  1.0.0
-	 * @var RealtyQuery
-	 */
-	private $ji_realty_query = null;
+    /**
+     * Justimmo realty query object
+     * 
+     * @since  1.0.0
+     * @var RealtyQuery
+     */
+    private $ji_realty_query = null;
 
-	/**
-	 * Justimmo project query object
-	 * 
-	 * @since  1.0.0
-	 * @var ProjectQuery
-	 */
-	private $ji_project_query = null;
+    /**
+     * Justimmo project query object
+     * 
+     * @since  1.0.0
+     * @var ProjectQuery
+     */
+    private $ji_project_query = null;
 
-	/**
-	 * Justimmo basic query object
-	 *
-	 * @since 1.0.0
-	 * @var BasicDataQuery
-	 */
-	public static $ji_basic_query = null;
+    /**
+     * Justimmo basic query object
+     *
+     * @since 1.0.0
+     * @var BasicDataQuery
+     */
+    public static $ji_basic_query = null;
 
-	/**
-	 * Initialize the class and set its properties.
-	 *
-	 * @since    1.0.0
-	 * @param      string    $plugin_name       The name of the plugin.
-	 * @param      string    $version    The version of this plugin.
-	 */
-	public function __construct( $plugin_name, $version ) {
+    /**
+     * Initialize the class and set its properties.
+     *
+     * @since    1.0.0
+     * @param      string    $plugin_name       The name of the plugin.
+     * @param      string    $version    The version of this plugin.
+     */
+    public function __construct( $plugin_name, $version ) {
 
-		$this->plugin_name 	= $plugin_name;
-		$this->version  	= $version;
+        $this->plugin_name  = $plugin_name;
+        $this->version      = $version;
 
-		$this->init_query_objects( 
-			get_option( 'ji_api_username' ), 
-			get_option( 'ji_api_password' )
-		);
+        $this->init_query_objects( 
+            get_option( 'ji_api_username' ), 
+            get_option( 'ji_api_password' )
+        );
 
-		$this->init_shortcodes();
+        $this->init_shortcodes();
 
-		// Set php money formatting
-		setlocale( LC_MONETARY, 'de_DE' );
+        // Set php money formatting
+        setlocale( LC_MONETARY, 'de_DE' );
 
-	}
+    }
 
-	/**
-	 * Register the stylesheets for the public-facing side of the site.
-	 *
-	 * @since    1.0.0
-	 */
-	public function enqueue_styles() {
+    /**
+     * Register the stylesheets for the public-facing side of the site.
+     *
+     * @since    1.0.0
+     */
+    public function enqueue_styles() {
 
-		/**
-		 * This function is provided for demonstration purposes only.
-		 *
-		 * An instance of this class should be passed to the run() function
-		 * defined in Jiwp_Loader as all of the hooks are defined
-		 * in that particular class.
-		 *
-		 * The Jiwp_Loader will then create the relationship
-		 * between the defined hooks and the functions defined in this
-		 * class.
-		 */
-		
-		if ( get_query_var( 'ji_page', false ) == 'realty' || get_query_var( 'ji_page', false ) == 'project' ) 
-		{
-			wp_enqueue_style( 
-				'featherlight',
-				plugin_dir_url( __FILE__ ) . 'js/featherlight/featherlight.min.css'
-			);
+        /**
+         * This function is provided for demonstration purposes only.
+         *
+         * An instance of this class should be passed to the run() function
+         * defined in Jiwp_Loader as all of the hooks are defined
+         * in that particular class.
+         *
+         * The Jiwp_Loader will then create the relationship
+         * between the defined hooks and the functions defined in this
+         * class.
+         */
+        
+        if ( get_query_var( 'ji_page', false ) == 'realty' || get_query_var( 'ji_page', false ) == 'project' ) 
+        {
+            wp_enqueue_style( 
+                'featherlight',
+                plugin_dir_url( __FILE__ ) . 'js/featherlight/featherlight.min.css'
+            );
 
-			wp_enqueue_style( 
-				'featherlight-gallery',
-				plugin_dir_url( __FILE__ ) . 'js/featherlight/featherlight.gallery.min.css'
-			);
-		}
+            wp_enqueue_style( 
+                'featherlight-gallery',
+                plugin_dir_url( __FILE__ ) . 'js/featherlight/featherlight.gallery.min.css'
+            );
+        }
 
-		wp_enqueue_style( 
-			$this->plugin_name,
-			plugin_dir_url( __FILE__ ) . 'css/jiwp-public.css',
-			array(),
-			$this->version,
-			'all'
-		);
+        wp_enqueue_style( 
+            $this->plugin_name,
+            plugin_dir_url( __FILE__ ) . 'css/jiwp-public.css',
+            array(),
+            $this->version,
+            'all'
+        );
 
-	}
+    }
 
-	/**
-	 * Register the JavaScript for the public-facing side of the site.
-	 *
-	 * @since    1.0.0
-	 */
-	public function enqueue_scripts() {
+    /**
+     * Register the JavaScript for the public-facing side of the site.
+     *
+     * @since    1.0.0
+     */
+    public function enqueue_scripts() {
 
-		/**
-		 * This function is provided for demonstration purposes only.
-		 *
-		 * An instance of this class should be passed to the run() function
-		 * defined in Jiwp_Loader as all of the hooks are defined
-		 * in that particular class.
-		 *
-		 * The Jiwp_Loader will then create the relationship
-		 * between the defined hooks and the functions defined in this
-		 * class.
-		 */
-		
-		wp_deregister_script( 'jquery' );
-		wp_register_script(
-			'jquery',
-			plugin_dir_url( __FILE__ ) . 'js/jquery/jquery-1.7.0.min.js',
-			'1.7.0'
-		);
-		
-		if ( get_query_var( 'ji_page', false ) == 'realty' || get_query_var( 'ji_page', false ) == 'project' ) 
-		{
-			wp_enqueue_script( 
-				'featherlight',
-				plugin_dir_url( __FILE__ ) . 'js/featherlight/featherlight.min.js',
-				array( 'jquery' )
-			);
+        /**
+         * This function is provided for demonstration purposes only.
+         *
+         * An instance of this class should be passed to the run() function
+         * defined in Jiwp_Loader as all of the hooks are defined
+         * in that particular class.
+         *
+         * The Jiwp_Loader will then create the relationship
+         * between the defined hooks and the functions defined in this
+         * class.
+         */
+        
+        wp_deregister_script( 'jquery' );
+        wp_register_script(
+            'jquery',
+            plugin_dir_url( __FILE__ ) . 'js/jquery/jquery-1.7.0.min.js',
+            '1.7.0'
+        );
+        
+        if ( get_query_var( 'ji_page', false ) == 'realty' || get_query_var( 'ji_page', false ) == 'project' ) 
+        {
+            wp_enqueue_script( 
+                'featherlight',
+                plugin_dir_url( __FILE__ ) . 'js/featherlight/featherlight.min.js',
+                array( 'jquery' )
+            );
 
-			wp_enqueue_script( 
-				'featherlight-gallery',
-				plugin_dir_url( __FILE__ ) . 'js/featherlight/featherlight.gallery.min.js',
-				array( 'jquery' )
-			);
+            wp_enqueue_script( 
+                'featherlight-gallery',
+                plugin_dir_url( __FILE__ ) . 'js/featherlight/featherlight.gallery.min.js',
+                array( 'jquery' )
+            );
 
-			wp_enqueue_script( 
-				'jiwp-realty-page',
-				plugin_dir_url( __FILE__ ) . 'js/jiwp-realty-page.js',
-				array( 'featherlight-gallery' )
-			);
-		}
+            wp_enqueue_script( 
+                'jiwp-realty-page',
+                plugin_dir_url( __FILE__ ) . 'js/jiwp-realty-page.js',
+                array( 'featherlight-gallery' )
+            );
+        }
 
-		wp_enqueue_script( 
-			$this->plugin_name, 
-			plugin_dir_url( __FILE__ ) . 'js/jiwp-search-form-widget.js',
-			array( 'jquery' ), 
-			$this->version, 
-			false 
-		);
+        wp_enqueue_script( 
+            $this->plugin_name, 
+            plugin_dir_url( __FILE__ ) . 'js/jiwp-search-form-widget.js',
+            array( 'jquery' ), 
+            $this->version, 
+            false 
+        );
 
-		wp_localize_script( 
-			$this->plugin_name, 
-			'Justimmo_Ajax',
+        wp_localize_script( 
+            $this->plugin_name, 
+            'Justimmo_Ajax',
             array( 
-            	'ajax_url' 		=> admin_url( 'admin-ajax.php' ), 
-            	'ajax_nonce' 	=> wp_create_nonce( 'justimmo_ajax' )
+                'ajax_url'      => admin_url( 'admin-ajax.php' ), 
+                'ajax_nonce'    => wp_create_nonce( 'justimmo_ajax' )
             ) 
-		);
+        );
 
-	}
+    }
 
-	/**
-	 * Instantiates and sets Justimmo query objects if username and password are set.
-	 * Sets admin notice otherwise.
-	 *
-	 * @since  1.0.0
-	 * @param  string $username 	Justimmo API username
-	 * @param  string $password 	Justimmo API password
-	 */
-	private function init_query_objects( $username, $password ) {
+    /**
+     * Instantiates and sets Justimmo query objects if username and password are set.
+     * Sets admin notice otherwise.
+     *
+     * @since  1.0.0
+     * @param  string $username     Justimmo API username
+     * @param  string $password     Justimmo API password
+     */
+    private function init_query_objects( $username, $password ) {
 
-		if ( !empty( $username ) && !empty( $password ) ) 
-		{
-			$this->ji_realty_query = $this->get_justimmo_realty_query( 
-				$username,
-				$password 
-			);
+        if ( !empty( $username ) && !empty( $password ) ) 
+        {
+            $this->ji_realty_query = $this->get_justimmo_realty_query( 
+                $username,
+                $password 
+            );
 
-			$this->ji_project_query = $this->get_justimmo_project_query( 
-				$username,
-				$password 
-			);
+            $this->ji_project_query = $this->get_justimmo_project_query( 
+                $username,
+                $password 
+            );
 
-			self::$ji_basic_query = $this->get_justimmo_basic_query( 
-				$username,
-				$password
-			);
-		}
-		else 
-		{
-			add_action( 'admin_notices', array( $this, 'api_credentials_notification' ) );
-		}
+            self::$ji_basic_query = $this->get_justimmo_basic_query( 
+                $username,
+                $password
+            );
+        }
+        else 
+        {
+            add_action( 'admin_notices', array( $this, 'api_credentials_notification' ) );
+        }
 
-	}
+    }
 
-	/**
-	 * Shows admin notice that prompts user to complete their
-	 * Justimmo API credentials
-	 *
-	 * @since 1.0.0
-	 */
-	public function api_credentials_notification() {
+    /**
+     * Shows admin notice that prompts user to complete their
+     * Justimmo API credentials
+     *
+     * @since 1.0.0
+     */
+    public function api_credentials_notification() {
 
-		$class 				= 'notice notice-error';
-		$message 			= __( 'Please set your Justimmo API username and password in the', 'jiwp' );
-		$admin_link_text 	= __('Justimmo settings panel');
+        $class              = 'notice notice-error';
+        $message            = __( 'Please set your Justimmo API username and password in the', 'jiwp' );
+        $admin_link_text    = __('Justimmo settings panel');
 
-		printf( '<div class="%1$s"><p>%2$s <a href=' . get_admin_url( null, 'admin.php?page=jiwp' ) . '>%3$s</a></p></div>', $class, $message, $admin_link_text );
+        printf( '<div class="%1$s"><p>%2$s <a href=' . get_admin_url( null, 'admin.php?page=jiwp' ) . '>%3$s</a></p></div>', $class, $message, $admin_link_text );
 
-	}
+    }
 
-	/**
-	 * Creates and returns a Justimmo RealtyQuery instance.
-	 * Also sets the `culture` parameter to wordpress locale.
-	 *
-	 * @since  1.0.0
-	 * @return object
-	 */
-	private function get_justimmo_realty_query( $username, $password ) {
+    /**
+     * Creates and returns a Justimmo RealtyQuery instance.
+     * Also sets the `culture` parameter to wordpress locale.
+     *
+     * @since  1.0.0
+     * @return object
+     */
+    private function get_justimmo_realty_query( $username, $password ) {
 
-		$api = new JustimmoApi(
-			$username,
-			$password,
-			new NullLogger(),
-			new NullCache()
-		);
+        $api = new JustimmoApi(
+            $username,
+            $password,
+            new NullLogger(),
+            new NullCache()
+        );
 
-		$mapper 	= new RealtyMapper();
-		$wrapper 	= new RealtyWrapper( $mapper );
-		$query  	= new RealtyQuery( $api, $wrapper, $mapper );
+        $mapper     = new RealtyMapper();
+        $wrapper    = new RealtyWrapper( $mapper );
+        $query      = new RealtyQuery( $api, $wrapper, $mapper );
 
-		$query->setCulture( substr( get_locale(), 0, 2 ) );
+        $query->setCulture( $this->getLanguageCode() );
 
-		return $query;
+        return $query;
 
-	}
+    }
 
-	/**
-	 * Creates and returns a Justimmo ProjectQuery instance.
-	 * Also sets the `culture` parameter to wordpress locale.
-	 *
-	 * @since  1.0.0
-	 * @return ProjectQuery
-	 */
-	private function get_justimmo_project_query( $username, $password ) {
+    /**
+     * Creates and returns a Justimmo ProjectQuery instance.
+     * Also sets the `culture` parameter to wordpress locale.
+     *
+     * @since  1.0.0
+     * @return ProjectQuery
+     */
+    private function get_justimmo_project_query( $username, $password ) {
 
-		$api = new JustimmoApi(
-			$username,
-			$password,
-			new NullLogger(),
-			new NullCache()
-		);
+        $api = new JustimmoApi(
+            $username,
+            $password,
+            new NullLogger(),
+            new NullCache()
+        );
 
-		$mapper 	= new ProjectMapper();
-		$wrapper 	= new ProjectWrapper( $mapper );
-		$query  	= new ProjectQuery( $api, $wrapper, $mapper );
+        $mapper     = new ProjectMapper();
+        $wrapper    = new ProjectWrapper( $mapper );
+        $query      = new ProjectQuery( $api, $wrapper, $mapper );
 
-		$query->setCulture( substr( get_locale(), 0, 2 ) );
+        $query->setCulture( $this->getLanguageCode() );
 
-		return $query;
+        return $query;
 
-	}
+    }
 
-	/**
-	 * Creates and returns a Justimmo BasicDataQuery instance
-	 * Also sets the `culture` parameter to wordpress locale.
-	 *
-	 * @since  1.0.0
-	 * @return BasicDataQuery
-	 */
-	private function get_justimmo_basic_query( $username, $password ) {
+    /**
+     * Creates and returns a Justimmo BasicDataQuery instance
+     * Also sets the `culture` parameter to wordpress locale.
+     *
+     * @since  1.0.0
+     * @return BasicDataQuery
+     */
+    private function get_justimmo_basic_query( $username, $password ) {
 
-		$api = new JustimmoApi(
-			$username,
-			$password,
-			new NullLogger(),
-			new NullCache()
-		);
+        $api = new JustimmoApi(
+            $username,
+            $password,
+            new NullLogger(),
+            new NullCache()
+        );
 
-		$query = new BasicDataQuery( $api, new BasicDataWrapper(), new BasicDataMapper() );
+        $query = new BasicDataQuery( $api, new BasicDataWrapper(), new BasicDataMapper() );
 
-		$query->set( 'culture', substr( get_locale(), 0, 2 ) );
+        $query->set( 'culture', $this->getLanguageCode() );
 
-		return $query;
+        return $query;
 
-	}
+    }
 
-	/**
-	 * Register frontend rewrite rules
-	 *
-	 * @since 1.0.0
-	 */
-	public function init_rewrite_rules() {
+    /**
+     * Register frontend rewrite rules
+     *
+     * @since 1.0.0
+     */
+    public function init_rewrite_rules()
+    {
+        // realty detail rule
+        add_rewrite_rule(
+            __('realties', 'jiwp') . '/(.+)-(\d+)/?$',
+            'index.php?ji_page=realty&ji_realty_id=$matches[2]',
+            'top'
+        );
 
-		// realty detail rule
-		add_rewrite_rule( 'realties/(\d+)', 'index.php?ji_page=realty&ji_realty_id=$matches[1]', 'top' );
+        // project detail rule
+        add_rewrite_rule(
+            __('projects', 'jiwp') . '/(.+)-(\d+)/?$',
+            'index.php?ji_page=project&ji_project_id=$matches[2]',
+            'top'
+        );
 
-		// project detail rule
-		add_rewrite_rule( 'projects/(\d+)', 'index.php?ji_page=project&ji_project_id=$matches[1]', 'top' );
+        // realty search results rule
+        add_rewrite_rule(
+            __('realties', 'jiwp') . '/' . __('search', 'jiwp') . '/?',
+            'index.php?ji_page=realty-search',
+            'top'
+        );
 
-		// realty search results rule
-		add_rewrite_rule( 'realties/search', 'index.php?ji_page=realty-search', 'top' );
+        if (get_transient('rewrite_rules_check')
+            || get_option('jiwp_language_locale') !== $this->getLanguageCode()) {
+            delete_transient('rewrite_rules_check');
+            update_option('jiwp_language_locale', $this->getLanguageCode());
+            flush_rewrite_rules();
+        }
+    }
 
-		if ( get_transient( 'rewrite_rules_check' ) ) 
-		{
-			delete_transient( 'rewrite_rules_check' );
-			flush_rewrite_rules();
-		}
+    /**
+     * Register frontend rewrite tags
+     * 
+     * @since 1.0.0
+     */
+    public function init_rewrite_tags() {
 
-	}
+        // add page tag (used for template switching)
+        add_rewrite_tag( '%ji_page%', '([^&]+)' );
 
-	/**
-	 * Register frontend rewrite tags
-	 * 
-	 * @since 1.0.0
-	 */
-	public function init_rewrite_tags() {
+        // realty id tag
+        add_rewrite_tag( '%ji_realty_id%', '([^&]+)' );
 
-		// add page tag (used for template switching)
-		add_rewrite_tag( '%ji_page%', '([^&]+)' );
+        // project id tag
+        add_rewrite_tag( '%ji_project_id%', '([^&]+)' );
 
-		// realty id tag
-		add_rewrite_tag( '%ji_realty_id%', '([^&]+)' );
+    }
 
-		// project id tag
-		add_rewrite_tag( '%ji_project_id%', '([^&]+)' );
+    /**
+     * Register frontend endpoint templates
+     *
+     * @since 1.0.0
+     * @param string $template default template 
+     */
+    public function init_templates( $template ) {
 
-	}
+        $screen = get_query_var( 'ji_page', false );
 
-	/**
-	 * Register frontend endpoint templates
-	 *
-	 * @since 1.0.0
-	 * @param string $template default template 
-	 */
-	public function init_templates( $template ) {
+        switch ( $screen )
+        {
+            case 'realty':
+                
+                $this->realty_page();
 
-		$screen = get_query_var( 'ji_page', false );
+                return;
 
-		switch ( $screen )
-		{
-			case 'realty':
-				
-				$this->realty_page();
+            case 'project':
+                
+                $this->project_page();
 
-				return;
+                return;
 
-			case 'project':
-				
-				$this->project_page();
+            case 'realty-search':
+                
+                $this->realty_search_results_page();
 
-				return;
-
-			case 'realty-search':
-				
-				$this->realty_search_results_page();
-
-				return;
-			
-			default:
-				
-				break;
-		}
+                return;
+            
+            default:
+                
+                break;
+        }
 
         //Fall back to original template
         return $template;
 
-	}
+    }
 
-	/**
-	 * Displays single realty template
-	 * 
-	 * @since 1.0.0
-	 */
-	private function realty_page() {
+    /**
+     * Displays single realty template
+     * 
+     * @since 1.0.0
+     */
+    private function realty_page() {
 
-		$realty_id = get_query_var( 'ji_realty_id', false );
+        $realty_id = get_query_var( 'ji_realty_id', false );
 
         $new_template = self::get_template( 'realty/realty-template.php' );
 
         try 
         {
-        	$realty = $this->get_realty( $realty_id );
+            $realty = $this->get_realty( $realty_id );
 
-        	if ( $new_template ) 
-	        {
-	        	include( $new_template );
-	        }
+            if ( $new_template ) 
+            {
+                include( $new_template );
+            }
         } 
         catch ( Exception $e ) 
         {
-        	self::jiwp_error_log( $e );
+            self::jiwp_error_log( $e );
         }
 
-	}
+    }
 
-	/**
-	 * Displays single project template
-	 * 
-	 * @since 1.0.0
-	 */
-	private function project_page() {
+    /**
+     * Displays single project template
+     * 
+     * @since 1.0.0
+     */
+    private function project_page() {
 
-		$project_id = get_query_var( 'ji_project_id', false );
+        $project_id = get_query_var( 'ji_project_id', false );
 
         $new_template = self::get_template( 'project/project-template.php' );
 
         try 
         {
-        	$project = $this->get_project( $project_id );
+            $project = $this->get_project( $project_id );
 
-        	if ( $new_template ) 
-	        {
-	        	include( $new_template );
-	        }
+            if ( $new_template ) 
+            {
+                include( $new_template );
+            }
         } 
         catch ( Exception $e ) 
         {
-        	self::jiwp_error_log( $e );
+            self::jiwp_error_log( $e );
         }
 
-	}
+    }
 
-	/**
-	 * Displays realty search results template
-	 * 
-	 * @since 1.0.0.
-	 */
-	private function realty_search_results_page() {
+    /**
+     * Displays realty search results template
+     * 
+     * @since 1.0.0.
+     */
+    private function realty_search_results_page() {
 
-		$filter_params = $_GET[ 'filter' ];
+        $filter_params = $_GET[ 'filter' ];
 
-		try 
-		{
-			$this->set_realty_query_filters( $filter_params );
+        try 
+        {
+            $this->set_realty_query_filters( $filter_params );
 
-			$page = get_query_var( 'page', 1 );
+            $page = get_query_var( 'page', 1 );
 
-			$pager_url = $this->build_pager_url( $_GET );
+            $pager_url = $this->build_pager_url( $_GET );
 
-			$realties = $this->get_realties( $page, get_option('posts_per_page') );
+            $realties = $this->get_realties( $page, get_option('posts_per_page') );
 
-			$new_template = self::get_template( 'search-form/search-results-template.php' );
+            $new_template = self::get_template( 'search-form/search-results-template.php' );
 
-	        if ( $new_template ) 
-	        {
-	        	include( $new_template );
-	        }			
-		}
-		catch ( Exception $e ) 
-		{
-			self::jiwp_error_log( $e );
-		}        
+            if ( $new_template ) 
+            {
+                include( $new_template );
+            }           
+        }
+        catch ( Exception $e ) 
+        {
+            self::jiwp_error_log( $e );
+        }        
 
-	}
+    }
 
-	/**
-	 * Register shortcodes
-	 * 
-	 * @since 1.0.0
-	 */
-	public function init_shortcodes() {
+    /**
+     * Register shortcodes
+     * 
+     * @since 1.0.0
+     */
+    public function init_shortcodes() {
 
-		// Enable shortcodes in widgets
-		add_filter('widget_text', 'do_shortcode');
+        // Enable shortcodes in widgets
+        add_filter('widget_text', 'do_shortcode');
 
-		add_shortcode( 'ji_search_form', array( $this, 'search_form_shortcode_output' ) );
-		add_shortcode( 'ji_realty_list', array( $this, 'realty_list_shortcode_output' ) );
-		add_shortcode( 'ji_project_list', array( $this, 'project_list_shortcode_output' ) );
-		add_shortcode( 'ji_project_info', array( $this, 'project_info_shortcode_output' ) );
+        add_shortcode( 'ji_search_form', array( $this, 'search_form_shortcode_output' ) );
+        add_shortcode( 'ji_realty_list', array( $this, 'realty_list_shortcode_output' ) );
+        add_shortcode( 'ji_project_list', array( $this, 'project_list_shortcode_output' ) );
+        add_shortcode( 'ji_project_info', array( $this, 'project_info_shortcode_output' ) );
 
-	}
+    }
 
-	/**
-	 * Property list shortcode handler
-	 *
-	 * @since 1.0.0
-	 */
-	public function realty_list_shortcode_output( $atts ) {
+    /**
+     * Property list shortcode handler
+     *
+     * @since 1.0.0
+     */
+    public function realty_list_shortcode_output( $atts ) {
 
-		$atts = shortcode_atts( 
-			array(
-				'max_per_page' 			=> 5,
-				'rent'  				=> null,
-				'buy'	 				=> null,
-				'type' 					=> null,
-				'price_min' 			=> null,
-				'price_max' 			=> null,
-				'rooms_min' 			=> null,
-				'rooms_max' 			=> null,
-				'surface_min' 			=> null,
-				'surface_max' 			=> null,
-				'garden' 				=> null,
-				'garage' 				=> null,
-				'balcony_terrace' 		=> null,
-				'price_order' 			=> null,
-				'date_order'			=> null,
-				'surface_order' 		=> null
-			), 
-			$atts, 
-			'ji_realty_list' 
-		);
+        $atts = shortcode_atts( 
+            array(
+                'max_per_page'          => 5,
+                'rent'                  => null,
+                'buy'                   => null,
+                'type'                  => null,
+                'price_min'             => null,
+                'price_max'             => null,
+                'rooms_min'             => null,
+                'rooms_max'             => null,
+                'surface_min'           => null,
+                'surface_max'           => null,
+                'garden'                => null,
+                'garage'                => null,
+                'balcony_terrace'       => null,
+                'price_order'           => null,
+                'date_order'            => null,
+                'surface_order'         => null
+            ), 
+            $atts, 
+            'ji_realty_list' 
+        );
 
-		try 
-		{
-			$this->set_realty_query_filters( $atts );
+        try 
+        {
+            $this->set_realty_query_filters( $atts );
 
-			$this->set_realty_query_ordering( $atts );
+            $this->set_realty_query_ordering( $atts );
 
-			$page = get_query_var( 'page', 1 );
+            $page = get_query_var( 'page', 1 );
 
-			$pager_url = $this->build_pager_url();
+            $pager_url = $this->build_pager_url();
 
-			$pager = $this->get_realties( $page, $atts[ 'max_per_page' ] );
+            $pager = $this->get_realties( $page, $atts[ 'max_per_page' ] );
 
-			ob_start();
-			include( 'partials/realty/_realty-list.php' );
-			return ob_get_clean();
-		}
-		catch ( Exception $e )
-		{
-			self::jiwp_error_log( $e );
-		}
+            ob_start();
+            include( 'partials/realty/_realty-list.php' );
+            return ob_get_clean();
+        }
+        catch ( Exception $e )
+        {
+            self::jiwp_error_log( $e );
+        }
 
-	}
+    }
 
-	/**
-	 * Search form shortcode handler
-	 *
-	 * @since 1.0.0
-	 */
-	public function search_form_shortcode_output( $atts ) {
+    /**
+     * Search form shortcode handler
+     *
+     * @since 1.0.0
+     */
+    public function search_form_shortcode_output( $atts ) {
 
-		try 
-		{
-			$realty_types 	= self::get_realty_types();
-			$countries  	= self::get_countries();
-			$states 		= array();
-			$cities 		= array();
+        try 
+        {
+            $realty_types   = self::get_realty_types();
+            $countries      = self::get_countries();
+            $states         = array();
+            $cities         = array();
 
-			if ( !empty( $_GET[ 'filter' ] ) && $_GET[ 'filter' ][ 'country' ] ) 
-			{
-				$states = self::get_states( $_GET[ 'filter' ][ 'country' ] );
-				$cities = self::get_cities( $_GET[ 'filter' ][ 'country' ] );
-			}
+            if ( !empty( $_GET[ 'filter' ] ) && $_GET[ 'filter' ][ 'country' ] ) 
+            {
+                $states = self::get_states( $_GET[ 'filter' ][ 'country' ] );
+                $cities = self::get_cities( $_GET[ 'filter' ][ 'country' ] );
+            }
 
-			ob_start();
-			include( 'partials/search-form/_search-form.php' );
-			return ob_get_clean();
-		} 
-		catch ( Exception $e ) 
-		{
-			self::jiwp_error_log( $e );
-		}
+            ob_start();
+            include( 'partials/search-form/_search-form.php' );
+            return ob_get_clean();
+        } 
+        catch ( Exception $e ) 
+        {
+            self::jiwp_error_log( $e );
+        }
 
-	}
+    }
 
-	/**
-	 * Project list shortcode handler
-	 *
-	 * @since 1.0.0
-	 */
-	public function project_list_shortcode_output( $atts ) {
+    /**
+     * Project list shortcode handler
+     *
+     * @since 1.0.0
+     */
+    public function project_list_shortcode_output( $atts ) {
 
-		$atts = shortcode_atts(
-			array(
-				'max_per_page' => 5,
-			),
-			$atts,
-			'ji_project_list'
-		);
+        $atts = shortcode_atts(
+            array(
+                'max_per_page' => 5,
+            ),
+            $atts,
+            'ji_project_list'
+        );
 
-		try
-		{
-			$this->set_project_query_filters( $atts );
+        try
+        {
+            $this->set_project_query_filters( $atts );
 
-			$this->set_project_query_ordering( $atts );
+            $this->set_project_query_ordering( $atts );
 
-			$page = get_query_var( 'page', 1 );
+            $page = get_query_var( 'page', 1 );
 
-			$pager_url = $this->build_pager_url();
+            $pager_url = $this->build_pager_url();
 
-			$pager = $this->get_projects( $page, $atts[ 'max_per_page' ] );
+            $pager = $this->get_projects( $page, $atts[ 'max_per_page' ] );
 
-			ob_start();
-			include( 'partials/project/_project-list.php' );
-			return ob_get_clean();
-		}
-		catch ( Exception $e )
-		{
-			self::jiwp_error_log( $e );
-		}
+            ob_start();
+            include( 'partials/project/_project-list.php' );
+            return ob_get_clean();
+        }
+        catch ( Exception $e )
+        {
+            self::jiwp_error_log( $e );
+        }
 
-	}
+    }
 
-	/**
-	 * Project info shortcode handler
-	 *
-	 * @since 1.0.0
-	 */
-	public function project_info_shortcode_output( $atts ) {
+    /**
+     * Project info shortcode handler
+     *
+     * @since 1.0.0
+     */
+    public function project_info_shortcode_output( $atts ) {
 
-		$atts = shortcode_atts(
-			array(
-				'id' => null,
-				'info' => false,
-			),
-			$atts,
-			'ji_project_info'
-		);
+        $atts = shortcode_atts(
+            array(
+                'id' => null,
+                'info' => false,
+            ),
+            $atts,
+            'ji_project_info'
+        );
 
-		if ( empty( $atts['id'] ) ) 
-		{
-			return;
-		}
+        if ( empty( $atts['id'] ) ) 
+        {
+            return;
+        }
 
-		try
-		{
-			if ( !empty( $this->cached_project ) ) 
-			{
-				$project = $this->cached_project;
-			}
-			else 
-			{
-				$project = $this->get_project( $atts['id'] );
-			}
+        try
+        {
+            if ( !empty( $this->cached_project ) ) 
+            {
+                $project = $this->cached_project;
+            }
+            else 
+            {
+                $project = $this->get_project( $atts['id'] );
+            }
 
-			if ( array_key_exists( $atts['info'], self::PROJECT_INFO_TEMPLATES_MAPPING ) )
-			{
-				ob_start();
-				include( self::get_template( self::PROJECT_INFO_TEMPLATES_MAPPING[ $atts['info'] ] ) );
-				return ob_get_clean();
-			}
-		}
-		catch ( Exception $e )
-		{
-			self::jiwp_error_log( $e );
-		}
+            if ( array_key_exists( $atts['info'], self::PROJECT_INFO_TEMPLATES_MAPPING ) )
+            {
+                ob_start();
+                include( self::get_template( self::PROJECT_INFO_TEMPLATES_MAPPING[ $atts['info'] ] ) );
+                return ob_get_clean();
+            }
+        }
+        catch ( Exception $e )
+        {
+            self::jiwp_error_log( $e );
+        }
 
-	}
+    }
 
-	/**
-	 * Locates template in theme folder first and then in plugin folder. 
-	 * 
-	 * @since 1.0.0
-	 * @param  string $template_file template file
-	 * @return string           	template path
-	 */
-	public static function get_template( $template_file ) {
+    /**
+     * Locates template in theme folder first and then in plugin folder. 
+     * 
+     * @since 1.0.0
+     * @param  string $template_file template file
+     * @return string               template path
+     */
+    public static function get_template( $template_file ) {
 
-		// Check theme directory first
+        // Check theme directory first
         $new_template = locate_template( array( 'jiwp-templates/' . $template_file ) );
 
         if ( $new_template != '' ) 
@@ -727,449 +739,498 @@ class Jiwp_Public {
             return $new_template;
         }
 
-		return false;
-
-	}
-
-	/**
-	 * Initialize widgets
-	 * 
-	 * @since 1.0.0
-	 */
-	public function init_widgets() {
-
-		register_widget( 'Justimmo_Search_Form_Widget' );
-
-	}
-
-	/**
-	 * Retrieves the list of states for a certain country.
-	 *
-	 * @since 1.0.0
-	 * @return partial containing state list
-	 */
-	public function ajax_get_states() {
-
-		check_ajax_referer( 'justimmo_ajax', 'security' );
-
-		$plugin_name = $this->plugin_name;
-
-		$states = array();
-
-		if ( !empty( $_POST['country'] ) ) 
-		{
-			$states	= self::get_states( $_POST['country'] );
-		}
-
-		include( 'partials/search-form/_search-form__states.php' );
-
-		wp_die();
-
-	}
-
-	/**
-	 * Currently retrieves the list of zipcodes for a certain country,
-	 * but should be changed in the future to retrieve actual cities.
-	 *
-	 * @since 1.0.0
-	 * @return partial containing zipcodes list
-	 */
-	public function ajax_get_cities() {
-
-		check_ajax_referer( 'justimmo_ajax', 'security' );
-
-		$plugin_name = $this->plugin_name;
-
-		$cities = array();
-
-		if ( !empty( $_POST['country'] ) )
-		{
-			$cities = self::get_cities( $_POST['country'] );
-		}
-
-		include( 'partials/search-form/_search-form__cities.php' );
-
-		wp_die();
-
-	}
-
-	/**
-	 * Retrieves single realty from Justimmo API.
-	 *
-	 * @since  1.0.0
-	 * @param  integer $realty_id 	Realty id
-	 * @return Realty            	Realty object
-	 */
-	private function get_realty( $realty_id ) {
-
-		if ( $this->ji_realty_query == null ) 
-		{
-			return null;
-		}
-		
-		// This method does not pass `culture` param to `JustimmoApi` class 
-		// and neither does the `/objekt/detail` endpoint retrieve translated data. 
-		return $this->ji_realty_query->findPk( $realty_id );
-
-	}
-
-	/**
-	 * Retrieves realties from Justimmo API.
-	 *
-	 * @since  1.0.0
-	 * @param  integer $page 	Current page
-	 * @return ListPager       	Pager object containing realties array
-	 */
-	private function get_realties( $page, $max_per_page ) {
-
-		if ( $this->ji_realty_query == null ) 
-		{
-			return array();
-		}
-
-		return $this->ji_realty_query->paginate( $page, $max_per_page );
-
-	}
-
-	/**
-	 * Retrieves single project from Justimmo API.
-	 *
-	 * @since  1.0.0
-	 * @param  integer $project_id 	Project id
-	 * @return Project            	Project object
-	 */
-	private function get_project( $project_id ) {
-
-		if ( $this->ji_project_query == null ) 
-		{
-			return null;
-		}
-
-		return $this->ji_project_query->findPk( $project_id );
-
-	}
-
-	/**
-	 * Retrieves projects from Justimmo API.
-	 *
-	 * @since  1.0.0
-	 * @param  integer $page 	Current page
-	 * @return ListPager       	Pager object containing projects array
-	 */
-	private function get_projects( $page, $max_per_page ) {
-
-		if ( $this->ji_project_query == null ) 
-		{
-			return array();
-		}
-
-		return $this->ji_project_query->paginate( $page, $max_per_page );
-
-	}
-
-	/**
-	 * Returns states based on country id.
-	 * 
-	 * @since  1.0.0
-	 * @param  integer $selected_country_id Id of the selected country
-	 * @return array                        Array of state arrays
-	 */
-	public static function get_states( $selected_country_id ) {
-
-		if ( self::$ji_basic_query == null ) 
-		{
-			return array();
-		}
-
-		$states = array();
-		
-		$states = self::$ji_basic_query
-						->all( false )
-						->filterByCountry( $selected_country_id )
-						->findFederalStates();
-
-		return $states;
-
-	}
-
-	/**
-	 * Currently returns zipcodes based on country id,
-	 * but should be changed in the future to get actual cities. 
-	 *
-	 * @since 1.0.0
-	 * @param  integer $selected_country_id Id of the selected country. 
-	 * @return array                      	Array of zipcode arrays
-	 */
-	public static function get_cities( $selected_country_id ) {
-
-		if ( self::$ji_basic_query == null ) 
-		{
-			return array();
-		}
-
-		$cities = array();
-		
-		$cities = self::$ji_basic_query
-						->all( false )
-						->filterByCountry( $selected_country_id )
-						->findZipCodes();		
-
-		return $cities;
-
-	}
-
-	/**
-	 * Retrieves realty types from Justimmo API.
-	 *
-	 * @since  1.0.0
-	 * @return array 	Array containing realty types
-	 */
-	public static function get_realty_types() {
-
-		if ( self::$ji_basic_query == null ) 
-		{
-			return array();
-		}
-
-		return self::$ji_basic_query->all( false )->findRealtyTypes();
-
-	}
-
-	/**
-	 * Retrieves countries from Justimmo API
-	 *
-	 * @since 1.0.0
-	 * @return array 	Array containing countries
-	 */
-	public static function get_countries() {
-
-		if ( self::$ji_basic_query == null ) 
-		{
-			return array();
-		}
-
-		return self::$ji_basic_query->all( false )->findCountries();
-
-	}
-
-	/**
-	 * Returns url string to be used in pagination.
-	 *
-	 * @since  1.0.0
-	 * @param  array  $query_params query string parameters
-	 * @return string               url to be used by pagination partial
-	 */
-	private function build_pager_url( $query_params = array() ) {
-
-		$url = get_permalink();
-
-		if ( !empty( $query_params ) )
-		{
-			$url .= '?' . http_build_query( $query_params ) . '&';
-		}
-		else 
-		{
-			$url .= '?';
-		}
-
-		return $url;
-
-	}
-
-	/**
-	 * Sets Realty Query filters
-	 *
-	 * @since 1.0.0
-	 * @param array $filter_params Array containing the search form filter options.
-	 */
-	private function set_realty_query_filters( $filter_params = array() ) {
-
-		if ( $this->ji_realty_query == null ) 
-		{
-			return;
-		}
-
-		// realty number
-
-		if ( !empty( $filter_params[ 'objektnummer' ] )  ) 
-		{
-			$this->ji_realty_query->filter( 'objektnummer', $filter_params[ 'objektnummer' ] );
-		}
-
-		// rent
-
-		if ( !empty( $filter_params[ 'rent' ] )  ) 
-		{
-			$this->ji_realty_query->filter( 'miete', 1 );
-		}
-
-		// buy
-
-		if ( !empty( $filter_params[ 'buy' ] )  ) 
-		{
-			$this->ji_realty_query->filter( 'kauf', 1 );
-		}
-
-		// realty type
-
-		if ( !empty( $filter_params[ 'type' ] ) ) 
-		{
-			// find realty type `id` from `key` value
-			$realty_types = self::$ji_basic_query->all( false )->findRealtyTypes();
-			
-			foreach ($realty_types as $realty_type_id => $realty_type) 
-			{
-				if ( $filter_params[ 'type' ] == $realty_type[ 'key' ] ) 
-				{
-					$this->ji_realty_query->filterByRealtyTypeId( $realty_type_id );
-					break;
-				}
-			}
-		}
-
-		// price
-
-		if ( !empty( $filter_params[ 'price_min' ] ) ) 
-		{
-			$this->ji_realty_query->filterByPrice( array( 'min' => $filter_params[ 'price_min' ] ) );
-		}
-
-		if ( !empty( $filter_params[ 'price_max' ] ) ) 
-		{
-			$this->ji_realty_query->filterByPrice( array( 'max' => $filter_params[ 'price_max' ] ) );
-		}
-
-		// rooms
-
-		if ( !empty( $filter_params[ 'rooms_min' ] ) ) 
-		{
-			$this->ji_realty_query->filterByRooms( array( 'min' => $filter_params[ 'rooms_min' ] ) );
-		}
-
-		if ( !empty( $filter_params[ 'rooms_max' ] ) ) 
-		{
-			$this->ji_realty_query->filterByRooms( array( 'max' => $filter_params[ 'rooms_max' ] ) );
-		}
-
-		// surface
-
-		if ( !empty( $filter_params[ 'surface_min' ] ) ) 
-		{
-			$this->ji_realty_query->filterByLivingArea( array( 'min' => $filter_params[ 'surface_min' ] ) );
-		}
-
-		if ( !empty( $filter_params[ 'surface_max' ] ) ) 
-		{
-			$this->ji_realty_query->filterByLivingArea( array( 'max' => $filter_params[ 'surface_max' ] ) );
-		}
-
-		// country
-
-		if ( !empty( $filter_params[ 'country' ] ) ) 
-		{
-			$this->ji_realty_query->filter( 'land_id', $filter_params[ 'country' ] );
-		}
-
-		// federal states
-
-		if ( !empty( $filter_params[ 'states' ] ) ) 
-		{
-			$this->ji_realty_query->filter( 'bundesland_id', $filter_params[ 'states' ] );
-		}
-
-		// zip codes
-
-		if ( !empty( $filter_params[ 'zip_codes' ] ) ) 
-		{
-			$this->ji_realty_query->filter( 'plz', $filter_params[ 'zip_codes' ] );
-		}
-
-		// garden
-		
-		if ( !empty( $filter_params[ 'garden' ] )  ) 
-		{
-			$this->ji_realty_query->filter( 'garden', 1 );
-		}
-
-		// garage
-		
-		if ( !empty( $filter_params[ 'garage' ] )  ) 
-		{
-			$this->ji_realty_query->filter( 'garage', 1 );
-		}
-
-		// balcony
-		
-		if ( !empty( $filter_params[ 'balcony_terrace' ] )  ) 
-		{
-			$this->ji_realty_query->filter( 'balkon', 1 );
-		}
-
-	}
-
-	/**
-	 * Set Realty Query ordering
-	 *
-	 * @since 1.0.0
-	 * @param array $order_params  array containing ordering params
-	 */
-	private function set_realty_query_ordering( $order_params ) {
-
-		if ( $this->ji_realty_query == null )
-		{
-			return;
-		}
-
-		if ( !empty( $order_params['price_order'] ) ) 
-		{
-			$this->ji_realty_query->orderByPrice( $order_params['price_order'] );
-		}
-
-
-		if ( !empty( $order_params['date_order'] ) ) 
-		{
-			$this->ji_realty_query->orderByCreatedAt( $order_params['date_order'] );
-		}
-
-
-		if ( !empty( $order_params['surface_order'] ) ) 
-		{
-			$this->ji_realty_query->orderBySurfaceArea( $order_params['surface_order'] );
-		}
-
-	}
-
-	/**
-	 * Sets Project Query filters
-	 *
-	 * @since 1.0.0
-	 * @param array $filter_params Array containing the search form filter options.
-	 */
-	private function set_project_query_filters( $filter_params = array() ) {
-	}
-
-	/**
-	 * Set Project Query ordering
-	 *
-	 * @since 1.0.0
-	 * @param array $order_params  array containing ordering params
-	 */
-	private function set_project_query_ordering( $order_params ) {
-	}
-
-	/**
-	 * Helper function that logs errors in a file located in plugin's 'public' folder.
-	 *
-	 * @since  1.0.0
-	 * @param  object $error error object.
-	 */
-	public static function jiwp_error_log( $error ) {
-
-		file_put_contents( 
-			plugin_dir_path( __FILE__ ) . 'error_log', json_encode( $error->getMessage() ) . "\n\n", 
-			FILE_APPEND
-		);
-
-	}
-
+        return false;
+
+    }
+
+    /**
+     * Builds realty detail url
+     * with the following format
+     * <postcode>-<city>-<realty name>-<realty number>-<realty id>
+     *
+     * @param  \Realty $realty      realty object
+     * @return string               realty url
+     */
+    public static function get_realty_url($realty)
+    {
+        $linkParts = [
+            $realty->getZipCode(),
+            sanitize_title($realty->getPlace()),
+            sanitize_title($realty->getTitle()),
+            $realty->getPropertyNumber(),
+            $realty->getId(),
+        ];
+
+        return get_bloginfo('url') . '/' . __('realties', 'jiwp') . '/' . implode('-', $linkParts);
+    }
+
+    /**
+     * Builds project detail url
+     * with the following format
+     * <postcode>-<city>-<project name>-<project id>
+     *
+     * @param  \Project $project      project object
+     * @return string                 project url
+     */
+    public static function get_project_url($project)
+    {
+        $linkParts = [
+            $project->getZipCode(),
+            sanitize_title($project->getPlace()),
+            sanitize_title($project->getTitle()),
+            $project->getId(),
+        ];
+
+        return get_bloginfo('url') . '/' . __('projects', 'jiwp') . '/' . implode('-', $linkParts);
+    }
+
+    /**
+     * Initialize widgets
+     * 
+     * @since 1.0.0
+     */
+    public function init_widgets() {
+
+        register_widget( 'Justimmo_Search_Form_Widget' );
+
+    }
+
+    /**
+     * Retrieves the list of states for a certain country.
+     *
+     * @since 1.0.0
+     * @return partial containing state list
+     */
+    public function ajax_get_states() {
+
+        check_ajax_referer( 'justimmo_ajax', 'security' );
+
+        $plugin_name = $this->plugin_name;
+
+        $states = array();
+
+        if ( !empty( $_POST['country'] ) ) 
+        {
+            $states = self::get_states( $_POST['country'] );
+        }
+
+        include( 'partials/search-form/_search-form__states.php' );
+
+        wp_die();
+
+    }
+
+    /**
+     * Currently retrieves the list of zipcodes for a certain country,
+     * but should be changed in the future to retrieve actual cities.
+     *
+     * @since 1.0.0
+     * @return partial containing zipcodes list
+     */
+    public function ajax_get_cities() {
+
+        check_ajax_referer( 'justimmo_ajax', 'security' );
+
+        $plugin_name = $this->plugin_name;
+
+        $cities = array();
+
+        if ( !empty( $_POST['country'] ) )
+        {
+            $cities = self::get_cities( $_POST['country'] );
+        }
+
+        include( 'partials/search-form/_search-form__cities.php' );
+
+        wp_die();
+
+    }
+
+    /**
+     * Retrieves single realty from Justimmo API.
+     *
+     * @since  1.0.0
+     * @param  integer $realty_id   Realty id
+     * @return Realty               Realty object
+     */
+    private function get_realty( $realty_id ) {
+
+        if ( $this->ji_realty_query == null ) 
+        {
+            return null;
+        }
+        
+        // This method does not pass `culture` param to `JustimmoApi` class 
+        // and neither does the `/objekt/detail` endpoint retrieve translated data. 
+        return $this->ji_realty_query->findPk( $realty_id );
+
+    }
+
+    /**
+     * Retrieves realties from Justimmo API.
+     *
+     * @since  1.0.0
+     * @param  integer $page    Current page
+     * @return ListPager        Pager object containing realties array
+     */
+    private function get_realties( $page, $max_per_page ) {
+
+        if ( $this->ji_realty_query == null ) 
+        {
+            return array();
+        }
+
+        return $this->ji_realty_query->paginate( $page, $max_per_page );
+
+    }
+
+    /**
+     * Retrieves single project from Justimmo API.
+     *
+     * @since  1.0.0
+     * @param  integer $project_id  Project id
+     * @return Project              Project object
+     */
+    private function get_project( $project_id ) {
+
+        if ( $this->ji_project_query == null ) 
+        {
+            return null;
+        }
+
+        return $this->ji_project_query->findPk( $project_id );
+
+    }
+
+    /**
+     * Retrieves projects from Justimmo API.
+     *
+     * @since  1.0.0
+     * @param  integer $page    Current page
+     * @return ListPager        Pager object containing projects array
+     */
+    private function get_projects( $page, $max_per_page ) {
+
+        if ( $this->ji_project_query == null ) 
+        {
+            return array();
+        }
+
+        return $this->ji_project_query->paginate( $page, $max_per_page );
+
+    }
+
+    /**
+     * Returns states based on country id.
+     * 
+     * @since  1.0.0
+     * @param  integer $selected_country_id Id of the selected country
+     * @return array                        Array of state arrays
+     */
+    public static function get_states( $selected_country_id ) {
+
+        if ( self::$ji_basic_query == null ) 
+        {
+            return array();
+        }
+
+        $states = array();
+        
+        $states = self::$ji_basic_query
+                        ->all( false )
+                        ->filterByCountry( $selected_country_id )
+                        ->findFederalStates();
+
+        return $states;
+
+    }
+
+    /**
+     * Currently returns zipcodes based on country id,
+     * but should be changed in the future to get actual cities. 
+     *
+     * @since 1.0.0
+     * @param  integer $selected_country_id Id of the selected country. 
+     * @return array                        Array of zipcode arrays
+     */
+    public static function get_cities( $selected_country_id ) {
+
+        if ( self::$ji_basic_query == null ) 
+        {
+            return array();
+        }
+
+        $cities = array();
+        
+        $cities = self::$ji_basic_query
+                        ->all( false )
+                        ->filterByCountry( $selected_country_id )
+                        ->findZipCodes();       
+
+        return $cities;
+
+    }
+
+    /**
+     * Retrieves realty types from Justimmo API.
+     *
+     * @since  1.0.0
+     * @return array    Array containing realty types
+     */
+    public static function get_realty_types() {
+
+        if ( self::$ji_basic_query == null ) 
+        {
+            return array();
+        }
+
+        return self::$ji_basic_query->all( false )->findRealtyTypes();
+
+    }
+
+    /**
+     * Retrieves countries from Justimmo API
+     *
+     * @since 1.0.0
+     * @return array    Array containing countries
+     */
+    public static function get_countries() {
+
+        if ( self::$ji_basic_query == null ) 
+        {
+            return array();
+        }
+
+        return self::$ji_basic_query->all( false )->findCountries();
+
+    }
+
+    /**
+     * Returns url string to be used in pagination.
+     *
+     * @since  1.0.0
+     * @param  array  $query_params query string parameters
+     * @return string               url to be used by pagination partial
+     */
+    private function build_pager_url( $query_params = array() ) {
+
+        $url = get_permalink();
+
+        if ( !empty( $query_params ) )
+        {
+            $url .= '?' . http_build_query( $query_params ) . '&';
+        }
+        else 
+        {
+            $url .= '?';
+        }
+
+        return $url;
+
+    }
+
+    /**
+     * Sets Realty Query filters
+     *
+     * @since 1.0.0
+     * @param array $filter_params Array containing the search form filter options.
+     */
+    private function set_realty_query_filters( $filter_params = array() ) {
+
+        if ( $this->ji_realty_query == null ) 
+        {
+            return;
+        }
+
+        // realty number
+
+        if ( !empty( $filter_params[ 'objektnummer' ] )  ) 
+        {
+            $this->ji_realty_query->filter( 'objektnummer', $filter_params[ 'objektnummer' ] );
+        }
+
+        // rent
+
+        if ( !empty( $filter_params[ 'rent' ] )  ) 
+        {
+            $this->ji_realty_query->filter( 'miete', 1 );
+        }
+
+        // buy
+
+        if ( !empty( $filter_params[ 'buy' ] )  ) 
+        {
+            $this->ji_realty_query->filter( 'kauf', 1 );
+        }
+
+        // realty type
+
+        if ( !empty( $filter_params[ 'type' ] ) ) 
+        {
+            // find realty type `id` from `key` value
+            $realty_types = self::$ji_basic_query->all( false )->findRealtyTypes();
+            
+            foreach ($realty_types as $realty_type_id => $realty_type) 
+            {
+                if ( $filter_params[ 'type' ] == $realty_type[ 'key' ] ) 
+                {
+                    $this->ji_realty_query->filterByRealtyTypeId( $realty_type_id );
+                    break;
+                }
+            }
+        }
+
+        // price
+
+        if ( !empty( $filter_params[ 'price_min' ] ) ) 
+        {
+            $this->ji_realty_query->filterByPrice( array( 'min' => $filter_params[ 'price_min' ] ) );
+        }
+
+        if ( !empty( $filter_params[ 'price_max' ] ) ) 
+        {
+            $this->ji_realty_query->filterByPrice( array( 'max' => $filter_params[ 'price_max' ] ) );
+        }
+
+        // rooms
+
+        if ( !empty( $filter_params[ 'rooms_min' ] ) ) 
+        {
+            $this->ji_realty_query->filterByRooms( array( 'min' => $filter_params[ 'rooms_min' ] ) );
+        }
+
+        if ( !empty( $filter_params[ 'rooms_max' ] ) ) 
+        {
+            $this->ji_realty_query->filterByRooms( array( 'max' => $filter_params[ 'rooms_max' ] ) );
+        }
+
+        // surface
+
+        if ( !empty( $filter_params[ 'surface_min' ] ) ) 
+        {
+            $this->ji_realty_query->filterByLivingArea( array( 'min' => $filter_params[ 'surface_min' ] ) );
+        }
+
+        if ( !empty( $filter_params[ 'surface_max' ] ) ) 
+        {
+            $this->ji_realty_query->filterByLivingArea( array( 'max' => $filter_params[ 'surface_max' ] ) );
+        }
+
+        // country
+
+        if ( !empty( $filter_params[ 'country' ] ) ) 
+        {
+            $this->ji_realty_query->filter( 'land_id', $filter_params[ 'country' ] );
+        }
+
+        // federal states
+
+        if ( !empty( $filter_params[ 'states' ] ) ) 
+        {
+            $this->ji_realty_query->filter( 'bundesland_id', $filter_params[ 'states' ] );
+        }
+
+        // zip codes
+
+        if ( !empty( $filter_params[ 'zip_codes' ] ) ) 
+        {
+            $this->ji_realty_query->filter( 'plz', $filter_params[ 'zip_codes' ] );
+        }
+
+        // garden
+        
+        if ( !empty( $filter_params[ 'garden' ] )  ) 
+        {
+            $this->ji_realty_query->filter( 'garden', 1 );
+        }
+
+        // garage
+        
+        if ( !empty( $filter_params[ 'garage' ] )  ) 
+        {
+            $this->ji_realty_query->filter( 'garage', 1 );
+        }
+
+        // balcony
+        
+        if ( !empty( $filter_params[ 'balcony_terrace' ] )  ) 
+        {
+            $this->ji_realty_query->filter( 'balkon', 1 );
+        }
+
+    }
+
+    /**
+     * Set Realty Query ordering
+     *
+     * @since 1.0.0
+     * @param array $order_params  array containing ordering params
+     */
+    private function set_realty_query_ordering( $order_params ) {
+
+        if ( $this->ji_realty_query == null )
+        {
+            return;
+        }
+
+        if ( !empty( $order_params['price_order'] ) ) 
+        {
+            $this->ji_realty_query->orderByPrice( $order_params['price_order'] );
+        }
+
+
+        if ( !empty( $order_params['date_order'] ) ) 
+        {
+            $this->ji_realty_query->orderByCreatedAt( $order_params['date_order'] );
+        }
+
+
+        if ( !empty( $order_params['surface_order'] ) ) 
+        {
+            $this->ji_realty_query->orderBySurfaceArea( $order_params['surface_order'] );
+        }
+
+    }
+
+    /**
+     * Sets Project Query filters
+     *
+     * @since 1.0.0
+     * @param array $filter_params Array containing the search form filter options.
+     */
+    private function set_project_query_filters( $filter_params = array() ) {
+    }
+
+    /**
+     * Set Project Query ordering
+     *
+     * @since 1.0.0
+     * @param array $order_params  array containing ordering params
+     */
+    private function set_project_query_ordering( $order_params ) {
+    }
+
+    /**
+     * Helper function that logs errors in a file located in plugin's 'public' folder.
+     *
+     * @since  1.0.0
+     * @param  object $error error object.
+     */
+    public static function jiwp_error_log( $error ) {
+
+        file_put_contents( 
+            plugin_dir_path( __FILE__ ) . 'error_log', json_encode( $error->getMessage() ) . "\n\n", 
+            FILE_APPEND
+        );
+
+    }
+
+    /**
+     * Retrieve sustring of language locale.
+     * @return string language code
+     */
+    private function getLanguageCode()
+    {
+        return substr(get_locale(), 0, 2);
+    }
 }
