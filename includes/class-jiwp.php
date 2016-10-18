@@ -191,6 +191,8 @@ class Jiwp {
 		$this->loader->add_action( 'wp_ajax_nopriv_ajax_get_states', $plugin_public, 'ajax_get_states' );
 		$this->loader->add_action( 'wp_ajax_ajax_get_cities', $plugin_public, 'ajax_get_cities' );
 		$this->loader->add_action( 'wp_ajax_nopriv_ajax_get_cities', $plugin_public, 'ajax_get_cities' );
+		$this->loader->add_action( 'wp_ajax_ajax_send_inquiry', $plugin_public, 'ajax_send_inquiry' );
+		$this->loader->add_action( 'wp_ajax_nopriv_ajax_send_inquiry', $plugin_public, 'ajax_send_inquiry' );
 
 	}
 
