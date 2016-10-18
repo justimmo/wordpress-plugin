@@ -13,9 +13,9 @@
  * @package           Jiwp
  *
  * @wordpress-plugin
- * Plugin Name:       Justimmo WP Plugin
+ * Plugin Name:       JUSTIMMO WP Plugin
  * Plugin URI:        http://www.justimmo.at/
- * Description:       Wordpress plugin which brokers can use to access the Justimmo API and list their properties and more.
+ * Description:       Wordpress plugin which brokers can use to access the JUSTIMMO API and list their properties and more.
  * Version:           1.0.0
  * Author:            Mihalache Razvan - Ionut
  * Author URI:        somasocial.com
