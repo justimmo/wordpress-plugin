@@ -1,50 +1,52 @@
 <?php get_header(); ?>
 
-<?php if ( !empty( $realty ) ): ?>
+<?php if (!empty($realty)) : ?>
 
-	<article class="ji-realty">
+    <article class="ji-realty">
 
-		<header class="ji-realty__header">
+        <?php include(Jiwp_Public::get_template('inquiry-form/_inquiry-form.php')); ?>
 
-			<h1 class="ji-realty__title"><?php echo $realty->getTitle(); ?></h1>
+        <header class="ji-realty__header">
 
-		</header>
+            <h1 class="ji-realty__title"><?php echo $realty->getTitle(); ?></h1>
 
-		<?php include( Jiwp_Public::get_template( 'realty/_realty-extended-info.php' ) ); ?>
+        </header>
 
-		<section class="ji-info-section ji-info-section--photos">
+        <?php include(Jiwp_Public::get_template('realty/_realty-extended-info.php')); ?>
 
-			<?php $photos_array = $realty->getPictures(); ?>
+        <section class="ji-info-section ji-info-section--photos">
 
-			<?php if ( !empty( $photos_array ) ): ?>
-				
-				<h3 class="ji-info-section__title"><?php _e( 'Photo Gallery', 'jiwp' ); ?></h3>
+            <?php $photos_array = $realty->getPictures(); ?>
 
-				<ul class="ji-photos-list">
+            <?php if (!empty($photos_array)) : ?>
+                
+                <h3 class="ji-info-section__title"><?php _e('Photo Gallery', 'jiwp'); ?></h3>
 
-					<?php foreach ( $photos_array as $photo ): ?>
+                <ul class="ji-photos-list">
 
-						<li class="ji-photos-list__item">
+                    <?php foreach ($photos_array as $photo) : ?>
 
-							<a href="<?php echo $photo->getUrl('big2') ?>" class="featherlight-gallery">
-								<img src="<?php echo $photo->getUrl('medium') ?>" class="ji-photo" alt=""/>
-							</a>
+                        <li class="ji-photos-list__item">
 
-						</li>
+                            <a href="<?php echo $photo->getUrl('big2') ?>" class="featherlight-gallery">
+                                <img src="<?php echo $photo->getUrl('medium') ?>" class="ji-photo" alt=""/>
+                            </a>
 
-					<?php endforeach; ?>
+                        </li>
 
-				</ul>
+                    <?php endforeach; ?>
 
-			<?php endif; ?>
+                </ul>
 
-		</section>
+            <?php endif; ?>
 
-	</article>
+        </section>
 
-<?php else: ?>
+    </article>
 
-	<p><?php _e( 'No realty found.', 'jiwp' ); ?></p>
+<?php else : ?>
+
+    <p><?php _e('No realty found.', 'jiwp'); ?></p>
 
 <?php endif; ?>
 
