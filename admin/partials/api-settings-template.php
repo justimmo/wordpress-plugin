@@ -1,4 +1,4 @@
-<h3><?php _e( 'Please enter your Justimmo API credentials:', 'jiwp' ); ?></h3>
+<h3><?php _e( 'Please enter your JUSTIMMO API credentials:', 'jiwp' ); ?></h3>
 
 <form action="<?php echo esc_url( admin_url('admin-post.php') ); ?>" method="POST">
 	<input type="hidden" name="action" value="api_credentials_post"/>
@@ -31,12 +31,12 @@
 
 <section class="wrap">
 	<header>
-		<h3><?php echo _e('How to obtain your Justimmo API credentials:', 'jiwp' ); ?></h3>
+		<h3><?php echo _e('How to obtain your JUSTIMMO API credentials:', 'jiwp' ); ?></h3>
 	</header>
 
 	<ol>
 		<li>
-			<?php _e( 'Log into the Justimmo platform using your account.', 'jiwp' ); ?>
+			<?php _e( 'Log into the JUSTIMMO platform using your account.', 'jiwp' ); ?>
 			<a class="featherlight-gallery" href="#" data-featherlight="<?php echo plugin_dir_url( __DIR__ ) ?>/img/api-credentials-steps/step1.png"><?php _e( 'show image', 'jiwp' ); ?></a>
 		</li>
 		<li>

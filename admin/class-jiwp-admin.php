@@ -149,8 +149,8 @@ class Jiwp_Admin {
 	public function init_admin_menu() {
 
 		$this->pages['admin'] = add_menu_page( 
-			'Justimmo Settings', 
-			'Justimmo', 
+			'JUSTIMMO Settings', 
+			'JUSTIMMO', 
 			'manage_options', 
 			$this->plugin_name, 
 			array( $this, 'admin_page' ), 

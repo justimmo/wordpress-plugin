@@ -1,4 +1,4 @@
-<h3><?php _e( 'The following shortcodes are made available by the Justimmo API Plugin:', 'jiwp' ); ?></h3>
+<h3><?php _e( 'The following shortcodes are made available by the JUSTIMMO API Plugin:', 'jiwp' ); ?></h3>
 
 <ul class="ji-shortcode-list">
 	<li class="ji-shortcode-list__item">
@@ -157,7 +157,7 @@
 				<code>[ji_search_form]</code>
 			</summary>
 
-			<p><?php _e( 'Paste this shortcode in any page, post or sidebar Text widget to output a realty search form. This can also be achieved by using the "Justimmo Search Form" widget.', 'jiwp' ); ?></p>
+			<p><?php _e( 'Paste this shortcode in any page, post or sidebar Text widget to output a realty search form. This can also be achieved by using the "JUSTIMMO Search Form" widget.', 'jiwp' ); ?></p>
 		</details>
 	</li>
 
@@ -201,11 +201,11 @@
 
 			<ul class="ji-shortcode-options">
 				<li class="ji-shortcode-option">
-					<code>id</code>: <?php _e( 'The project Justimmo ID (mandatory).', 'jiwp' ); ?>
+					<code>id</code>: <?php _e( 'The project JUSTIMMO ID (mandatory).', 'jiwp' ); ?>
 					<a class="featherlight-gallery" href="#" data-featherlight="<?php echo plugin_dir_url( __DIR__ ) ?>/img/justimmo-project-id.png"><?php _e( 'show image', 'jiwp' ); ?></a>
 					<p>
 						<?php _e( 'Example:', 'jiwp' ); ?>
-						<code>[ji_project_info id="5"]</code> <?php _e( 'shows information belonging to the project with the Justimmo ID of 5.', 'jiwp'); ?>
+						<code>[ji_project_info id="5"]</code> <?php _e( 'shows information belonging to the project with the JUSTIMMO ID of 5.', 'jiwp'); ?>
 					</p>
 				</li>
 				<li class="ji-shortcode-option">
@@ -213,7 +213,7 @@
 					
 					<p>
 						<?php _e( 'Example:', 'jiwp' ); ?>
-						<code>[ji_project_info id="5" info="address"]</code> <?php _e( 'shows project address information belonging to the project with the Justimmo ID of 5.', 'jiwp'); ?>
+						<code>[ji_project_info id="5" info="address"]</code> <?php _e( 'shows project address information belonging to the project with the JUSTIMMO ID of 5.', 'jiwp'); ?>
 					</p>
 					
 					<p>
