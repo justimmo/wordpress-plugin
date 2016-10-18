@@ -6,19 +6,21 @@
 
             <?php $photos_array = $realty->getPictures(); ?>
 
-            <?php if ( count($photos_array) ): ?>
+            <?php if (count($photos_array)) : ?>
 
                 <?php
 
-                    try {
-                        $img_src = $photos_array[0]->getUrl('medium');
-                    } catch (Exception $e) {
-                        $img_src = $photos_array[0]->getUrl();
-                    }
+                try {
+                    $img_src = $photos_array[0]->getUrl('medium');
+                } catch (Exception $e) {
+                    $img_src = $photos_array[0]->getUrl();
+                }
 
                 ?>
 
-                <img src="<?php echo $img_src; ?>" class="ji-realty__featured-img" alt=''/>
+                <a href="<?php echo get_bloginfo('url') . '/realties/' . $realty->getId() ?>">
+                    <img src="<?php echo $img_src; ?>" class="ji-realty__featured-img" alt=''/>
+                </a>
 
             <?php endif; ?>
 
@@ -30,7 +32,7 @@
 
             </h1>
 
-            <?php include( Jiwp_Public::get_template( 'realty/_realty-info.php' ) ); ?>
+            <?php include(Jiwp_Public::get_template('realty/_realty-info.php')); ?>
 
         </header>
 
