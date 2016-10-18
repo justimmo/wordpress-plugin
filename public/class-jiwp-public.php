@@ -37,6 +37,9 @@ use Justimmo\Model\ProjectQuery;
 use Justimmo\Model\Wrapper\V1\ProjectWrapper;
 use Justimmo\Model\Mapper\V1\ProjectMapper;
 
+use Justimmo\Request\RealtyInquiryRequest;
+use Justimmo\Model\Mapper\V1\RealtyInquiryMapper;
+
 class Jiwp_Public {
 
     const PROJECT_INFO_TEMPLATES_MAPPING = array(
@@ -137,18 +140,18 @@ class Jiwp_Public {
         {
             wp_enqueue_style( 
                 'featherlight',
-                plugin_dir_url( __FILE__ ) . 'js/featherlight/featherlight.min.css'
+                plugin_dir_url(__FILE__) . 'js/featherlight/featherlight.min.css'
             );
 
             wp_enqueue_style( 
                 'featherlight-gallery',
-                plugin_dir_url( __FILE__ ) . 'js/featherlight/featherlight.gallery.min.css'
+                plugin_dir_url(__FILE__) . 'js/featherlight/featherlight.gallery.min.css'
             );
         }
 
         wp_enqueue_style( 
             $this->plugin_name,
-            plugin_dir_url( __FILE__ ) . 'css/jiwp-public.css',
+            plugin_dir_url(__FILE__) . 'css/jiwp-public.css',
             array(),
             $this->version,
             'all'
@@ -161,8 +164,8 @@ class Jiwp_Public {
      *
      * @since    1.0.0
      */
-    public function enqueue_scripts() {
-
+    public function enqueue_scripts()
+    {
         /**
          * This function is provided for demonstration purposes only.
          *
@@ -175,51 +178,57 @@ class Jiwp_Public {
          * class.
          */
         
-        wp_deregister_script( 'jquery' );
+        wp_deregister_script('jquery');
         wp_register_script(
             'jquery',
-            plugin_dir_url( __FILE__ ) . 'js/jquery/jquery-1.7.0.min.js',
+            plugin_dir_url(__FILE__) . 'js/jquery/jquery-1.7.0.min.js',
             '1.7.0'
         );
         
-        if ( get_query_var( 'ji_page', false ) == 'realty' || get_query_var( 'ji_page', false ) == 'project' ) 
-        {
-            wp_enqueue_script( 
+        if (get_query_var('ji_page', false) == 'realty' || get_query_var('ji_page', false) == 'project') {
+            wp_enqueue_script(
                 'featherlight',
-                plugin_dir_url( __FILE__ ) . 'js/featherlight/featherlight.min.js',
+                plugin_dir_url(__FILE__) . 'js/featherlight/featherlight.min.js',
                 array( 'jquery' )
             );
 
-            wp_enqueue_script( 
+            wp_enqueue_script(
                 'featherlight-gallery',
-                plugin_dir_url( __FILE__ ) . 'js/featherlight/featherlight.gallery.min.js',
+                plugin_dir_url(__FILE__) . 'js/featherlight/featherlight.gallery.min.js',
                 array( 'jquery' )
             );
 
-            wp_enqueue_script( 
+            wp_enqueue_script(
                 'jiwp-realty-page',
-                plugin_dir_url( __FILE__ ) . 'js/jiwp-realty-page.js',
+                plugin_dir_url(__FILE__) . 'js/jiwp-realty-page.js',
                 array( 'featherlight-gallery' )
+            );
+
+            wp_enqueue_script(
+                $this->plugin_name,
+                plugin_dir_url(__FILE__) . 'js/jiwp-inquiry-form.js',
+                array( 'jquery' ),
+                $this->version,
+                false
             );
         }
 
-        wp_enqueue_script( 
-            $this->plugin_name, 
-            plugin_dir_url( __FILE__ ) . 'js/jiwp-search-form-widget.js',
-            array( 'jquery' ), 
-            $this->version, 
-            false 
+        wp_enqueue_script(
+            $this->plugin_name,
+            plugin_dir_url(__FILE__) . 'js/jiwp-search-form-widget.js',
+            array( 'jquery' ),
+            $this->version,
+            false
         );
 
-        wp_localize_script( 
-            $this->plugin_name, 
+        wp_localize_script(
+            $this->plugin_name,
             'Justimmo_Ajax',
-            array( 
-                'ajax_url'      => admin_url( 'admin-ajax.php' ), 
-                'ajax_nonce'    => wp_create_nonce( 'justimmo_ajax' )
-            ) 
+            array(
+                'ajax_url'      => admin_url('admin-ajax.php'),
+                'ajax_nonce'    => wp_create_nonce('justimmo_ajax')
+            )
         );
-
     }
 
     /**
@@ -456,6 +465,9 @@ class Jiwp_Public {
         try 
         {
             $realty = $this->get_realty( $realty_id );
+
+            $countries = self::get_countries();
+            $cities = self::get_cities();
 
             if ( $new_template ) 
             {
@@ -805,8 +817,6 @@ class Jiwp_Public {
 
         check_ajax_referer( 'justimmo_ajax', 'security' );
 
-        $plugin_name = $this->plugin_name;
-
         $states = array();
 
         if ( !empty( $_POST['country'] ) ) 
@@ -831,8 +841,6 @@ class Jiwp_Public {
 
         check_ajax_referer( 'justimmo_ajax', 'security' );
 
-        $plugin_name = $this->plugin_name;
-
         $cities = array();
 
         if ( !empty( $_POST['country'] ) )
@@ -844,6 +852,46 @@ class Jiwp_Public {
 
         wp_die();
 
+    }
+
+    public function ajax_send_inquiry()
+    {
+        check_ajax_referer('justimmo_ajax', 'security');
+        parse_str($_POST['formData']);
+
+        $contact_zipcode_city_array = explode('|', $contact_zipcode_city);
+
+        try {
+            $api = new JustimmoApi(
+                get_option('ji_api_username'),
+                get_option('ji_api_password'),
+                new NullLogger(),
+                new NullCache()
+            );
+
+            $inquiryRequest = new RealtyInquiryRequest($api, new RealtyInquiryMapper());
+            $inquiryRequest->setRealtyId($realty_id)
+                ->setSalutationId($contact_salutation)
+                ->setTitle($contact_title)
+                ->setFirstName($contact_first_name)
+                ->setLastName($contact_last_name)
+                ->setEmail($contact_email)
+                ->setMessage('This message should be displayed to the responsible user of realty ' . $realty_id)
+                ->setPhone($contact_phone)
+                ->setStreet($contact_street)
+                ->setZipCode($contact_zipcode_city_array[0])
+                ->setCity($contact_zipcode_city_array[1])
+                ->setCountry($contact_country)
+                ->send();
+
+            echo json_encode([
+                'message' => __('Inquiry Sent!', 'jiwp'),
+            ]);
+        } catch (Exception $e) {
+            self::jiwp_error_log($e);
+        }
+
+        wp_die();
     }
 
     /**
@@ -927,7 +975,7 @@ class Jiwp_Public {
      * @param  integer $selected_country_id Id of the selected country
      * @return array                        Array of state arrays
      */
-    public static function get_states( $selected_country_id ) {
+    public static function get_states( $selected_country_id = null ) {
 
         if ( self::$ji_basic_query == null ) 
         {
@@ -937,9 +985,9 @@ class Jiwp_Public {
         $states = array();
         
         $states = self::$ji_basic_query
-                        ->all( false )
-                        ->filterByCountry( $selected_country_id )
-                        ->findFederalStates();
+            ->all( false )
+            ->filterByCountry( $selected_country_id )
+            ->findFederalStates();
 
         return $states;
 
@@ -953,7 +1001,7 @@ class Jiwp_Public {
      * @param  integer $selected_country_id Id of the selected country. 
      * @return array                        Array of zipcode arrays
      */
-    public static function get_cities( $selected_country_id ) {
+    public static function get_cities( $selected_country_id = null ) {
 
         if ( self::$ji_basic_query == null ) 
         {
@@ -963,9 +1011,9 @@ class Jiwp_Public {
         $cities = array();
         
         $cities = self::$ji_basic_query
-                        ->all( false )
-                        ->filterByCountry( $selected_country_id )
-                        ->findZipCodes();       
+            ->all( false )
+            ->filterByCountry( $selected_country_id )
+            ->findZipCodes();       
 
         return $cities;
 
