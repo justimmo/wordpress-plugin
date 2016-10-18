@@ -6,7 +6,7 @@
 
             <h1 class="ji-project__title">
 
-                <a href="<?php echo get_bloginfo('url') . '/projects/' . $project->getId() ?>">
+                <a href="<?php echo Jiwp_Public::get_project_url($project); ?>">
                     <?php echo $project->getTitle(); ?>
                 </a>
 
@@ -25,8 +25,10 @@
                     }
 
                 ?>
-
-                <img src="<?php echo $img_src; ?>" class="ji-project__featured-img" alt=''/>
+                
+                <a href="<?php echo Jiwp_Public::get_project_url($project); ?>">
+                    <img src="<?php echo $img_src; ?>" class="ji-project__featured-img" alt=''/>
+                </a>
 
             <?php endif; ?>
 

@@ -18,7 +18,7 @@
 
                 ?>
 
-                <a href="<?php echo get_bloginfo('url') . '/realties/' . $realty->getId() ?>">
+                <a href="<?php echo Jiwp_Public::get_realty_url($realty); ?>">
                     <img src="<?php echo $img_src; ?>" class="ji-realty__featured-img" alt=''/>
                 </a>
 
@@ -26,7 +26,7 @@
 
             <h1 class="ji-realty__title">
 
-                <a href="<?php echo get_bloginfo('url') . '/realties/' . $realty->getId() ?>">
+                <a href="<?php echo Jiwp_Public::get_realty_url($realty); ?>">
                     <?php echo $realty->getTitle(); ?>
                 </a>
 

@@ -30,9 +30,9 @@
             </thead>
             <tbody>
                 <?php foreach ($realties_array as $index => $realty) : ?>
-                    <tr data-href="<?php echo get_bloginfo('url') . '/realties/' . $realty->getId() ?>">
+                    <tr data-href="<?php echo Jiwp_Public::get_realty_url($realty); ?>">
                         <td>
-                            <a href="<?php echo get_bloginfo('url') . '/realties/' . $realty->getId() ?>">
+                            <a href="<?php echo Jiwp_Public::get_realty_url($realty); ?>">
                                 <?php echo $index + 1; ?>
                             </a>
                         </td>
