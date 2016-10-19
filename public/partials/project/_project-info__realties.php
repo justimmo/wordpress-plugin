@@ -26,16 +26,13 @@
                     <?php endif; ?>
 
                     <th><?php echo _e('Status', 'jiwp'); ?></th>
+                    <th></th>
                 </tr>
             </thead>
             <tbody>
                 <?php foreach ($realties_array as $index => $realty) : ?>
                     <tr data-href="<?php echo Jiwp_Public::get_realty_url($realty); ?>">
-                        <td>
-                            <a href="<?php echo Jiwp_Public::get_realty_url($realty); ?>">
-                                <?php echo $index + 1; ?>
-                            </a>
-                        </td>
+                        <td><?php echo $index + 1; ?></td>
                         <td><?php echo $realty->getTier(); ?></td>
                         <td><?php echo $realty->getLivingArea(); ?></td>
                         <td><?php echo $realty->getRoomCount(); ?></td>
@@ -60,6 +57,11 @@
                             ?>
                         </td>
                         <td><?php echo $realty->getStatus(); ?></td>
+                        <td>
+                            <a href="<?php echo Jiwp_Public::get_realty_url($realty); ?>">
+                                <?php _e('VIEW', 'jiwp'); ?>
+                            </a>
+                        </td>
                     </tr>
                 <?php endforeach; ?>
             </tbody>
