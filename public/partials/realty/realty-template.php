@@ -4,8 +4,6 @@
 
     <article class="ji-realty">
 
-        <?php include(Jiwp_Public::get_template('inquiry-form/_inquiry-form.php')); ?>
-
         <header class="ji-realty__header">
 
             <h1 class="ji-realty__title"><?php echo $realty->getTitle(); ?></h1>
@@ -41,6 +39,8 @@
             <?php endif; ?>
 
         </section>
+
+        <?php include(Jiwp_Public::get_template('inquiry-form/_inquiry-form.php')); ?>
 
     </article>
 
