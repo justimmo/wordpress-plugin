@@ -48,6 +48,14 @@
 				</li>
 
 				<li class="ji-shortcode-option">
+					<code>format</code>: <?php _e( 'Formats realty list in grid format.', 'jiwp' ); ?>
+					<p>
+						<?php _e( 'Example:', 'jiwp' ); ?>
+						<code>[ji_realty_list format="grid"]</code> <?php _e( 'shows realties in grid format.', 'jiwp' ); ?>
+					</p>
+				</li>
+
+				<li class="ji-shortcode-option">
 					<code>price_min</code>: <?php _e( 'Sets a minimum price (in euro).', 'jiwp' ); ?>
 					<p>
 						<?php _e( 'Example:', 'jiwp' ); ?>
