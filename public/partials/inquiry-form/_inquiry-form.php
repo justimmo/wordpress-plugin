@@ -55,6 +55,8 @@
             <?php endforeach; ?>
         </select>
     </p>
-    <button><?php _e('Send Inquiry', 'jiwp'); ?></button>
+    <p>
+        <button><?php _e('Send Inquiry', 'jiwp'); ?></button>
+    </p>
 </form>
 <?php endif; ?>
