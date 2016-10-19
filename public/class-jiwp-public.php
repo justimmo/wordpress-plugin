@@ -764,7 +764,7 @@ class Jiwp_Public
     public static function get_realty_url($realty)
     {
         $linkParts = [
-            $realty->getZipCode(),
+            sanitize_title($realty->getZipCode()),
             sanitize_title($realty->getPlace()),
             sanitize_title($realty->getTitle()),
             $realty->getPropertyNumber(),
@@ -785,7 +785,7 @@ class Jiwp_Public
     public static function get_project_url($project)
     {
         $linkParts = [
-            $project->getZipCode(),
+            sanitize_title($project->getZipCode()),
             sanitize_title($project->getPlace()),
             sanitize_title($project->getTitle()),
             $project->getId(),
