@@ -40,8 +40,8 @@ use Justimmo\Model\Mapper\V1\ProjectMapper;
 use Justimmo\Request\RealtyInquiryRequest;
 use Justimmo\Model\Mapper\V1\RealtyInquiryMapper;
 
-class Jiwp_Public {
-
+class Jiwp_Public
+{
     const PROJECT_INFO_TEMPLATES_MAPPING = array(
         'address'           => '/project/_project-info__address.php',
         'contact'           => '/project/_project-info__contact.php',
@@ -525,7 +525,7 @@ class Jiwp_Public {
 
             $pager_url = $this->build_pager_url( $_GET );
 
-            $realties = $this->get_realties( $page, get_option('posts_per_page') );
+            $pager = $this->get_realties( $page, get_option('posts_per_page') );
 
             $new_template = self::get_template( 'search-form/search-results-template.php' );
 
@@ -543,19 +543,18 @@ class Jiwp_Public {
 
     /**
      * Register shortcodes
-     * 
+     *
      * @since 1.0.0
      */
-    public function init_shortcodes() {
-
+    public function init_shortcodes()
+    {
         // Enable shortcodes in widgets
         add_filter('widget_text', 'do_shortcode');
 
-        add_shortcode( 'ji_search_form', array( $this, 'search_form_shortcode_output' ) );
-        add_shortcode( 'ji_realty_list', array( $this, 'realty_list_shortcode_output' ) );
-        add_shortcode( 'ji_project_list', array( $this, 'project_list_shortcode_output' ) );
-        add_shortcode( 'ji_project_info', array( $this, 'project_info_shortcode_output' ) );
-
+        add_shortcode('ji_search_form', array($this, 'search_form_shortcode_output'));
+        add_shortcode('ji_realty_list', array($this, 'realty_list_shortcode_output'));
+        add_shortcode('ji_project_list', array($this, 'project_list_shortcode_output'));
+        add_shortcode('ji_project_info', array($this, 'project_info_shortcode_output'));
     }
 
     /**
@@ -563,9 +562,9 @@ class Jiwp_Public {
      *
      * @since 1.0.0
      */
-    public function realty_list_shortcode_output( $atts ) {
-
-        $atts = shortcode_atts( 
+    public function realty_list_shortcode_output($atts)
+    {
+        $atts = shortcode_atts(
             array(
                 'max_per_page'          => 5,
                 'rent'                  => null,
@@ -582,33 +581,32 @@ class Jiwp_Public {
                 'balcony_terrace'       => null,
                 'price_order'           => null,
                 'date_order'            => null,
-                'surface_order'         => null
-            ), 
-            $atts, 
-            'ji_realty_list' 
+                'surface_order'         => null,
+                'format'                => 'list',
+            ),
+            $atts,
+            'ji_realty_list'
         );
 
-        try 
-        {
-            $this->set_realty_query_filters( $atts );
+        try {
+            $this->set_realty_query_filters($atts);
 
-            $this->set_realty_query_ordering( $atts );
+            $this->set_realty_query_ordering($atts);
 
-            $page = get_query_var( 'page', 1 );
+            $page = get_query_var('page', 1);
 
             $pager_url = $this->build_pager_url();
 
-            $pager = $this->get_realties( $page, $atts[ 'max_per_page' ] );
+            $pager = $this->get_realties($page, $atts[ 'max_per_page' ]);
+
+            $realty_list_class = $atts['format'] == 'grid' ? 'ji-realty-list--grid' : '';
 
             ob_start();
-            include( 'partials/realty/_realty-list.php' );
+            include('partials/realty/_realty-list.php');
             return ob_get_clean();
+        } catch (Exception $e) {
+            self::jiwp_error_log($e);
         }
-        catch ( Exception $e )
-        {
-            self::jiwp_error_log( $e );
-        }
-
     }
 
     /**
@@ -899,7 +897,7 @@ class Jiwp_Public {
      *
      * @since  1.0.0
      * @param  integer $realty_id   Realty id
-     * @return Realty               Realty object
+     * @return \Realty              Realty object
      */
     private function get_realty( $realty_id ) {
 
@@ -919,7 +917,7 @@ class Jiwp_Public {
      *
      * @since  1.0.0
      * @param  integer $page    Current page
-     * @return ListPager        Pager object containing realties array
+     * @return \ListPager       Pager object containing realties array
      */
     private function get_realties( $page, $max_per_page ) {
 
@@ -937,7 +935,7 @@ class Jiwp_Public {
      *
      * @since  1.0.0
      * @param  integer $project_id  Project id
-     * @return Project              Project object
+     * @return \Project             Project object
      */
     private function get_project( $project_id ) {
 
@@ -955,7 +953,7 @@ class Jiwp_Public {
      *
      * @since  1.0.0
      * @param  integer $page    Current page
-     * @return ListPager        Pager object containing projects array
+     * @return \ListPager       Pager object containing projects array
      */
     private function get_projects( $page, $max_per_page ) {
 

@@ -1,23 +1,23 @@
 <section class="ji-realties-container">
 
-	<?php if ( count($pager) ): ?>
+    <?php if (count($pager)) : ?>
 
-		<ul class="ji-realty-list">
+        <ul class="ji-realty-list <?php echo $realty_list_class ?>">
 
-			<?php foreach ( $pager as $realty ): ?>
+            <?php foreach ($pager as $realty) : ?>
 
-				<?php include( Jiwp_Public::get_template( 'realty/_realty-list__item.php' ) ); ?>
+                <?php include(Jiwp_Public::get_template('realty/_realty-list__item.php')); ?>
 
-			<?php endforeach; ?>
+            <?php endforeach; ?>
 
-		</ul>
+        </ul>
 
-		<?php include( Jiwp_Public::get_template( '_pagination.php' ) ); ?>
+        <?php include(Jiwp_Public::get_template('_pagination.php')); ?>
 
-	<?php else: ?>
+    <?php else : ?>
 
-		<h3 class="ji-no-realties"><?php _e( 'No realties found', 'jiwp' ); ?></h3>
+        <h3 class="ji-no-realties"><?php _e('No realties found', 'jiwp'); ?></h3>
 
-	<?php endif; ?>
+    <?php endif; ?>
 
 </section>

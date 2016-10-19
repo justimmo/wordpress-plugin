@@ -21,6 +21,10 @@
 	margin-bottom: 25px;
 }
 
+.ji-realty-list--grid .ji-realty--list-item:nth-child(3n+1) {
+	clear:  left;
+}
+
 .ji-realty--list-item .ji-realty__header {
 	position: relative;
 	padding: 0 0 0 220px;
@@ -35,7 +39,7 @@
 	left: 0;
 }
 
-.ji-realty--list-item h1.ji-realty__title {
+.ji-realty--list-item .ji-realty__title {
 	font-size: 1.2em;
 	margin: 0 0 15px 0;
 }
@@ -55,6 +59,10 @@ h1.ji-realty__title a {
 
 .ji-info {
 	border-bottom: 1px solid #ddd;
+}
+
+.ji-info:last-child {
+	border: 0;
 }
 
 .ji-info__label {
@@ -96,4 +104,39 @@ h1.ji-realty__title a {
 
 .ji-info-section__title {
 	margin: 15px 0;
+}
+
+/* Realty List Grid */	
+
+.ji-realty-list--grid .ji-realty-list__item {
+	width: 33.33%;
+	padding: 10px;
+	float: left;
+}
+
+.ji-realty-list--grid .ji-realty-list__item:nth-child(3n+1) {
+	clear: left;
+}
+
+.ji-realty-list--grid .ji-realty__featured-img {
+	position: relative;
+	max-width: 100%;
+	height: 170px;
+	margin: 0 auto;
+}
+
+.ji-realty-list--grid .ji-realty__header {
+	padding: 0 0 15px 0;
+	background: #f6f6f6;
+	text-align: center;
+}
+
+.ji-realty-list--grid .ji-realty__title {
+	margin-top: 10px;
+}
+
+.ji-realty-list--grid .ji-info-list {
+	width: 90%;
+	margin: 0 auto;
+	background: #fff;
 }
