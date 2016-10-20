@@ -650,8 +650,6 @@
 
 		<?php endif; ?>
 
-		<hr>
-
 		<?php 
 			$yearly_net_earn = $realty->getNetEarningYearly(); 
 			if ( !empty( $yearly_net_earn ) ): 
