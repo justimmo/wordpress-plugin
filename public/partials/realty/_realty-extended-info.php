@@ -596,7 +596,11 @@
 					<?php _e( 'Contract Establishment Costs:', 'jiwp' ); ?>
 				</label>
 				<span class="ji-info__value">
-					<?php echo money_format( "%!i $currency" , $contract_establishment_costs ); ?>
+					<?php if (is_numeric($contract_establishment_costs)) : ?>
+                        <?php echo money_format( "%!i $currency" , $contract_establishment_costs ); ?>
+                    <?php else : ?>
+                        <?php echo $contract_establishment_costs; ?>
+                    <?php endif; ?>
 				</span>
 			</li>
 
