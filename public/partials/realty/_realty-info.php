@@ -1,102 +1,107 @@
 <ul class="ji-info-list">
 
-	<li class="ji-info">
+    <li class="ji-info">
 
-		<label class="ji-info__label">
-			<?php _e( 'Realty Type:', 'jiwp' ); ?>
-		</label>
-		
-		<span class="ji-info__value">
-			<?php echo $realty->getRealtyTypeName(); ?>
-		</span>
+        <label class="ji-info__label">
+            <?php _e('Realty Type:', 'jiwp'); ?>
+        </label>
+        
+        <span class="ji-info__value">
+            <?php echo $realty->getRealtyTypeName(); ?>
+        </span>
 
-	</li>
+    </li>
 
-	<li class="ji-info">
+    <li class="ji-info">
 
-		<label class="ji-info__label">
-			<?php _e( 'For:', 'jiwp' ); ?>
-		</label>
-		
-		<span class="ji-info__value">
-			<?php
+        <label class="ji-info__label">
+            <?php _e('For:', 'jiwp'); ?>
+        </label>
+        
+        <span class="ji-info__value">
+            <?php
 
-				$marketingType = $realty->getMarketingType();
+            $marketingType = $realty->getMarketingType();
 
-				if ( $marketingType['KAUF'] == true )
-				{
-					_e( 'Purchase', 'jiwp' );
-				}
-				else 
-				{
-					_e( 'Rent', 'jiwp' );
-				}
+            if ($marketingType['KAUF'] == true) {
+                _e('Purchase', 'jiwp');
+            } else {
+                _e('Rent', 'jiwp');
+            }
 
-			?>
-		</span>
+            ?>
+        </span>
 
-	</li>
+    </li>
 
-	<li class="ji-info">
+    <?php
 
-		<label class="ji-info__label">
-			<?php _e( 'Price:', 'jiwp' ); ?>
-		</label>
-		
-		<span class="ji-info__value">
-			<?php
+    $price_text = '';
+    $currency = $realty->getCurrency();
 
-				$currency = $realty->getCurrency();
+    if (empty($currency)) {
+        $currency = 'EUR';
+    }
 
-				if ( empty( $currency ) ) 
-				{
-					$currency = 'EUR';
-				}
+    if ($marketingType['KAUF'] == true) {
+        $purchase_price = $realty->getPurchasePrice();
+        if (!empty($purchase_price)) {
+            $price_text = money_format("%!i $currency", $purchase_price);
+        }
+    } else {
+        $rent_price = $realty->getTotalRent();
+        if (!empty($rent_price)) {
+            $price_text = money_format("%!i $currency", $rent_price);
+        }
+    }
 
-				if ( $marketingType['KAUF'] == true ) 
-				{
-					echo money_format( "%!i $currency", $realty->getPurchasePrice() );
-				}
-				else 
-				{
-					echo money_format( "%!i $currency", $realty->getTotalRent() );
-				}
+    ?>
 
-			?>
-		</span>
+    <?php if (!empty($price_text)) : ?>
 
-	</li>
+        <li class="ji-info">
 
-	<?php if ( $surface_area = $realty->getSurfaceArea() ): ?>
+            <label class="ji-info__label">
+                <?php _e('Price:', 'jiwp'); ?>
+            </label>
+            
+            <span class="ji-info__value">
+                <?php echo $price_text; ?>
+            </span>
+        </li>
 
-		<li class="ji-info">
+    <?php endif; ?>
 
-			<label class="ji-info__label">
-				<?php _e( 'Surface Area:', 'jiwp' ); ?>
-			</label>
-			
-			<span class="ji-info__value">
-				<?php echo $surface_area . ' m&sup2;'; ?>
-			</span>
+    <?php if ($surface_area = $realty->getSurfaceArea()) : ?>
 
-		</li>
+        <li class="ji-info">
 
-	<?php endif; ?>
+            <label class="ji-info__label">
+                <?php _e('Surface Area:', 'jiwp'); ?>
+            </label>
+            
+            <span class="ji-info__value">
+                <?php echo $surface_area . ' m&sup2;'; ?>
+            </span>
 
-	<?php if ( $room_count = $realty->getRoomCount() ): ?>
+        </li>
 
-		<li class="ji-info">
+    <?php endif; ?>
 
-			<label class="ji-info__label">
-				<?php _e( 'Rooms:', 'jiwp' ); ?>
-			</label>
-			
-			<span class="ji-info__value">
-				<?php echo $room_count; ?>
-			</span>
+    <?php if ($room_count = $realty->getRoomCount()) : ?>
 
-		</li>
+        <li class="ji-info">
 
-	<?php endif; ?>
+            <label class="ji-info__label">
+                <?php _e('Rooms:', 'jiwp'); ?>
+            </label>
+            
+            <span class="ji-info__value">
+                <?php echo $room_count; ?>
+            </span>
+
+        </li>
+
+    <?php endif; ?>
 
 </ul>
