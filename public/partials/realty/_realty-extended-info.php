@@ -164,6 +164,50 @@
     </ul>
 </section>
 
+<!-- Contact Details -->
+<?php $contact = $realty->getContact(); ?>
+<?php if (!empty($contact)) : ?>
+    <section class="ji-info-section">
+        <h2 class="ji-info-section__title"><?php _e('Your Contact Person', 'jiwp'); ?></h2>
+        <div class="contact-person">
+            <?php $pictures = $contact->getPictures(); ?>
+            <?php if (!empty($pictures)) : ?>
+                <img src="<?php echo $pictures[0]->getUrl('small'); ?>" class="contact-person__avatar" alt=""/>
+            <?php endif; ?>
+            <ul class="ji-info-list contact-person__info-list">
+                <li class="ji-info">
+                    <label class="ji-info__label"><?php _e('Name:', 'jiwp'); ?></label>
+                    <span class="ji-info__value">
+                        <?php
+
+                        echo $contact->getTitle() . ' '
+                        . $contact->getFirstName() . ' '
+                        . $contact->getLastName() . ' ';
+
+                        ?>
+                    </span>
+                </li>
+                
+                <?php $contact_email = $contact->getEmail(); ?>
+                <?php if (!empty($contact_email)) : ?>
+                    <li class="ji-info">
+                        <label class="ji-info__label"><?php _e('Email:', 'jiwp'); ?></label>
+                        <span class="ji-info__value"><?php echo $contact_email; ?></span>
+                    </li>
+                <?php endif; ?>
+
+                <?php $contact_phone = $contact->getPhone(); ?>
+                <?php if (!empty($contact_phone)) : ?>
+                    <li class="ji-info">
+                        <label class="ji-info__label"><?php _e('Phone:', 'jiwp'); ?></label>
+                        <span class="ji-info__value"><?php echo $contact_phone; ?></span>
+                    </li>
+                <?php endif; ?>
+            </ul>
+        </div>
+    </section>
+<?php endif; ?>
+
 <!-- Surface Details -->
 <section class="ji-info-section">
     <h3 class="ji-info-section__title"><?php _e('Surface:', 'jiwp'); ?></h3>
