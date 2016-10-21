@@ -1,760 +1,742 @@
 <!-- Basic Details -->
 <section class="ji-info-section">
-	<h3 class="ji-info-section__title"><?php _e( 'Basic details:', 'jiwp' ); ?></h3>
+    <h3 class="ji-info-section__title"><?php _e('Basic details:', 'jiwp'); ?></h3>
 
-	<ul class="ji-info-list ji-info-list--extended">
-		<li class="ji-info">
-			<label class="ji-info__label">
-				<?php _e( 'Realty Number:', 'jiwp' ); ?>
-			</label>
-			<span class="ji-info__value">
-				<?php echo $realty->getPropertyNumber(); ?>
-			</span>
-		</li>
+    <ul class="ji-info-list ji-info-list--extended">
+        <li class="ji-info">
+            <label class="ji-info__label">
+                <?php _e('Realty Number:', 'jiwp'); ?>
+            </label>
+            <span class="ji-info__value">
+                <?php echo $realty->getPropertyNumber(); ?>
+            </span>
+        </li>
 
-		<li class="ji-info">
-			<label class="ji-info__label">
-				<?php _e( 'Country / State:', 'jiwp' ); ?>
-			</label>
-			<span class="ji-info__value">
-				<?php echo $realty->getCountry() . ' / ' . $realty->getFederalState(); ?>
-			</span>
-		</li>
+        <li class="ji-info">
+            <label class="ji-info__label">
+                <?php _e('Country / State:', 'jiwp'); ?>
+            </label>
+            <span class="ji-info__value">
+                <?php echo $realty->getCountry() . ' / ' . $realty->getFederalState(); ?>
+            </span>
+        </li>
 
-		<li class="ji-info">
-			<label class="ji-info__label">
-				<?php _e( 'Address:', 'jiwp' ); ?>
-			</label>
-			<span class="ji-info__value">
-				<?php
+        <li class="ji-info">
+            <label class="ji-info__label">
+                <?php _e('Address:', 'jiwp'); ?>
+            </label>
+            <span class="ji-info__value">
+                <?php
 
-					$address_array = array();
+                $address_array = array();
 
-					$zipCode =  $realty->getZipCode();
+                $zipCode =  $realty->getZipCode();
 
-					if ( !empty( $zipCode ) )
-					{
-						$address_array[] = $zipCode;
-					}
+                if (!empty($zipCode)) {
+                    $address_array[] = $zipCode;
+                }
 
-					$place = $realty->getPlace();
+                $place = $realty->getPlace();
 
-					if ( !empty( $place ) )
-					{
-						$address_array[] = $place;
-					}
+                if (!empty($place)) {
+                    $address_array[] = $place;
+                }
 
-					$street = $realty->getStreet();
+                $street = $realty->getStreet();
 
-					if ( !empty( $street ) )
-					{
-						$address_array[] = $street;
-					}
+                if (!empty($street)) {
+                    $address_array[] = $street;
+                }
 
-					$houseNumber = $realty->getHouseNumber();
+                $houseNumber = $realty->getHouseNumber();
 
-					if ( !empty( $houseNumber ) )
-					{
-						$address_array[] = $houseNumber;
-					}
+                if (!empty($houseNumber)) {
+                    $address_array[] = $houseNumber;
+                }
 
-					$stair = $realty->getStair();
+                $stair = $realty->getStair();
 
-					if ( !empty( $stair ) )
-					{
-						$address_array[] = $stair;
-					}
+                if (!empty($stair)) {
+                    $address_array[] = $stair;
+                }
 
-					$doorNumber = $realty->getDoorNumber();
+                $doorNumber = $realty->getDoorNumber();
 
-					if ( !empty( $doorNumber ) )
-					{
-						$address_array[] = $doorNumber;
-					}
+                if (!empty($doorNumber)) {
+                    $address_array[] = $doorNumber;
+                }
 
-					echo implode( ', ', $address_array );
+                echo implode(', ', $address_array);
 
-				?>
-			</span>
-		</li>
+                ?>
+            </span>
+        </li>
 
-		<?php
-			$locality = $realty->getLocality(); 
-			if ( !empty( $locality ) ):
-		?>
-			<li class="ji-info">
-				<label class="ji-info__label">
-					<?php _e( 'Location:', 'jiwp' ); ?>
-				</label>
-				<span class="ji-info__value">
-					<?php echo $locality; ?>
-				</span>
-			</li>
-		<?php endif; ?>
+        <?php $locality = $realty->getLocality(); ?>
+        <?php if (!empty($locality)) : ?>
+            <li class="ji-info">
+                <label class="ji-info__label">
+                    <?php _e('Location:', 'jiwp'); ?>
+                </label>
+                <span class="ji-info__value">
+                    <?php echo $locality; ?>
+                </span>
+            </li>
+        <?php endif; ?>
 
-		<?php 
-			$proximity = $realty->getProximity(); 
-			if ( !empty( $proximity ) ):
-		?>
-			<li class="ji-info">
-				<label class="ji-info__label">
-					<?php _e( 'Proximity:', 'jiwp' ); ?>
-				</label>
-				<span class="ji-info__value">
-					<?php echo $proximity; ?>
-				</span>
-			</li>
-		<?php endif; ?>
+        <?php $proximity = $realty->getProximity(); ?>
+        <?php if (!empty($proximity)) : ?>
+            <li class="ji-info">
+                <label class="ji-info__label">
+                    <?php _e('Proximity:', 'jiwp'); ?>
+                </label>
+                <span class="ji-info__value">
+                    <?php echo $proximity; ?>
+                </span>
+            </li>
+        <?php endif; ?>
 
-		<li class="ji-info">
-			<label class="ji-info__label">
-				<?php _e( 'Commercial Type:', 'jiwp' ); ?>
-			</label>
-			<span class="ji-info__value">
-				<?php echo $realty->getRealtyTypeName(); ?>
-			</span>
-		</li>
+        <li class="ji-info">
+            <label class="ji-info__label">
+                <?php _e('Commercial Type:', 'jiwp'); ?>
+            </label>
+            <span class="ji-info__value">
+                <?php echo $realty->getRealtyTypeName(); ?>
+            </span>
+        </li>
 
-		<li class="ji-info">
-			<label class="ji-info__label">
-				<?php _e( 'Realty Type:', 'jiwp' ); ?>
-			</label>
-			<span class="ji-info__value">
-				<?php echo $realty->getSubRealtyTypeName(); ?>
-			</span>
-		</li>
+        <li class="ji-info">
+            <label class="ji-info__label">
+                <?php _e('Realty Type:', 'jiwp'); ?>
+            </label>
+            <span class="ji-info__value">
+                <?php echo $realty->getSubRealtyTypeName(); ?>
+            </span>
+        </li>
 
-		<?php
-			$building_age = $realty->getStyleOfBuilding(); 
-			if ( !empty( $building_age ) ): 
-		?>
+        <?php $building_age = $realty->getStyleOfBuilding(); ?>
+        <?php if (!empty($building_age)) : ?>
 
-			<li class="ji-info">
-				<label class="ji-info__label">
-					<?php _e( 'Building Age:', 'jiwp' ); ?>
-				</label>
-				<span class="ji-info__value">
-					<?php echo $building_age; ?>
-				</span>
-			</li>
+            <li class="ji-info">
+                <label class="ji-info__label">
+                    <?php _e('Building Age:', 'jiwp'); ?>
+                </label>
+                <span class="ji-info__value">
+                    <?php echo $building_age; ?>
+                </span>
+            </li>
 
-		<?php endif; ?>
+        <?php endif; ?>
 
-		<?php 
-			$categories = $realty->getCategories(); 
-			if ( !empty( $categories ) ): 
-		?>
+        <?php $categories = $realty->getCategories(); ?>
+        <?php if (!empty($categories)) : ?>
 
-			<li class="ji-info">
-				<label class="ji-info__label">
-					<?php _e( 'Categories:', 'jiwp' ); ?>
-				</label>
-				<span class="ji-info__value">
-					<?php echo implode( ', ', $categories ); ?>
-				</span>
-			</li>
+            <li class="ji-info">
+                <label class="ji-info__label">
+                    <?php _e('Categories:', 'jiwp'); ?>
+                </label>
+                <span class="ji-info__value">
+                    <?php echo implode(', ', $categories); ?>
+                </span>
+            </li>
 
-		<?php endif; ?>
+        <?php endif; ?>
 
-		<li class="ji-info">
-			<label class="ji-info__label">
-				<?php _e( 'For:', 'jiwp' ); ?>
-			</label>
-			<span class="ji-info__value">
-				<?php
+        <li class="ji-info">
+            <label class="ji-info__label">
+                <?php _e('For:', 'jiwp'); ?>
+            </label>
+            <span class="ji-info__value">
+                <?php
 
-					$is_for_rent = true;
+                $is_for_rent = true;
 
-					if ( $realty->getMarketingType()['KAUF'] == true )
-					{
-						$is_for_rent = false;
-						_e( 'Purchase', 'jiwp' );
-					}
-					else
-					{
-						_e( 'Rent', 'jiwp' );
-					}
+                if ($realty->getMarketingType()['KAUF'] == true) {
+                    $is_for_rent = false;
+                    _e('Purchase', 'jiwp');
+                } else {
+                    _e('Rent', 'jiwp');
+                }
 
-				?>
-			</span>
-		</li>
-	</ul>
+                ?>
+            </span>
+        </li>
+    </ul>
 </section>
 
 <!-- Surface Details -->
 <section class="ji-info-section">
-	<h3 class="ji-info-section__title"><?php _e( 'Surface:', 'jiwp' ); ?></h3>
+    <h3 class="ji-info-section__title"><?php _e('Surface:', 'jiwp'); ?></h3>
 
-	<ul class="ji-info-list ji-info-list--extended">
+    <ul class="ji-info-list ji-info-list--extended">
 
-		<?php if ( $floor_area = $realty->getFloorArea() ): ?>
+        <?php if ($floor_area = $realty->getFloorArea()) :?>
 
-			<li class="ji-info">
-				<label class="ji-info__label">
-					<?php _e( 'Floor Area:', 'jiwp' ); ?>
-				</label>
-				<span class="ji-info__value">
-					<?php echo $floor_area . ' m&sup2;'; ?>
-				</span>
-			</li>
+            <li class="ji-info">
+                <label class="ji-info__label">
+                    <?php _e('Floor Area:', 'jiwp'); ?>
+                </label>
+                <span class="ji-info__value">
+                    <?php echo $floor_area . ' m&sup2;'; ?>
+                </span>
+            </li>
 
-		<?php endif; ?>
+        <?php endif; ?>
 
-		<?php if ( $surface_area = $realty->getSurfaceArea() ): ?>
+        <?php if ($surface_area = $realty->getSurfaceArea()) :?>
 
-			<li class="ji-info">
-				<label class="ji-info__label">
-					<?php _e( 'Surface Area:', 'jiwp' ); ?>
-				</label>
-				<span class="ji-info__value">
-					<?php echo $surface_area . ' m&sup2;'; ?>
-				</span>
-			</li>
+            <li class="ji-info">
+                <label class="ji-info__label">
+                    <?php _e('Surface Area:', 'jiwp'); ?>
+                </label>
+                <span class="ji-info__value">
+                    <?php echo $surface_area . ' m&sup2;'; ?>
+                </span>
+            </li>
 
-		<?php endif; ?>
+        <?php endif; ?>
 
-		<?php if ( $living_area = $realty->getLivingArea() ): ?>
+        <?php if ($living_area = $realty->getLivingArea()) :?>
 
-			<li class="ji-info">
-				<label class="ji-info__label">
-					<?php _e( 'Living Area:', 'jiwp' ); ?>
-				</label>
-				<span class="ji-info__value">
-					<?php echo $living_area . ' m&sup2;'; ?>
-				</span>
-			</li>
+            <li class="ji-info">
+                <label class="ji-info__label">
+                    <?php _e('Living Area:', 'jiwp'); ?>
+                </label>
+                <span class="ji-info__value">
+                    <?php echo $living_area . ' m&sup2;'; ?>
+                </span>
+            </li>
 
-		<?php endif; ?>
+        <?php endif; ?>
 
-		<?php if ( $total_area = $realty->getTotalArea() ): ?>
+        <?php if ($total_area = $realty->getTotalArea()) :?>
 
-			<li class="ji-info">
-				<label class="ji-info__label">
-					<?php _e( 'Total Area:', 'jiwp' ); ?>
-				</label>
-				<span class="ji-info__value">
-					<?php echo $total_area . ' m&sup2;'; ?>
-				</span>
-			</li>
+            <li class="ji-info">
+                <label class="ji-info__label">
+                    <?php _e('Total Area:', 'jiwp'); ?>
+                </label>
+                <span class="ji-info__value">
+                    <?php echo $total_area . ' m&sup2;'; ?>
+                </span>
+            </li>
 
-		<?php endif; ?>
+        <?php endif; ?>
 
-		<?php if ( $balcony_area = $realty->getBalconyArea() ): ?>
+        <?php if ($balcony_area = $realty->getBalconyArea()) :?>
 
-			<li class="ji-info">
-				<label class="ji-info__label">
-					<?php _e( 'Balcony Area:', 'jiwp' ); ?>
-				</label>
-				<span class="ji-info__value">
-					<?php echo $balcony_area . ' m&sup2;'; ?>
-				</span>
-			</li>
+            <li class="ji-info">
+                <label class="ji-info__label">
+                    <?php _e('Balcony Area:', 'jiwp'); ?>
+                </label>
+                <span class="ji-info__value">
+                    <?php echo $balcony_area . ' m&sup2;'; ?>
+                </span>
+            </li>
 
-		<?php endif; ?>
+        <?php endif; ?>
 
-		<?php if ( $terrace_area = $realty->getTerraceArea() ): ?>
+        <?php if ($terrace_area = $realty->getTerraceArea()) :?>
 
-			<li class="ji-info">
-				<label class="ji-info__label">
-					<?php _e( 'Terrace Area:', 'jiwp' ); ?>
-				</label>
-				<span class="ji-info__value">
-					<?php echo $terrace_area . ' m&sup2;'; ?>
-				</span>
-			</li>
+            <li class="ji-info">
+                <label class="ji-info__label">
+                    <?php _e('Terrace Area:', 'jiwp'); ?>
+                </label>
+                <span class="ji-info__value">
+                    <?php echo $terrace_area . ' m&sup2;'; ?>
+                </span>
+            </li>
 
-		<?php endif; ?>
+        <?php endif; ?>
 
-		<?php if ( $garden_area = $realty->getGardenArea() ): ?>
+        <?php if ($garden_area = $realty->getGardenArea()) :?>
 
-			<li class="ji-info">
-				<label class="ji-info__label">
-					<?php _e( 'Garden Area:', 'jiwp' ); ?>
-				</label>
-				<span class="ji-info__value">
-					<?php echo $garden_area . ' m&sup2;'; ?>
-				</span>
-			</li>
+            <li class="ji-info">
+                <label class="ji-info__label">
+                    <?php _e('Garden Area:', 'jiwp'); ?>
+                </label>
+                <span class="ji-info__value">
+                    <?php echo $garden_area . ' m&sup2;'; ?>
+                </span>
+            </li>
 
-		<?php endif; ?>
+        <?php endif; ?>
 
-		<?php if ( $cellar_area = $realty->getCellarArea() ): ?>
+        <?php if ($cellar_area = $realty->getCellarArea()) :?>
 
-			<li class="ji-info">
-				<label class="ji-info__label">
-					<?php _e( 'Cellar Area:', 'jiwp' ); ?>
-				</label>
-				<span class="ji-info__value">
-					<?php echo $cellar_area . ' m&sup2;'; ?>
-				</span>
-			</li>
+            <li class="ji-info">
+                <label class="ji-info__label">
+                    <?php _e('Cellar Area:', 'jiwp'); ?>
+                </label>
+                <span class="ji-info__value">
+                    <?php echo $cellar_area . ' m&sup2;'; ?>
+                </span>
+            </li>
 
-		<?php endif; ?>
+        <?php endif; ?>
 
-		<?php if ( $office_area = $realty->getOfficeArea() ): ?>
+        <?php if ($office_area = $realty->getOfficeArea()) :?>
 
-			<li class="ji-info">
-				<label class="ji-info__label">
-					<?php _e( 'Office Area:', 'jiwp' ); ?>
-				</label>
-				<span class="ji-info__value">
-					<?php echo $office_area . ' m&sup2;'; ?>
-				</span>
-			</li>
+            <li class="ji-info">
+                <label class="ji-info__label">
+                    <?php _e('Office Area:', 'jiwp'); ?>
+                </label>
+                <span class="ji-info__value">
+                    <?php echo $office_area . ' m&sup2;'; ?>
+                </span>
+            </li>
 
-		<?php endif; ?>
+        <?php endif; ?>
 
-		<?php if ( $storage_area = $realty->getStorageArea() ): ?>
+        <?php if ($storage_area = $realty->getStorageArea()) :?>
 
-			<li class="ji-info">
-				<label class="ji-info__label">
-					<?php _e( 'Storage Area:', 'jiwp' ); ?>
-				</label>
-				<span class="ji-info__value">
-					<?php echo $storage_area . ' m&sup2;'; ?>
-				</span>
-			</li>
+            <li class="ji-info">
+                <label class="ji-info__label">
+                    <?php _e('Storage Area:', 'jiwp'); ?>
+                </label>
+                <span class="ji-info__value">
+                    <?php echo $storage_area . ' m&sup2;'; ?>
+                </span>
+            </li>
 
-		<?php endif; ?>
+        <?php endif; ?>
 
-		<?php if ( $loggia_area = $realty->getLoggiaArea() ): ?>
+        <?php if ($loggia_area = $realty->getLoggiaArea()) :?>
 
-			<li class="ji-info">
-				<label class="ji-info__label">
-					<?php _e( 'Loggia Area:', 'jiwp' ); ?>
-				</label>
-				<span class="ji-info__value">
-					<?php echo $loggia_area . ' m&sup2;'; ?>
-				</span>
-			</li>
+            <li class="ji-info">
+                <label class="ji-info__label">
+                    <?php _e('Loggia Area:', 'jiwp'); ?>
+                </label>
+                <span class="ji-info__value">
+                    <?php echo $loggia_area . ' m&sup2;'; ?>
+                </span>
+            </li>
 
-		<?php endif; ?>
+        <?php endif; ?>
 
-		<?php if ( $garage_area = $realty->getGarageArea() ): ?>
+        <?php if ($garage_area = $realty->getGarageArea()) :?>
 
-			<li class="ji-info">
-				<label class="ji-info__label">
-					<?php _e( 'Garage Area:', 'jiwp' ); ?>
-				</label>
-				<span class="ji-info__value">
-					<?php echo $garage_area . ' m&sup2;'; ?>
-				</span>
-			</li>
+            <li class="ji-info">
+                <label class="ji-info__label">
+                    <?php _e('Garage Area:', 'jiwp'); ?>
+                </label>
+                <span class="ji-info__value">
+                    <?php echo $garage_area . ' m&sup2;'; ?>
+                </span>
+            </li>
 
-		<?php endif; ?>
+        <?php endif; ?>
 
-		<?php if ( $parking_area = $realty->getParkingArea() ): ?>
+        <?php if ($parking_area = $realty->getParkingArea()) :?>
 
-			<li class="ji-info">
-				<label class="ji-info__label">
-					<?php _e( 'Parking Area:', 'jiwp' ); ?>
-				</label>
-				<span class="ji-info__value">
-					<?php echo $parking_area . ' m&sup2;'; ?>
-				</span>
-			</li>
+            <li class="ji-info">
+                <label class="ji-info__label">
+                    <?php _e('Parking Area:', 'jiwp'); ?>
+                </label>
+                <span class="ji-info__value">
+                    <?php echo $parking_area . ' m&sup2;'; ?>
+                </span>
+            </li>
 
-		<?php endif; ?>
+        <?php endif; ?>
 
-		<?php if ( $buildable_area = $realty->getBuildableArea() ): ?>
+        <?php if ($buildable_area = $realty->getBuildableArea()) :?>
 
-			<li class="ji-info">
-				<label class="ji-info__label">
-					<?php _e( 'Buildable Area:', 'jiwp' ); ?>
-				</label>
-				<span class="ji-info__value">
-					<?php echo $buildable_area . ' m&sup2;'; ?>
-				</span>
-			</li>
+            <li class="ji-info">
+                <label class="ji-info__label">
+                    <?php _e('Buildable Area:', 'jiwp'); ?>
+                </label>
+                <span class="ji-info__value">
+                    <?php echo $buildable_area . ' m&sup2;'; ?>
+                </span>
+            </li>
 
-		<?php endif; ?>
+        <?php endif; ?>
 
-	</ul>
+    </ul>
 </section>
 
 <!-- Room Details -->
 <section class="ji-info-section">
-	<h3 class="ji-info-section__title"><?php _e( 'Room Count:' ); ?></h3>
+    <h3 class="ji-info-section__title"><?php _e('Room Count:'); ?></h3>
 
-	<ul class="ji-info-list">
+    <ul class="ji-info-list">
 
-		<?php if ( $room_count = $realty->getRoomCount() ): ?>
+        <?php if ($room_count = $realty->getRoomCount()) :?>
 
-			<li class="ji-info">
-				<label class="ji-info__label">
-					<?php _e( 'Rooms:', 'jiwp' ); ?>
-				</label>
-				<span class="ji-info__value">
-					<?php echo $room_count; ?>
-				</span>
-			</li>
+            <li class="ji-info">
+                <label class="ji-info__label">
+                    <?php _e('Rooms:', 'jiwp'); ?>
+                </label>
+                <span class="ji-info__value">
+                    <?php echo $room_count; ?>
+                </span>
+            </li>
 
-		<?php endif; ?>
+        <?php endif; ?>
 
-		<?php if ( $bathroom_count = $realty->getBathroomCount() ): ?>
+        <?php if ($bathroom_count = $realty->getBathroomCount()) :?>
 
-			<li class="ji-info">
-				<label class="ji-info__label">
-					<?php _e( 'Bathrooms:', 'jiwp' ); ?>
-				</label>
-				<span class="ji-info__value">
-					<?php echo $bathroom_count; ?>
-				</span>
-			</li>
+            <li class="ji-info">
+                <label class="ji-info__label">
+                    <?php _e('Bathrooms:', 'jiwp'); ?>
+                </label>
+                <span class="ji-info__value">
+                    <?php echo $bathroom_count; ?>
+                </span>
+            </li>
 
-		<?php endif; ?>
+        <?php endif; ?>
 
-		<?php if ( $toiletroom_count = $realty->getToiletRoomCount() ): ?>
+        <?php if ($toiletroom_count = $realty->getToiletRoomCount()) :?>
 
-			<li class="ji-info">
-				<label class="ji-info__label">
-					<?php _e( 'Toilet Rooms:', 'jiwp' ); ?>
-				</label>
-				<span class="ji-info__value">
-					<?php echo $toiletroom_count; ?>
-				</span>
-			</li>
+            <li class="ji-info">
+                <label class="ji-info__label">
+                    <?php _e('Toilet Rooms:', 'jiwp'); ?>
+                </label>
+                <span class="ji-info__value">
+                    <?php echo $toiletroom_count; ?>
+                </span>
+            </li>
 
-		<?php endif; ?>
+        <?php endif; ?>
 
-		<?php if ( $balcony_count = $realty->getBalconyCount() ): ?>
+        <?php if ($balcony_count = $realty->getBalconyCount()) :?>
 
-			<li class="ji-info">
-				<label class="ji-info__label">
-					<?php _e( 'Balconies:', 'jiwp' ); ?>
-				</label>
-				<span class="ji-info__value">
-					<?php echo $balcony_count; ?>
-				</span>
-			</li>
+            <li class="ji-info">
+                <label class="ji-info__label">
+                    <?php _e('Balconies:', 'jiwp'); ?>
+                </label>
+                <span class="ji-info__value">
+                    <?php echo $balcony_count; ?>
+                </span>
+            </li>
 
-		<?php endif; ?>
+        <?php endif; ?>
 
-		<?php if ( $terrace_count = $realty->getTerraceCount() ): ?>
+        <?php if ($terrace_count = $realty->getTerraceCount()) :?>
 
-			<li class="ji-info">
-				<label class="ji-info__label">
-					<?php _e( 'Terraces:', 'jiwp' ); ?>
-				</label>
-				<span class="ji-info__value">
-					<?php echo $terrace_count; ?>
-				</span>
-			</li>
+            <li class="ji-info">
+                <label class="ji-info__label">
+                    <?php _e('Terraces:', 'jiwp'); ?>
+                </label>
+                <span class="ji-info__value">
+                    <?php echo $terrace_count; ?>
+                </span>
+            </li>
 
-		<?php endif; ?>
+        <?php endif; ?>
 
-		<?php if ( $loggia_count = $realty->getLoggiaCount() ): ?>
+        <?php if ($loggia_count = $realty->getLoggiaCount()) :?>
 
-			<li class="ji-info">
-				<label class="ji-info__label">
-					<?php _e( 'Loggias:', 'jiwp' ); ?>
-				</label>
-				<span class="ji-info__value">
-					<?php echo $loggia_count; ?>
-				</span>
-			</li>
+            <li class="ji-info">
+                <label class="ji-info__label">
+                    <?php _e('Loggias:', 'jiwp'); ?>
+                </label>
+                <span class="ji-info__value">
+                    <?php echo $loggia_count; ?>
+                </span>
+            </li>
 
-		<?php endif; ?>
+        <?php endif; ?>
 
-		<?php if ( $loggia_count = $realty->getLoggiaCount() ): ?>
+        <?php if ($loggia_count = $realty->getLoggiaCount()) :?>
 
-			<li class="ji-info">
-				<label class="ji-info__label">
-					<?php _e( 'Loggias:', 'jiwp' ); ?>
-				</label>
-				<span class="ji-info__value">
-					<?php echo $loggia_count; ?>
-				</span>
-			</li>
+            <li class="ji-info">
+                <label class="ji-info__label">
+                    <?php _e('Loggias:', 'jiwp'); ?>
+                </label>
+                <span class="ji-info__value">
+                    <?php echo $loggia_count; ?>
+                </span>
+            </li>
 
-		<?php endif; ?>
+        <?php endif; ?>
 
-		<?php if ( $garage_count = $realty->getGarageCount() ): ?>
+        <?php if ($garage_count = $realty->getGarageCount()) :?>
 
-			<li class="ji-info">
-				<label class="ji-info__label">
-					<?php _e( 'Garages:', 'jiwp' ); ?>
-				</label>
-				<span class="ji-info__value">
-					<?php echo $garage_count; ?>
-				</span>
-			</li>
+            <li class="ji-info">
+                <label class="ji-info__label">
+                    <?php _e('Garages:', 'jiwp'); ?>
+                </label>
+                <span class="ji-info__value">
+                    <?php echo $garage_count; ?>
+                </span>
+            </li>
 
-		<?php endif; ?>
+        <?php endif; ?>
 
-		<?php if ( $parking_count = $realty->getParkingCount() ): ?>
+        <?php if ($parking_count = $realty->getParkingCount()) :?>
 
-			<li class="ji-info">
-				<label class="ji-info__label">
-					<?php _e( 'Parking Spaces:', 'jiwp' ); ?>
-				</label>
-				<span class="ji-info__value">
-					<?php echo $parking_count; ?>
-				</span>
-			</li>
+            <li class="ji-info">
+                <label class="ji-info__label">
+                    <?php _e('Parking Spaces:', 'jiwp'); ?>
+                </label>
+                <span class="ji-info__value">
+                    <?php echo $parking_count; ?>
+                </span>
+            </li>
 
-		<?php endif; ?>
+        <?php endif; ?>
 
-		<?php if ( $storeroom_count = $realty->getStoreRoomCount() ): ?>
+        <?php if ($storeroom_count = $realty->getStoreRoomCount()) :?>
 
-			<li class="ji-info">
-				<label class="ji-info__label">
-					<?php _e( 'Store Rooms:', 'jiwp' ); ?>
-				</label>
-				<span class="ji-info__value">
-					<?php echo $storeroom_count; ?>
-				</span>
-			</li>
+            <li class="ji-info">
+                <label class="ji-info__label">
+                    <?php _e('Store Rooms:', 'jiwp'); ?>
+                </label>
+                <span class="ji-info__value">
+                    <?php echo $storeroom_count; ?>
+                </span>
+            </li>
 
-		<?php endif; ?>
+        <?php endif; ?>
 
-	</ul>
+    </ul>
 </section>
 
 <!-- Equipment Details -->
 <section class="ji-info-section">
-	<h3 class="ji-info-section__title"><?php _e( 'Equipment Description' ); ?></h3>
-	<?php echo $realty->getEquipmentDescription(); ?>
+    <h3 class="ji-info-section__title"><?php _e('Equipment Description'); ?></h3>
+    <?php echo $realty->getEquipmentDescription(); ?>
 </section>
 
 <!-- Price/Costs Details -->
 <section class="ji-info-section">
-	<h3 class="ji-info-section__title"><?php _e( 'Prices / Costs' ); ?></h3>
+    <h3 class="ji-info-section__title"><?php _e('Prices / Costs'); ?></h3>
 
-	<?php $currency = $realty->getCurrency(); ?>
+    <?php $currency = $realty->getCurrency(); ?>
 
-	<ul class="ji-info-list">
+    <ul class="ji-info-list">
 
-		<?php if ( $is_for_rent ): ?>
+        <?php
 
-			<li class="ji-info">
-				<label class="ji-info__label">
-					<?php _e( 'Price:', 'jiwp' ); ?>
-				</label>
-				<span class="ji-info__value">
-					<?php echo money_format( "%!i $currency" , $realty->getTotalRent() ); ?>
-				</span>
-			</li>
+        $price_text = '';
+        $currency = $realty->getCurrency();
 
-		<?php else: ?>
+        if (empty($currency)) {
+            $currency = 'EUR';
+        }
 
-			<li class="ji-info">
-				<label class="ji-info__label">
-					<?php _e( 'Price:', 'jiwp' ); ?>
-				</label>
-				<span class="ji-info__value">
-					<?php echo money_format( "%!i $currency" , $realty->getPurchasePrice() ); ?>
-				</span>
-			</li>
+        if ($marketingType['KAUF'] == true) {
+            $purchase_price = $realty->getPurchasePrice();
+            if (!empty($purchase_price)) {
+                $price_text = money_format("%!i $currency", $purchase_price);
+            }
+        } else {
+            $rent_price = $realty->getTotalRent();
+            if (!empty($rent_price)) {
+                $price_text = money_format("%!i $currency", $rent_price);
+            }
+        }
 
-		<?php endif; ?>
+        ?>
 
-		<li class="ji-info">
-			<label class="ji-info__label">
-				<?php _e( 'Commission:', 'jiwp' ); ?>
-			</label>
-			<span class="ji-info__value">
-				<?php echo $realty->getCommission(); ?>
-			</span>
-		</li>
+        <?php if (!empty($price_text)) : ?>
 
-		<?php 
-			$additional_costs = $realty->getAdditionalCosts(); 
-			if ( !empty( $additional_costs ) ): 
-		?>
+            <li class="ji-info">
 
-			<li class="ji-info">
-				<label class="ji-info__label">
-					<?php _e( 'Additional Costs:', 'jiwp' ); ?>
-				</label>
+                <label class="ji-info__label">
+                    <?php _e('Price:', 'jiwp'); ?>
+                </label>
+                
+                <span class="ji-info__value">
+                    <?php echo $price_text; ?>
+                </span>
+            </li>
 
-				<ul>
-					<?php foreach ( $additional_costs as $key => $additional_cost ): ?>
+        <?php endif; ?>
+    
+        <?php $commision = $realty->getCommission(); ?>
+            <?php if (!empty($commision)) : ?>
+            <li class="ji-info">
+                <label class="ji-info__label">
+                    <?php _e('Commission:', 'jiwp'); ?>
+                </label>
+                <span class="ji-info__value">
+                    <?php echo $realty->getCommission(); ?>
+                </span>
+            </li>
+        <?php endif; ?>
 
-						<li>
-							<label class="ji-info__label">
-								<?php echo $additional_cost->getName() . ':'; ?>
-							</label>
-							<span class="ji-info__value">
-								<?php echo money_format( "%!i $currency" , $additional_cost->getGross() ); ?>
-							</span>
-						</li>
+        <?php $additional_costs = $realty->getAdditionalCosts(); ?>
+        <?php if (!empty($additional_costs)) : ?>
 
-					<?php endforeach; ?>
-				</ul>
-			</li>
+            <li class="ji-info">
+                <label class="ji-info__label">
+                    <?php _e('Additional Costs:', 'jiwp'); ?>
+                </label>
 
-		<?php endif; ?>
+                <ul>
+                    <?php foreach ($additional_costs as $key => $additional_cost) :?>
 
-		<?php
-			$contract_establishment_costs = $realty->getContractEstablishmentCosts(); 
-			if ( !empty( $contract_establishment_costs ) ):
-		?>
+                        <li>
+                            <label class="ji-info__label">
+                                <?php echo $additional_cost->getName() . ':'; ?>
+                            </label>
+                            <span class="ji-info__value">
+                                <?php echo money_format("%!i $currency", $additional_cost->getGross()); ?>
+                            </span>
+                        </li>
 
-			<li class="ji-info">
-				<label class="ji-info__label">
-					<?php _e( 'Contract Establishment Costs:', 'jiwp' ); ?>
-				</label>
-				<span class="ji-info__value">
+                    <?php endforeach; ?>
+                </ul>
+            </li>
+
+        <?php endif; ?>
+
+        <?php $contract_establishment_costs = $realty->getContractEstablishmentCosts(); ?> 
+        <?php if (!empty($contract_establishment_costs)) : ?>
+
+            <li class="ji-info">
+                <label class="ji-info__label">
+                    <?php _e('Contract Establishment Costs:', 'jiwp'); ?>
+                </label>
+                <span class="ji-info__value">
                     <?php echo $contract_establishment_costs; ?>
-				</span>
-			</li>
+                </span>
+            </li>
 
-		<?php endif; ?>
+        <?php endif; ?>
 
-		<?php 
-			$land_registration_tax = $realty->getLandRegistration();
-			if ( !empty( $land_registration_tax ) ):
-		?>
+        <?php $land_registration_tax = $realty->getLandRegistration(); ?>
+        <?php if (!empty($land_registration_tax)) : ?>
 
-			<li class="ji-info">
-				<label class="ji-info__label">
-					<?php _e( 'Land Registration Tax:', 'jiwp' ); ?>
-				</label>
-				<span class="ji-info__value">
-					<?php echo $land_registration_tax . '%'; ?>
-				</span>
-			</li>
+            <li class="ji-info">
+                <label class="ji-info__label">
+                    <?php _e('Land Registration Tax:', 'jiwp'); ?>
+                </label>
+                <span class="ji-info__value">
+                    <?php echo $land_registration_tax . '%'; ?>
+                </span>
+            </li>
 
-		<?php endif; ?>
+        <?php endif; ?>
 
-		<?php 
-			$transfer_tax = $realty->getTransferTax(); 
-			if ( !empty( $transfer_tax ) ): 
-		?>
+        <?php $transfer_tax = $realty->getTransferTax(); ?>
+        <?php if (!empty($transfer_tax)) : ?>
 
-			<li class="ji-info">
-				<label class="ji-info__label">
-					<?php _e( 'Transfer Tax:', 'jiwp' ); ?>
-				</label>
-				<span class="ji-info__value">
-					<?php echo $transfer_tax . '%'; ?>
-				</span>
-			</li>
+            <li class="ji-info">
+                <label class="ji-info__label">
+                    <?php _e('Transfer Tax:', 'jiwp'); ?>
+                </label>
+                <span class="ji-info__value">
+                    <?php echo $transfer_tax . '%'; ?>
+                </span>
+            </li>
 
-		<?php endif; ?>
+        <?php endif; ?>
 
-		<?php 
-			$additional_charges = $realty->getAdditionalCharges(); 
-			if ( !empty( $additional_charges ) ): 
-		?>
+        <?php $additional_charges = $realty->getAdditionalCharges(); ?>
+        <?php if (!empty($additional_charges)) : ?>
 
-			<li class="ji-info">
-				<label class="ji-info__label">
-					<?php _e( 'Additional Charges:', 'jiwp' ); ?>
-				</label>
-				<span class="ji-info__value">
-					<?php echo money_format( "%!i $currency" , $additional_charges ) ?>
-				</span>
-			</li>
+            <li class="ji-info">
+                <label class="ji-info__label">
+                    <?php _e('Additional Charges:', 'jiwp'); ?>
+                </label>
+                <span class="ji-info__value">
+                    <?php echo money_format("%!i $currency", $additional_charges) ?>
+                </span>
+            </li>
 
-		<?php endif; ?>
+        <?php endif; ?>
 
-		<?php 
-			$yearly_net_earn = $realty->getNetEarningYearly(); 
-			if ( !empty( $yearly_net_earn ) ): 
-		?>
+        <?php $yearly_net_earn = $realty->getNetEarningYearly(); ?>
+        <?php if (!empty($yearly_net_earn)) : ?>
 
-			<li class="ji-info">
-				<label class="ji-info__label">
-					<?php _e( 'Yearly Net Earning:', 'jiwp' ); ?>
-				</label>
-				<span class="ji-info__value">
-					<?php echo money_format( "%!i $currency" , $yearly_net_earn ) ?>
-				</span>
-			</li>
+            <li class="ji-info">
+                <label class="ji-info__label">
+                    <?php _e('Yearly Net Earning:', 'jiwp'); ?>
+                </label>
+                <span class="ji-info__value">
+                    <?php echo money_format("%!i $currency", $yearly_net_earn) ?>
+                </span>
+            </li>
 
-		<?php endif; ?>
+        <?php endif; ?>
 
-		<?php 
-			$building_subsidence = $realty->getBuildingSubsidies(); 
-			if ( !empty( $building_subsidence ) ): 
-		?>
+        <?php $building_subsidence = $realty->getBuildingSubsidies(); ?>
+        <?php if (!empty($building_subsidence)) : ?>
 
-			<li class="ji-info">
-				<label class="ji-info__label">
-					<?php _e( 'Building Subsidence:', 'jiwp' ); ?>
-				</label>
-				<span class="ji-info__value">
-					<?php echo money_format( "%!i $currency" , $building_subsidence ) ?>
-				</span>
-			</li>
+            <li class="ji-info">
+                <label class="ji-info__label">
+                    <?php _e('Building Subsidence:', 'jiwp'); ?>
+                </label>
+                <span class="ji-info__value">
+                    <?php echo money_format("%!i $currency", $building_subsidence) ?>
+                </span>
+            </li>
 
-		<?php endif; ?>
+        <?php endif; ?>
 
-		<?php 
-			$net_yield = $realty->getYield(); 
-			if ( !empty( $net_yield ) ): 
-		?>
+        <?php $net_yield = $realty->getYield(); ?>
+        <?php if (!empty($net_yield)) : ?>
 
-			<li class="ji-info">
-				<label class="ji-info__label">
-					<?php _e( 'Net Yield:', 'jiwp' ); ?>
-				</label>
-				<span class="ji-info__value">
-					<?php echo $net_yield . '%'; ?>
-				</span>
-			</li>
+            <li class="ji-info">
+                <label class="ji-info__label">
+                    <?php _e('Net Yield:', 'jiwp'); ?>
+                </label>
+                <span class="ji-info__value">
+                    <?php echo $net_yield . '%'; ?>
+                </span>
+            </li>
 
-		<?php endif; ?>
+        <?php endif; ?>
 
-	</ul>
+    </ul>
 </section>
 
 <!-- Energy Efficiency Certificate -->
 <?php $energy_pass = $realty->getEnergyPass(); ?>
 
-<?php if ( !empty( $energy_pass ) ): ?>
-	<section class="ji-info-section">
-		<h3 class="ji-info-section__title"><?php _e( 'Energy Efficiency Certificate:', 'jiwp' ); ?></h3>	
-		<ul class="ji-info-list">
-			<li class="ji-info">
-				<label class="ji-info__label">
-					<?php _e( 'Valid until:', 'jiwp' ); ?>
-				</label>
-				<span class="ji-info__value">
-					<?php echo $energy_pass->getValidUntil(); ?>
-				</span>
-			</li>
+<?php if (!empty($energy_pass)) :?>
+    <section class="ji-info-section">
+        <h3 class="ji-info-section__title"><?php _e('Energy Efficiency Certificate:', 'jiwp'); ?></h3>    
+        <ul class="ji-info-list">
+            <li class="ji-info">
+                <label class="ji-info__label">
+                    <?php _e('Valid until:', 'jiwp'); ?>
+                </label>
+                <span class="ji-info__value">
+                    <?php echo $energy_pass->getValidUntil(); ?>
+                </span>
+            </li>
 
-			<li class="ji-info">
-				<label class="ji-info__label">
-					<?php _e( 'Annual Thermal Energy Consumption:', 'jiwp' ); ?>
-				</label>
-				<span class="ji-info__value">
-					<?php echo $energy_pass->getThermalHeatRequirementValue(); ?> kWh/m&sup2;a
-					(<?php _e( 'class', 'jiwp' ); ?>
-					<?php echo $energy_pass->getThermalHeatRequirementClass(); ?>)
-				</span>
-			</li>
+            <li class="ji-info">
+                <label class="ji-info__label">
+                    <?php _e('Annual Thermal Energy Consumption:', 'jiwp'); ?>
+                </label>
+                <span class="ji-info__value">
+                    <?php echo $energy_pass->getThermalHeatRequirementValue(); ?> kWh/m&sup2;a
+                    (<?php _e('class', 'jiwp'); ?>
+                    <?php echo $energy_pass->getThermalHeatRequirementClass(); ?>)
+                </span>
+            </li>
 
-			<li class="ji-info">
-				<label class="ji-info__label">
-					<?php _e( 'Energy Efficiency Factor:', 'jiwp' ); ?>
-				</label>
-				<span class="ji-info__value">
-					<?php echo $energy_pass->getEnergyEfficiencyFactorValue(); ?>
-					(<?php _e( 'class', 'jiwp' ); ?>
-					<?php echo $energy_pass->getEnergyEfficiencyFactorClass(); ?>)
-				</span>
-			</li>
-		</ul>
-	</section>
+            <li class="ji-info">
+                <label class="ji-info__label">
+                    <?php _e('Energy Efficiency Factor:', 'jiwp'); ?>
+                </label>
+                <span class="ji-info__value">
+                    <?php echo $energy_pass->getEnergyEfficiencyFactorValue(); ?>
+                    (<?php _e('class', 'jiwp'); ?>
+                    <?php echo $energy_pass->getEnergyEfficiencyFactorClass(); ?>)
+                </span>
+            </li>
+        </ul>
+    </section>
 <?php endif; ?>
 
 <!-- Description Text -->
 <section class="ji-info-section">
-	<h3 class="ji-info-section__title"><?php _e( 'Description', 'jiwp' ); ?></h3>
-	<?php echo $realty->getDescription(); ?>
+    <h3 class="ji-info-section__title"><?php _e('Description', 'jiwp'); ?></h3>
+    <?php echo $realty->getDescription(); ?>
 </section>
 
 <!-- Other Information Text -->
-<?php 
-	$other_information = $realty->getOtherInformation();
-	if ( !empty( $other_information ) ): 
-?>
-	<section class="ji-info-section">
-		<h3 class="ji-info-section__title"><?php _e( 'Other Information', 'jiwp' ); ?></h3>
-		<?php echo $other_information; ?>
-	</section>
+<?php $other_information = $realty->getOtherInformation(); ?>
+<?php if (!empty($other_information)) : ?>
+    <section class="ji-info-section">
+        <h3 class="ji-info-section__title"><?php _e('Other Information', 'jiwp'); ?></h3>
+        <?php echo $other_information; ?>
+    </section>
 <?php endif; ?>
