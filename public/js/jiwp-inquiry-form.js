@@ -29,6 +29,8 @@ Justimmo_Inquiry_Form = (function($) {
 
     function formResponseHandler(data)
     {
+        data = JSON.parse(data);
+
         $('.ji-inquiry-form')[0].reset();
         
         if (data.error) {
