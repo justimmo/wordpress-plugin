@@ -27,7 +27,12 @@
             <h1 class="ji-realty__title">
 
                 <a href="<?php echo Jiwp_Public::get_realty_url($realty); ?>">
-                    <?php echo $realty->getTitle(); ?>
+                    <?php $realty_title = $realty->getTitle(); ?>
+                    <?php if (!empty($realty_title)) : ?>
+                        <?php echo $realty->getTitle(); ?>
+                    <?php else : ?>
+                        <?php echo $realty->getRealtyTypeName() . ' ' . __('in', 'jiwp') . ' ' . $realty->getCountry() . ' / ' . $realty->getFederalState(); ?>
+                    <?php endif; ?>
                 </a>
 
             </h1>
