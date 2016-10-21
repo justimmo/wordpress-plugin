@@ -1,8 +1,8 @@
 <?php get_header(); ?>
-	
+
 <section class="search-results content-area">
 
-	<?php include( Jiwp_Public::get_template( 'realty/_realty-list.php' ) ); ?>
+    <?php include(Jiwp_Public::get_template('realty/_realty-list.php')); ?>
 
 </section>
 
