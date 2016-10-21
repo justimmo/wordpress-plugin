@@ -141,3 +141,7 @@
 	margin: 0 auto;
 	background: #fff;
 }
+
+.ji-realty-list--project {
+	overflow-x: auto;
+}
