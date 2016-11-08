@@ -784,3 +784,19 @@
         <?php echo $other_information; ?>
     </section>
 <?php endif; ?>
+
+<!-- Documents -->
+<section class="ji-info-section">
+    <?php $attachments = $realty->getDocuments(); ?>
+    <?php if (!empty($attachments)) : ?>
+        <ul class="ji-info-list ji-info-list--extended">
+        <?php foreach ($attachments as $attachment) : ?>
+            <li class="ji-info-list__item">
+                <a href="<?php echo $attachment->getUrl(); ?>">
+                    <?php echo $attachment->getTitle(); ?>
+                </a>
+            </li>
+        <?php endforeach; ?>
+        </ul>
+    <?php endif; ?>
+</section>
