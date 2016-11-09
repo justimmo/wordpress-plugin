@@ -5,6 +5,7 @@ Justimmo_Realty_Page = (function($) {
 	function init() 
 	{
 		initPhotoGallery();
+		initMap();
 	}
 
 	function initPhotoGallery() 
@@ -12,6 +13,24 @@ Justimmo_Realty_Page = (function($) {
 		$('.featherlight-gallery').featherlightGallery({
 		    openSpeed: 300
 		});
+	}
+
+	function initMap()
+	{
+		if (RealtyData) 
+		{
+			var map = new google.maps.Map(document.getElementsByClassName('jiwp-map')[0], {
+				zoom: 10,
+				scrollwheel: false,
+				center: RealtyData.position
+			});
+
+			var marker = new google.maps.Marker({
+				map: map,
+				position: RealtyData.position,
+				title: RealtyData.title,
+			});
+		}
 	}
 
 	return {
