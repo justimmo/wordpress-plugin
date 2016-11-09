@@ -800,3 +800,21 @@
         </ul>
     <?php endif; ?>
 </section>
+
+<!-- Map -->
+<section class="ji-info-section">
+    <div class="jiwp-map"></div>
+    <?php $lat = $realty->getLatitudePrecise(); ?>
+    <?php $lng = $realty->getLongitudePrecise(); ?>
+    <?php if ($lat && $lng) : ?>
+        <script>
+            var RealtyData = {
+                position: {
+                    lat: <?php echo $lat; ?>,
+                    lng: <?php echo $lng; ?>
+                },
+                title: <?php echo $realty->getTitle(); ?>
+            };
+        </script>
+    <?php endif; ?>
+</section>
