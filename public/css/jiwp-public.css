@@ -145,3 +145,8 @@
 .ji-realty-list--project {
 	overflow-x: auto;
 }
+
+.jiwp-map {
+	width: 100%;
+	height: 300px;
+}
