@@ -211,6 +211,14 @@ class Jiwp_Public
                 $this->version,
                 false
             );
+
+            wp_enqueue_script(
+                'jiwp-google-map',
+                'https://maps.googleapis.com/maps/api/js?key=' . get_option('jiwp_google_api_key', ''),
+                array( 'jquery' ),
+                $this->version,
+                true
+            );
         }
 
         wp_enqueue_script(
