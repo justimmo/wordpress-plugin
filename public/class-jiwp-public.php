@@ -309,7 +309,7 @@ class Jiwp_Public
         $wrapper    = new RealtyWrapper( $mapper );
         $query      = new RealtyQuery( $api, $wrapper, $mapper );
 
-        $query->setCulture( $this->getLanguageCode() );
+        $query->setCulture( $this->get_language_code() );
 
         return $query;
 
@@ -335,7 +335,7 @@ class Jiwp_Public
         $wrapper    = new ProjectWrapper( $mapper );
         $query      = new ProjectQuery( $api, $wrapper, $mapper );
 
-        $query->setCulture( $this->getLanguageCode() );
+        $query->setCulture( $this->get_language_code() );
 
         return $query;
 
@@ -359,7 +359,7 @@ class Jiwp_Public
 
         $query = new BasicDataQuery( $api, new BasicDataWrapper(), new BasicDataMapper() );
 
-        $query->set( 'culture', $this->getLanguageCode() );
+        $query->set( 'culture', $this->get_language_code() );
 
         return $query;
 
@@ -393,11 +393,13 @@ class Jiwp_Public
             'top'
         );
 
+
         if (get_transient('rewrite_rules_check')
-            || get_option('jiwp_language_locale') !== $this->getLanguageCode()) {
+            || get_option('jiwp_language_locale') != $this->get_language_code()) {
             delete_transient('rewrite_rules_check');
-            update_option('jiwp_language_locale', $this->getLanguageCode());
+            update_option('jiwp_language_locale', $this->get_language_code());
             flush_rewrite_rules();
+            $this->needs_redirect = true;
         }
     }
 
@@ -779,7 +781,7 @@ class Jiwp_Public
             $realty->getId(),
         ];
 
-        return get_bloginfo('url') . '/' . __('realties', 'jiwp') . '/' . implode('-', $linkParts);
+        return get_bloginfo('url') . '/' . __('realties', 'jiwp') . '/' . implode('-', $linkParts) . '/';
     }
 
     /**
@@ -799,7 +801,7 @@ class Jiwp_Public
             $project->getId(),
         ];
 
-        return get_bloginfo('url') . '/' . __('projects', 'jiwp') . '/' . implode('-', $linkParts);
+        return get_bloginfo('url') . '/' . __('projects', 'jiwp') . '/' . implode('-', $linkParts) . '/';
     }
 
     /**
@@ -865,8 +867,6 @@ class Jiwp_Public
         check_ajax_referer('justimmo_ajax', 'security');
         parse_str($_POST['formData']);
 
-        $contact_zipcode_city_array = explode('|', $contact_zipcode_city);
-
         try {
             $api = new JustimmoApi(
                 get_option('ji_api_username'),
@@ -882,12 +882,12 @@ class Jiwp_Public
                 ->setFirstName($contact_first_name)
                 ->setLastName($contact_last_name)
                 ->setEmail($contact_email)
-                ->setMessage('This message should be displayed to the responsible user of realty ' . $realty_id)
                 ->setPhone($contact_phone)
                 ->setStreet($contact_street)
-                ->setZipCode($contact_zipcode_city_array[0])
-                ->setCity($contact_zipcode_city_array[1])
-                ->setCountry($contact_country)
+                ->setZipCode($contact_zipcode)
+                ->setCity($contact_city)
+                //->setCountry($contact_country)
+                ->setMessage('This message should be displayed to the responsible user of realty ' . $realty_id)
                 ->send();
 
             echo json_encode([
@@ -1280,10 +1280,10 @@ class Jiwp_Public
     }
 
     /**
-     * Retrieve sustring of language locale.
+     * Retrieve subtring of language locale.
      * @return string language code
      */
-    private function getLanguageCode()
+    private function get_language_code()
     {
         return substr(get_locale(), 0, 2);
     }
