@@ -34,26 +34,16 @@
         <input type="text" id="contact_street" name="contact_street" placeholder="<?php _e('Street', 'jiwp'); ?>"/>
     </p>
     <p>
-        <label for="contact_zipcode_city"><?php _e('Zipcode / City', 'jiwp'); ?></label>
-        <select name="contact_zipcode_city" id="contact_zipcode_city">
-            <option value="">-</option>
-            <?php foreach ($cities as $city_id => $city) : ?>
-                <option value="<?php echo $city['zipCode'] . '|' . $city['place'] ; ?>">
-                    <?php echo $city['zipCode'] . ' (' . $city['place'] . ')' ; ?>
-                </option>
-            <?php endforeach; ?>
-        </select>
+        <label for="contact_zipcode"><?php _e('Zipcode', 'jiwp'); ?></label>
+        <input type="text" id="contact_zipcode" name="contact_zipcode" placeholder="<?php _e('Zipcode', 'jiwp'); ?>"/>
     </p>
     <p>
-        <label for="contact_country"><?php _e('Country', 'jiwp'); ?></label>
-        <select name="contact_country" id="contact_country">
-            <option value="">-</option>
-            <?php foreach ($countries as $country_id => $country) : ?>
-                <option value="<?php echo $country['iso2']; ?>">
-                    <?php echo $country['name']; ?>
-                </option>
-            <?php endforeach; ?>
-        </select>
+        <label for="contact_city"><?php _e('City', 'jiwp'); ?></label>
+        <input type="text" id="contact_city" name="contact_city" placeholder="<?php _e('City', 'jiwp'); ?>"/>
+    </p>
+    <p>
+        <label for="contact_message"><?php _e('Message', 'jiwp'); ?></label>
+        <textarea id="contact_message" name="contact_message"><?php echo __('This message should be displayed to the responsible user of realty ', 'jiwp') . $realty->getId(); ?></textarea>
     </p>
     <p>
         <button><?php _e('Send Inquiry', 'jiwp'); ?></button>
