@@ -15,6 +15,8 @@
                 <?php endif; ?>
             </h1>
 
+            <a href="<?php echo Jiwp_Public::get_realty_expose_url($realty); ?>" class="ji-realty__expose-link"><?php _e('Expose', 'jiwp'); ?></a>
+
         </header>
 
         <?php include(Jiwp_Public::get_template('realty/_realty-extended-info.php')); ?>
