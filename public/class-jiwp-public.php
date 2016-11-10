@@ -22,6 +22,7 @@
  */
 
 use Justimmo\Api\JustimmoApi;
+use Justimmo\Api\JustimmoApiInterface;
 use Psr\Log\NullLogger;
 use Justimmo\Cache\NullCache;
 
@@ -68,6 +69,13 @@ class Jiwp_Public
      * @var      string    $version    The current version of this plugin.
      */
     private $version;
+
+    /**
+     * Justimmo API client.
+     *
+     * @var JustimmoApiInterface
+     */
+    private $api;
 
     /**
      * Justimmo realty query object
@@ -251,20 +259,16 @@ class Jiwp_Public
 
         if ( !empty( $username ) && !empty( $password ) ) 
         {
-            $this->ji_realty_query = $this->get_justimmo_realty_query( 
+            $this->api = new JustimmoApi(
                 $username,
-                $password 
+                $password,
+                new NullLogger(),
+                new NullCache()
             );
 
-            $this->ji_project_query = $this->get_justimmo_project_query( 
-                $username,
-                $password 
-            );
-
-            self::$ji_basic_query = $this->get_justimmo_basic_query( 
-                $username,
-                $password
-            );
+            $this->ji_realty_query = $this->get_justimmo_realty_query($this->api);
+            $this->ji_project_query = $this->get_justimmo_project_query($this->api);
+            self::$ji_basic_query = $this->get_justimmo_basic_query($this->api);
         }
         else 
         {
@@ -294,16 +298,10 @@ class Jiwp_Public
      * Also sets the `culture` parameter to wordpress locale.
      *
      * @since  1.0.0
+     * @param JustimmoApiInterface $api Justimmo Api instance
      * @return object
      */
-    private function get_justimmo_realty_query( $username, $password ) {
-
-        $api = new JustimmoApi(
-            $username,
-            $password,
-            new NullLogger(),
-            new NullCache()
-        );
+    private function get_justimmo_realty_query( JustimmoApiInterface $api ) {
 
         $mapper     = new RealtyMapper();
         $wrapper    = new RealtyWrapper( $mapper );
@@ -320,16 +318,10 @@ class Jiwp_Public
      * Also sets the `culture` parameter to wordpress locale.
      *
      * @since  1.0.0
+     * @param JustimmoApiInterface $api Justimmo Api instance
      * @return ProjectQuery
      */
-    private function get_justimmo_project_query( $username, $password ) {
-
-        $api = new JustimmoApi(
-            $username,
-            $password,
-            new NullLogger(),
-            new NullCache()
-        );
+    private function get_justimmo_project_query( JustimmoApiInterface $api ) {
 
         $mapper     = new ProjectMapper();
         $wrapper    = new ProjectWrapper( $mapper );
@@ -346,16 +338,10 @@ class Jiwp_Public
      * Also sets the `culture` parameter to wordpress locale.
      *
      * @since  1.0.0
+     * @param JustimmoApiInterface $api Justimmo Api instance
      * @return BasicDataQuery
      */
-    private function get_justimmo_basic_query( $username, $password ) {
-
-        $api = new JustimmoApi(
-            $username,
-            $password,
-            new NullLogger(),
-            new NullCache()
-        );
+    private function get_justimmo_basic_query( JustimmoApiInterface $api ) {
 
         $query = new BasicDataQuery( $api, new BasicDataWrapper(), new BasicDataMapper() );
 
@@ -379,6 +365,13 @@ class Jiwp_Public
             'top'
         );
 
+        // realty expose rule
+        add_rewrite_rule(
+            'realty-expose/(\d+)/?$',
+            'index.php?ji_page=realty-expose&ji_realty_id=$matches[1]',
+            'top'
+        );
+
         // project detail rule
         add_rewrite_rule(
             __('projects', 'jiwp') . '/(.+)-(\d+)/?$',
@@ -399,7 +392,6 @@ class Jiwp_Public
             delete_transient('rewrite_rules_check');
             update_option('jiwp_language_locale', $this->get_language_code());
             flush_rewrite_rules();
-            $this->needs_redirect = true;
         }
     }
 
@@ -436,6 +428,13 @@ class Jiwp_Public
             case 'realty':
                 
                 $this->realty_page();
+
+                return;
+
+            case 'realty-expose':
+
+                $this->realty_expose();
+                exit;
 
                 return;
 
@@ -488,6 +487,16 @@ class Jiwp_Public
         {
             self::jiwp_error_log( $e );
         }
+
+    }
+
+    private function realty_expose() {
+
+        $id = get_query_var('ji_realty_id');
+        header('Content-type: application/pdf');
+        header('Content-Disposition: attachment; filename="expose-' . $id . '-' . time() . '.pdf"');
+        echo $this->api->callExpose($id, 'Default');
+        exit;
 
     }
 
@@ -785,6 +794,17 @@ class Jiwp_Public
     }
 
     /**
+     * Builds realty expose detail url.
+     *
+     * @param  \Realty $realty      realty object
+     * @return string               realty url
+     */
+    public static function get_realty_expose_url($realty)
+    {
+        return get_bloginfo('url') . '/realty-expose/' . $realty->getId();
+    }
+
+    /**
      * Builds project detail url
      * with the following format
      * <postcode>-<city>-<project name>-<project id>
@@ -895,6 +915,9 @@ class Jiwp_Public
             ]);
         } catch (Exception $e) {
             self::jiwp_error_log($e);
+            echo json_encode([
+                'error' => $e->getMessage(),
+            ]);
         }
 
         wp_die();
