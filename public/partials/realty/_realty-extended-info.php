@@ -813,7 +813,7 @@
                     lat: <?php echo $lat; ?>,
                     lng: <?php echo $lng; ?>
                 },
-                title: <?php echo $realty->getTitle(); ?>
+                title: '<?php echo $realty->getTitle(); ?>'
             };
         </script>
     <?php endif; ?>
