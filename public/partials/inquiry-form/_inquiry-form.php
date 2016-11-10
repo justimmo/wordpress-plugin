@@ -15,15 +15,15 @@
     </p>
     <p>
         <label for="contact_first_name"><?php _e('First Name', 'jiwp'); ?></label>
-        <input type="text" id="contact_first_name" name="contact_first_name" placeholder="<?php _e('First Name', 'jiwp'); ?>"/>
+        <input type="text" id="contact_first_name" name="contact_first_name" placeholder="<?php _e('First Name', 'jiwp'); ?>" required/>
     </p>
     <p>
         <label for="contact_last_name"><?php _e('Last Name', 'jiwp'); ?></label>
-        <input type="text" id="contact_last_name" name="contact_last_name" placeholder="<?php _e('Last Name', 'jiwp'); ?>"/>
+        <input type="text" id="contact_last_name" name="contact_last_name" placeholder="<?php _e('Last Name', 'jiwp'); ?>" required/>
     </p>
     <p>
         <label for="contact_email"><?php _e('Email', 'jiwp'); ?></label>
-        <input type="text" id="contact_email" name="contact_email" placeholder="<?php _e('Email', 'jiwp'); ?>"/>
+        <input type="email" id="contact_email" name="contact_email" placeholder="<?php _e('Email', 'jiwp'); ?>" required/>
     </p>
     <p>
         <label for="contact_phone"><?php _e('Phone', 'jiwp'); ?></label>
@@ -35,7 +35,7 @@
     </p>
     <p>
         <label for="contact_zipcode"><?php _e('Zipcode', 'jiwp'); ?></label>
-        <input type="text" id="contact_zipcode" name="contact_zipcode" placeholder="<?php _e('Zipcode', 'jiwp'); ?>"/>
+        <input type="number" id="contact_zipcode" name="contact_zipcode" placeholder="<?php _e('Zipcode', 'jiwp'); ?>"/>
     </p>
     <p>
         <label for="contact_city"><?php _e('City', 'jiwp'); ?></label>
@@ -43,10 +43,10 @@
     </p>
     <p>
         <label for="contact_message"><?php _e('Message', 'jiwp'); ?></label>
-        <textarea id="contact_message" name="contact_message"><?php echo __('This message should be displayed to the responsible user of realty ', 'jiwp') . $realty->getId(); ?></textarea>
+        <textarea id="contact_message" name="contact_message" required><?php echo __('This message should be displayed to the responsible user of realty ', 'jiwp') . $realty->getId(); ?></textarea>
     </p>
     <p>
-        <button><?php _e('Send Inquiry', 'jiwp'); ?></button>
+        <button class="ji-realty__more-link"><?php _e('Send Inquiry', 'jiwp'); ?></button>
     </p>
 </form>
 <?php endif; ?>
