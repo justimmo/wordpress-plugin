@@ -540,13 +540,13 @@
 
 <!-- Equipment Details -->
 <section class="ji-info-section">
-    <h3 class="ji-info-section__title"><?php _e('Equipment Description'); ?></h3>
+    <h3 class="ji-info-section__title"><?php _e('Equipment Description', 'jiwp'); ?></h3>
     <?php echo $realty->getEquipmentDescription(); ?>
 </section>
 
 <!-- Price/Costs Details -->
 <section class="ji-info-section">
-    <h3 class="ji-info-section__title"><?php _e('Prices / Costs'); ?></h3>
+    <h3 class="ji-info-section__title"><?php _e('Prices / Costs', 'jiwp'); ?></h3>
 
     <?php $currency = $realty->getCurrency(); ?>
 
