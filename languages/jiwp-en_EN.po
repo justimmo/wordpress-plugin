@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Justimmo WP Plugin\n"
-"POT-Creation-Date: 2016-11-10 15:16+0200\n"
-"PO-Revision-Date: 2016-11-10 15:17+0200\n"
+"POT-Creation-Date: 2016-11-15 17:35+0200\n"
+"PO-Revision-Date: 2016-11-15 17:35+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: en\n"
@@ -342,28 +342,28 @@ msgid ""
 "code> folder in your plugin folder"
 msgstr ""
 
-#: public/class-jiwp-public.php:285
+#: public/class-jiwp-public.php:289
 msgid "Please set your Justimmo API username and password in the"
 msgstr ""
 
-#: public/class-jiwp-public.php:286
+#: public/class-jiwp-public.php:290
 msgid "Justimmo settings panel"
 msgstr ""
 
-#: public/class-jiwp-public.php:377 public/class-jiwp-public.php:391
-#: public/class-jiwp-public.php:784
+#: public/class-jiwp-public.php:363 public/class-jiwp-public.php:384
+#: public/class-jiwp-public.php:793
 msgid "realties"
 msgstr ""
 
-#: public/class-jiwp-public.php:384 public/class-jiwp-public.php:804
+#: public/class-jiwp-public.php:377 public/class-jiwp-public.php:824
 msgid "projects"
 msgstr ""
 
-#: public/class-jiwp-public.php:391
+#: public/class-jiwp-public.php:384
 msgid "search"
 msgstr ""
 
-#: public/class-jiwp-public.php:894
+#: public/class-jiwp-public.php:914
 msgid "Inquiry Sent!"
 msgstr ""
 
@@ -453,7 +453,7 @@ msgid "Contact E-mail:"
 msgstr ""
 
 #: public/partials/project/_project-info__photo-gallery.php:4
-#: public/partials/realty/realty-template.php:21
+#: public/partials/realty/realty-template.php:30
 msgid "Photo Gallery"
 msgstr ""
 
@@ -770,10 +770,15 @@ msgid "No realties found"
 msgstr ""
 
 #: public/partials/realty/_realty-list__item.php:34
+#: public/partials/realty/realty-template.php:14
 msgid "in"
 msgstr ""
 
-#: public/partials/realty/realty-template.php:49
+#: public/partials/realty/realty-template.php:18
+msgid "Expose"
+msgstr ""
+
+#: public/partials/realty/realty-template.php:58
 msgid "No realty found."
 msgstr ""
 
