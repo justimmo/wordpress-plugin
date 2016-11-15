@@ -401,7 +401,7 @@
 
 <!-- Room Details -->
 <section class="ji-info-section">
-    <h3 class="ji-info-section__title"><?php _e('Room Count:'); ?></h3>
+    <h3 class="ji-info-section__title"><?php _e('Room Count:', 'jiwp'); ?></h3>
 
     <ul class="ji-info-list">
 
