@@ -734,7 +734,7 @@
 
 <?php if (!empty($energy_pass)) :?>
     <section class="ji-info-section">
-        <h3 class="ji-info-section__title"><?php _e('Energy Efficiency Certificate:', 'jiwp'); ?></h3>    
+        <h3 class="ji-info-section__title"><?php _e('Energy Efficiency Certificate', 'jiwp'); ?></h3>
         <ul class="ji-info-list">
             <li class="ji-info">
                 <label class="ji-info__label">
@@ -803,6 +803,7 @@
 
 <!-- Map -->
 <section class="ji-info-section">
+    <h3 class="ji-info-section__title"><?php _e('Location', 'jiwp'); ?></h3>
     <div class="jiwp-map"></div>
     <?php $lat = $realty->getLatitudePrecise(); ?>
     <?php $lng = $realty->getLongitudePrecise(); ?>
