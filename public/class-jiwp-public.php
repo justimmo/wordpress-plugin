@@ -144,20 +144,18 @@ class Jiwp_Public
          * class.
          */
         
-        if ( get_query_var( 'ji_page', false ) == 'realty' || get_query_var( 'ji_page', false ) == 'project' ) 
-        {
-            wp_enqueue_style( 
-                'featherlight',
-                plugin_dir_url(__FILE__) . 'js/featherlight/featherlight.min.css'
-            );
+        if ( get_query_var( 'ji_page', false ) == 'realty' || get_query_var( 'ji_page', false ) == 'project' ) {
 
-            wp_enqueue_style( 
-                'featherlight-gallery',
-                plugin_dir_url(__FILE__) . 'js/featherlight/featherlight.gallery.min.css'
+            wp_enqueue_style(
+                'lightslider',
+                plugin_dir_url(__FILE__) . 'js/lightslider/css/lightslider.min.css',
+                array(),
+                $this->version,
+                'all'
             );
         }
 
-        wp_enqueue_style( 
+        wp_enqueue_style(
             $this->plugin_name,
             plugin_dir_url(__FILE__) . 'css/jiwp-public.css',
             array(),
@@ -195,21 +193,17 @@ class Jiwp_Public
         
         if (get_query_var('ji_page', false) == 'realty' || get_query_var('ji_page', false) == 'project') {
             wp_enqueue_script(
-                'featherlight',
-                plugin_dir_url(__FILE__) . 'js/featherlight/featherlight.min.js',
-                array( 'jquery' )
-            );
-
-            wp_enqueue_script(
-                'featherlight-gallery',
-                plugin_dir_url(__FILE__) . 'js/featherlight/featherlight.gallery.min.js',
-                array( 'jquery' )
+                'lightslider',
+                plugin_dir_url(__FILE__) . 'js/lightslider/js/lightslider.min.js',
+                array( 'jquery' ),
+                $this->version,
+                true
             );
 
             wp_enqueue_script(
                 'jiwp-realty-page',
                 plugin_dir_url(__FILE__) . 'js/jiwp-realty-page.js',
-                array( 'featherlight-gallery' )
+                array( 'lightslider' )
             );
 
             wp_enqueue_script(
@@ -217,7 +211,7 @@ class Jiwp_Public
                 plugin_dir_url(__FILE__) . 'js/jiwp-inquiry-form.js',
                 array( 'jquery' ),
                 $this->version,
-                false
+                true
             );
 
             wp_enqueue_script(
@@ -234,7 +228,7 @@ class Jiwp_Public
             plugin_dir_url(__FILE__) . 'js/jiwp-search-form-widget.js',
             array( 'jquery' ),
             $this->version,
-            false
+            true
         );
 
         wp_localize_script(

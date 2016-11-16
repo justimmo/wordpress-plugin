@@ -29,15 +29,15 @@
                 
                 <h3 class="ji-info-section__title"><?php _e('Photo Gallery', 'jiwp'); ?></h3>
 
-                <ul class="ji-photos-list">
+                <ul class="ji-photos-list" id="lightSlider">
 
                     <?php foreach ($photos_array as $photo) : ?>
 
-                        <li class="ji-photos-list__item">
+                        <li class="ji-photos-list__item" data-thumb="<?php echo $photo->getUrl('big2') ?>">
 
-                            <a href="<?php echo $photo->getUrl('big2') ?>" class="featherlight-gallery">
+                            <!-- <a href="<?php echo $photo->getUrl('big2') ?>" class="featherlight-gallery"> -->
                                 <img src="<?php echo $photo->getUrl('medium') ?>" class="ji-photo" alt=""/>
-                            </a>
+                            <!-- </a> -->
 
                         </li>
 

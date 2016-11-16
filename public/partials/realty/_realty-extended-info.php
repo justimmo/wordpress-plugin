@@ -802,20 +802,20 @@
 </section>
 
 <!-- Map -->
+<?php $lat = $realty->getLatitudePrecise(); ?>
+<?php $lng = $realty->getLongitudePrecise(); ?>
+<?php if ($lat && $lng) : ?>
 <section class="ji-info-section">
     <h3 class="ji-info-section__title"><?php _e('Location', 'jiwp'); ?></h3>
     <div class="jiwp-map"></div>
-    <?php $lat = $realty->getLatitudePrecise(); ?>
-    <?php $lng = $realty->getLongitudePrecise(); ?>
-    <?php if ($lat && $lng) : ?>
-        <script>
-            var RealtyData = {
-                position: {
-                    lat: <?php echo $lat; ?>,
-                    lng: <?php echo $lng; ?>
-                },
-                title: '<?php echo $realty->getTitle(); ?>'
-            };
-        </script>
-    <?php endif; ?>
+    <script>
+        var RealtyData = {
+            position: {
+                lat: <?php echo $lat; ?>,
+                lng: <?php echo $lng; ?>
+            },
+            title: '<?php echo $realty->getTitle(); ?>'
+        };
+    </script>
 </section>
+<?php endif; ?>
