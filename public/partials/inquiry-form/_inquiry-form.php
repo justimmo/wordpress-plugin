@@ -43,7 +43,7 @@
     </p>
     <p>
         <label for="contact_message"><?php _e('Message', 'jiwp'); ?></label>
-        <textarea id="contact_message" name="contact_message" required><?php echo __('This message should be displayed to the responsible user of realty ', 'jiwp') . $realty->getId(); ?></textarea>
+        <textarea id="contact_message" name="contact_message" required><?php echo __('I am interested in this property: ', 'jiwp') . $realty->getId(); ?></textarea>
     </p>
     <p>
         <button class="ji-realty__more-link"><?php _e('Send Inquiry', 'jiwp'); ?></button>

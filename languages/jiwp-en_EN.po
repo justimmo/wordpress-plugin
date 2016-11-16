@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Justimmo WP Plugin\n"
-"POT-Creation-Date: 2016-11-16 13:05+0100\n"
-"PO-Revision-Date: 2016-11-16 13:05+0100\n"
+"POT-Creation-Date: 2016-11-16 15:58+0100\n"
+"PO-Revision-Date: 2016-11-16 15:58+0100\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: en\n"
@@ -424,7 +424,7 @@ msgid "Message"
 msgstr ""
 
 #: public/partials/inquiry-form/_inquiry-form.php:46
-msgid "This message should be displayed to the responsible user of realty "
+msgid "I am interested in this property: "
 msgstr ""
 
 #: public/partials/inquiry-form/_inquiry-form.php:49
