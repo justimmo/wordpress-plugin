@@ -35,7 +35,7 @@
     </p>
     <p>
         <label for="contact_zipcode"><?php _e('Zipcode', 'jiwp'); ?></label>
-        <input type="number" id="contact_zipcode" name="contact_zipcode" placeholder="<?php _e('Zipcode', 'jiwp'); ?>"/>
+        <input type="text" id="contact_zipcode" name="contact_zipcode" placeholder="<?php _e('Zipcode', 'jiwp'); ?>"/>
     </p>
     <p>
         <label for="contact_city"><?php _e('City', 'jiwp'); ?></label>
