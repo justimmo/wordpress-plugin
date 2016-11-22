@@ -354,7 +354,7 @@ class Jiwp_Public
     {
         // realty detail rule
         add_rewrite_rule(
-            __('realties', 'jiwp') . '/(.+)-(\d+)/?$',
+            __('properties', 'jiwp') . '/(.+)-(\d+)/?$',
             'index.php?ji_page=realty&ji_realty_id=$matches[2]',
             'top'
         );
@@ -375,7 +375,7 @@ class Jiwp_Public
 
         // realty search results rule
         add_rewrite_rule(
-            __('realties', 'jiwp') . '/' . __('search', 'jiwp') . '/?',
+            __('properties', 'jiwp') . '/' . __('search', 'jiwp') . '/?',
             'index.php?ji_page=realty-search',
             'top'
         );
@@ -784,7 +784,7 @@ class Jiwp_Public
             $realty->getId(),
         ];
 
-        return get_bloginfo('url') . '/' . __('realties', 'jiwp') . '/' . implode('-', $linkParts) . '/';
+        return get_bloginfo('url') . '/' . __('properties', 'jiwp') . '/' . implode('-', $linkParts) . '/';
     }
 
     /**
