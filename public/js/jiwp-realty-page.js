@@ -43,7 +43,7 @@ Justimmo_Realty_Page = (function($) {
 				fillOpacity: 0.35,
 				map: map,
 				center: RealtyData.position,
-				radius: 1000
+				radius: 600
 			});
 		}
 	}

@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Justimmo WP Plugin\n"
-"POT-Creation-Date: 2016-11-16 15:58+0100\n"
-"PO-Revision-Date: 2016-11-16 15:58+0100\n"
+"POT-Creation-Date: 2016-11-22 13:23+0100\n"
+"PO-Revision-Date: 2016-11-22 13:23+0100\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: en\n"
@@ -342,28 +342,28 @@ msgid ""
 "code> folder in your plugin folder"
 msgstr ""
 
-#: public/class-jiwp-public.php:289
+#: public/class-jiwp-public.php:283
 msgid "Please set your Justimmo API username and password in the"
 msgstr ""
 
-#: public/class-jiwp-public.php:290
+#: public/class-jiwp-public.php:284
 msgid "Justimmo settings panel"
 msgstr ""
 
-#: public/class-jiwp-public.php:363 public/class-jiwp-public.php:384
-#: public/class-jiwp-public.php:793
-msgid "realties"
+#: public/class-jiwp-public.php:357 public/class-jiwp-public.php:378
+#: public/class-jiwp-public.php:787
+msgid "properties"
 msgstr ""
 
-#: public/class-jiwp-public.php:377 public/class-jiwp-public.php:824
+#: public/class-jiwp-public.php:371 public/class-jiwp-public.php:818
 msgid "projects"
 msgstr ""
 
-#: public/class-jiwp-public.php:384
+#: public/class-jiwp-public.php:378
 msgid "search"
 msgstr ""
 
-#: public/class-jiwp-public.php:914
+#: public/class-jiwp-public.php:908
 msgid "Inquiry Sent!"
 msgstr ""
 
@@ -428,7 +428,7 @@ msgid "I am interested in this property: "
 msgstr ""
 
 #: public/partials/inquiry-form/_inquiry-form.php:49
-msgid "Send Inquiry"
+msgid "Request Info"
 msgstr ""
 
 #: public/partials/project/_project-info__address.php:5
@@ -453,7 +453,6 @@ msgid "Contact E-mail:"
 msgstr ""
 
 #: public/partials/project/_project-info__photo-gallery.php:4
-#: public/partials/realty/realty-template.php:30
 msgid "Photo Gallery"
 msgstr ""
 
@@ -566,7 +565,7 @@ msgid "Purchase"
 msgstr ""
 
 #: public/partials/realty/_realty-extended-info.php:171
-msgid "Your Contact Person"
+msgid "Contact Agent"
 msgstr ""
 
 #: public/partials/realty/_realty-extended-info.php:179
@@ -765,10 +764,6 @@ msgstr ""
 msgid "Other Information"
 msgstr ""
 
-#: public/partials/realty/_realty-extended-info.php:806
-msgid "Location"
-msgstr ""
-
 #: public/partials/realty/_realty-list.php:19
 msgid "No realties found"
 msgstr ""
@@ -782,7 +777,11 @@ msgstr ""
 msgid "Expose"
 msgstr ""
 
-#: public/partials/realty/realty-template.php:58
+#: public/partials/realty/realty-template.php:73
+msgid "Location"
+msgstr ""
+
+#: public/partials/realty/realty-template.php:91
 msgid "No realty found."
 msgstr ""
 
