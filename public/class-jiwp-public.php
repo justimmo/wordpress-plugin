@@ -1138,17 +1138,8 @@ class Jiwp_Public
 
         if ( !empty( $filter_params[ 'type' ] ) ) 
         {
-            // find realty type `id` from `key` value
-            $realty_types = self::$ji_basic_query->all( false )->findRealtyTypes();
-            
-            foreach ($realty_types as $realty_type_id => $realty_type) 
-            {
-                if ( $filter_params[ 'type' ] == $realty_type[ 'key' ] ) 
-                {
-                    $this->ji_realty_query->filterByRealtyTypeId( $realty_type_id );
-                    break;
-                }
-            }
+            $types = explode(',', $filter_params[ 'type' ]);
+            $this->ji_realty_query->filterByRealtyTypeId( $types );
         }
 
         // price

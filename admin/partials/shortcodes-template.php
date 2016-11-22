@@ -40,10 +40,10 @@
 				</li>
 
 				<li class="ji-shortcode-option">
-					<code>type</code>: <?php _e( 'Lists only realties of certain type. Available values: "wohnung" (Apartment), "haus" (House), "buero_praxen" (Bureau).', 'jiwp' ); ?>
+					<code>type</code>: <?php _e( 'Lists only realties of certain type. <a href="http://api-docs.justimmo.at/reference/realty-types.html" target="_blank">Available values here</a>. `ID` value must be used.', 'jiwp' ); ?>
 					<p>
 						<?php _e( 'Example:', 'jiwp' ); ?>
-						<code>[ji_realty_list type="wohnung"]</code> <?php _e( 'shows only apartments.', 'jiwp' ); ?>
+						<code>[ji_realty_list type="2"]</code> <?php _e( 'shows only apartments.', 'jiwp' ); ?>
 					</p>
 				</li>
 
