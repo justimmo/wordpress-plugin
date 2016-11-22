@@ -19,15 +19,11 @@
 
         </header>
 
-        <?php include(Jiwp_Public::get_template('realty/_realty-extended-info.php')); ?>
-
         <section class="ji-info-section ji-info-section--photos">
 
             <?php $photos_array = $realty->getPictures(); ?>
 
             <?php if (!empty($photos_array)) : ?>
-                
-                <h3 class="ji-info-section__title"><?php _e('Photo Gallery', 'jiwp'); ?></h3>
 
                 <ul class="ji-photos-list" id="lightSlider">
 
@@ -49,8 +45,9 @@
 
         </section>
 
-        <?php include(Jiwp_Public::get_template('inquiry-form/_inquiry-form.php')); ?>
+        <?php include(Jiwp_Public::get_template('realty/_realty-extended-info.php')); ?>
 
+        <?php include(Jiwp_Public::get_template('inquiry-form/_inquiry-form.php')); ?>
     </article>
 
 <?php else : ?>
