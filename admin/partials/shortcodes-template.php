@@ -48,6 +48,22 @@
 				</li>
 
 				<li class="ji-shortcode-option">
+					<code>category</code>: <?php _e( 'Lists only realties in certain category. Use JUSTIMMO category names.', 'jiwp' ); ?>
+					<p>
+						<?php _e( 'Example:', 'jiwp' ); ?>
+						<code>[ji_realty_list category="MyCategory1,MyCategory2"]</code> <?php _e( 'shows only realties in "MyCategory1" and "MyCategory2" categories.', 'jiwp' ); ?>
+					</p>
+				</li>
+
+				<li class="ji-shortcode-option">
+					<code>exclude_country_id</code>: <?php _e( 'Lists only realties outside of a country. The country is excluded using it\'s JUSTIMMO id.' , 'jiwp' ); ?>
+					<p>
+						<?php _e( 'Example:', 'jiwp' ); ?>
+						<code>[ji_realty_list exclude_country_id="17"]</code> <?php _e( 'shows realties from outside the country with the id = 17.', 'jiwp' ); ?>
+					</p>
+				</li>
+
+				<li class="ji-shortcode-option">
 					<code>format</code>: <?php _e( 'Formats realty list in grid format.', 'jiwp' ); ?>
 					<p>
 						<?php _e( 'Example:', 'jiwp' ); ?>

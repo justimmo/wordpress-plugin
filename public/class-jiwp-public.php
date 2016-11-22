@@ -583,6 +583,7 @@ class Jiwp_Public
                 'rent'                  => null,
                 'buy'                   => null,
                 'type'                  => null,
+                'category'              => null,
                 'price_min'             => null,
                 'price_max'             => null,
                 'rooms_min'             => null,
@@ -595,6 +596,7 @@ class Jiwp_Public
                 'price_order'           => null,
                 'date_order'            => null,
                 'surface_order'         => null,
+                'exclude_country_id'    => null,
                 'format'                => 'list',
             ),
             $atts,
@@ -1142,6 +1144,14 @@ class Jiwp_Public
             $this->ji_realty_query->filterByRealtyTypeId( $types );
         }
 
+        // realty category
+
+        if ( !empty( $filter_params[ 'category' ] ) ) 
+        {
+            $tags = explode(',', $filter_params[ 'category' ]);
+            $this->ji_realty_query->filterByTag( $tags );
+        }
+
         // price
 
         if ( !empty( $filter_params[ 'price_min' ] ) ) 
@@ -1183,6 +1193,12 @@ class Jiwp_Public
         if ( !empty( $filter_params[ 'country' ] ) ) 
         {
             $this->ji_realty_query->filter( 'land_id', $filter_params[ 'country' ] );
+        }
+
+        // exclude country
+        if ( !empty( $filter_params[ 'exclude_country_id' ] ) ) 
+        {
+            $this->ji_realty_query->filter( 'not_land_id', $filter_params[ 'exclude_country_id' ] );
         }
 
         // federal states
