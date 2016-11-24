@@ -26,6 +26,8 @@ use Justimmo\Api\JustimmoApiInterface;
 use Psr\Log\NullLogger;
 use Justimmo\Cache\NullCache;
 
+use Justimmo\Model\Project;
+
 use Justimmo\Model\RealtyQuery;
 use Justimmo\Model\Wrapper\V1\RealtyWrapper;
 use Justimmo\Model\Mapper\V1\RealtyMapper;
@@ -100,6 +102,14 @@ class Jiwp_Public
      * @var BasicDataQuery
      */
     public static $ji_basic_query = null;
+
+    /**
+     * Stores project in variable for use when multiple
+     * instances of [ji_project_info] are used in the same page.
+     *
+     * @var Project
+     */
+    private $cached_project;
 
     /**
      * Initialize the class and set its properties.
@@ -597,6 +607,7 @@ class Jiwp_Public
                 'date_order'            => null,
                 'surface_order'         => null,
                 'exclude_country_id'    => null,
+                'occupancy'             => null,
                 'format'                => 'list',
             ),
             $atts,
@@ -1235,6 +1246,14 @@ class Jiwp_Public
         {
             $this->ji_realty_query->filter( 'balkon', 1 );
         }
+
+        // occupancy
+        
+        if ( !empty( $filter_params[ 'occupancy' ] )  ) 
+        {
+            $this->ji_realty_query->filter( 'nutzungsart', $filter_params[ 'occupancy' ] );
+        }
+        
 
     }
 

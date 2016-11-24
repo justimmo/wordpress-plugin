@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Justimmo WP Plugin\n"
-"POT-Creation-Date: 2016-11-22 17:40+0200\n"
-"PO-Revision-Date: 2016-11-22 17:40+0200\n"
+"POT-Creation-Date: 2016-11-24 15:49+0200\n"
+"PO-Revision-Date: 2016-11-24 15:49+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: en\n"
@@ -58,7 +58,7 @@ msgstr ""
 #: admin/partials/api-settings-template.php:52
 #: admin/partials/api-settings-template.php:56
 #: admin/partials/api-settings-template.php:60
-#: admin/partials/shortcodes-template.php:229
+#: admin/partials/shortcodes-template.php:237
 msgid "show image"
 msgstr ""
 
@@ -102,8 +102,8 @@ msgid ""
 msgstr ""
 
 #: admin/partials/shortcodes-template.php:15
-#: admin/partials/shortcodes-template.php:199
-#: admin/partials/shortcodes-template.php:224
+#: admin/partials/shortcodes-template.php:207
+#: admin/partials/shortcodes-template.php:232
 msgid "It has the following options which you can pass as parameters:"
 msgstr ""
 
@@ -130,9 +130,10 @@ msgstr ""
 #: admin/partials/shortcodes-template.php:149
 #: admin/partials/shortcodes-template.php:157
 #: admin/partials/shortcodes-template.php:165
-#: admin/partials/shortcodes-template.php:205
-#: admin/partials/shortcodes-template.php:231
+#: admin/partials/shortcodes-template.php:173
+#: admin/partials/shortcodes-template.php:213
 #: admin/partials/shortcodes-template.php:239
+#: admin/partials/shortcodes-template.php:247
 msgid "Example:"
 msgstr ""
 
@@ -247,98 +248,108 @@ msgstr ""
 
 #: admin/partials/shortcodes-template.php:147
 msgid ""
+"Lists only realties having certain 'occupancy' status. Available values: "
+"'wohnen', 'gewerbe', 'anlage'"
+msgstr ""
+
+#: admin/partials/shortcodes-template.php:150
+msgid "shows only realties with 'wohnen' occupancy status."
+msgstr ""
+
+#: admin/partials/shortcodes-template.php:155
+msgid ""
 "Orders realties by price. Available values: \"asc\" (ascending), \"desc"
 "\" (descending)."
 msgstr ""
 
-#: admin/partials/shortcodes-template.php:150
+#: admin/partials/shortcodes-template.php:158
 msgid "shows realties in descending price order."
 msgstr ""
 
-#: admin/partials/shortcodes-template.php:155
+#: admin/partials/shortcodes-template.php:163
 msgid ""
 "Orders realties by entry date. Available values: \"asc\" (ascending), \"desc"
 "\" (descending)."
 msgstr ""
 
-#: admin/partials/shortcodes-template.php:158
+#: admin/partials/shortcodes-template.php:166
 msgid "shows realties in descending date order."
 msgstr ""
 
-#: admin/partials/shortcodes-template.php:163
+#: admin/partials/shortcodes-template.php:171
 msgid ""
 "Orders realties by surface. Available values: \"asc\" (ascending), \"desc"
 "\" (descending)."
 msgstr ""
 
-#: admin/partials/shortcodes-template.php:166
+#: admin/partials/shortcodes-template.php:174
 msgid "shows realties in descending surface order."
 msgstr ""
 
-#: admin/partials/shortcodes-template.php:171
+#: admin/partials/shortcodes-template.php:179
 msgid ""
 "(Note: you cannot combine multiple ordering attributes. Only the last one "
 "will be used)"
 msgstr ""
 
-#: admin/partials/shortcodes-template.php:179
+#: admin/partials/shortcodes-template.php:187
 msgid "The search form shortcode:"
 msgstr ""
 
-#: admin/partials/shortcodes-template.php:184
+#: admin/partials/shortcodes-template.php:192
 msgid ""
 "Paste this shortcode in any page, post or sidebar Text widget to output a "
 "realty search form. This can also be achieved by using the \"JUSTIMMO Search "
 "Form\" widget."
 msgstr ""
 
-#: admin/partials/shortcodes-template.php:192
+#: admin/partials/shortcodes-template.php:200
 msgid "The project listing shortcode:"
 msgstr ""
 
-#: admin/partials/shortcodes-template.php:197
+#: admin/partials/shortcodes-template.php:205
 msgid ""
 "Paste this shortcode in any page, post or sidebar Text widget to output a "
 "list of your available projects."
 msgstr ""
 
-#: admin/partials/shortcodes-template.php:203
+#: admin/partials/shortcodes-template.php:211
 msgid "Limits the number of projects displayed per page."
 msgstr ""
 
-#: admin/partials/shortcodes-template.php:206
+#: admin/partials/shortcodes-template.php:214
 msgid "shows 5 projects per page."
 msgstr ""
 
-#: admin/partials/shortcodes-template.php:217
+#: admin/partials/shortcodes-template.php:225
 msgid "The project information shortcode:"
 msgstr ""
 
-#: admin/partials/shortcodes-template.php:222
+#: admin/partials/shortcodes-template.php:230
 msgid ""
 "Paste this shortcode in any page, post or sidebar Text widget to output "
 "various project information."
 msgstr ""
 
-#: admin/partials/shortcodes-template.php:228
+#: admin/partials/shortcodes-template.php:236
 msgid "The project JUSTIMMO ID (mandatory)."
 msgstr ""
 
-#: admin/partials/shortcodes-template.php:232
+#: admin/partials/shortcodes-template.php:240
 msgid "shows information belonging to the project with the JUSTIMMO ID of 5."
 msgstr ""
 
-#: admin/partials/shortcodes-template.php:236
+#: admin/partials/shortcodes-template.php:244
 msgid "The project information to be shown (mandatory)."
 msgstr ""
 
-#: admin/partials/shortcodes-template.php:240
+#: admin/partials/shortcodes-template.php:248
 msgid ""
 "shows project address information belonging to the project with the JUSTIMMO "
 "ID of 5."
 msgstr ""
 
-#: admin/partials/shortcodes-template.php:244
+#: admin/partials/shortcodes-template.php:252
 msgid "Here is a list of all the values available for the \"info\" option:"
 msgstr ""
 
@@ -372,11 +383,11 @@ msgid "Justimmo settings panel"
 msgstr ""
 
 #: public/class-jiwp-public.php:357 public/class-jiwp-public.php:378
-#: public/class-jiwp-public.php:789
+#: public/class-jiwp-public.php:790
 msgid "properties"
 msgstr ""
 
-#: public/class-jiwp-public.php:371 public/class-jiwp-public.php:820
+#: public/class-jiwp-public.php:371 public/class-jiwp-public.php:821
 msgid "projects"
 msgstr ""
 
@@ -384,7 +395,7 @@ msgstr ""
 msgid "search"
 msgstr ""
 
-#: public/class-jiwp-public.php:910
+#: public/class-jiwp-public.php:911
 msgid "Inquiry Sent!"
 msgstr ""
 

@@ -144,6 +144,14 @@
 				</li>
 
 				<li class="ji-shortcode-option">
+					<code>occupancy</code>: <?php _e( 'Lists only realties having certain \'occupancy\' status. Available values: \'wohnen\', \'gewerbe\', \'anlage\'', 'jiwp' ); ?>
+					<p>
+						<?php _e( 'Example:', 'jiwp' ); ?>
+						<code>[ji_realty_list occupancy="wohnen"]</code> <?php _e( 'shows only realties with \'wohnen\' occupancy status.', 'jiwp' ); ?>
+					</p>
+				</li>
+
+				<li class="ji-shortcode-option">
 					<code>price_order</code>: <?php _e( 'Orders realties by price. Available values: "asc" (ascending), "desc" (descending).', 'jiwp' ); ?>
 					<p>
 						<?php _e( 'Example:', 'jiwp' ); ?>
