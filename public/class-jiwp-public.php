@@ -81,7 +81,7 @@ class Jiwp_Public
 
     /**
      * Justimmo realty query object
-     * 
+     *
      * @since  1.0.0
      * @var RealtyQuery
      */
@@ -89,7 +89,7 @@ class Jiwp_Public
 
     /**
      * Justimmo project query object
-     * 
+     *
      * @since  1.0.0
      * @var ProjectQuery
      */
@@ -649,11 +649,15 @@ class Jiwp_Public
             $states         = array();
             $cities         = array();
 
+            if ( !empty( $_GET[ 'filter' ] ) ) {
+                $filter = $_GET[ 'filter' ];
+            }
+
             if ( !empty( $_GET[ 'filter' ] ) && $_GET[ 'filter' ][ 'country' ] ) 
             {
                 $states = self::get_states( $_GET[ 'filter' ][ 'country' ] );
                 $cities = self::get_cities( $_GET[ 'filter' ][ 'country' ] );
-            }
+            }            
 
             ob_start();
             include( 'partials/search-form/_search-form.php' );
@@ -1254,7 +1258,6 @@ class Jiwp_Public
             $this->ji_realty_query->filter( 'nutzungsart', $filter_params[ 'occupancy' ] );
         }
         
-
     }
 
     /**
