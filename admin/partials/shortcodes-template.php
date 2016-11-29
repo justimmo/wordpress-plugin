@@ -56,6 +56,14 @@
 				</li>
 
 				<li class="ji-shortcode-option">
+					<code>zip</code>: <?php _e( 'Lists only realties with certain zipcode / zipcodes.', 'jiwp' ); ?>
+					<p>
+						<?php _e( 'Example:', 'jiwp' ); ?>
+						<code>[ji_realty_list zip="123,456"]</code> <?php _e( 'shows only realties with 123 or 456 zipcodes', 'jiwp' ); ?>
+					</p>
+				</li>
+
+				<li class="ji-shortcode-option">
 					<code>exclude_country_id</code>: <?php _e( 'Lists only realties outside of a country. The country is excluded using it\'s JUSTIMMO id.' , 'jiwp' ); ?>
 					<p>
 						<?php _e( 'Example:', 'jiwp' ); ?>

@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Justimmo WP Plugin\n"
-"POT-Creation-Date: 2016-11-24 15:49+0200\n"
-"PO-Revision-Date: 2016-11-24 15:49+0200\n"
+"POT-Creation-Date: 2016-11-29 22:22+0200\n"
+"PO-Revision-Date: 2016-11-29 22:23+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: en\n"
@@ -58,7 +58,7 @@ msgstr ""
 #: admin/partials/api-settings-template.php:52
 #: admin/partials/api-settings-template.php:56
 #: admin/partials/api-settings-template.php:60
-#: admin/partials/shortcodes-template.php:237
+#: admin/partials/shortcodes-template.php:245
 msgid "show image"
 msgstr ""
 
@@ -102,8 +102,8 @@ msgid ""
 msgstr ""
 
 #: admin/partials/shortcodes-template.php:15
-#: admin/partials/shortcodes-template.php:207
-#: admin/partials/shortcodes-template.php:232
+#: admin/partials/shortcodes-template.php:215
+#: admin/partials/shortcodes-template.php:240
 msgid "It has the following options which you can pass as parameters:"
 msgstr ""
 
@@ -131,9 +131,10 @@ msgstr ""
 #: admin/partials/shortcodes-template.php:157
 #: admin/partials/shortcodes-template.php:165
 #: admin/partials/shortcodes-template.php:173
-#: admin/partials/shortcodes-template.php:213
-#: admin/partials/shortcodes-template.php:239
+#: admin/partials/shortcodes-template.php:181
+#: admin/partials/shortcodes-template.php:221
 #: admin/partials/shortcodes-template.php:247
+#: admin/partials/shortcodes-template.php:255
 msgid "Example:"
 msgstr ""
 
@@ -169,187 +170,195 @@ msgid "shows only realties in \"MyCategory1\" and \"MyCategory2\" categories."
 msgstr ""
 
 #: admin/partials/shortcodes-template.php:59
+msgid "Lists only realties with certain zipcode / zipcodes."
+msgstr ""
+
+#: admin/partials/shortcodes-template.php:62
+msgid "shows only realties with 123 or 456 zipcodes"
+msgstr ""
+
+#: admin/partials/shortcodes-template.php:67
 msgid ""
 "Lists only realties outside of a country. The country is excluded using it's "
 "JUSTIMMO id."
 msgstr ""
 
-#: admin/partials/shortcodes-template.php:62
+#: admin/partials/shortcodes-template.php:70
 msgid "shows realties from outside the country with the id = 17."
 msgstr ""
 
-#: admin/partials/shortcodes-template.php:67
+#: admin/partials/shortcodes-template.php:75
 msgid "Formats realty list in grid format."
 msgstr ""
 
-#: admin/partials/shortcodes-template.php:70
+#: admin/partials/shortcodes-template.php:78
 msgid "shows realties in grid format."
 msgstr ""
 
-#: admin/partials/shortcodes-template.php:75
+#: admin/partials/shortcodes-template.php:83
 msgid "Sets a minimum price (in euro)."
 msgstr ""
 
-#: admin/partials/shortcodes-template.php:78
+#: admin/partials/shortcodes-template.php:86
 msgid "show realties with a minimum price of 100 euro."
 msgstr ""
 
-#: admin/partials/shortcodes-template.php:83
+#: admin/partials/shortcodes-template.php:91
 msgid "Sets a maximum price (in euro)."
 msgstr ""
 
-#: admin/partials/shortcodes-template.php:86
+#: admin/partials/shortcodes-template.php:94
 msgid "show realties with a maximum price of 100 euro."
 msgstr ""
 
-#: admin/partials/shortcodes-template.php:91
+#: admin/partials/shortcodes-template.php:99
 msgid "Sets a minimum number of rooms."
 msgstr ""
 
-#: admin/partials/shortcodes-template.php:94
+#: admin/partials/shortcodes-template.php:102
 msgid "shows realties with a minimum of 3 rooms."
 msgstr ""
 
-#: admin/partials/shortcodes-template.php:99
+#: admin/partials/shortcodes-template.php:107
 msgid "Sets a maximum number of rooms."
 msgstr ""
 
-#: admin/partials/shortcodes-template.php:102
+#: admin/partials/shortcodes-template.php:110
 msgid "shows realties with a maximum of 3 rooms."
 msgstr ""
 
-#: admin/partials/shortcodes-template.php:107
+#: admin/partials/shortcodes-template.php:115
 msgid "Sets a minimum surface area (m&sup2;)."
 msgstr ""
 
-#: admin/partials/shortcodes-template.php:110
+#: admin/partials/shortcodes-template.php:118
 msgid "shows realties with a minimum surface area of 100 m&sup2;"
 msgstr ""
 
-#: admin/partials/shortcodes-template.php:115
+#: admin/partials/shortcodes-template.php:123
 msgid "Sets a maximum surface area (m&sup2;)."
 msgstr ""
 
-#: admin/partials/shortcodes-template.php:118
+#: admin/partials/shortcodes-template.php:126
 msgid "shows realties with a maximum surface area of 100 m&sup2;"
 msgstr ""
 
-#: admin/partials/shortcodes-template.php:123
+#: admin/partials/shortcodes-template.php:131
 msgid "Lists only realties that have a garden."
 msgstr ""
 
-#: admin/partials/shortcodes-template.php:131
+#: admin/partials/shortcodes-template.php:139
 msgid "Lists only realties that have a garage."
 msgstr ""
 
-#: admin/partials/shortcodes-template.php:139
+#: admin/partials/shortcodes-template.php:147
 msgid "Lists only realties that have a balcony/terrace."
 msgstr ""
 
-#: admin/partials/shortcodes-template.php:147
+#: admin/partials/shortcodes-template.php:155
 msgid ""
 "Lists only realties having certain 'occupancy' status. Available values: "
 "'wohnen', 'gewerbe', 'anlage'"
 msgstr ""
 
-#: admin/partials/shortcodes-template.php:150
+#: admin/partials/shortcodes-template.php:158
 msgid "shows only realties with 'wohnen' occupancy status."
 msgstr ""
 
-#: admin/partials/shortcodes-template.php:155
+#: admin/partials/shortcodes-template.php:163
 msgid ""
 "Orders realties by price. Available values: \"asc\" (ascending), \"desc"
 "\" (descending)."
 msgstr ""
 
-#: admin/partials/shortcodes-template.php:158
+#: admin/partials/shortcodes-template.php:166
 msgid "shows realties in descending price order."
 msgstr ""
 
-#: admin/partials/shortcodes-template.php:163
+#: admin/partials/shortcodes-template.php:171
 msgid ""
 "Orders realties by entry date. Available values: \"asc\" (ascending), \"desc"
 "\" (descending)."
 msgstr ""
 
-#: admin/partials/shortcodes-template.php:166
+#: admin/partials/shortcodes-template.php:174
 msgid "shows realties in descending date order."
 msgstr ""
 
-#: admin/partials/shortcodes-template.php:171
+#: admin/partials/shortcodes-template.php:179
 msgid ""
 "Orders realties by surface. Available values: \"asc\" (ascending), \"desc"
 "\" (descending)."
 msgstr ""
 
-#: admin/partials/shortcodes-template.php:174
+#: admin/partials/shortcodes-template.php:182
 msgid "shows realties in descending surface order."
 msgstr ""
 
-#: admin/partials/shortcodes-template.php:179
+#: admin/partials/shortcodes-template.php:187
 msgid ""
 "(Note: you cannot combine multiple ordering attributes. Only the last one "
 "will be used)"
 msgstr ""
 
-#: admin/partials/shortcodes-template.php:187
+#: admin/partials/shortcodes-template.php:195
 msgid "The search form shortcode:"
 msgstr ""
 
-#: admin/partials/shortcodes-template.php:192
+#: admin/partials/shortcodes-template.php:200
 msgid ""
 "Paste this shortcode in any page, post or sidebar Text widget to output a "
 "realty search form. This can also be achieved by using the \"JUSTIMMO Search "
 "Form\" widget."
 msgstr ""
 
-#: admin/partials/shortcodes-template.php:200
+#: admin/partials/shortcodes-template.php:208
 msgid "The project listing shortcode:"
 msgstr ""
 
-#: admin/partials/shortcodes-template.php:205
+#: admin/partials/shortcodes-template.php:213
 msgid ""
 "Paste this shortcode in any page, post or sidebar Text widget to output a "
 "list of your available projects."
 msgstr ""
 
-#: admin/partials/shortcodes-template.php:211
+#: admin/partials/shortcodes-template.php:219
 msgid "Limits the number of projects displayed per page."
 msgstr ""
 
-#: admin/partials/shortcodes-template.php:214
+#: admin/partials/shortcodes-template.php:222
 msgid "shows 5 projects per page."
 msgstr ""
 
-#: admin/partials/shortcodes-template.php:225
+#: admin/partials/shortcodes-template.php:233
 msgid "The project information shortcode:"
 msgstr ""
 
-#: admin/partials/shortcodes-template.php:230
+#: admin/partials/shortcodes-template.php:238
 msgid ""
 "Paste this shortcode in any page, post or sidebar Text widget to output "
 "various project information."
 msgstr ""
 
-#: admin/partials/shortcodes-template.php:236
+#: admin/partials/shortcodes-template.php:244
 msgid "The project JUSTIMMO ID (mandatory)."
 msgstr ""
 
-#: admin/partials/shortcodes-template.php:240
+#: admin/partials/shortcodes-template.php:248
 msgid "shows information belonging to the project with the JUSTIMMO ID of 5."
 msgstr ""
 
-#: admin/partials/shortcodes-template.php:244
+#: admin/partials/shortcodes-template.php:252
 msgid "The project information to be shown (mandatory)."
 msgstr ""
 
-#: admin/partials/shortcodes-template.php:248
+#: admin/partials/shortcodes-template.php:256
 msgid ""
 "shows project address information belonging to the project with the JUSTIMMO "
 "ID of 5."
 msgstr ""
 
-#: admin/partials/shortcodes-template.php:252
+#: admin/partials/shortcodes-template.php:260
 msgid "Here is a list of all the values available for the \"info\" option:"
 msgstr ""
 
@@ -374,29 +383,38 @@ msgid ""
 "code> folder in your plugin folder"
 msgstr ""
 
-#: public/class-jiwp-public.php:283
+#: public/class-jiwp-public.php:299
 msgid "Please set your Justimmo API username and password in the"
 msgstr ""
 
-#: public/class-jiwp-public.php:284
+#: public/class-jiwp-public.php:300
 msgid "Justimmo settings panel"
 msgstr ""
 
-#: public/class-jiwp-public.php:357 public/class-jiwp-public.php:378
-#: public/class-jiwp-public.php:790
+#: public/class-jiwp-public.php:373 public/class-jiwp-public.php:394
+#: public/class-jiwp-public.php:811
+#: public/partials/search-form/_search-form.php:1
+#: public/partials/search-form/_search-form.php:17
+#: public/partials/search-form/_search-form.php:221
 msgid "properties"
 msgstr ""
 
-#: public/class-jiwp-public.php:371 public/class-jiwp-public.php:821
+#: public/class-jiwp-public.php:387 public/class-jiwp-public.php:842
 msgid "projects"
 msgstr ""
 
-#: public/class-jiwp-public.php:378
+#: public/class-jiwp-public.php:394
 msgid "search"
 msgstr ""
 
-#: public/class-jiwp-public.php:911
+#: public/class-jiwp-public.php:969
 msgid "Inquiry Sent!"
+msgstr ""
+
+#: public/class-jiwp-public.php:1406
+#: public/partials/realty/_realty-list__item.php:34
+#: public/partials/realty/realty-template.php:14
+msgid "in"
 msgstr ""
 
 #: public/partials/inquiry-form/_inquiry-form.php:5
@@ -411,55 +429,54 @@ msgstr ""
 msgid "Ms."
 msgstr ""
 
-#: public/partials/inquiry-form/_inquiry-form.php:13
-#: public/partials/inquiry-form/_inquiry-form.php:14
-msgid "Title"
-msgstr ""
-
-#: public/partials/inquiry-form/_inquiry-form.php:17
-#: public/partials/inquiry-form/_inquiry-form.php:18
+#: public/partials/inquiry-form/_inquiry-form.php:20
+#: public/partials/inquiry-form/_inquiry-form.php:21
 msgid "First Name"
 msgstr ""
 
-#: public/partials/inquiry-form/_inquiry-form.php:21
-#: public/partials/inquiry-form/_inquiry-form.php:22
+#: public/partials/inquiry-form/_inquiry-form.php:26
+#: public/partials/inquiry-form/_inquiry-form.php:27
 msgid "Last Name"
 msgstr ""
 
-#: public/partials/inquiry-form/_inquiry-form.php:25
-#: public/partials/inquiry-form/_inquiry-form.php:26
+#: public/partials/inquiry-form/_inquiry-form.php:31
+#: public/partials/inquiry-form/_inquiry-form.php:32
 msgid "Email"
 msgstr ""
 
-#: public/partials/inquiry-form/_inquiry-form.php:29
-#: public/partials/inquiry-form/_inquiry-form.php:30
+#: public/partials/inquiry-form/_inquiry-form.php:36
+#: public/partials/inquiry-form/_inquiry-form.php:37
 msgid "Phone"
 msgstr ""
 
-#: public/partials/inquiry-form/_inquiry-form.php:33
-#: public/partials/inquiry-form/_inquiry-form.php:34
+#: public/partials/inquiry-form/_inquiry-form.php:40
+#: public/partials/inquiry-form/_inquiry-form.php:41
 msgid "Street"
 msgstr ""
 
-#: public/partials/inquiry-form/_inquiry-form.php:37
-#: public/partials/inquiry-form/_inquiry-form.php:38
+#: public/partials/inquiry-form/_inquiry-form.php:45
+#: public/partials/inquiry-form/_inquiry-form.php:46
 msgid "Zipcode"
 msgstr ""
 
-#: public/partials/inquiry-form/_inquiry-form.php:41
-#: public/partials/inquiry-form/_inquiry-form.php:42
+#: public/partials/inquiry-form/_inquiry-form.php:50
+#: public/partials/inquiry-form/_inquiry-form.php:51
 msgid "City"
 msgstr ""
 
-#: public/partials/inquiry-form/_inquiry-form.php:45
+#: public/partials/inquiry-form/_inquiry-form.php:54
 msgid "Message"
 msgstr ""
 
-#: public/partials/inquiry-form/_inquiry-form.php:46
+#: public/partials/inquiry-form/_inquiry-form.php:55
 msgid "I am interested in this property: "
 msgstr ""
 
-#: public/partials/inquiry-form/_inquiry-form.php:49
+#: public/partials/inquiry-form/_inquiry-form.php:58
+msgid "Fields marked with an * are mandatory."
+msgstr ""
+
+#: public/partials/inquiry-form/_inquiry-form.php:60
 msgid "Request Info"
 msgstr ""
 
@@ -863,11 +880,6 @@ msgstr ""
 
 #: public/partials/realty/_realty-list.php:19
 msgid "No realties found"
-msgstr ""
-
-#: public/partials/realty/_realty-list__item.php:34
-#: public/partials/realty/realty-template.php:14
-msgid "in"
 msgstr ""
 
 #: public/partials/realty/realty-template.php:18

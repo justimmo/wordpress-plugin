@@ -615,6 +615,7 @@ class Jiwp_Public
                 'exclude_country_id'    => null,
                 'occupancy'             => null,
                 'format'                => 'list',
+                'zip'                   => null,
             ),
             $atts,
             'ji_realty_list'
@@ -1206,6 +1207,14 @@ class Jiwp_Public
         {
             $tags = explode(',', $filter_params[ 'category' ]);
             $this->ji_realty_query->filterByTag( $tags );
+        }
+
+        // realty zipcode
+
+        if ( !empty( $filter_params[ 'zip' ] ) ) 
+        {
+            $zipcodes = explode(',', $filter_params[ 'zip' ]);
+            $this->ji_realty_query->filterByZipCode( $zipcodes );
         }
 
         // price
