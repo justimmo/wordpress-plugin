@@ -5,6 +5,7 @@ Justimmo_Realty_Page = (function($) {
 	function init() 
 	{
 		initPhotoGallery();
+		initFancybox();
 		initMap();
 	}
 
@@ -17,6 +18,10 @@ Justimmo_Realty_Page = (function($) {
 			slideMargin: 0,
 			thumbItem: 9
 		});
+	}
+
+	function initFancybox() {
+		$('.fancybox').fancybox();
 	}
 
 	function initMap()

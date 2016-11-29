@@ -31,9 +31,9 @@
 
                         <li class="ji-photos-list__item" data-thumb="<?php echo $photo->getUrl('big2') ?>">
 
-                            <!-- <a href="<?php echo $photo->getUrl('big2') ?>" class="featherlight-gallery"> -->
+                            <a href="<?php echo $photo->getUrl('big2') ?>" class="fancybox" rel="gallery">
                                 <img src="<?php echo $photo->getUrl('medium') ?>" class="ji-photo" alt=""/>
-                            <!-- </a> -->
+                            </a>
 
                         </li>
 

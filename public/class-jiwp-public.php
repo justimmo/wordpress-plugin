@@ -163,6 +163,15 @@ class Jiwp_Public
                 $this->version,
                 'all'
             );
+
+            wp_enqueue_style(
+                'fancybox',
+                plugin_dir_url(__FILE__) . 'js/fancybox/jquery.fancybox.css',
+                array(),
+                '2.0',
+                'all'
+            );
+
         }
 
         wp_enqueue_style(
@@ -207,6 +216,14 @@ class Jiwp_Public
                 plugin_dir_url(__FILE__) . 'js/lightslider/js/lightslider.min.js',
                 array( 'jquery' ),
                 $this->version,
+                true
+            );
+
+            wp_enqueue_script(
+                'fancybox',
+                plugin_dir_url(__FILE__) . 'js/fancybox/jquery.fancybox.pack.js',
+                array( 'jquery' ),
+                '2.0',
                 true
             );
 

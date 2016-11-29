@@ -23,9 +23,9 @@
 
                 <li class="ji-photos-list__item" data-thumb="<?php echo $img_src; ?>">
 
-                    <!-- <a href="<?php echo $img_href; ?>"> -->
+                    <a href="<?php echo $img_href; ?>" class="fancybox" rel="gallery">
                         <img src="<?php echo $img_src; ?>" class="ji-photo" alt=""/>
-                    <!-- </a> -->
+                    </a>
 
                 </li>
 
