@@ -131,7 +131,7 @@ class Jiwp_Public
         $this->init_shortcodes();
 
         // Set php money formatting
-        setlocale( LC_MONETARY, 'de_DE' );
+        setlocale( LC_MONETARY, get_locale() );
 
     }
 
@@ -213,7 +213,9 @@ class Jiwp_Public
             wp_enqueue_script(
                 'jiwp-realty-page',
                 plugin_dir_url(__FILE__) . 'js/jiwp-realty-page.js',
-                array( 'lightslider' )
+                array( 'lightslider' ),
+	            $this->version,
+	            true
             );
 
             wp_enqueue_script(
@@ -918,7 +920,7 @@ class Jiwp_Public
                 ->setZipCode($contact_zipcode)
                 ->setCity($contact_city)
                 //->setCountry($contact_country)
-                ->setMessage('This message should be displayed to the responsible user of realty ' . $realty_id)
+                ->setMessage($contact_message)
                 ->send();
 
             echo json_encode([
