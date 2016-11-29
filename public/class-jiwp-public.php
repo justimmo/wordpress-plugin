@@ -913,19 +913,56 @@ class Jiwp_Public
             );
 
             $inquiryRequest = new RealtyInquiryRequest($api, new RealtyInquiryMapper());
-            $inquiryRequest->setRealtyId($realty_id)
-                ->setSalutationId($contact_salutation)
-                ->setTitle($contact_title)
-                ->setFirstName($contact_first_name)
-                ->setLastName($contact_last_name)
-                ->setEmail($contact_email)
-                ->setPhone($contact_phone)
-                ->setStreet($contact_street)
-                ->setZipCode($contact_zipcode)
-                ->setCity($contact_city)
-                //->setCountry($contact_country)
-                ->setMessage($contact_message)
-                ->send();
+            
+            if (!empty($realty_id)) {
+                $inquiryRequest->setRealtyId($realty_id);
+            }
+
+            if (!empty($contact_salutation)) {
+                $inquiryRequest->setSalutationId($contact_salutation);
+            }
+
+            if (!empty($contact_title)) {
+                $inquiryRequest->setTitle($contact_title);
+            }
+
+            if (!empty($contact_first_name)) {
+                $inquiryRequest->setFirstName($contact_first_name);
+            }
+
+            if (!empty($contact_last_name)) {
+                $inquiryRequest->setLastName($contact_last_name);
+            }
+
+            if (!empty($contact_email)) {
+                $inquiryRequest->setEmail($contact_email);
+            }
+
+            if (!empty($contact_phone)) {
+                $inquiryRequest->setPhone($contact_phone);
+            }
+
+            if (!empty($contact_street)) {
+                $inquiryRequest->setStreet($contact_street);
+            }
+
+            if (!empty($contact_zipcode)) {
+                $inquiryRequest->setZipCode($contact_zipcode);
+            }
+
+            if (!empty($contact_city)) {
+                $inquiryRequest->setCity($contact_city);
+            }
+
+            if (!empty($contact_country)) {
+                $inquiryRequest->setCountry($contact_country);
+            }
+
+            if (!empty($contact_message)) {
+                $inquiryRequest->setMessage($contact_message);
+            }
+            
+            $inquiryRequest->send();
 
             echo json_encode([
                 'message' => __('Inquiry Sent!', 'jiwp'),
