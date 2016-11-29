@@ -399,6 +399,13 @@ class Jiwp_Public
             'top'
         );
 
+        // realty detail rule
+        add_rewrite_rule(
+            __('immo', 'jiwp') . '/(\d+)/?$',
+            'index.php?ji_page=realty-short&ji_realty_id=$matches[1]',
+            'top'
+        );
+
         // project detail rule
         add_rewrite_rule(
             __('projects', 'jiwp') . '/(.+)-(\d+)/?$',
@@ -465,6 +472,13 @@ class Jiwp_Public
 
                 return;
 
+            case 'realty-short':
+
+                $this->realty_short_redirect();
+                exit;
+
+                return;
+
             case 'project':
                 
                 $this->project_page();
@@ -524,6 +538,14 @@ class Jiwp_Public
         header('Content-Disposition: attachment; filename="expose-' . $id . '-' . time() . '.pdf"');
         echo $this->api->callExpose($id, 'Default');
         exit;
+
+    }
+
+    private function realty_short_redirect() {
+
+        $id = get_query_var('ji_realty_id');
+        $realty = $this->get_realty($id);
+        header('Location: ' . $this->get_realty_url($realty));
 
     }
 
