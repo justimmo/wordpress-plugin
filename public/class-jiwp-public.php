@@ -272,6 +272,10 @@ class Jiwp_Public
                 new NullCache()
             );
 
+            $this->api->setCurlOptions([
+                CURLOPT_TIMEOUT_MS => 60000
+            ]);
+
             $this->ji_realty_query = $this->get_justimmo_realty_query($this->api);
             $this->ji_project_query = $this->get_justimmo_project_query($this->api);
             self::$ji_basic_query = $this->get_justimmo_basic_query($this->api);
@@ -950,8 +954,6 @@ class Jiwp_Public
             return null;
         }
         
-        // This method does not pass `culture` param to `JustimmoApi` class 
-        // and neither does the `/objekt/detail` endpoint retrieve translated data. 
         return $this->ji_realty_query->findPk( $realty_id );
 
     }
@@ -1334,5 +1336,59 @@ class Jiwp_Public
     private function get_language_code()
     {
         return substr(get_locale(), 0, 2);
+    }
+
+    public function page_title_setup($title, $sep) {
+
+        $screen = get_query_var( 'ji_page', false );
+
+        if ( $screen == 'realty' )
+        {
+            $realty_id = get_query_var( 'ji_realty_id', false );
+
+            try
+            {
+                $realty = $this->get_realty( $realty_id );
+
+                if (!empty($realty->getTitle())) {
+                    $title = $realty->getTitle();
+                }
+                else
+                {
+                    $title = $realty->getRealtyTypeName()
+                        . ' '
+                        . __('in', 'jiwp')
+                        . ' '
+                        . $realty->getCountry()
+                        . ' / '
+                        . $realty->getFederalState();
+                }
+            }
+            catch ( Exception $e )
+            {
+                self::jiwp_error_log( $e );
+            }
+        }
+
+        if ( $screen == 'project' )
+        {
+            $project_id = get_query_var( 'ji_project_id', false );
+
+            try
+            {
+                $project = $this->get_project( $project_id );
+
+                if (!empty($project->getTitle())) {
+                    $title = $project->getTitle();
+                }
+            }
+            catch ( Exception $e )
+            {
+                self::jiwp_error_log( $e );
+            }
+        }
+
+        return $title;
+
     }
 }

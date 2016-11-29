@@ -195,6 +195,8 @@ class Jiwp {
 		$this->loader->add_action( 'wp_ajax_ajax_send_inquiry', $plugin_public, 'ajax_send_inquiry' );
 		$this->loader->add_action( 'wp_ajax_nopriv_ajax_send_inquiry', $plugin_public, 'ajax_send_inquiry' );
 
+		$this->loader->add_filter( 'wp_title', $plugin_public, 'page_title_setup', 999, 2 );
+
 	}
 
 	/**
