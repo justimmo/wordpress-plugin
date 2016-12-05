@@ -313,8 +313,8 @@ class Jiwp_Public
     public function api_credentials_notification() {
 
         $class              = 'notice notice-error';
-        $message            = __( 'Please set your Justimmo API username and password in the', 'jiwp' );
-        $admin_link_text    = __('Justimmo settings panel');
+        $message            = __( 'Please set your JUSTIMMO API username and password in the', 'jiwp' );
+        $admin_link_text    = __('JUSTIMMO settings panel');
 
         printf( '<div class="%1$s"><p>%2$s <a href=' . get_admin_url( null, 'admin.php?page=jiwp' ) . '>%3$s</a></p></div>', $class, $message, $admin_link_text );
 
@@ -401,7 +401,7 @@ class Jiwp_Public
 
         // realty detail rule
         add_rewrite_rule(
-            __('immo', 'jiwp') . '/(\d+)/?$',
+            __('obj', 'jiwp') . '/(\d+)/?$',
             'index.php?ji_page=realty-short&ji_realty_id=$matches[1]',
             'top'
         );
