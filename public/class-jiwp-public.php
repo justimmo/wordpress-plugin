@@ -543,8 +543,8 @@ class Jiwp_Public
 
     private function realty_short_redirect() {
 
-        $id = get_query_var('ji_realty_id');
-        $realty = $this->get_realty($id);
+        $realty_nb = get_query_var('ji_realty_id');
+        $realty = $this->get_realty_by_number($realty_nb);
         header('Location: ' . $this->get_realty_url($realty));
 
     }
@@ -1032,6 +1032,19 @@ class Jiwp_Public
         }
         
         return $this->ji_realty_query->findPk( $realty_id );
+
+    }
+
+    private function get_realty_by_number( $realty_nb ) {
+
+        if ( $this->ji_realty_query == null )
+        {
+            return null;
+        }
+
+        $this->set_realty_query_filters([ 'objektnummer' => $realty_nb ]);
+
+        return $this->ji_realty_query->findOne();
 
     }
 
