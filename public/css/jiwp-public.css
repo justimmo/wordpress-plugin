@@ -161,9 +161,29 @@
 	height: 400px;
 }
 
+/* Inquiry Form */
+
 .ji-inquiry-form #contact_message {
     width: 100%;
     max-width: 100%;
     min-height: 100px;
     padding: 7px;
+}
+
+.ji-inquiry-messages {
+
+}
+
+.ji-inquiry-message {
+	padding: 5px 10px;
+	margin: 10px 0;
+}
+
+.ji-inquiry-message--error {
+	background: #f00;
+	color: #fff;
+}
+
+.ji-inquiry-message--success {
+	background: #0f0;
 }

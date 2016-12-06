@@ -70,7 +70,7 @@ class Jiwp {
 
 		$this->plugin_name = 'jiwp';
 		/*todo: Please increase version on every .css or .js update */
-		$this->version = '1.0.3';
+		$this->version = '1.0.4';
 
 		$this->load_dependencies();
 		$this->set_locale();

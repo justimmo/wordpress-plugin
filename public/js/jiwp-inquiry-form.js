@@ -32,15 +32,21 @@ Justimmo_Inquiry_Form = (function($) {
         data = JSON.parse(data);
         
         if (data.error) {
-            alert(data.error);
+            showInquiryMessage(data.error, 'error');
             return;
         }
 
         $('.ji-inquiry-form')[0].reset();
 
         if (data.message) {
-            alert(data.message);
+            showInquiryMessage(data.message, 'success');
         }
+    }
+
+    function showInquiryMessage(message, type) {
+        $('.ji-inquiry-messages')
+            .empty()
+            .append('<div class="ji-inquiry-message ji-inquiry-message--' + type + '">' + message + '</div>');
     }
 
     return {

@@ -1,4 +1,6 @@
 <?php if ( ! empty( $realty ) ) : ?>
+    <div class="ji-inquiry-messages"></div>
+
     <form action="" class="ji-inquiry-form">
         <input type="hidden" name="realty_id" value="<?php echo $realty->getId(); ?>">
         <p>
