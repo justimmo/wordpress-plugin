@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: JUSTIMMO WP Plugin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-11-29 22:22+0200\n"
-"PO-Revision-Date: 2016-11-29 22:23+0200\n"
+"POT-Creation-Date: 2016-12-14 15:10+0200\n"
+"PO-Revision-Date: 2016-12-14 15:11+0200\n"
 "Last-Translator: admin <h.holzer@bgcc.at>\n"
 "Language-Team: German\n"
 "Language: de_DE\n"
@@ -55,7 +55,7 @@ msgstr ""
 #: admin/partials/api-settings-template.php:52
 #: admin/partials/api-settings-template.php:56
 #: admin/partials/api-settings-template.php:60
-#: admin/partials/shortcodes-template.php:245
+#: admin/partials/shortcodes-template.php:256
 msgid "show image"
 msgstr ""
 
@@ -99,8 +99,8 @@ msgid ""
 msgstr ""
 
 #: admin/partials/shortcodes-template.php:15
-#: admin/partials/shortcodes-template.php:215
-#: admin/partials/shortcodes-template.php:240
+#: admin/partials/shortcodes-template.php:226
+#: admin/partials/shortcodes-template.php:251
 msgid "It has the following options which you can pass as parameters:"
 msgstr ""
 
@@ -129,9 +129,9 @@ msgstr ""
 #: admin/partials/shortcodes-template.php:165
 #: admin/partials/shortcodes-template.php:173
 #: admin/partials/shortcodes-template.php:181
-#: admin/partials/shortcodes-template.php:221
-#: admin/partials/shortcodes-template.php:247
-#: admin/partials/shortcodes-template.php:255
+#: admin/partials/shortcodes-template.php:232
+#: admin/partials/shortcodes-template.php:258
+#: admin/partials/shortcodes-template.php:266
 msgid "Example:"
 msgstr ""
 
@@ -310,52 +310,56 @@ msgid ""
 msgstr ""
 
 #: admin/partials/shortcodes-template.php:208
+msgid "The realty number search form shortcode:"
+msgstr ""
+
+#: admin/partials/shortcodes-template.php:219
 msgid "The project listing shortcode:"
 msgstr ""
 
-#: admin/partials/shortcodes-template.php:213
+#: admin/partials/shortcodes-template.php:224
 msgid ""
 "Paste this shortcode in any page, post or sidebar Text widget to output a "
 "list of your available projects."
 msgstr ""
 
-#: admin/partials/shortcodes-template.php:219
+#: admin/partials/shortcodes-template.php:230
 msgid "Limits the number of projects displayed per page."
 msgstr ""
 
-#: admin/partials/shortcodes-template.php:222
+#: admin/partials/shortcodes-template.php:233
 msgid "shows 5 projects per page."
 msgstr ""
 
-#: admin/partials/shortcodes-template.php:233
+#: admin/partials/shortcodes-template.php:244
 msgid "The project information shortcode:"
 msgstr ""
 
-#: admin/partials/shortcodes-template.php:238
+#: admin/partials/shortcodes-template.php:249
 msgid ""
 "Paste this shortcode in any page, post or sidebar Text widget to output "
 "various project information."
 msgstr ""
 
-#: admin/partials/shortcodes-template.php:244
+#: admin/partials/shortcodes-template.php:255
 msgid "The project JUSTIMMO ID (mandatory)."
 msgstr ""
 
-#: admin/partials/shortcodes-template.php:248
+#: admin/partials/shortcodes-template.php:259
 msgid "shows information belonging to the project with the JUSTIMMO ID of 5."
 msgstr ""
 
-#: admin/partials/shortcodes-template.php:252
+#: admin/partials/shortcodes-template.php:263
 msgid "The project information to be shown (mandatory)."
 msgstr ""
 
-#: admin/partials/shortcodes-template.php:256
+#: admin/partials/shortcodes-template.php:267
 msgid ""
 "shows project address information belonging to the project with the JUSTIMMO "
 "ID of 5."
 msgstr ""
 
-#: admin/partials/shortcodes-template.php:260
+#: admin/partials/shortcodes-template.php:271
 msgid "Here is a list of all the values available for the \"info\" option:"
 msgstr ""
 
@@ -380,102 +384,106 @@ msgid ""
 "code> folder in your plugin folder"
 msgstr ""
 
-#: public/class-jiwp-public.php:299
-msgid "Please set your Justimmo API username and password in the"
+#: public/class-jiwp-public.php:317
+msgid "Please set your JUSTIMMO API username and password in the"
 msgstr ""
 
-#: public/class-jiwp-public.php:300
-msgid "Justimmo settings panel"
+#: public/class-jiwp-public.php:318
+msgid "JUSTIMMO settings panel"
 msgstr ""
 
-#: public/class-jiwp-public.php:373 public/class-jiwp-public.php:394
-#: public/class-jiwp-public.php:811
+#: public/class-jiwp-public.php:390 public/class-jiwp-public.php:418
+#: public/class-jiwp-public.php:863
 #: public/partials/search-form/_search-form.php:1
-#: public/partials/search-form/_search-form.php:17
-#: public/partials/search-form/_search-form.php:221
+#: public/partials/search-form/_search-form.php:205
+#: public/partials/search-form/_search-form__realty-number.php:1
 msgid "properties"
 msgstr ""
 
-#: public/class-jiwp-public.php:387 public/class-jiwp-public.php:842
+#: public/class-jiwp-public.php:404
+msgid "obj"
+msgstr ""
+
+#: public/class-jiwp-public.php:411 public/class-jiwp-public.php:894
 msgid "projects"
 msgstr ""
 
-#: public/class-jiwp-public.php:394
+#: public/class-jiwp-public.php:418
 msgid "search"
 msgstr ""
 
-#: public/class-jiwp-public.php:969
+#: public/class-jiwp-public.php:1021
 msgid "Inquiry Sent!"
 msgstr "Anfrage gesendet!"
 
-#: public/class-jiwp-public.php:1406
+#: public/class-jiwp-public.php:1472
 #: public/partials/realty/_realty-list__item.php:34
 #: public/partials/realty/realty-template.php:14
 msgid "in"
 msgstr ""
 
-#: public/partials/inquiry-form/_inquiry-form.php:5
+#: public/partials/inquiry-form/_inquiry-form.php:7
 msgid "Salutation"
 msgstr ""
 
-#: public/partials/inquiry-form/_inquiry-form.php:8
+#: public/partials/inquiry-form/_inquiry-form.php:10
 msgid "Mr."
 msgstr "Herr"
 
-#: public/partials/inquiry-form/_inquiry-form.php:9
+#: public/partials/inquiry-form/_inquiry-form.php:11
 msgid "Ms."
 msgstr "Frau"
 
-#: public/partials/inquiry-form/_inquiry-form.php:20
-#: public/partials/inquiry-form/_inquiry-form.php:21
+#: public/partials/inquiry-form/_inquiry-form.php:22
+#: public/partials/inquiry-form/_inquiry-form.php:23
 msgid "First Name"
 msgstr "Vorname"
 
-#: public/partials/inquiry-form/_inquiry-form.php:26
-#: public/partials/inquiry-form/_inquiry-form.php:27
+#: public/partials/inquiry-form/_inquiry-form.php:28
+#: public/partials/inquiry-form/_inquiry-form.php:29
 msgid "Last Name"
 msgstr "Nachname"
 
-#: public/partials/inquiry-form/_inquiry-form.php:31
-#: public/partials/inquiry-form/_inquiry-form.php:32
+#: public/partials/inquiry-form/_inquiry-form.php:33
+#: public/partials/inquiry-form/_inquiry-form.php:34
 msgid "Email"
 msgstr ""
 
-#: public/partials/inquiry-form/_inquiry-form.php:36
-#: public/partials/inquiry-form/_inquiry-form.php:37
+#: public/partials/inquiry-form/_inquiry-form.php:38
+#: public/partials/inquiry-form/_inquiry-form.php:39
 msgid "Phone"
 msgstr "Telefon"
 
-#: public/partials/inquiry-form/_inquiry-form.php:40
-#: public/partials/inquiry-form/_inquiry-form.php:41
+#: public/partials/inquiry-form/_inquiry-form.php:42
+#: public/partials/inquiry-form/_inquiry-form.php:43
 msgid "Street"
 msgstr "Straße"
 
-#: public/partials/inquiry-form/_inquiry-form.php:45
-#: public/partials/inquiry-form/_inquiry-form.php:46
+#: public/partials/inquiry-form/_inquiry-form.php:47
+#: public/partials/inquiry-form/_inquiry-form.php:48
 msgid "Zipcode"
 msgstr "PLZ"
 
-#: public/partials/inquiry-form/_inquiry-form.php:50
-#: public/partials/inquiry-form/_inquiry-form.php:51
+#: public/partials/inquiry-form/_inquiry-form.php:52
+#: public/partials/inquiry-form/_inquiry-form.php:53
 msgid "City"
 msgstr "Ort"
 
-#: public/partials/inquiry-form/_inquiry-form.php:54
+#: public/partials/inquiry-form/_inquiry-form.php:56
 msgid "Message"
 msgstr ""
 
-#: public/partials/inquiry-form/_inquiry-form.php:55
+#: public/partials/inquiry-form/_inquiry-form.php:57
 msgid "I am interested in this property: "
 msgstr ""
 "Ich interessiere mich für folgende Objektnummer und ersuche um "
 "Kontaktaufnahme:"
 
-#: public/partials/inquiry-form/_inquiry-form.php:58
+#: public/partials/inquiry-form/_inquiry-form.php:60
 msgid "Fields marked with an * are mandatory."
 msgstr ""
 
-#: public/partials/inquiry-form/_inquiry-form.php:60
+#: public/partials/inquiry-form/_inquiry-form.php:62
 msgid "Request Info"
 msgstr "Infos anfordern"
 
@@ -485,7 +493,7 @@ msgstr ""
 
 #: public/partials/project/_project-info__address.php:13
 #: public/partials/realty/_realty-extended-info.php:26
-#: public/partials/realty/realty-template__sidebar.php:27
+#: public/partials/realty/realty-template__sidebar.php:28
 msgid "Address:"
 msgstr "Adresse:"
 
@@ -544,8 +552,8 @@ msgstr ""
 #: public/partials/project/_project-info__realties.php:25
 #: public/partials/realty/_realty-extended-info.php:158
 #: public/partials/realty/_realty-info.php:29
-#: public/partials/realty/realty-template__sidebar.php:159
-#: public/partials/search-form/_search-form.php:30
+#: public/partials/realty/realty-template__sidebar.php:160
+#: public/partials/search-form/_search-form.php:14
 msgid "Rent"
 msgstr ""
 
@@ -566,302 +574,302 @@ msgid "No project found."
 msgstr ""
 
 #: public/partials/realty/_realty-extended-info.php:3
-#: public/partials/realty/realty-template__sidebar.php:4
+#: public/partials/realty/realty-template__sidebar.php:5
 msgid "Basic details:"
 msgstr ""
 
 #: public/partials/realty/_realty-extended-info.php:8
-#: public/partials/realty/realty-template__sidebar.php:9
-#: public/partials/search-form/_search-form.php:3
+#: public/partials/realty/realty-template__sidebar.php:10
+#: public/partials/search-form/_search-form__realty-number.php:3
 msgid "Realty Number:"
 msgstr "Objektnummer:"
 
 #: public/partials/realty/_realty-extended-info.php:17
-#: public/partials/realty/realty-template__sidebar.php:18
+#: public/partials/realty/realty-template__sidebar.php:19
 msgid "Country / State:"
 msgstr ""
 
 #: public/partials/realty/_realty-extended-info.php:79
-#: public/partials/realty/realty-template__sidebar.php:80
+#: public/partials/realty/realty-template__sidebar.php:81
 msgid "Location:"
 msgstr "Lage:"
 
 #: public/partials/realty/_realty-extended-info.php:91
-#: public/partials/realty/realty-template__sidebar.php:92
+#: public/partials/realty/realty-template__sidebar.php:93
 msgid "Proximity:"
 msgstr "Nähe:"
 
 #: public/partials/realty/_realty-extended-info.php:101
-#: public/partials/realty/realty-template__sidebar.php:102
+#: public/partials/realty/realty-template__sidebar.php:103
 msgid "Commercial Type:"
 msgstr ""
 
 #: public/partials/realty/_realty-extended-info.php:110
 #: public/partials/realty/_realty-info.php:6
-#: public/partials/realty/realty-template__sidebar.php:111
-#: public/partials/search-form/_search-form.php:45
+#: public/partials/realty/realty-template__sidebar.php:112
+#: public/partials/search-form/_search-form.php:29
 msgid "Realty Type:"
 msgstr ""
 
 #: public/partials/realty/_realty-extended-info.php:122
-#: public/partials/realty/realty-template__sidebar.php:123
+#: public/partials/realty/realty-template__sidebar.php:124
 msgid "Building Age:"
 msgstr ""
 
 #: public/partials/realty/_realty-extended-info.php:136
-#: public/partials/realty/realty-template__sidebar.php:137
+#: public/partials/realty/realty-template__sidebar.php:138
 msgid "Categories:"
 msgstr ""
 
 #: public/partials/realty/_realty-extended-info.php:147
 #: public/partials/realty/_realty-info.php:18
-#: public/partials/realty/realty-template__sidebar.php:148
+#: public/partials/realty/realty-template__sidebar.php:149
 msgid "For:"
 msgstr ""
 
 #: public/partials/realty/_realty-extended-info.php:156
 #: public/partials/realty/_realty-info.php:27
-#: public/partials/realty/realty-template__sidebar.php:157
+#: public/partials/realty/realty-template__sidebar.php:158
 msgid "Purchase"
 msgstr ""
 
 #: public/partials/realty/_realty-extended-info.php:171
-#: public/partials/realty/realty-template__sidebar.php:172
+#: public/partials/realty/realty-template__sidebar.php:173
 msgid "Your Contact Person"
 msgstr "Ihre Ansprechperson"
 
 #: public/partials/realty/_realty-extended-info.php:179
-#: public/partials/realty/realty-template__sidebar.php:180
+#: public/partials/realty/realty-template__sidebar.php:181
 msgid "Name:"
 msgstr ""
 
 #: public/partials/realty/_realty-extended-info.php:194
-#: public/partials/realty/realty-template__sidebar.php:195
+#: public/partials/realty/realty-template__sidebar.php:196
 msgid "Email:"
 msgstr ""
 
 #: public/partials/realty/_realty-extended-info.php:202
-#: public/partials/realty/realty-template__sidebar.php:203
+#: public/partials/realty/realty-template__sidebar.php:204
 msgid "Phone:"
 msgstr "Telefon:"
 
 #: public/partials/realty/_realty-extended-info.php:213
-#: public/partials/realty/realty-template__sidebar.php:214
-#: public/partials/search-form/_search-form.php:118
+#: public/partials/realty/realty-template__sidebar.php:215
+#: public/partials/search-form/_search-form.php:102
 msgid "Surface:"
 msgstr ""
 
 #: public/partials/realty/_realty-extended-info.php:221
-#: public/partials/realty/realty-template__sidebar.php:222
+#: public/partials/realty/realty-template__sidebar.php:223
 msgid "Floor Area:"
 msgstr "Nutzfläche:"
 
 #: public/partials/realty/_realty-extended-info.php:234
 #: public/partials/realty/_realty-info.php:80
-#: public/partials/realty/realty-template__sidebar.php:235
+#: public/partials/realty/realty-template__sidebar.php:236
 msgid "Surface Area:"
 msgstr ""
 
 #: public/partials/realty/_realty-extended-info.php:247
-#: public/partials/realty/realty-template__sidebar.php:248
+#: public/partials/realty/realty-template__sidebar.php:249
 msgid "Living Area:"
 msgstr ""
 
 #: public/partials/realty/_realty-extended-info.php:260
-#: public/partials/realty/realty-template__sidebar.php:261
+#: public/partials/realty/realty-template__sidebar.php:262
 msgid "Total Area:"
 msgstr ""
 
 #: public/partials/realty/_realty-extended-info.php:273
-#: public/partials/realty/realty-template__sidebar.php:274
+#: public/partials/realty/realty-template__sidebar.php:275
 msgid "Balcony Area:"
 msgstr ""
 
 #: public/partials/realty/_realty-extended-info.php:286
-#: public/partials/realty/realty-template__sidebar.php:287
+#: public/partials/realty/realty-template__sidebar.php:288
 msgid "Terrace Area:"
 msgstr ""
 
 #: public/partials/realty/_realty-extended-info.php:299
-#: public/partials/realty/realty-template__sidebar.php:300
+#: public/partials/realty/realty-template__sidebar.php:301
 msgid "Garden Area:"
 msgstr ""
 
 #: public/partials/realty/_realty-extended-info.php:312
-#: public/partials/realty/realty-template__sidebar.php:313
+#: public/partials/realty/realty-template__sidebar.php:314
 msgid "Cellar Area:"
 msgstr ""
 
 #: public/partials/realty/_realty-extended-info.php:325
-#: public/partials/realty/realty-template__sidebar.php:326
+#: public/partials/realty/realty-template__sidebar.php:327
 msgid "Office Area:"
 msgstr ""
 
 #: public/partials/realty/_realty-extended-info.php:338
-#: public/partials/realty/realty-template__sidebar.php:339
+#: public/partials/realty/realty-template__sidebar.php:340
 msgid "Storage Area:"
 msgstr ""
 
 #: public/partials/realty/_realty-extended-info.php:351
-#: public/partials/realty/realty-template__sidebar.php:352
+#: public/partials/realty/realty-template__sidebar.php:353
 msgid "Loggia Area:"
 msgstr ""
 
 #: public/partials/realty/_realty-extended-info.php:364
-#: public/partials/realty/realty-template__sidebar.php:365
+#: public/partials/realty/realty-template__sidebar.php:366
 msgid "Garage Area:"
 msgstr ""
 
 #: public/partials/realty/_realty-extended-info.php:377
-#: public/partials/realty/realty-template__sidebar.php:378
+#: public/partials/realty/realty-template__sidebar.php:379
 msgid "Parking Area:"
 msgstr ""
 
 #: public/partials/realty/_realty-extended-info.php:390
-#: public/partials/realty/realty-template__sidebar.php:391
+#: public/partials/realty/realty-template__sidebar.php:392
 msgid "Buildable Area:"
 msgstr ""
 
 #: public/partials/realty/_realty-extended-info.php:404
-#: public/partials/realty/realty-template__sidebar.php:405
+#: public/partials/realty/realty-template__sidebar.php:406
 msgid "Room Count:"
 msgstr ""
 
 #: public/partials/realty/_realty-extended-info.php:412
 #: public/partials/realty/_realty-info.php:96
-#: public/partials/realty/realty-template__sidebar.php:413
-#: public/partials/search-form/_search-form.php:94
+#: public/partials/realty/realty-template__sidebar.php:414
+#: public/partials/search-form/_search-form.php:78
 msgid "Rooms:"
 msgstr ""
 
 #: public/partials/realty/_realty-extended-info.php:425
-#: public/partials/realty/realty-template__sidebar.php:426
+#: public/partials/realty/realty-template__sidebar.php:427
 msgid "Bathrooms:"
 msgstr ""
 
 #: public/partials/realty/_realty-extended-info.php:438
-#: public/partials/realty/realty-template__sidebar.php:439
+#: public/partials/realty/realty-template__sidebar.php:440
 msgid "Toilet Rooms:"
 msgstr ""
 
 #: public/partials/realty/_realty-extended-info.php:451
-#: public/partials/realty/realty-template__sidebar.php:452
+#: public/partials/realty/realty-template__sidebar.php:453
 msgid "Balconies:"
 msgstr ""
 
 #: public/partials/realty/_realty-extended-info.php:464
-#: public/partials/realty/realty-template__sidebar.php:465
+#: public/partials/realty/realty-template__sidebar.php:466
 msgid "Terraces:"
 msgstr ""
 
 #: public/partials/realty/_realty-extended-info.php:477
 #: public/partials/realty/_realty-extended-info.php:490
-#: public/partials/realty/realty-template__sidebar.php:478
-#: public/partials/realty/realty-template__sidebar.php:491
+#: public/partials/realty/realty-template__sidebar.php:479
+#: public/partials/realty/realty-template__sidebar.php:492
 msgid "Loggias:"
 msgstr ""
 
 #: public/partials/realty/_realty-extended-info.php:503
-#: public/partials/realty/realty-template__sidebar.php:504
+#: public/partials/realty/realty-template__sidebar.php:505
 msgid "Garages:"
 msgstr ""
 
 #: public/partials/realty/_realty-extended-info.php:516
-#: public/partials/realty/realty-template__sidebar.php:517
+#: public/partials/realty/realty-template__sidebar.php:518
 msgid "Parking Spaces:"
 msgstr ""
 
 #: public/partials/realty/_realty-extended-info.php:529
-#: public/partials/realty/realty-template__sidebar.php:530
+#: public/partials/realty/realty-template__sidebar.php:531
 msgid "Store Rooms:"
 msgstr ""
 
 #: public/partials/realty/_realty-extended-info.php:543
-#: public/partials/realty/realty-template__sidebar.php:544
+#: public/partials/realty/realty-template__sidebar.php:545
 msgid "Equipment Description"
 msgstr "Ausstattung"
 
 #: public/partials/realty/_realty-extended-info.php:549
-#: public/partials/realty/realty-template__sidebar.php:550
+#: public/partials/realty/realty-template__sidebar.php:551
 msgid "Prices / Costs"
 msgstr ""
 
 #: public/partials/realty/_realty-extended-info.php:583
 #: public/partials/realty/_realty-info.php:65
-#: public/partials/realty/realty-template__sidebar.php:584
-#: public/partials/search-form/_search-form.php:68
+#: public/partials/realty/realty-template__sidebar.php:585
+#: public/partials/search-form/_search-form.php:52
 msgid "Price:"
 msgstr ""
 
 #: public/partials/realty/_realty-extended-info.php:597
-#: public/partials/realty/realty-template__sidebar.php:598
+#: public/partials/realty/realty-template__sidebar.php:599
 msgid "Commission:"
 msgstr ""
 
 #: public/partials/realty/_realty-extended-info.php:610
-#: public/partials/realty/realty-template__sidebar.php:611
+#: public/partials/realty/realty-template__sidebar.php:612
 msgid "Additional Costs:"
 msgstr ""
 
 #: public/partials/realty/_realty-extended-info.php:636
-#: public/partials/realty/realty-template__sidebar.php:637
+#: public/partials/realty/realty-template__sidebar.php:638
 msgid "Contract Establishment Costs:"
 msgstr ""
 
 #: public/partials/realty/_realty-extended-info.php:650
-#: public/partials/realty/realty-template__sidebar.php:651
+#: public/partials/realty/realty-template__sidebar.php:652
 msgid "Land Registration Tax:"
 msgstr "Grundbucheintragungsk.:"
 
 #: public/partials/realty/_realty-extended-info.php:664
-#: public/partials/realty/realty-template__sidebar.php:665
+#: public/partials/realty/realty-template__sidebar.php:666
 msgid "Transfer Tax:"
 msgstr "Grunderwerbsteuer:"
 
 #: public/partials/realty/_realty-extended-info.php:678
-#: public/partials/realty/realty-template__sidebar.php:679
+#: public/partials/realty/realty-template__sidebar.php:680
 msgid "Additional Charges:"
 msgstr ""
 
 #: public/partials/realty/_realty-extended-info.php:692
-#: public/partials/realty/realty-template__sidebar.php:693
+#: public/partials/realty/realty-template__sidebar.php:694
 msgid "Yearly Net Earning:"
 msgstr ""
 
 #: public/partials/realty/_realty-extended-info.php:706
-#: public/partials/realty/realty-template__sidebar.php:707
+#: public/partials/realty/realty-template__sidebar.php:708
 msgid "Building Subsidence:"
 msgstr ""
 
 #: public/partials/realty/_realty-extended-info.php:720
-#: public/partials/realty/realty-template__sidebar.php:721
+#: public/partials/realty/realty-template__sidebar.php:722
 msgid "Net Yield:"
 msgstr ""
 
 #: public/partials/realty/_realty-extended-info.php:737
-#: public/partials/realty/realty-template__sidebar.php:738
+#: public/partials/realty/realty-template__sidebar.php:739
 msgid "Energy Efficiency Certificate"
 msgstr "Energieausweis"
 
 #: public/partials/realty/_realty-extended-info.php:741
-#: public/partials/realty/realty-template__sidebar.php:742
+#: public/partials/realty/realty-template__sidebar.php:743
 msgid "Valid until:"
 msgstr ""
 
 #: public/partials/realty/_realty-extended-info.php:750
-#: public/partials/realty/realty-template__sidebar.php:751
+#: public/partials/realty/realty-template__sidebar.php:752
 msgid "Annual Thermal Energy Consumption:"
 msgstr ""
 
 #: public/partials/realty/_realty-extended-info.php:754
 #: public/partials/realty/_realty-extended-info.php:765
-#: public/partials/realty/realty-template__sidebar.php:755
-#: public/partials/realty/realty-template__sidebar.php:766
+#: public/partials/realty/realty-template__sidebar.php:756
+#: public/partials/realty/realty-template__sidebar.php:767
 msgid "class"
 msgstr ""
 
 #: public/partials/realty/_realty-extended-info.php:761
-#: public/partials/realty/realty-template__sidebar.php:762
+#: public/partials/realty/realty-template__sidebar.php:763
 msgid "Energy Efficiency Factor:"
 msgstr ""
 
@@ -889,50 +897,50 @@ msgstr ""
 msgid "No realty found."
 msgstr ""
 
-#: public/partials/search-form/_search-form.php:13
-#: public/partials/search-form/_search-form.php:217
-msgid "Search"
-msgstr ""
-
-#: public/partials/search-form/_search-form.php:19
+#: public/partials/search-form/_search-form.php:3
 msgid "Advanced Realty Search"
 msgstr ""
 
-#: public/partials/search-form/_search-form.php:39
+#: public/partials/search-form/_search-form.php:23
 msgid "Buy"
 msgstr ""
 
-#: public/partials/search-form/_search-form.php:79
-#: public/partials/search-form/_search-form.php:105
-#: public/partials/search-form/_search-form.php:129
+#: public/partials/search-form/_search-form.php:63
+#: public/partials/search-form/_search-form.php:89
+#: public/partials/search-form/_search-form.php:113
 msgid "to"
 msgstr ""
 
-#: public/partials/search-form/_search-form.php:144
+#: public/partials/search-form/_search-form.php:128
 msgid "Country:"
 msgstr ""
 
-#: public/partials/search-form/_search-form.php:167
+#: public/partials/search-form/_search-form.php:151
 msgid "State:"
 msgstr ""
 
-#: public/partials/search-form/_search-form.php:175
+#: public/partials/search-form/_search-form.php:159
 msgid "Zip Codes:"
 msgstr ""
 
-#: public/partials/search-form/_search-form.php:190
+#: public/partials/search-form/_search-form.php:174
 msgid "Garden"
 msgstr ""
 
-#: public/partials/search-form/_search-form.php:201
+#: public/partials/search-form/_search-form.php:185
 msgid "Garage"
 msgstr ""
 
-#: public/partials/search-form/_search-form.php:212
+#: public/partials/search-form/_search-form.php:196
 msgid "Balcony/Terrace"
 msgstr ""
 
-#: public/partials/search-form/_search-form.php:221
+#: public/partials/search-form/_search-form.php:201
+#: public/partials/search-form/_search-form__realty-number.php:13
+msgid "Search"
+msgstr ""
+
+#: public/partials/search-form/_search-form.php:205
 msgid "Reset Filter"
 msgstr ""
 
