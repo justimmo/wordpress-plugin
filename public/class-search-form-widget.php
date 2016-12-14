@@ -28,7 +28,7 @@ class Justimmo_Search_Form_Widget extends WP_Widget {
 			$states 		= array();
 			$cities 		= array();
 
-			if ( !empty( $_GET[ 'filter' ] ) && $_GET[ 'filter' ][ 'country' ] ) 
+			if ( !empty( $_GET[ 'filter' ] ) && !empty( $_GET[ 'filter' ][ 'country' ] ) )
 			{
 				$states = Jiwp_Public::get_states( $_GET[ 'filter' ][ 'country' ] );
 				$cities = Jiwp_Public::get_cities( $_GET[ 'filter' ][ 'country' ] );
