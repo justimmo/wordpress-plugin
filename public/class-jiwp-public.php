@@ -43,6 +43,8 @@ use Justimmo\Model\Mapper\V1\ProjectMapper;
 use Justimmo\Request\RealtyInquiryRequest;
 use Justimmo\Model\Mapper\V1\RealtyInquiryMapper;
 
+use Jiwp\Extensions\CitynameTranslator;
+
 class Jiwp_Public
 {
     const PROJECT_INFO_TEMPLATES_MAPPING = array(
@@ -189,8 +191,7 @@ class Jiwp_Public
      *
      * @since    1.0.0
      */
-    public function enqueue_scripts()
-    {
+    public function enqueue_scripts() {
         /**
          * This function is provided for demonstration purposes only.
          *
@@ -231,8 +232,8 @@ class Jiwp_Public
                 'jiwp-realty-page',
                 plugin_dir_url(__FILE__) . 'js/jiwp-realty-page.js',
                 array( 'lightslider' ),
-	            $this->version,
-	            true
+                $this->version,
+                true
             );
 
             wp_enqueue_script(
@@ -383,8 +384,7 @@ class Jiwp_Public
      *
      * @since 1.0.0
      */
-    public function init_rewrite_rules()
-    {
+    public function init_rewrite_rules() {
         // realty detail rule
         add_rewrite_rule(
             __('properties', 'jiwp') . '/(.+)-(\d+)/?$',
@@ -614,12 +614,12 @@ class Jiwp_Public
      *
      * @since 1.0.0
      */
-    public function init_shortcodes()
-    {
+    public function init_shortcodes() {
         // Enable shortcodes in widgets
         add_filter('widget_text', 'do_shortcode');
 
         add_shortcode('ji_search_form', array($this, 'search_form_shortcode_output'));
+        add_shortcode('ji_number_search_form', array($this, 'number_search_form_shortcode_output'));
         add_shortcode('ji_realty_list', array($this, 'realty_list_shortcode_output'));
         add_shortcode('ji_project_list', array($this, 'project_list_shortcode_output'));
         add_shortcode('ji_project_info', array($this, 'project_info_shortcode_output'));
@@ -630,8 +630,7 @@ class Jiwp_Public
      *
      * @since 1.0.0
      */
-    public function realty_list_shortcode_output($atts)
-    {
+    public function realty_list_shortcode_output($atts) {
         $atts = shortcode_atts(
             array(
                 'max_per_page'          => 5,
@@ -709,6 +708,21 @@ class Jiwp_Public
             include( 'partials/search-form/_search-form.php' );
             return ob_get_clean();
         } 
+        catch ( Exception $e ) 
+        {
+            self::jiwp_error_log( $e );
+        }
+
+    }
+
+    public function number_search_form_shortcode_output( $atts ) {
+
+        try 
+        {
+            ob_start();
+            include( 'partials/search-form/_search-form__realty-number.php' );
+            return ob_get_clean();
+        }
         catch ( Exception $e ) 
         {
             self::jiwp_error_log( $e );
@@ -837,11 +851,10 @@ class Jiwp_Public
      * @param  \Realty $realty      realty object
      * @return string               realty url
      */
-    public static function get_realty_url($realty)
-    {
+    public static function get_realty_url($realty) {
         $linkParts = [
             sanitize_title($realty->getZipCode()),
-            sanitize_title($realty->getPlace()),
+            sanitize_title(CitynameTranslator::translate($realty->getPlace())),
             sanitize_title($realty->getTitle()),
             $realty->getPropertyNumber(),
             $realty->getId(),
@@ -856,9 +869,10 @@ class Jiwp_Public
      * @param  \Realty $realty      realty object
      * @return string               realty url
      */
-    public static function get_realty_expose_url($realty)
-    {
+    public static function get_realty_expose_url($realty) {
+
         return get_bloginfo('url') . '/realty-expose/' . $realty->getId();
+
     }
 
     /**
@@ -869,8 +883,7 @@ class Jiwp_Public
      * @param  \Project $project      project object
      * @return string                 project url
      */
-    public static function get_project_url($project)
-    {
+    public static function get_project_url($project) {
         $linkParts = [
             sanitize_title($project->getZipCode()),
             sanitize_title($project->getPlace()),
@@ -1431,9 +1444,10 @@ class Jiwp_Public
      * Retrieve subtring of language locale.
      * @return string language code
      */
-    private function get_language_code()
-    {
+    private function get_language_code() {
+
         return substr(get_locale(), 0, 2);
+
     }
 
     public function page_title_setup($title, $sep) {
