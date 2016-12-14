@@ -1,21 +1,5 @@
 <form action="<?php bloginfo( 'url' ); ?>/<?php _e('properties', 'jiwp'); ?>/search" class="ji-search-form">
 
-    <h3><?php _e( 'Realty Number:', 'jiwp' ); ?></h3>
-    
-    <input 
-    	type 	= "number" 
-    	id 		= "" 
-    	class 	= "ji-input ji-input--number" 
-    	size 	= "10" 
-    	value 	= "<?php echo isset($filter[ 'objektnummer' ]) ? $filter[ 'objektnummer' ] : '' ?>" 
-    	name 	= "filter[objektnummer]" />
-
-    <input type="submit" class="ji-input ji-input--submit" value="<?php _e( 'Search', 'jiwp' ); ?>" />
-
-</form>
-
-<form action="<?php bloginfo( 'url' ); ?>/<?php _e('properties', 'jiwp'); ?>/search" class="ji-search-form">
-
 	<h3><?php _e( 'Advanced Realty Search', 'jiwp' ); ?></h3>
 
 	<p class="ji-search-form__row">

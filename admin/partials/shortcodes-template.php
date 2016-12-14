@@ -205,6 +205,17 @@
 		<details>
 			<summary>
 				<label class="ji-label">
+					<?php _e( 'The realty number search form shortcode:', 'jiwp' ); ?>
+				</label>
+				<code>[ji_number_search_form]</code>
+			</summary>
+		</details>
+	</li>
+
+	<li class="ji-shortcode-list__item">
+		<details>
+			<summary>
+				<label class="ji-label">
 					<?php _e( 'The project listing shortcode:', 'jiwp' ); ?>
 				</label>
 				<code>[ji_project_list]</code>
