@@ -1,3 +1,4 @@
+<?php use Jiwp\Extensions\CitynameTranslator; ?>
 
 <!-- Basic Details -->
 <section class="ji-info-section">
@@ -37,7 +38,7 @@
                     $address_array[] = $zipCode;
                 }
 
-                $place = $realty->getPlace();
+                $place = CitynameTranslator::translate($realty->getPlace());
 
                 if (!empty($place)) {
                     $address_array[] = $place;
