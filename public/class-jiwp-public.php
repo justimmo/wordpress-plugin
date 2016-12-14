@@ -633,7 +633,7 @@ class Jiwp_Public
     public function realty_list_shortcode_output($atts) {
         $atts = shortcode_atts(
             array(
-                'max_per_page'          => 5,
+                'max_per_page'          => 25,
                 'rent'                  => null,
                 'buy'                   => null,
                 'type'                  => null,

@@ -13,8 +13,8 @@ class CitynameTranslator
      * @var array
      */
     private static $cityTranslations = [
-        'București' => 'Bucharest',
-        'Wien' => 'Viena',
+        'București' => 'Bukarest',
+        'Wien' => 'Vienna',
     ];
 
     public static function translate($city)
