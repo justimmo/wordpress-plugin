@@ -1,5 +1,5 @@
 {
-    "name": "justimmo/wordpress-plugin",
+    "name": "justimmo/justimmo-wordpress-plugin",
     "type": "wordpress-plugin",
     "description": "JUSTIMMO Wordpress Plugin",
     "keywords": ["justimmo wordpress"],
