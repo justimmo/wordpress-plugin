@@ -8,17 +8,13 @@
  * registers the activation and deactivation functions, and defines a function
  * that starts the plugin.
  *
- * @link              somasocial.com
- * @since             1.0.0
- * @package           Jiwp
- *
  * @wordpress-plugin
  * Plugin Name:       JUSTIMMO WP Plugin
- * Plugin URI:        http://www.justimmo.at/
+ * Plugin URI:        https://github.com/justimmo/wordpress-plugin
  * Description:       Wordpress plugin which brokers can use to access the JUSTIMMO API and list their properties and more.
  * Version:           1.0.0
- * Author:            Mihalache Razvan - Ionut
- * Author URI:        somasocial.com
+ * Author:            JUSTIMMO
+ * Author URI:        www.justimmo.at
  * License:           GPL-2.0+
  * License URI:       http://www.gnu.org/licenses/gpl-2.0.txt
  * Text Domain:       jiwp
@@ -26,51 +22,23 @@
  */
 
 // If this file is called directly, abort.
+
 if ( ! defined( 'WPINC' ) ) {
 	die;
 }
 
-/**
- * The code that runs during plugin activation.
- * This action is documented in includes/class-jiwp-activator.php
- */
-function activate_jiwp() {
-	require_once plugin_dir_path( __FILE__ ) . 'includes/class-jiwp-activator.php';
-	Jiwp_Activator::activate();
-}
+define('JI_WP_PLUGIN_ROOT_PATH', plugin_dir_path(__FILE__));
+define('JI_WP_PLUGIN_RESOURCES_URL', plugin_dir_url(__FILE__) . 'resources/');
+define('JI_WP_PLUGIN_TEMPLATES_PATH', JI_WP_PLUGIN_ROOT_PATH . 'resources' . DIRECTORY_SEPARATOR . 'templates' . DIRECTORY_SEPARATOR );
 
-/**
- * The code that runs during plugin deactivation.
- * This action is documented in includes/class-jiwp-deactivator.php
- */
-function deactivate_jiwp() {
-	require_once plugin_dir_path( __FILE__ ) . 'includes/class-jiwp-deactivator.php';
-	Jiwp_Deactivator::deactivate();
-}
+require_once JI_WP_PLUGIN_ROOT_PATH . 'autoload.php';
 
-register_activation_hook( __FILE__, 'activate_jiwp' );
-register_deactivation_hook( __FILE__, 'deactivate_jiwp' );
+register_activation_hook( __FILE__, function() {
+    Justimmo\Wordpress\Installer::activate();
+});
+register_deactivation_hook( __FILE__, function () {
+    Justimmo\Wordpress\Installer::deactivate();
+});
 
-/**
- * The core plugin class that is used to define internationalization,
- * admin-specific hooks, and public-facing site hooks.
- */
-require plugin_dir_path( __FILE__ ) . 'includes/class-jiwp.php';
-
-/**
- * Begins execution of the plugin.
- *
- * Since everything within the plugin is registered via hooks,
- * then kicking off the plugin from this point in the file does
- * not affect the page life cycle.
- *
- * @since    1.0.0
- */
-function run_jiwp() {
-
-	$plugin = new Jiwp();
-	$plugin->run();
-
-}
-
-run_jiwp();
+$jiWpPlugin = new Justimmo\Wordpress\Plugin();
+$jiWpPlugin->run();
