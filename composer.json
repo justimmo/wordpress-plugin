@@ -1,0 +1,13 @@
+{
+    "name": "justimmo/wordpress-plugin",
+    "type": "wordpress-plugin",
+    "description": "JUSTIMMO Wordpress Plugin",
+    "keywords": ["justimmo wordpress"],
+    "homepage": "https://github.com/justimmo/wordpress-plugin",
+    "license": "MIT",
+    "require": {
+        "php": ">=5.3.4",
+        "composer/installers": "v1.0.6",
+        "justimmo/php-sdk": "^1.1"
+    }
+}
