@@ -126,11 +126,6 @@ class Jiwp {
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'public/class-search-form-widget.php';
 
 		/**
-		 * Load the Justimmo SDK
-		 */
-		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/justimmo-sdk/autoload.php';
-
-		/**
 		 * Load plugin extensions
 		 */
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/extensions/autoload.php';
