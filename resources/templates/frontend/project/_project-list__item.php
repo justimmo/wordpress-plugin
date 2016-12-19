@@ -6,7 +6,7 @@
 
             <h1 class="ji-project__title">
 
-                <a href="<?php echo Justimmo\Wordpress\Templating::getPath($project); ?>">
+                <a href="<?php echo Justimmo\Wordpress\Routing::getProjectUrl($project); ?>">
                     <?php echo $project->getTitle(); ?>
                 </a>
 
@@ -26,7 +26,7 @@
 
                 ?>
                 
-                <a href="<?php echo Justimmo\Wordpress\Templating::getPath($project); ?>">
+                <a href="<?php echo Justimmo\Wordpress\Routing::getProjectUrl($project); ?>">
                     <img src="<?php echo $img_src; ?>" class="ji-project__featured-img" alt=''/>
                 </a>
 

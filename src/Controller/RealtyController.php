@@ -152,14 +152,10 @@ class RealtyController extends BaseController
 
     public function getShortcodeNumberForm($atts)
     {
-        try {
-            ob_start();
-            include(Templating::getPath('search-form/_search-form__realty-number.php'));
+        ob_start();
+        include(Templating::getPath('search-form/_search-form__realty-number.php'));
 
-            return ob_get_clean();
-        } catch (\Exception $e) {
-            self::jiwpErrorLog($e);
-        }
+        return ob_get_clean();
     }
 
     public function registerTitle($title)

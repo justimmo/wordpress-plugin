@@ -3,7 +3,9 @@
 namespace Justimmo\Wordpress;
 
 use Justimmo\Exception\NotFoundException;
+use Justimmo\Model\Project;
 use Justimmo\Model\Realty;
+use Justimmo\Wordpress\Controller\ProjectController;
 use Justimmo\Wordpress\Controller\RealtyController;
 use Justimmo\Wordpress\Translation\CitynameTranslator;
 
@@ -101,15 +103,13 @@ class Routing
 
                     return $controller->shortRedirect();
                 case 'project':
-                    $this->projectPage();
+                    $controller = new ProjectController();
 
-                    return;
+                    return $controller->getDetail();
                 case 'realty-search':
                     $controller = new RealtyController();
 
-                    $controller->getList();
-
-                    return;
+                    return $controller->getList();
             }
         } catch (NotFoundException $e) {
             global $wp_query;
@@ -147,6 +147,27 @@ class Routing
         );
 
         return get_bloginfo('url') . '/' . __('properties', 'jiwp') . '/' . implode('-', $linkParts) . '/';
+    }
+
+    /**
+     * Builds project detail url
+     * with the following format
+     * <postcode>-<city>-<project name>-<project id>
+     *
+     * @param  Project $project project object
+     *
+     * @return string                 project url
+     */
+    public static function getProjectUrl(Project $project)
+    {
+        $linkParts = array(
+            sanitize_title($project->getZipCode()),
+            sanitize_title($project->getPlace()),
+            sanitize_title($project->getTitle()),
+            $project->getId(),
+        );
+
+        return get_bloginfo('url') . '/' . __('projects', 'jiwp') . '/' . implode('-', $linkParts) . '/';
     }
 
     /**

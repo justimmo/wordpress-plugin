@@ -109,6 +109,9 @@ class Plugin
         add_shortcode('ji_realty_list', $this->createLazyLoadCallback('Justimmo\\Wordpress\\Controller\\RealtyController', 'getShortcodeList'));
         add_shortcode('ji_search_form', $this->createLazyLoadCallback('Justimmo\\Wordpress\\Controller\\RealtyController', 'getShortcodeSearchForm'));
         add_shortcode('ji_number_search_form', $this->createLazyLoadCallback('Justimmo\\Wordpress\\Controller\\RealtyController', 'getShortcodeNumberForm'));
+
+        add_shortcode('ji_project_list', $this->createLazyLoadCallback('Justimmo\\Wordpress\\Controller\\ProjectController', 'getShortcodeList'));
+        add_shortcode('ji_project_info', $this->createLazyLoadCallback('Justimmo\\Wordpress\\Controller\\ProjectController', 'getShortcodeInfo'));
     }
 
 
