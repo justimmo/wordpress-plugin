@@ -2,6 +2,7 @@
 
 namespace Justimmo\Wordpress;
 
+use Justimmo\Exception\NotFoundException;
 use Justimmo\Wordpress\Translation\I18N;
 
 /**
@@ -21,15 +22,7 @@ class Plugin
     const NAME = 'jiwp';
 
     //Please increase version on every .css or .js update
-    const VERSION = '1.0.4';
-
-    /**
-     * The loader that's responsible for maintaining and registering all hooks that power
-     * the plugin
-     *
-     * @var Loader
-     */
-    protected $loader;
+    const VERSION = '1.0.0';
 
     /**
      * Define the core functionality of the plugin.
@@ -39,11 +32,10 @@ class Plugin
      */
     public function __construct()
     {
-        $this->loader = new Loader();
-
         $this->setLocale();
         $this->defineAdminHooks();
         $this->definePublicHooks();
+        $this->defineShortCodes();
     }
 
     /**
@@ -54,58 +46,92 @@ class Plugin
      */
     private function setLocale()
     {
-        $this->loader->addAction('plugins_loaded', new I18N(), 'loadPluginTextdomain');
+        add_action('plugins_loaded', array(new I18N(), 'loadPluginTextdomain'));
     }
 
     /**
      * Register all of the hooks related to the admin area functionality
      * of the plugin.
-     *
-     * @since    1.0.0
-     * @access   private
      */
     private function defineAdminHooks()
     {
         $admin = new Admin();
 
-        $this->loader->addAction('admin_enqueue_scripts', $admin, 'enqueueStyles');
-        $this->loader->addAction('admin_enqueue_scripts', $admin, 'enqueueScripts');
+        add_action('admin_enqueue_scripts', array($admin, 'enqueueStyles'));
+        add_action('admin_enqueue_scripts', array($admin, 'enqueueScripts'));
 
-        $this->loader->addAction('admin_menu', $admin, 'initAdminMenu');
-        $this->loader->addAction('admin_post_api_credentials_post', $admin, 'apiCredentialsPost');
+        add_action('admin_menu', array($admin, 'initAdminMenu'));
+        add_action('admin_post_api_credentials_post', array($admin, 'apiCredentialsPost'));
     }
 
     /**
      * Register all of the hooks related to the public-facing functionality
      * of the plugin.
+     *
+     * use closures to emulate lazy loading where neccessary
      */
     private function definePublicHooks()
     {
-        $frontend = new Frontend();
+        $templating       = new Templating();
+        $routing          = new Routing();
 
-        $this->loader->addAction('wp_enqueue_scripts', $frontend, 'enqueueStyles');
-        $this->loader->addAction('wp_enqueue_scripts', $frontend, 'enqueueScripts');
+        add_action('wp_enqueue_scripts', array($templating, 'enqueueStyles'));
+        add_action('wp_enqueue_scripts', array($templating, 'enqueueScripts'));
 
-        $this->loader->addAction('init', $frontend, 'initRewriteRules');
-        $this->loader->addAction('init', $frontend, 'initRewriteTags');
-        $this->loader->addAction('template_include', $frontend, 'initTemplates');
-        $this->loader->addAction('widgets_init', $frontend, 'initWidgets');
-        $this->loader->addAction('wp_ajax_ajax_get_states', $frontend, 'ajaxGetStates');
-        $this->loader->addAction('wp_ajax_nopriv_ajax_get_states', $frontend, 'ajaxGetStates');
-        $this->loader->addAction('wp_ajax_ajax_get_cities', $frontend, 'ajaxGetCities');
-        $this->loader->addAction('wp_ajax_nopriv_ajax_get_cities', $frontend, 'ajaxGetCities');
-        $this->loader->addAction('wp_ajax_ajax_send_inquiry', $frontend, 'ajaxSendInquiry');
-        $this->loader->addAction('wp_ajax_nopriv_ajax_send_inquiry', $frontend, 'ajaxSendInquiry');
+        add_action('init', array($routing, 'initRewriteRules'));
+        add_action('init', array($routing, 'initRewriteTags'));
+        add_action('template_include', array($routing, 'connectActions'));
 
-        $this->loader->addFilter('wp_title', $frontend, 'pageTitleSetup', 999, 2);
-        $this->loader->addFilter('aioseop_title', $frontend, 'pageTitleSetup', 10);
+        add_action('widgets_init', function() {
+            register_widget('Justimmo\\Wordpress\\Widget\\SearchForm');
+        });
+
+        $loadStates = $this->createLazyLoadCallback('Justimmo\\Wordpress\\Controller\\WidgetController', 'ajaxGetStates');
+        add_action('wp_ajax_ajax_get_states', $loadStates);
+        add_action('wp_ajax_nopriv_ajax_get_states', $loadStates);
+
+        $loadCities = $this->createLazyLoadCallback('Justimmo\\Wordpress\\Controller\\WidgetController', 'ajaxGetCities');
+        add_action('wp_ajax_ajax_get_cities', $loadCities);
+        add_action('wp_ajax_nopriv_ajax_get_cities', $loadCities);
+
+        $sendInquiry = $this->createLazyLoadCallback('Justimmo\\Wordpress\\Controller\\WidgetController', 'ajaxSendInquiry');
+        add_action('wp_ajax_ajax_send_inquiry', $sendInquiry);
+        add_action('wp_ajax_nopriv_ajax_send_inquiry', $sendInquiry);
     }
 
     /**
-     * Run the loader to execute all of the hooks with WordPress.
+     * adds shortcodes
      */
-    public function run()
+    private function defineShortCodes()
     {
-        $this->loader->run();
+        add_filter('widget_text', 'do_shortcode');
+
+        add_shortcode('ji_realty_list', $this->createLazyLoadCallback('Justimmo\\Wordpress\\Controller\\RealtyController', 'getShortcodeList'));
+        add_shortcode('ji_search_form', $this->createLazyLoadCallback('Justimmo\\Wordpress\\Controller\\RealtyController', 'getShortcodeSearchForm'));
+        add_shortcode('ji_number_search_form', $this->createLazyLoadCallback('Justimmo\\Wordpress\\Controller\\RealtyController', 'getShortcodeNumberForm'));
+    }
+
+
+    /**
+     * Creates a closure callback wrapping an instance creation for lazy loading
+     *
+     * @param string $class
+     * @param string $method
+     *
+     * @return \Closure
+     */
+    private function createLazyLoadCallback($class, $method)
+    {
+        return function() use ($class, $method) {
+            try {
+                $instance = new $class();
+
+                return call_user_func_array(array($instance, $method), func_get_args());
+            } catch (\Exception $e) {
+                if (WP_DEBUG === true) {
+                    throw $e;
+                }
+            }
+        };
     }
 }

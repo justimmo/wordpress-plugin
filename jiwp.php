@@ -41,4 +41,3 @@ register_deactivation_hook( __FILE__, function () {
 });
 
 $jiWpPlugin = new Justimmo\Wordpress\Plugin();
-$jiWpPlugin->run();

@@ -2,7 +2,8 @@
 
 namespace Justimmo\Wordpress\Widget;
 
-use Justimmo\Wordpress\Frontend;
+use Justimmo\Wordpress\Query\QueryFactory;
+use Justimmo\Wordpress\Templating;
 
 /**
  * Justimmo search form widget
@@ -11,26 +12,29 @@ class SearchForm extends \WP_Widget
 {
     public function __construct()
     {
-        parent::__construct(false, 'Justimmo Search Form');
+        parent::__construct('ji_search_form_widget', 'Justimmo Search Form');
     }
 
     public function widget($args, $instance)
     {
+        $queryFactory = new QueryFactory(get_option('ji_api_username'), get_option('ji_api_password'));
+
         try {
-            $realty_types = Frontend::getRealtyTypes();
-            $countries    = Frontend::getCountries();
+            $realty_types = $queryFactory->createBasicDataQuery()->findRealtyTypes();
+            $countries    = $queryFactory->createBasicDataQuery()->findCountries();
             $states       = array();
             $cities       = array();
 
             if (!empty($_GET['filter']) && !empty($_GET['filter']['country'])) {
-                $states = Frontend::getStates($_GET['filter']['country']);
-                $cities = Frontend::getCities($_GET['filter']['country']);
+                $states = $queryFactory->createBasicDataQuery()->getStates($_GET['filter']['country']);
+                $cities = $queryFactory->createBasicDataQuery()->getCities($_GET['filter']['country']);
             }
         } catch (\Exception $e) {
-            Frontend::jiwpErrorLog($e);
+            if (WP_DEBUG) {
+                throw $e;
+            }
         }
 
-        // Widget output
-        include('partials/search-form/_search-form.php');
+        include(Templating::getPath('search-form/_search-form.php'));
     }
 }

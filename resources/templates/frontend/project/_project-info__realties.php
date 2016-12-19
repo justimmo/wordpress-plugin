@@ -31,7 +31,7 @@
             </thead>
             <tbody>
                 <?php foreach ($realties_array as $index => $realty) : ?>
-                    <tr data-href="<?php echo Justimmo\Wordpress\Frontend::getRealtyUrl($realty); ?>">
+                    <tr data-href="<?php echo Justimmo\Wordpress\Routing::getRealtyUrl($realty); ?>">
                         <td><?php echo $index + 1; ?></td>
                         <td><?php echo $realty->getTier(); ?></td>
                         <td><?php echo $realty->getLivingArea(); ?></td>
@@ -58,7 +58,7 @@
                         </td>
                         <td><?php echo $realty->getStatus(); ?></td>
                         <td>
-                            <a href="<?php echo Justimmo\Wordpress\Frontend::getRealtyUrl($realty); ?>">
+                            <a href="<?php echo Justimmo\Wordpress\Routing::getRealtyUrl($realty); ?>">
                                 <?php _e('VIEW', 'jiwp'); ?>
                             </a>
                         </td>

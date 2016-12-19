@@ -775,5 +775,5 @@
 <!-- Inquiry Form -->
 <section class="ji-info-section">
     <h3 class="ji-info-section__title">Kontaktformular</h3>
-    <?php include(Justimmo\Wordpress\Frontend::getTemplate('inquiry-form/_inquiry-form.php')); ?>
+    <?php include(Justimmo\Wordpress\Templating::getPath('inquiry-form/_inquiry-form.php')); ?>
 </section>

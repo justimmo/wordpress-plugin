@@ -159,7 +159,6 @@ class Admin
      */
     public function apiCredentialsPost()
     {
-
         update_option('ji_api_username', $_REQUEST['api_credentials']['api_username']);
         update_option('ji_api_password', $_REQUEST['api_credentials']['api_password']);
 

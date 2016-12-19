@@ -15,7 +15,7 @@
                 <?php endif; ?>
             </h1>
 
-            <a href="<?php echo Justimmo\Wordpress\Frontend::getRealtyExposeUrl($realty); ?>" class="ji-realty__expose-link"><?php _e('Expose', 'jiwp'); ?></a>
+            <a href="<?php echo Justimmo\Wordpress\Routing::getRealtyExposeUrl($realty); ?>" class="ji-realty__expose-link"><?php _e('Expose', 'jiwp'); ?></a>
 
         </header>
 
@@ -45,9 +45,9 @@
 
         </section>
 
-        <?php include(Justimmo\Wordpress\Frontend::getTemplate('realty/_realty-extended-info.php')); ?>
+        <?php include(Justimmo\Wordpress\Templating::getPath('realty/_realty-extended-info.php')); ?>
 
-        <?php include(Justimmo\Wordpress\Frontend::getTemplate('inquiry-form/_inquiry-form.php')); ?>
+        <?php include(Justimmo\Wordpress\Templating::getPath('inquiry-form/_inquiry-form.php')); ?>
     </article>
 
 <?php else : ?>

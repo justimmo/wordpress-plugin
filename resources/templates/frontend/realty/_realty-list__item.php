@@ -18,7 +18,7 @@
 
                 ?>
 
-                <a href="<?php echo Justimmo\Wordpress\Frontend::getRealtyUrl($realty); ?>">
+                <a href="<?php echo Justimmo\Wordpress\Routing::getRealtyUrl($realty); ?>">
                     <img src="<?php echo $img_src; ?>" class="ji-realty__featured-img" alt=''/>
                 </a>
 
@@ -26,7 +26,7 @@
 
             <h1 class="ji-realty__title">
 
-                <a href="<?php echo Justimmo\Wordpress\Frontend::getRealtyUrl($realty); ?>">
+                <a href="<?php echo Justimmo\Wordpress\Routing::getRealtyUrl($realty); ?>">
                     <?php $realty_title = $realty->getTitle(); ?>
                     <?php if (!empty($realty_title)) : ?>
                         <?php echo $realty->getTitle(); ?>
@@ -37,7 +37,7 @@
 
             </h1>
 
-            <?php include(Justimmo\Wordpress\Frontend::getTemplate('realty/_realty-info.php')); ?>
+            <?php include(Justimmo\Wordpress\Templating::getPath('realty/_realty-info.php')); ?>
 
         </header>
 

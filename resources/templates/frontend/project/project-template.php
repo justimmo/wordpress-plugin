@@ -7,17 +7,17 @@
             <h1 class="ji-project__title"><?php echo $project->getTitle(); ?></h1>
         </header>
 
-        <?php include( Justimmo\Wordpress\Frontend::getTemplate( 'project/_project-info__address.php' ) ); ?>
+        <?php include( Justimmo\Wordpress\Templating::getPath( 'project/_project-info__address.php' ) ); ?>
 
-        <?php include( Justimmo\Wordpress\Frontend::getTemplate( 'project/_project-info__contact.php' ) ); ?>
+        <?php include( Justimmo\Wordpress\Templating::getPath( 'project/_project-info__contact.php' ) ); ?>
 
-        <?php include( Justimmo\Wordpress\Frontend::getTemplate( 'project/_project-info__description.php' ) ); ?>
+        <?php include( Justimmo\Wordpress\Templating::getPath( 'project/_project-info__description.php' ) ); ?>
 
-        <?php include( Justimmo\Wordpress\Frontend::getTemplate( 'project/_project-info__other-info.php' ) ); ?>
+        <?php include( Justimmo\Wordpress\Templating::getPath( 'project/_project-info__other-info.php' ) ); ?>
 
-        <?php include( Justimmo\Wordpress\Frontend::getTemplate( 'project/_project-info__realties.php' ) ); ?>
+        <?php include( Justimmo\Wordpress\Templating::getPath( 'project/_project-info__realties.php' ) ); ?>
 
-        <?php include( Justimmo\Wordpress\Frontend::getTemplate( 'project/_project-info__photo-gallery.php' ) ); ?>
+        <?php include( Justimmo\Wordpress\Templating::getPath( 'project/_project-info__photo-gallery.php' ) ); ?>
     </article>
 
 <?php else: ?>

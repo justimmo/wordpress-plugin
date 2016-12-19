@@ -6,13 +6,13 @@
 
             <?php foreach ($pager as $realty) : ?>
 
-                <?php include(Justimmo\Wordpress\Frontend::getTemplate('realty/_realty-list__item.php')); ?>
+                <?php include(Justimmo\Wordpress\Templating::getPath('realty/_realty-list__item.php')); ?>
 
             <?php endforeach; ?>
 
         </ul>
 
-        <?php include(Justimmo\Wordpress\Frontend::getTemplate('_pagination.php')); ?>
+        <?php include(Justimmo\Wordpress\Templating::getPath('_pagination.php')); ?>
 
     <?php else : ?>
 
