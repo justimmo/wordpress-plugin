@@ -1,5 +1,5 @@
 {
-    "name": "justimmo/wordpress-plugin",
+    "name": "justimmo/justimmo-wordpress-plugin",
     "type": "wordpress-plugin",
     "description": "JUSTIMMO Wordpress Plugin",
     "keywords": ["justimmo wordpress"],
@@ -12,10 +12,5 @@
     },
     "autoload": {
         "psr-4": { "Justimmo\\Wordpress\\": "src/" }
-    },
-    "extra" : {
-        "installer-paths" : {
-            "wp-content/plugins/justimmo/": ["justimmo/wordpress-plugin"]
-        }
     }
 }
