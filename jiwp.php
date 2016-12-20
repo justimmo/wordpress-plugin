@@ -31,8 +31,6 @@ define('JI_WP_PLUGIN_ROOT_PATH', plugin_dir_path(__FILE__));
 define('JI_WP_PLUGIN_RESOURCES_URL', plugin_dir_url(__FILE__) . 'resources/');
 define('JI_WP_PLUGIN_TEMPLATES_PATH', JI_WP_PLUGIN_ROOT_PATH . 'resources' . DIRECTORY_SEPARATOR . 'templates' . DIRECTORY_SEPARATOR );
 
-require_once JI_WP_PLUGIN_ROOT_PATH . 'autoload.php';
-
 register_activation_hook( __FILE__, function() {
     Justimmo\Wordpress\Installer::activate();
 });
