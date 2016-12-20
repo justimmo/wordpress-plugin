@@ -10,7 +10,7 @@
 				<code>[ji_realty_list]</code>
 			</summary>
 
-			<p><?php _e( 'Paste this shortcode in any page, post or sidebar Text widget to output a list of your available realties.', 'jiwp' ); ?></p>
+			<p><?php _e( 'Paste this shortcode in any page, post or sidebar text widget to output a list of your available realties.', 'jiwp' ); ?></p>
 
 			<p><?php _e( 'It has the following options which you can pass as parameters:', 'jiwp' ); ?></p>
 
@@ -51,7 +51,7 @@
 					<code>category</code>: <?php _e( 'Lists only realties in certain category. Use JUSTIMMO category names.', 'jiwp' ); ?>
 					<p>
 						<?php _e( 'Example:', 'jiwp' ); ?>
-						<code>[ji_realty_list category="MyCategory1,MyCategory2"]</code> <?php _e( 'shows only realties in "MyCategory1" and "MyCategory2" categories.', 'jiwp' ); ?>
+						<code>[ji_realty_list category="MyCategory1,MyCategory2"]</code> <?php _e( 'Shows only realties in "MyCategory1" and "MyCategory2" categories.', 'jiwp' ); ?>
 					</p>
 				</li>
 
@@ -59,7 +59,7 @@
 					<code>zip</code>: <?php _e( 'Lists only realties with certain zipcode / zipcodes.', 'jiwp' ); ?>
 					<p>
 						<?php _e( 'Example:', 'jiwp' ); ?>
-						<code>[ji_realty_list zip="123,456"]</code> <?php _e( 'shows only realties with 123 or 456 zipcodes', 'jiwp' ); ?>
+						<code>[ji_realty_list zip="123,456"]</code> <?php _e( 'Shows only realties with 123 or 456 zipcodes', 'jiwp' ); ?>
 					</p>
 				</li>
 
@@ -67,7 +67,7 @@
 					<code>exclude_country_id</code>: <?php _e( 'Lists only realties outside of a country. The country is excluded using it\'s JUSTIMMO id.' , 'jiwp' ); ?>
 					<p>
 						<?php _e( 'Example:', 'jiwp' ); ?>
-						<code>[ji_realty_list exclude_country_id="17"]</code> <?php _e( 'shows realties from outside the country with the id = 17.', 'jiwp' ); ?>
+						<code>[ji_realty_list exclude_country_id="17"]</code> <?php _e( 'Shows realties from outside the country with the id = 17.', 'jiwp' ); ?>
 					</p>
 				</li>
 
@@ -75,7 +75,7 @@
 					<code>format</code>: <?php _e( 'Formats realty list in grid format.', 'jiwp' ); ?>
 					<p>
 						<?php _e( 'Example:', 'jiwp' ); ?>
-						<code>[ji_realty_list format="grid"]</code> <?php _e( 'shows realties in grid format.', 'jiwp' ); ?>
+						<code>[ji_realty_list format="grid"]</code> <?php _e( 'Shows realties in grid format.', 'jiwp' ); ?>
 					</p>
 				</li>
 
@@ -83,7 +83,7 @@
 					<code>price_min</code>: <?php _e( 'Sets a minimum price (in euro).', 'jiwp' ); ?>
 					<p>
 						<?php _e( 'Example:', 'jiwp' ); ?>
-						<code>[ji_realty_list price_min="100"]</code> <?php _e( 'show realties with a minimum price of 100 euro.', 'jiwp' ); ?>
+						<code>[ji_realty_list price_min="100"]</code> <?php _e( 'Show realties with a minimum price of 100 euro.', 'jiwp' ); ?>
 					</p>
 				</li>
 
@@ -91,7 +91,7 @@
 					<code>price_max</code>: <?php _e( 'Sets a maximum price (in euro).', 'jiwp' ); ?>
 					<p>
 						<?php _e( 'Example:', 'jiwp' ); ?>
-						<code>[ji_realty_list price_max="100"]</code> <?php _e( 'show realties with a maximum price of 100 euro.', 'jiwp' ); ?>
+						<code>[ji_realty_list price_max="100"]</code> <?php _e( 'Show realties with a maximum price of 100 euro.', 'jiwp' ); ?>
 					</p>
 				</li>
 
@@ -99,7 +99,7 @@
 					<code>rooms_min</code>: <?php _e( 'Sets a minimum number of rooms.', 'jiwp' ); ?>
 					<p>
 						<?php _e( 'Example:', 'jiwp' ); ?>
-						<code>[ji_realty_list rooms_min="3"]</code> <?php _e( 'shows realties with a minimum of 3 rooms.', 'jiwp' ); ?>
+						<code>[ji_realty_list rooms_min="3"]</code> <?php _e( 'Shows realties with a minimum of 3 rooms.', 'jiwp' ); ?>
 					</p>
 				</li>
 
@@ -107,7 +107,7 @@
 					<code>rooms_max</code>: <?php _e( 'Sets a maximum number of rooms.', 'jiwp' ); ?>
 					<p>
 						<?php _e( 'Example:', 'jiwp' ); ?>
-						<code>[ji_realty_list rooms_max="3"]</code> <?php _e( 'shows realties with a maximum of 3 rooms.', 'jiwp' ); ?>
+						<code>[ji_realty_list rooms_max="3"]</code> <?php _e( 'Shows realties with a maximum of 3 rooms.', 'jiwp' ); ?>
 					</p>
 				</li>
 
@@ -115,7 +115,7 @@
 					<code>surface_min</code>: <?php _e( 'Sets a minimum surface area (m&sup2;).', 'jiwp' ); ?>
 					<p>
 						<?php _e( 'Example:', 'jiwp' ); ?>
-						<code>[ji_realty_list surface_min="100"]</code> <?php _e( 'shows realties with a minimum surface area of 100 m&sup2;', 'jiwp' ); ?>
+						<code>[ji_realty_list surface_min="100"]</code> <?php _e( 'Shows realties with a minimum surface area of 100 m&sup2;', 'jiwp' ); ?>
 					</p>
 				</li>
 
@@ -123,7 +123,7 @@
 					<code>surface_max</code>: <?php _e( 'Sets a maximum surface area (m&sup2;).', 'jiwp' ); ?>
 					<p>
 						<?php _e( 'Example:', 'jiwp' ); ?>
-						<code>[ji_realty_list surface_max=""]</code> <?php _e( 'shows realties with a maximum surface area of 100 m&sup2;', 'jiwp' ); ?>
+						<code>[ji_realty_list surface_max=""]</code> <?php _e( 'Shows realties with a maximum surface area of 100 m&sup2;', 'jiwp' ); ?>
 					</p>
 				</li>
 
@@ -155,7 +155,7 @@
 					<code>occupancy</code>: <?php _e( 'Lists only realties having certain \'occupancy\' status. Available values: \'wohnen\', \'gewerbe\', \'anlage\'', 'jiwp' ); ?>
 					<p>
 						<?php _e( 'Example:', 'jiwp' ); ?>
-						<code>[ji_realty_list occupancy="wohnen"]</code> <?php _e( 'shows only realties with \'wohnen\' occupancy status.', 'jiwp' ); ?>
+						<code>[ji_realty_list occupancy="wohnen"]</code> <?php _e( 'Shows only realties with \'wohnen\' occupancy status.', 'jiwp' ); ?>
 					</p>
 				</li>
 
@@ -163,7 +163,7 @@
 					<code>price_order</code>: <?php _e( 'Orders realties by price. Available values: "asc" (ascending), "desc" (descending).', 'jiwp' ); ?>
 					<p>
 						<?php _e( 'Example:', 'jiwp' ); ?>
-						<code>[ji_realty_list price_order="desc"]</code> <?php _e( 'shows realties in descending price order.', 'jiwp' ); ?>
+						<code>[ji_realty_list price_order="desc"]</code> <?php _e( 'Shows realties in descending price order.', 'jiwp' ); ?>
 					</p>
 				</li>
 
@@ -171,7 +171,7 @@
 					<code>date_order</code>: <?php _e( 'Orders realties by entry date. Available values: "asc" (ascending), "desc" (descending).', 'jiwp' ); ?>
 					<p>
 						<?php _e( 'Example:', 'jiwp' ); ?>
-						<code>[ji_realty_list date_order="desc"]</code> <?php _e( 'shows realties in descending date order.', 'jiwp' ); ?>
+						<code>[ji_realty_list date_order="desc"]</code> <?php _e( 'Shows realties in descending date order.', 'jiwp' ); ?>
 					</p>
 				</li>
 
@@ -179,7 +179,7 @@
 					<code>surface_order</code>: <?php _e( 'Orders realties by surface. Available values: "asc" (ascending), "desc" (descending).', 'jiwp' ); ?>
 					<p>
 						<?php _e( 'Example:', 'jiwp' ); ?>
-						<code>[ji_realty_list surface_order="desc"]</code> <?php _e( 'shows realties in descending surface order.', 'jiwp' ); ?>
+						<code>[ji_realty_list surface_order="desc"]</code> <?php _e( 'Shows realties in descending surface order.', 'jiwp' ); ?>
 					</p>
 				</li>
 			</ul>
@@ -197,7 +197,7 @@
 				<code>[ji_search_form]</code>
 			</summary>
 
-			<p><?php _e( 'Paste this shortcode in any page, post or sidebar Text widget to output a realty search form. This can also be achieved by using the "JUSTIMMO Search Form" widget.', 'jiwp' ); ?></p>
+			<p><?php _e( 'Paste this shortcode in any page, post or sidebar tText widget to output a realty search form. This can also be achieved by using the "JUSTIMMO Search Form" widget.', 'jiwp' ); ?></p>
 		</details>
 	</li>
 
@@ -221,7 +221,7 @@
 				<code>[ji_project_list]</code>
 			</summary>
 
-			<p><?php _e( 'Paste this shortcode in any page, post or sidebar Text widget to output a list of your available projects.', 'jiwp' ); ?></p>
+			<p><?php _e( 'Paste this shortcode in any page, post or sidebar text widget to output a list of your available projects.', 'jiwp' ); ?></p>
 
 			<p><?php _e( 'It has the following options which you can pass as parameters:', 'jiwp' ); ?></p>
 
@@ -230,7 +230,7 @@
 					<code>max_per_page</code>: <?php _e( 'Limits the number of projects displayed per page.', 'jiwp' ); ?>
 					<p>
 						<?php _e( 'Example:', 'jiwp' ); ?>
-						<code>[ji_project_list max_per_page=5]</code> <?php _e( 'shows 5 projects per page.', 'jiwp'); ?>
+						<code>[ji_project_list max_per_page=5]</code> <?php _e( 'Shows 5 projects per page.', 'jiwp'); ?>
 					</p>
 				</li>
 			</ul>
@@ -246,7 +246,7 @@
 				<code>[ji_project_info]</code>
 			</summary>
 
-			<p><?php _e( 'Paste this shortcode in any page, post or sidebar Text widget to output various project information.', 'jiwp' ); ?></p>
+			<p><?php _e( 'Paste this shortcode in any page, post or sidebar text widget to output various project information.', 'jiwp' ); ?></p>
 
 			<p><?php _e( 'It has the following options which you can pass as parameters:', 'jiwp' ); ?></p>
 
@@ -256,7 +256,7 @@
 					<a class="featherlight-gallery" href="#" data-featherlight="<?php echo JI_WP_PLUGIN_RESOURCES_URL ?>/img/justimmo-project-id.png"><?php _e( 'show image', 'jiwp' ); ?></a>
 					<p>
 						<?php _e( 'Example:', 'jiwp' ); ?>
-						<code>[ji_project_info id="5"]</code> <?php _e( 'shows information belonging to the project with the JUSTIMMO ID of 5.', 'jiwp'); ?>
+						<code>[ji_project_info id="5"]</code> <?php _e( 'Shows information belonging to the project with the JUSTIMMO ID of 5.', 'jiwp'); ?>
 					</p>
 				</li>
 				<li class="ji-shortcode-option">
@@ -264,7 +264,7 @@
 					
 					<p>
 						<?php _e( 'Example:', 'jiwp' ); ?>
-						<code>[ji_project_info id="5" info="address"]</code> <?php _e( 'shows project address information belonging to the project with the JUSTIMMO ID of 5.', 'jiwp'); ?>
+						<code>[ji_project_info id="5" info="address"]</code> <?php _e( 'Shows project address information belonging to the project with the JUSTIMMO ID of 5.', 'jiwp'); ?>
 					</p>
 					
 					<p>

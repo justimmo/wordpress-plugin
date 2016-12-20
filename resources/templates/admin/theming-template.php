@@ -41,4 +41,4 @@
 	</li>
 </ol>
 
-<p><?php _e( 'You can find the templates listed above inside the <code>/public/partials</code> folder in your plugin folder', 'jiwp' ); ?></p>
+<p><?php _e( 'You can find the templates listed above inside the <code>/resources/templates/frontend</code> folder in your plugin folder', 'jiwp' ); ?></p>

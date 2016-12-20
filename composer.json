@@ -4,7 +4,7 @@
     "description": "JUSTIMMO Wordpress Plugin",
     "keywords": ["justimmo wordpress"],
     "homepage": "https://github.com/justimmo/wordpress-plugin",
-    "license": "MIT",
+    "license": "GPL-2.0+",
     "require": {
         "php": ">=5.3.4",
         "composer/installers": "^1.2",
