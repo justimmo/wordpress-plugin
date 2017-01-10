@@ -1,0 +1,22 @@
+/**
+ * All of the CSS for your admin-specific functionality should be
+ * included in this file.
+ */
+
+.ji-label {
+	font-weight: 600;
+	vertical-align: top;
+}
+
+.ji-shortcode-list {
+
+}
+
+.ji-shortcode-list__item {
+	margin-bottom: 20px;
+}
+
+.ji-shortcode-options {
+	list-style-type: disc;
+	margin-left: 25px;
+}

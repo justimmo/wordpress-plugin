@@ -1,0 +1,16 @@
+{
+    "name": "justimmo/justimmo-wordpress-plugin",
+    "type": "wordpress-plugin",
+    "description": "JUSTIMMO Wordpress Plugin",
+    "keywords": ["justimmo wordpress"],
+    "homepage": "https://github.com/justimmo/wordpress-plugin",
+    "license": "GPL-2.0+",
+    "require": {
+        "php": ">=5.3.4",
+        "composer/installers": "^1.2",
+        "justimmo/php-sdk": "^1.1"
+    },
+    "autoload": {
+        "psr-4": { "Justimmo\\Wordpress\\": "src/" }
+    }
+}
