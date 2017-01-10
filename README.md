@@ -1,5 +1,7 @@
 # JUSTIMMO Wordpress plugin
 
+[![Latest Stable Version](https://poser.pugx.org/justimmo/justimmo-wordpress-plugin/version.png)](https://packagist.org/packages/justimmo/justimmo-wordpress-plugin)
+
 The JUSTIMMO Wordpress plugin allows brokers to list their properties stored in the JUSTIMMO software on their own Wordpress website.
 
 ## Installation
