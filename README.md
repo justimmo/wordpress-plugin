@@ -9,10 +9,7 @@ Most flexible. Lets you update PHP-SDK and Wordpress plugin independently
 ```bash
 composer require justimmo/justimmo-wordpress-plugin "^1.0"
 ```
-Make sure composer dependencies are autoloaded by adding following line to the top of your wp-config.php file
-```php
-require_once __DIR__.'/vendor/autoload.php';
-```
+
 #### Standalone zipfile
 You can download the current version of the Wordpress plugin with a packaged SDK from https://github.com/justimmo/wordpress-plugin/releases.
 The SDK version is the newest version at the time the Wordpress plugin version was released. You won't be able to update the SDK independently from the Wordpress plugin.
