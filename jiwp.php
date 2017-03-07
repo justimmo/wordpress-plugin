@@ -23,20 +23,24 @@
 
 // If this file is called directly, abort.
 
-if ( ! defined( 'WPINC' ) ) {
-	die;
+if (!defined('WPINC')) {
+    die;
 }
 
 require_once __DIR__.'/../../../vendor/autoload.php';
 
 define('JI_WP_PLUGIN_ROOT_PATH', plugin_dir_path(__FILE__));
 define('JI_WP_PLUGIN_RESOURCES_URL', plugin_dir_url(__FILE__) . 'resources/');
-define('JI_WP_PLUGIN_TEMPLATES_PATH', JI_WP_PLUGIN_ROOT_PATH . 'resources' . DIRECTORY_SEPARATOR . 'templates' . DIRECTORY_SEPARATOR );
+define(
+    'JI_WP_PLUGIN_TEMPLATES_PATH',
+    JI_WP_PLUGIN_ROOT_PATH . 'resources' . DIRECTORY_SEPARATOR . 'templates' . DIRECTORY_SEPARATOR
+);
 
-register_activation_hook( __FILE__, function() {
+register_activation_hook(__FILE__, function () {
     Justimmo\Wordpress\Installer::activate();
 });
-register_deactivation_hook( __FILE__, function () {
+
+register_deactivation_hook(__FILE__, function () {
     Justimmo\Wordpress\Installer::deactivate();
 });
 

@@ -89,7 +89,7 @@ class RealtyQuery extends BaseRealtyQuery
 
         // zip codes
         if (!empty($params['zip_codes'])) {
-            $this->filterByZipCode('plz', $params['zip_codes']);
+            $this->filterByZipCode($params['zip_codes']);
         }
 
         // garden

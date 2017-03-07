@@ -129,25 +129,25 @@ class RealtyController extends BaseController
      */
     public function getShortcodeSearchForm($atts)
     {
-            $realty_types = $this->queryFactory->createBasicDataQuery()->findRealtyTypes();
-            $countries    = $this->queryFactory->createBasicDataQuery()->findCountries();
-            $states       = array();
-            $cities       = array();
+        $realty_types = $this->queryFactory->createBasicDataQuery()->findRealtyTypes();
+        $countries    = $this->queryFactory->createBasicDataQuery()->findCountries();
+        $states       = array();
+        $cities       = array();
 
-            if (!empty($_GET['filter'])) {
-                $filter = $_GET['filter'];
-            }
+        if (!empty($_GET['filter'])) {
+            $filter = $_GET['filter'];
+        }
 
-            if (!empty($filter['country'])) {
-                $cities = $this->queryFactory->createBasicDataQuery()->getStates($_GET['filter']['country']);
-                $cities = $this->queryFactory->createBasicDataQuery()->getCities($_GET['filter']['country']);
-            }
+        if (!empty($filter['country'])) {
+            $states = $this->queryFactory->createBasicDataQuery()->getStates($_GET['filter']['country']);
+            $cities = $this->queryFactory->createBasicDataQuery()->getCities($_GET['filter']['country']);
+        }
 
-            ob_start();
+        ob_start();
 
-            include(Templating::getPath('search-form/_search-form.php'));
+        include(Templating::getPath('search-form/_search-form.php'));
 
-            return ob_get_clean();
+        return ob_get_clean();
     }
 
     public function getShortcodeNumberForm($atts)

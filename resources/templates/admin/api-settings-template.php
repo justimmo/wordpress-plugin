@@ -37,27 +37,27 @@
 	<ol>
 		<li>
 			<?php _e( 'Log into the JUSTIMMO platform using your account.', 'jiwp' ); ?>
-			<a class="featherlight-gallery" href="#" data-featherlight="<?php echo JI_WP_PLUGIN_RESOURCES_URL ?>/img/api-credentials-steps/step1.png"><?php _e( 'show image', 'jiwp' ); ?></a>
+			<a class="fancybox" href="<?php echo JI_WP_PLUGIN_RESOURCES_URL ?>/img/api-credentials-steps/step1.png"><?php _e( 'show image', 'jiwp' ); ?></a>
 		</li>
 		<li>
 			<?php _e( 'From the main menu go to "more" > "Exports".', 'jiwp' ); ?>
-			<a class="featherlight-gallery" href="#" data-featherlight="<?php echo JI_WP_PLUGIN_RESOURCES_URL ?>/img/api-credentials-steps/step2.png"><?php _e( 'show image', 'jiwp' ); ?></a>
+			<a class="fancybox" href="<?php echo JI_WP_PLUGIN_RESOURCES_URL ?>/img/api-credentials-steps/step2.png"><?php _e( 'show image', 'jiwp' ); ?></a>
 		</li>
 		<li>
 			<?php _e( 'Switch to the "Custom Exports" tab.', 'jiwp' ); ?>
-			<a class="featherlight-gallery" href="#" data-featherlight="<?php echo JI_WP_PLUGIN_RESOURCES_URL ?>/img/api-credentials-steps/step3.png"><?php _e( 'show image', 'jiwp' ); ?></a>
+			<a class="fancybox" href="<?php echo JI_WP_PLUGIN_RESOURCES_URL ?>/img/api-credentials-steps/step3.png"><?php _e( 'show image', 'jiwp' ); ?></a>
 		</li>
 		<li>
 			<?php _e( 'Click the "Create JUSTIMMO API" button.', 'jiwp' ); ?>
-			<a class="featherlight-gallery" href="#" data-featherlight="<?php echo JI_WP_PLUGIN_RESOURCES_URL ?>/img/api-credentials-steps/step3.png"><?php _e( 'show image', 'jiwp' ); ?></a>
+			<a class="fancybox" href="<?php echo JI_WP_PLUGIN_RESOURCES_URL ?>/img/api-credentials-steps/step3.png"><?php _e( 'show image', 'jiwp' ); ?></a>
 		</li>
 		<li>
 			<?php _e( 'Complete the form with your desired options. Click the "Save" button.', 'jiwp' ); ?>
-			<a class="featherlight-gallery" href="#" data-featherlight="<?php echo JI_WP_PLUGIN_RESOURCES_URL ?>/img/api-credentials-steps/step4.png"><?php _e( 'show image', 'jiwp' ); ?></a>
+			<a class="fancybox" href="<?php echo JI_WP_PLUGIN_RESOURCES_URL ?>/img/api-credentials-steps/step4.png"><?php _e( 'show image', 'jiwp' ); ?></a>
 		</li>
 		<li>
 			<?php _e( 'You should now have a username and password in your export settings form.', 'jiwp' ); ?>
-			<a class="featherlight-gallery" href="#" data-featherlight="<?php echo JI_WP_PLUGIN_RESOURCES_URL ?>/img/api-credentials-steps/step4.png"><?php _e( 'show image', 'jiwp' ); ?></a>
+			<a class="fancybox" href="<?php echo JI_WP_PLUGIN_RESOURCES_URL ?>/img/api-credentials-steps/step4.png"><?php _e( 'show image', 'jiwp' ); ?></a>
 		</li>
 		<li>
 			<?php _e( 'You should use these credentials to complete the above form.', 'jiwp' ); ?>

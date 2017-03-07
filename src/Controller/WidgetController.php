@@ -39,7 +39,14 @@ class WidgetController extends BaseController
         $cities = array();
 
         if (!empty($_POST['country'])) {
-            $cities = $this->queryFactory->createBasicDataQuery()->getCities($_POST['country']);
+            if (!empty($_POST['state'])) {
+                $cities = $this->queryFactory->createBasicDataQuery()->getCities(
+                    $_POST['country'],
+                    $_POST['state']
+                );
+            } else {
+                $cities = $this->queryFactory->createBasicDataQuery()->getCities($_POST['country']);
+            }
         }
 
         include(JI_WP_PLUGIN_TEMPLATES_PATH . 'frontend/search-form/_search-form__cities.php');
