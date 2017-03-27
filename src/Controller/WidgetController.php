@@ -115,7 +115,7 @@ class WidgetController extends BaseController
             $inquiryRequest->send();
 
             echo json_encode(array(
-                'message' => __('Inquiry Sent!', 'jiwp'),
+                'message' => __('Inquiry successfully sent!', 'jiwp'),
             ));
         } catch (\Exception $e) {
             echo json_encode(array(

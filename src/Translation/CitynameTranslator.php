@@ -13,8 +13,13 @@ class CitynameTranslator
      * @var array
      */
     private static $cityTranslations = [
-        'București' => 'Bukarest',
         'Wien' => 'Vienna',
+        'Niederösterreich'  => 'Lower Austria',
+        'Oberösterreich'    => 'Upper Austria',
+        'Steiermark'        => 'Styria',
+        'Kärnten'           => 'Carinthia',
+        'Tirol'             => 'Tyrol',
+        'București'         => 'Bukarest',
     ];
 
     public static function translate($city)
