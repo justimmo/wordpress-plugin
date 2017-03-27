@@ -1,45 +1,40 @@
 <div class="ji-states-container">
 
-	<?php if ( !empty( $states ) ): ?>
+    <?php if (!empty($states)) : ?>
 
-		<ul class="ji-state-list">
-			
-			<?php foreach ( $states as $state_id => $state ): ?>
-				
-				<li class="ji-state">
+        <select class="ji-input ji-input--select js-get-cities" name="filter[state]">
 
-					<input 
-						type 	= "checkbox" 
-						id 		= "state_<?php echo $state_id; ?>"
-						class 	= "ji-input ji-input--checkbox js-get-cities"
-						value 	= <?php echo $state_id; ?>
-						name 	= "filter[states][]"
-						<?php echo isset( $_GET[ 'filter' ][ 'states' ] ) && in_array( $state_id , $_GET[ 'filter' ][ 'states' ]) ? 'checked="checked"' : ''; ?> />
+            <option value=""></option>
 
-					<label class="ji-label" for="state_<?php echo $state_id ?>"><?php echo $state['name']; ?></label>
-				
-				</li>
+            <?php foreach ($states as $state_id => $state) : ?>
 
-			<?php endforeach; ?>
+                <option value="<?php echo $state_id; ?>"
+                    <?php echo isset($_GET[ 'filter' ][ 'state' ]) && $state_id == $_GET[ 'filter' ][ 'state' ] ? 'selected=selected' : '' ?>>
 
-		</ul>
+                    <?php echo $state['name']; ?>
 
-	<?php else: ?>
+                </option>
 
-		<?php if ( empty( $_POST[ 'country' ] ) ): ?>
+            <?php endforeach; ?>
 
-			<span class="ji-search-form__no-data-msg">
-				<?php _e( 'Please select a country first', 'jiwp' ); ?>
-			</span>
+        </select>
 
-		<?php else: ?>
-			
-			<span class="ji-search-form__no-data-msg">
-				<?php _e( 'No states found for selected country', 'jiwp' ); ?>
-			</span>
+    <?php else : ?>
 
-		<?php endif; ?>
+        <?php if (empty($_POST[ 'country' ])) : ?>
 
-	<?php endif; ?>
+            <span class="ji-search-form__no-data-msg">
+                <?php _e('Please select a country first', 'jiwp'); ?>
+            </span>
+
+        <?php else : ?>
+            
+            <span class="ji-search-form__no-data-msg">
+                <?php _e('No states found for selected country', 'jiwp'); ?>
+            </span>
+
+        <?php endif; ?>
+
+    <?php endif; ?>
 
 </div>

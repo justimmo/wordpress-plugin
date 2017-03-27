@@ -179,7 +179,7 @@ class Routing
      */
     public static function buildPagerUrl($params = array())
     {
-        $url = get_permalink();
+        $url = home_url(add_query_arg(null, null));
 
         if (!empty($params)) {
             $url .= '?' . http_build_query($params) . '&';

@@ -1,1 +1,5 @@
-jQuery(document).ready(function($) {});
+jQuery(document).ready(function($) {
+    $('.fancybox').fancybox({
+        maxWidth: 800
+    });
+});

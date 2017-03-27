@@ -10,7 +10,7 @@ Justimmo_Search_Form_Widget = (function($) {
 	function eventHandlers() 
 	{
 		$('body').on( 'change', '.js-get-states', getStates );
-		$('body').on( 'change', '.js-get-states', getCities );
+		$('body').on( 'change', '.js-get-cities', getCities );
 	}
 
 	function getStates(e)
@@ -37,7 +37,8 @@ Justimmo_Search_Form_Widget = (function($) {
 			data: {
 				action 			: 'ajax_get_cities',
 				security		: Justimmo_Ajax.ajax_nonce,
-				country 		: $('.js-get-states').prop('value')
+				country 		: $('.js-get-states').prop('value'),
+				state			: $('.js-get-cities').prop('value')
 			},
 			beforeSend: setLoadingMessage.bind( this, '.ji-cities-container' ),
 			success: showCities,

@@ -36,7 +36,6 @@ class Templating
     public function enqueueStyles()
     {
         if (get_query_var('ji_page', false) == 'realty' || get_query_var('ji_page', false) == 'project') {
-
             wp_enqueue_style(
                 'lightslider',
                 JI_WP_PLUGIN_RESOURCES_URL . 'js/lightslider/css/lightslider.min.css',
@@ -52,7 +51,6 @@ class Templating
                 '2.0',
                 'all'
             );
-
         }
 
         wp_enqueue_style(
@@ -62,7 +60,6 @@ class Templating
             Plugin::VERSION,
             'all'
         );
-
     }
 
     /**
@@ -70,12 +67,13 @@ class Templating
      */
     public function enqueueScripts()
     {
-        wp_deregister_script('jquery');
-        wp_register_script(
-            'jquery',
-            JI_WP_PLUGIN_RESOURCES_URL . 'js/jquery/jquery-1.7.0.min.js',
-            '1.7.0'
-        );
+        if (!wp_script_is('jquery')) {
+            wp_register_script(
+                'jquery',
+                JI_WP_PLUGIN_RESOURCES_URL . 'js/jquery/jquery-1.7.0.min.js',
+                '1.7.0'
+            );
+        }
 
         if (get_query_var('ji_page', false) == 'realty' || get_query_var('ji_page', false) == 'project') {
             wp_enqueue_script(

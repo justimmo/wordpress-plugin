@@ -32,16 +32,6 @@ class Admin
     public function enqueueStyles()
     {
         wp_enqueue_style(
-            'featherlight',
-            JI_WP_PLUGIN_RESOURCES_URL . 'js/featherlight/featherlight.min.css'
-        );
-
-        wp_enqueue_style(
-            'featherlight-gallery',
-            JI_WP_PLUGIN_RESOURCES_URL . 'js/featherlight/featherlight.gallery.min.css'
-        );
-
-        wp_enqueue_style(
             Plugin::NAME,
             JI_WP_PLUGIN_RESOURCES_URL . 'css/jiwp-admin.css',
             array(),
@@ -49,6 +39,13 @@ class Admin
             'all'
         );
 
+        wp_enqueue_style(
+            'fancybox',
+            JI_WP_PLUGIN_RESOURCES_URL . 'js/fancybox/jquery.fancybox.css',
+            array(),
+            '2.0',
+            'all'
+        );
     }
 
     /**
@@ -67,23 +64,19 @@ class Admin
     public function enqueueScripts()
     {
         wp_enqueue_script(
-            'featherlight',
-            JI_WP_PLUGIN_RESOURCES_URL . 'js/featherlight/featherlight.min.js',
-            array('jquery')
-        );
-
-        wp_enqueue_script(
-            'featherlight-gallery',
-            JI_WP_PLUGIN_RESOURCES_URL . 'js/featherlight/featherlight.gallery.min.js',
-            array('jquery')
-        );
-
-        wp_enqueue_script(
             Plugin::NAME,
             JI_WP_PLUGIN_RESOURCES_URL . 'js/jiwp-admin.js',
             array('jquery'),
             Plugin::VERSION,
             false
+        );
+
+        wp_enqueue_script(
+            'fancybox',
+            JI_WP_PLUGIN_RESOURCES_URL . 'js/fancybox/jquery.fancybox.pack.js',
+            array('jquery'),
+            '2.0',
+            true
         );
     }
 
@@ -177,5 +170,4 @@ class Admin
             'api_password' => get_option('ji_api_password'),
         );
     }
-
 }
