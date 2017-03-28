@@ -62,6 +62,7 @@ class Plugin
 
         add_action('admin_menu', array($admin, 'initAdminMenu'));
         add_action('admin_post_api_credentials_post', array($admin, 'apiCredentialsPost'));
+        add_action('admin_post_google_api_key_post', array($admin, 'googleApiKeyPost'));
     }
 
     /**
@@ -82,7 +83,7 @@ class Plugin
         add_action('init', array($routing, 'initRewriteTags'));
         add_action('template_include', array($routing, 'connectActions'));
 
-        add_action('widgets_init', function() {
+        add_action('widgets_init', function () {
             register_widget('Justimmo\\Wordpress\\Widget\\SearchForm');
         });
 
@@ -125,7 +126,7 @@ class Plugin
      */
     private function createLazyLoadCallback($class, $method)
     {
-        return function() use ($class, $method) {
+        return function () use ($class, $method) {
             try {
                 $instance = new $class();
 

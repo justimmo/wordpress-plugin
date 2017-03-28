@@ -3,19 +3,54 @@
 namespace Justimmo\Wordpress\Controller;
 
 use Justimmo\Exception\NotFoundException;
+use Justimmo\Model\Attachment;
+use Justimmo\Model\Realty;
 use Justimmo\Wordpress\Routing;
 use Justimmo\Wordpress\Templating;
 
 class RealtyController extends BaseController
 {
+    /**
+     * @var Realty
+     */
+    private $currentRealty;
 
     public function __construct()
     {
         parent::__construct();
+        $this->setupRealtySeoTags();
+    }
 
-        add_filter('pre_get_document_title', array($this, 'registerTitle'), 999, 2); //new WP
-        add_filter('wp_title', array($this, 'registerTitle'), 999, 2); //old WP
-        add_filter('aioseop_title', array($this, 'registerTitle'), 10);
+    public function setupRealtySeoTags()
+    {
+        if (get_query_var('ji_page', false) == 'realty') {
+            try {
+                $this->currentRealty = $this->queryFactory->createRealtyQuery()->findPk(
+                    get_query_var('ji_realty_id', false)
+                );
+
+                add_filter('pre_get_document_title', array($this, 'getRealtyTitle'), 999, 2); //new WP
+                add_filter('wp_title', array($this, 'getRealtyTitle'), 999, 2); //old WP
+
+                // Page title override for "All in One SEO Pack" Plugin
+                add_filter('aioseop_title', array($this, 'getRealtyTitle'), 10);
+
+                // Open Graph tags override for "Yoast SEO" Plugin
+                add_filter('wpseo_title', array($this, 'getOgTitle'), 10);
+                add_filter('wpseo_metadesc', array($this, 'getOgDescription'), 10);
+                add_filter('wpseo_canonical', array($this, 'getOgUrl'), 10);
+                add_filter('wpseo_opengraph_type', array($this, 'getOgType'), 10);
+                add_filter('wpseo_opengraph_image', array($this, 'getOgImage'), 10);
+                add_filter('wpseo_opengraph_url', array($this, 'getOgUrl'), 10);
+
+                // Open Graph tags output
+                add_action('wp_head', array($this, 'getOgTags'), 10);
+            } catch (\Exception $e) {
+                if (WP_DEBUG) {
+                    error_log($e->getMessage());
+                }
+            }
+        }
     }
 
     /**
@@ -23,8 +58,12 @@ class RealtyController extends BaseController
      */
     public function getDetail()
     {
-        $realtyId = get_query_var('ji_realty_id', false);
-        $realty   = $this->queryFactory->createRealtyQuery()->findPk($realtyId);
+        if (empty($this->currentRealty)) {
+            $realtyId = get_query_var('ji_realty_id', false);
+            $realty   = $this->queryFactory->createRealtyQuery()->findPk($realtyId);
+        } else {
+            $realty = $this->currentRealty;
+        }
 
         $countries = $this->queryFactory->createBasicDataQuery()->findCountries();
         $cities    = $this->queryFactory->createBasicDataQuery()->getCities();
@@ -60,6 +99,11 @@ class RealtyController extends BaseController
         include(Templating::getPath('search-form/search-results-template.php'));
     }
 
+    /**
+     * Realty detail short url redirect.
+     *
+     * @throws NotFoundException
+     */
     public function shortRedirect()
     {
         $realty = $this->queryFactory->createRealtyQuery()
@@ -74,7 +118,7 @@ class RealtyController extends BaseController
     }
 
     /**
-     * Property list shortcode handler
+     * Realty list shortcode handler
      */
     public function getShortcodeList($atts)
     {
@@ -94,13 +138,19 @@ class RealtyController extends BaseController
                 'garden'             => null,
                 'garage'             => null,
                 'balcony_terrace'    => null,
-                'price_order'        => null,
-                'date_order'         => null,
-                'surface_order'      => null,
                 'exclude_country_id' => null,
                 'occupancy'          => null,
                 'format'             => 'list',
                 'zip'                => null,
+                // ordering parameters
+                'price_order'        => null,
+                'created_at_order'   => null,
+                'updated_at_order'   => null,
+                'surface_area_order' => null,
+                'living_area_order'  => null,
+                'floor_area_order'   => null,
+                'number_order'       => null,
+                'zip_order'          => null,
             ),
             $atts,
             'ji_realty_list'
@@ -150,6 +200,9 @@ class RealtyController extends BaseController
         return ob_get_clean();
     }
 
+    /**
+     * Realty number search form shortcode handler
+     */
     public function getShortcodeNumberForm($atts)
     {
         ob_start();
@@ -158,30 +211,80 @@ class RealtyController extends BaseController
         return ob_get_clean();
     }
 
-    public function registerTitle($title)
+    /**
+     * Overrides WordPress title for realty page.
+     *
+     * @param $title
+     *
+     * @return null|string
+     */
+    public function getRealtyTitle($title)
     {
-        try {
-            $realty = $this->queryFactory->createRealtyQuery()->findPk(get_query_var('ji_realty_id', false));
-            if (empty($realty)) {
-                return $title;
-            }
+        if (empty($this->currentRealty)) {
+            return $title;
+        }
 
-            $title = $realty->getTitle();
-            if (empty($title)) {
-                $title = $realty->getRealtyTypeName()
-                         . ' '
-                         . __('in', 'jiwp')
-                         . ' '
-                         . $realty->getCountry()
-                         . ' / '
-                         . $realty->getFederalState();
-            }
-        } catch (\Exception $e) {
-            if (WP_DEBUG) {
-                error_log($e->getMessage());
-            }
+        $title = $this->currentRealty->getTitle();
+        if (empty($title)) {
+            $title = $this->currentRealty->getRealtyTypeName()
+                . ' '
+                . __('in', 'jiwp')
+                . ' '
+                . $this->currentRealty->getCountry()
+                . ' / '
+                . $this->currentRealty->getFederalState();
         }
 
         return $title;
+    }
+
+    public function getOgTitle()
+    {
+        return $this->getRealtyTitle(null);
+    }
+
+    public function getOgDescription()
+    {
+        if (!empty($this->currentRealty)) {
+            return strip_tags($this->currentRealty->getDescription());
+        }
+
+        return '';
+    }
+
+    public function getOgType($type)
+    {
+        return 'article';
+    }
+
+    public function getOgImage()
+    {
+        if (!empty($this->currentRealty)) {
+            /** @var Attachment[] $pictures */
+            $pictures = $this->currentRealty->getPictures();
+            if (!empty($pictures)) {
+                return $pictures[0]->getUrl();
+            }
+        }
+
+        return '';
+    }
+
+    public function getOgUrl()
+    {
+        if (!empty($this->currentRealty)) {
+            return Routing::getRealtyUrl($this->currentRealty);
+        }
+
+        return '';
+    }
+
+    public function getOgTags()
+    {
+        $title = $this->getOgTitle();
+        $description = $this->getOgDescription();
+        $imgSrc = $this->getOgImage();
+        $url = $this->getOgUrl();
+        include(Templating::getPath('og-tags.php'));
     }
 }

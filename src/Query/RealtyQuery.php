@@ -128,12 +128,32 @@ class RealtyQuery extends BaseRealtyQuery
             $this->orderByPrice($params['price_order']);
         }
 
-        if (!empty($params['date_order'])) {
-            $this->orderByCreatedAt($params['date_order']);
+        if (!empty($params['created_at_order'])) {
+            $this->orderByCreatedAt($params['created_at_order']);
         }
 
-        if (!empty($params['surface_order'])) {
-            $this->orderBySurfaceArea($params['surface_order']);
+        if (!empty($params['updated_at_order'])) {
+            $this->orderByUpdatedAt($params['updated_at_order']);
+        }
+
+        if (!empty($params['surface_area_order'])) {
+            $this->orderBySurfaceArea($params['surface_area_order']);
+        }
+
+        if (!empty($params['living_area_order'])) {
+            $this->orderByLivingArea($params['living_area_order']);
+        }
+
+        if (!empty($params['floor_area_order'])) {
+            $this->orderByFloorArea($params['floor_area_order']);
+        }
+
+        if (!empty($params['number_order'])) {
+            $this->orderByPropertyNumber($params['number_order']);
+        }
+
+        if (!empty($params['zip_order'])) {
+            $this->orderByZipCode($params['zip_order']);
         }
 
         return $this;

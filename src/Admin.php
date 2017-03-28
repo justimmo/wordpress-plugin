@@ -136,8 +136,9 @@ class Admin
 
             default:
 
-                $api_credentials = $this->getApiCredentials();
-                $child_template  = 'api-settings-template.php';
+                $api_credentials    = $this->getApiCredentials();
+                $google_api_key     = $this->getGoogleApiKey();
+                $child_template     = 'api-settings-template.php';
 
                 break;
         }
@@ -169,5 +170,26 @@ class Admin
             'api_username' => get_option('ji_api_username'),
             'api_password' => get_option('ji_api_password'),
         );
+    }
+
+    /**
+     * Handle Google API Key form POST.
+     * Saves api key in wordpress `wp_options` table
+     */
+    public function googleApiKeyPost()
+    {
+        update_option(JIWP_GOOGLE_API_KEY_OPTION, $_REQUEST[JIWP_GOOGLE_API_KEY_OPTION]);
+
+        header('Location: ' . admin_url() . 'admin.php?page=jiwp');
+    }
+
+    /**
+     * Get Google API Key.
+     *
+     * @return string
+     */
+    public function getGoogleApiKey()
+    {
+        return get_option(JIWP_GOOGLE_API_KEY_OPTION, '');
     }
 }

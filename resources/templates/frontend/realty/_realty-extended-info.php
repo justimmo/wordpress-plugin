@@ -804,7 +804,7 @@
 <!-- Map -->
 <?php $lat = $realty->getLatitudePrecise(); ?>
 <?php $lng = $realty->getLongitudePrecise(); ?>
-<?php if ($lat && $lng) : ?>
+<?php if ($lat && $lng && get_option(JIWP_GOOGLE_API_KEY_OPTION, '')) : ?>
 <section class="ji-info-section">
     <h3 class="ji-info-section__title"><?php _e('Location', 'jiwp'); ?></h3>
     <div class="jiwp-map"></div>
@@ -814,7 +814,7 @@
                 lat: <?php echo $lat; ?>,
                 lng: <?php echo $lng; ?>
             },
-            title: '<?php echo $realty->getTitle(); ?>'
+            title: <?php echo wp_json_encode($realty->getTitle()); ?>
         };
     </script>
 </section>

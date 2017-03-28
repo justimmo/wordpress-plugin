@@ -36,6 +36,8 @@ define(
     JI_WP_PLUGIN_ROOT_PATH . 'resources' . DIRECTORY_SEPARATOR . 'templates' . DIRECTORY_SEPARATOR
 );
 
+define('JIWP_GOOGLE_API_KEY_OPTION', 'jiwp_google_api_key');
+
 register_activation_hook(__FILE__, function () {
     Justimmo\Wordpress\Installer::activate();
 });
