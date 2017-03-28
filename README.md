@@ -6,7 +6,7 @@ The JUSTIMMO Wordpress plugin allows brokers to list their properties stored in 
 
 ## Installation
 
-#### Composer (recommended)
+#### Composer (recommended for advanced users)
 Most flexible. Lets you update PHP-SDK and Wordpress plugin independently
 ```bash
 composer require justimmo/justimmo-wordpress-plugin "^1.0"
