@@ -32,7 +32,7 @@ class Routing
             'top'
         );
 
-        // realty detail rule
+        // realty short url rule
         add_rewrite_rule(
             __('obj', 'jiwp') . '/(\d+)/?$',
             'index.php?ji_page=realty-short&ji_realty_id=$matches[1]',

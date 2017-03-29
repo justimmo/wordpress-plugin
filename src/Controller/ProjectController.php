@@ -2,13 +2,13 @@
 
 namespace Justimmo\Wordpress\Controller;
 
-use Justimmo\Exception\NotFoundException;
+use Justimmo\Model\Attachment;
+use Justimmo\Model\Project;
 use Justimmo\Wordpress\Routing;
 use Justimmo\Wordpress\Templating;
 
 class ProjectController extends BaseController
 {
-
     private static $projectInfoTemplateMapping = array(
         'address'       => 'project/_project-info__address.php',
         'contact'       => 'project/_project-info__contact.php',
@@ -18,13 +18,47 @@ class ProjectController extends BaseController
         'realties'      => 'project/_project-info__realties.php',
     );
 
+    /**
+     * @var Project
+     */
+    private $currentProject;
+
     public function __construct()
     {
         parent::__construct();
+        $this->setupProjectSeoTags();
+    }
 
-        add_filter('pre_get_document_title', array($this, 'registerTitle'), 999, 2); //new WP
-        add_filter('wp_title', array($this, 'registerTitle'), 999, 2); //old WP
-        add_filter('aioseop_title', array($this, 'registerTitle'), 10);
+    public function setupProjectSeoTags()
+    {
+        if (get_query_var('ji_page', false) == 'project') {
+            try {
+                $this->currentProject = $this->queryFactory->createProjectQuery()->findPk(
+                    get_query_var('ji_project_id', false)
+                );
+
+                add_filter('pre_get_document_title', array($this, 'getProjectTitle'), 999, 2); //new WP
+                add_filter('wp_title', array($this, 'getProjectTitle'), 999, 2); //old WP
+
+                // Page title override for "All in One SEO Pack" Plugin
+                add_filter('aioseop_title', array($this, 'getProjectTitle'), 10);
+
+                // Open Graph tags override for "Yoast SEO" Plugin
+                add_filter('wpseo_title', array($this, 'getOgTitle'), 10);
+                add_filter('wpseo_metadesc', array($this, 'getOgDescription'), 10);
+                add_filter('wpseo_canonical', array($this, 'getOgUrl'), 10);
+                add_filter('wpseo_opengraph_type', array($this, 'getOgType'), 10);
+                add_filter('wpseo_opengraph_image', array($this, 'getOgImage'), 10);
+                add_filter('wpseo_opengraph_url', array($this, 'getOgUrl'), 10);
+
+                // Open Graph tags output
+                add_action('wp_head', array($this, 'getOgTags'), 10);
+            } catch (\Exception $e) {
+                if (WP_DEBUG) {
+                    error_log($e->getMessage());
+                }
+            }
+        }
     }
 
     /**
@@ -32,8 +66,12 @@ class ProjectController extends BaseController
      */
     public function getDetail()
     {
-        $project_id = get_query_var('ji_project_id', false);
-        $project    = $this->queryFactory->createProjectQuery()->findPk($project_id);
+        if (empty($this->currentProject)) {
+            $project_id = get_query_var('ji_project_id', false);
+            $project    = $this->queryFactory->createProjectQuery()->findPk($project_id);
+        } else {
+            $project = $this->currentProject;
+        }
 
         include(Templating::getPath('project/project-template.php'));
     }
@@ -91,25 +129,69 @@ class ProjectController extends BaseController
         }
     }
 
-
-    public function registerTitle($title)
+    /**
+     * Overrides WordPress title for project page.
+     *
+     * @param $title
+     *
+     * @return null|string
+     */
+    public function getProjectTitle($title)
     {
-        try {
-            $project = $this->queryFactory->createProjectQuery()->findPk(get_query_var('ji_project_id', false));
-            if (empty($project)) {
-                return $title;
-            }
+        if (empty($this->currentProject)) {
+            return $title;
+        }
 
-            $projectTitle = $project->getTitle();
-            if (!empty($projectTitle)) {
-                return $projectTitle;
-            }
-        } catch (\Exception $e) {
-            if (WP_DEBUG) {
-                error_log($e->getMessage());
+        return $this->currentProject->getTitle();
+    }
+
+    public function getOgTitle()
+    {
+        return $this->getProjectTitle(null);
+    }
+
+    public function getOgDescription()
+    {
+        if (!empty($this->currentProject)) {
+            return strip_tags($this->currentProject->getDescription());
+        }
+
+        return '';
+    }
+
+    public function getOgType($type)
+    {
+        return 'article';
+    }
+
+    public function getOgImage()
+    {
+        if (!empty($this->currentProject)) {
+            /** @var Attachment[] $pictures */
+            $pictures = $this->currentProject->getPictures();
+            if (!empty($pictures)) {
+                return $pictures[0]->getUrl();
             }
         }
 
-        return $title;
+        return '';
+    }
+
+    public function getOgUrl()
+    {
+        if (!empty($this->currentProject)) {
+            return Routing::getProjectUrl($this->currentProject);
+        }
+
+        return '';
+    }
+
+    public function getOgTags()
+    {
+        $title = $this->getOgTitle();
+        $description = $this->getOgDescription();
+        $imgSrc = $this->getOgImage();
+        $url = $this->getOgUrl();
+        include(Templating::getPath('og-tags.php'));
     }
 }

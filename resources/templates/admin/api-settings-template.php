@@ -29,6 +29,24 @@
 	</p>
 </form>
 
+<form action="<?php echo esc_url( admin_url('admin-post.php') ); ?>" method="POST">
+	<input type="hidden" name="action" value="google_api_key_post"/>
+	<p>
+		<label for="google_api_key">
+			<strong><?php _e( 'Google API Key', 'jiwp' ); ?>:</strong>
+		</label>
+		<input 
+			type 	= "text" 
+			id 		= "google_api_key" 
+			class 	= "all-options" 
+			name 	= "<?php echo JIWP_GOOGLE_API_KEY_OPTION; ?>"
+			value 	= "<?php echo $google_api_key; ?>" />
+	</p>
+	<p>
+		<input class="button-primary" type="submit" value="<?php esc_attr_e( 'Save', 'jiwp' ); ?>" />
+	</p>
+</form>
+
 <section class="wrap">
 	<header>
 		<h3><?php echo _e('How to obtain your JUSTIMMO API credentials:', 'jiwp' ); ?></h3>

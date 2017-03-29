@@ -110,7 +110,7 @@ class Templating
 
             wp_enqueue_script(
                 'jiwp-google-map',
-                'https://maps.googleapis.com/maps/api/js?key=' . get_option('jiwp_google_api_key', ''),
+                'https://maps.googleapis.com/maps/api/js?key=' . get_option(JIWP_GOOGLE_API_KEY_OPTION, ''),
                 array('jquery'),
                 Plugin::VERSION,
                 true

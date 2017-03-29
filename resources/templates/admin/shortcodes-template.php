@@ -159,7 +159,7 @@
 					</p>
 				</li>
 
-				<li class="ji-shortcode-option">
+                <li class="ji-shortcode-option">
 					<code>price_order</code>: <?php _e( 'Orders realties by price. Available values: "asc" (ascending), "desc" (descending).', 'jiwp' ); ?>
 					<p>
 						<?php _e( 'Example:', 'jiwp' ); ?>
@@ -167,19 +167,59 @@
 					</p>
 				</li>
 
-				<li class="ji-shortcode-option">
-					<code>date_order</code>: <?php _e( 'Orders realties by entry date. Available values: "asc" (ascending), "desc" (descending).', 'jiwp' ); ?>
+                <li class="ji-shortcode-option">
+					<code>created_at_order</code>: <?php _e( 'Orders realties by created at date. Available values: "asc" (ascending), "desc" (descending).', 'jiwp' ); ?>
 					<p>
 						<?php _e( 'Example:', 'jiwp' ); ?>
-						<code>[ji_realty_list date_order="desc"]</code> <?php _e( 'Shows realties in descending date order.', 'jiwp' ); ?>
+						<code>[ji_realty_list created_at_order="desc"]</code> <?php _e( 'Shows realties in descending created at date order.', 'jiwp' ); ?>
 					</p>
 				</li>
 
-				<li class="ji-shortcode-option">
-					<code>surface_order</code>: <?php _e( 'Orders realties by surface. Available values: "asc" (ascending), "desc" (descending).', 'jiwp' ); ?>
+                <li class="ji-shortcode-option">
+					<code>updated_at_order</code>: <?php _e( 'Orders realties by update at date. Available values: "asc" (ascending), "desc" (descending).', 'jiwp' ); ?>
 					<p>
 						<?php _e( 'Example:', 'jiwp' ); ?>
-						<code>[ji_realty_list surface_order="desc"]</code> <?php _e( 'Shows realties in descending surface order.', 'jiwp' ); ?>
+						<code>[ji_realty_list updated_at_order="desc"]</code> <?php _e( 'Shows realties in descending update at date order.', 'jiwp' ); ?>
+					</p>
+				</li>
+
+                <li class="ji-shortcode-option">
+					<code>surface_area_order</code>: <?php _e( 'Orders realties by surface area. Available values: "asc" (ascending), "desc" (descending).', 'jiwp' ); ?>
+					<p>
+						<?php _e( 'Example:', 'jiwp' ); ?>
+						<code>[ji_realty_list surface_area_order="desc"]</code> <?php _e( 'Shows realties in descending surface area order.', 'jiwp' ); ?>
+					</p>
+				</li>
+
+                <li class="ji-shortcode-option">
+					<code>living_area_order</code>: <?php _e( 'Orders realties by living area. Available values: "asc" (ascending), "desc" (descending).', 'jiwp' ); ?>
+					<p>
+						<?php _e( 'Example:', 'jiwp' ); ?>
+						<code>[ji_realty_list living_area_order="desc"]</code> <?php _e( 'Shows realties in descending living area order.', 'jiwp' ); ?>
+					</p>
+				</li>
+
+                <li class="ji-shortcode-option">
+					<code>floor_area_order</code>: <?php _e( 'Orders realties by floor area. Available values: "asc" (ascending), "desc" (descending).', 'jiwp' ); ?>
+					<p>
+						<?php _e( 'Example:', 'jiwp' ); ?>
+						<code>[ji_realty_list floor_area_order="desc"]</code> <?php _e( 'Shows realties in descending floor area order.', 'jiwp' ); ?>
+					</p>
+				</li>
+
+                <li class="ji-shortcode-option">
+					<code>number_order</code>: <?php _e( 'Orders realties by realty number. Available values: "asc" (ascending), "desc" (descending).', 'jiwp' ); ?>
+					<p>
+						<?php _e( 'Example:', 'jiwp' ); ?>
+						<code>[ji_realty_list number_order="desc"]</code> <?php _e( 'Shows realties in descending realty number order.', 'jiwp' ); ?>
+					</p>
+				</li>
+
+                <li class="ji-shortcode-option">
+					<code>zip_order</code>: <?php _e( 'Orders realties by zip code order. Available values: "asc" (ascending), "desc" (descending).', 'jiwp' ); ?>
+					<p>
+						<?php _e( 'Example:', 'jiwp' ); ?>
+						<code>[ji_realty_list zip_order="desc"]</code> <?php _e( 'Shows realties in descending zip code order order.', 'jiwp' ); ?>
 					</p>
 				</li>
 			</ul>
