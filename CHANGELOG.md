@@ -9,7 +9,11 @@
  * Fix overwritten $cities variable error which prevented the search form from showing autocompleted states.
  * Change state checkboxes to dropdown and restrict zipcodes/cities by previously selected state.
  * Update JUSTIMMO PHP-SDK to 1.1.8
+ * Add Google API key field in admin panel.
+ * Add new ordering parameters to realty list shortcode.
+ * Fix unescaped realty title in realty js object needed for Google Maps.
+ * Add Open Graph meta tags for realty and project detail pages.
+ * Update translations
 
 ## 1.0.0
  * Initial release 
-
