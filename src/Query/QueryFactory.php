@@ -74,9 +74,7 @@ class QueryFactory
             substr(get_locale(), 0, 2)
         );
 
-        $this->api->setCurlOptions(array(
-            CURLOPT_TIMEOUT_MS => 60000,
-        ));
+        $this->api->setCurlOption(CURLOPT_TIMEOUT_MS,  60000);
 
         return $this->api;
     }
