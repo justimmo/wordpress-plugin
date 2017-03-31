@@ -22,7 +22,7 @@ class Plugin
     const NAME = 'jiwp';
 
     //Please increase version on every .css or .js update
-    const VERSION = '1.0.1';
+    const VERSION = '1.0.2';
 
     /**
      * Define the core functionality of the plugin.

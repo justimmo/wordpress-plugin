@@ -12,7 +12,7 @@
  * Plugin Name:       JUSTIMMO WP Plugin
  * Plugin URI:        https://github.com/justimmo/wordpress-plugin
  * Description:       Wordpress plugin which brokers can use to access the JUSTIMMO API and list their properties and more.
- * Version:           1.0.1
+ * Version:           1.0.2
  * Author:            JUSTIMMO
  * Author URI:        www.justimmo.at
  * License:           GPL-2.0+

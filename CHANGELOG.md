@@ -1,3 +1,6 @@
+## 1.0.2
+ * Fix SDK default curl options getting overwritten by Wordpress plugin
+
 ## 1.0.1
  * Update search form partial to use realty type 'id' instead of 'key' as value in select input 
  * Update templating class 'enqueueScripts' method to register plugin jQuery library only if isn't registered yet by theme or WordPress
