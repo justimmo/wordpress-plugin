@@ -138,6 +138,7 @@ class RealtyController extends BaseController
                 'garden'             => null,
                 'garage'             => null,
                 'balcony_terrace'    => null,
+                'country'            => null,
                 'exclude_country_id' => null,
                 'occupancy'          => null,
                 'format'             => 'list',
@@ -190,7 +191,14 @@ class RealtyController extends BaseController
 
         if (!empty($filter['country'])) {
             $states = $this->queryFactory->createBasicDataQuery()->getStates($_GET['filter']['country']);
-            $cities = $this->queryFactory->createBasicDataQuery()->getCities($_GET['filter']['country']);
+            if (!empty($_GET['filter']['state'])) {
+                $cities = $this->queryFactory->createBasicDataQuery()->getCities(
+                    $_GET['filter']['country'],
+                    $_GET['filter']['state']
+                );
+            } else {
+                $cities = $this->queryFactory->createBasicDataQuery()->getCities($_GET['filter']['country']);
+            }
         }
 
         ob_start();
