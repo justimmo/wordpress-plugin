@@ -24,6 +24,10 @@ class CitynameTranslator
 
     public static function translate($city)
     {
+        if (in_array(get_locale(), array('de', 'de_AT', 'de_DE', 'de_CH'))) {
+            return $city;
+        }
+
         return array_key_exists($city, self::$cityTranslations) ? self::$cityTranslations[$city] : $city;
     }
 }
