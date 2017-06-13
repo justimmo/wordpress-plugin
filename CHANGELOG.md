@@ -1,3 +1,6 @@
+## 1.0.3
+ * Update german translations
+
 ## 1.0.2
  * Fix SDK default curl options getting overwritten by Wordpress plugin
 
