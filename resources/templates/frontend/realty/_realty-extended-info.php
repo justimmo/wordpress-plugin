@@ -98,7 +98,7 @@
 
         <li class="ji-info">
             <label class="ji-info__label">
-                <?php _e('Commercial Type:', 'jiwp'); ?>
+                <?php _e('Realty Type:', 'jiwp'); ?>
             </label>
             <span class="ji-info__value">
                 <?php echo $realty->getRealtyTypeName(); ?>
@@ -107,7 +107,7 @@
 
         <li class="ji-info">
             <label class="ji-info__label">
-                <?php _e('Realty Type:', 'jiwp'); ?>
+                <?php _e('Realty Subtype:', 'jiwp'); ?>
             </label>
             <span class="ji-info__value">
                 <?php echo $realty->getSubRealtyTypeName(); ?>
