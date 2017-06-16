@@ -221,7 +221,7 @@
                     <?php _e('Floor Area:', 'jiwp'); ?>
                 </label>
                 <span class="ji-info__value">
-                    <?php echo $floor_area . ' m&sup2;'; ?>
+                    <?php echo Justimmo\Wordpress\Helper\NumberFormatter::format($floor_area) . ' m&sup2;'; ?>
                 </span>
             </li>
 
@@ -234,7 +234,7 @@
                     <?php _e('Surface Area:', 'jiwp'); ?>
                 </label>
                 <span class="ji-info__value">
-                    <?php echo $surface_area . ' m&sup2;'; ?>
+                    <?php echo Justimmo\Wordpress\Helper\NumberFormatter::format($surface_area) . ' m&sup2;'; ?>
                 </span>
             </li>
 
@@ -247,7 +247,7 @@
                     <?php _e('Living Area:', 'jiwp'); ?>
                 </label>
                 <span class="ji-info__value">
-                    <?php echo $living_area . ' m&sup2;'; ?>
+                    <?php echo Justimmo\Wordpress\Helper\NumberFormatter::format($living_area) . ' m&sup2;'; ?>
                 </span>
             </li>
 
@@ -260,7 +260,7 @@
                     <?php _e('Total Area:', 'jiwp'); ?>
                 </label>
                 <span class="ji-info__value">
-                    <?php echo $total_area . ' m&sup2;'; ?>
+                    <?php echo Justimmo\Wordpress\Helper\NumberFormatter::format($total_area) . ' m&sup2;'; ?>
                 </span>
             </li>
 
@@ -273,7 +273,7 @@
                     <?php _e('Balcony Area:', 'jiwp'); ?>
                 </label>
                 <span class="ji-info__value">
-                    <?php echo $balcony_area . ' m&sup2;'; ?>
+                    <?php echo Justimmo\Wordpress\Helper\NumberFormatter::format($balcony_area) . ' m&sup2;'; ?>
                 </span>
             </li>
 
@@ -286,7 +286,7 @@
                     <?php _e('Terrace Area:', 'jiwp'); ?>
                 </label>
                 <span class="ji-info__value">
-                    <?php echo $terrace_area . ' m&sup2;'; ?>
+                    <?php echo Justimmo\Wordpress\Helper\NumberFormatter::format($terrace_area) . ' m&sup2;'; ?>
                 </span>
             </li>
 
@@ -299,7 +299,7 @@
                     <?php _e('Garden Area:', 'jiwp'); ?>
                 </label>
                 <span class="ji-info__value">
-                    <?php echo $garden_area . ' m&sup2;'; ?>
+                    <?php echo Justimmo\Wordpress\Helper\NumberFormatter::format($garden_area) . ' m&sup2;'; ?>
                 </span>
             </li>
 
@@ -312,7 +312,7 @@
                     <?php _e('Cellar Area:', 'jiwp'); ?>
                 </label>
                 <span class="ji-info__value">
-                    <?php echo $cellar_area . ' m&sup2;'; ?>
+                    <?php echo Justimmo\Wordpress\Helper\NumberFormatter::format($cellar_area) . ' m&sup2;'; ?>
                 </span>
             </li>
 
@@ -325,7 +325,7 @@
                     <?php _e('Office Area:', 'jiwp'); ?>
                 </label>
                 <span class="ji-info__value">
-                    <?php echo $office_area . ' m&sup2;'; ?>
+                    <?php echo Justimmo\Wordpress\Helper\NumberFormatter::format($office_area) . ' m&sup2;'; ?>
                 </span>
             </li>
 
@@ -338,7 +338,7 @@
                     <?php _e('Storage Area:', 'jiwp'); ?>
                 </label>
                 <span class="ji-info__value">
-                    <?php echo $storage_area . ' m&sup2;'; ?>
+                    <?php echo Justimmo\Wordpress\Helper\NumberFormatter::format($storage_area) . ' m&sup2;'; ?>
                 </span>
             </li>
 
@@ -351,7 +351,7 @@
                     <?php _e('Loggia Area:', 'jiwp'); ?>
                 </label>
                 <span class="ji-info__value">
-                    <?php echo $loggia_area . ' m&sup2;'; ?>
+                    <?php echo Justimmo\Wordpress\Helper\NumberFormatter::format($loggia_area) . ' m&sup2;'; ?>
                 </span>
             </li>
 
@@ -364,7 +364,7 @@
                     <?php _e('Garage Area:', 'jiwp'); ?>
                 </label>
                 <span class="ji-info__value">
-                    <?php echo $garage_area . ' m&sup2;'; ?>
+                    <?php echo Justimmo\Wordpress\Helper\NumberFormatter::format($garage_area) . ' m&sup2;'; ?>
                 </span>
             </li>
 
@@ -377,7 +377,7 @@
                     <?php _e('Parking Area:', 'jiwp'); ?>
                 </label>
                 <span class="ji-info__value">
-                    <?php echo $parking_area . ' m&sup2;'; ?>
+                    <?php echo Justimmo\Wordpress\Helper\NumberFormatter::format($parking_area) . ' m&sup2;'; ?>
                 </span>
             </li>
 
@@ -390,7 +390,7 @@
                     <?php _e('Buildable Area:', 'jiwp'); ?>
                 </label>
                 <span class="ji-info__value">
-                    <?php echo $buildable_area . ' m&sup2;'; ?>
+                    <?php echo Justimmo\Wordpress\Helper\NumberFormatter::format($buildable_area) . ' m&sup2;'; ?>
                 </span>
             </li>
 
@@ -412,7 +412,7 @@
                     <?php _e('Rooms:', 'jiwp'); ?>
                 </label>
                 <span class="ji-info__value">
-                    <?php echo $room_count; ?>
+                    <?php echo Justimmo\Wordpress\Helper\NumberFormatter::format($room_count); ?>
                 </span>
             </li>
 
@@ -555,21 +555,15 @@
         <?php
 
         $price_text = '';
-        $currency = $realty->getCurrency();
+        $currency = empty($realty->getCurrency()) ? 'EUR' : $realty->getCurrency();
 
-        if (empty($currency)) {
-            $currency = 'EUR';
-        }
-
-        if ($marketingType['KAUF'] == true) {
-            $purchase_price = $realty->getPurchasePrice();
-            if (!empty($purchase_price)) {
-                $price_text = money_format("%!i $currency", $purchase_price);
+        if ($realty->getMarketingType()['KAUF'] == true) {
+            if (!empty($realty->getPurchasePrice())) {
+                $price_text = Justimmo\Wordpress\Helper\NumberFormatter::formatCurrency($realty->getPurchasePrice(), $currency, 0);
             }
         } else {
-            $rent_price = $realty->getTotalRent();
-            if (!empty($rent_price)) {
-                $price_text = money_format("%!i $currency", $rent_price);
+            if (!empty($realty->getTotalRent())) {
+                $price_text = Justimmo\Wordpress\Helper\NumberFormatter::formatCurrency($realty->getTotalRent(), $currency, 0);
             }
         }
 
@@ -618,7 +612,7 @@
                                 <?php echo $additional_cost->getName() . ':'; ?>
                             </label>
                             <span class="ji-info__value">
-                                <?php echo money_format("%!i $currency", $additional_cost->getGross()); ?>
+                                <?php echo Justimmo\Wordpress\Helper\NumberFormatter::formatCurrency($additional_cost->getGross(), $currency, 0); ?>
                             </span>
                         </li>
 
@@ -650,7 +644,7 @@
                     <?php _e('Land Registration Tax:', 'jiwp'); ?>
                 </label>
                 <span class="ji-info__value">
-                    <?php echo $land_registration_tax . '%'; ?>
+                    <?php echo Justimmo\Wordpress\Helper\NumberFormatter::formatPercent($land_registration_tax/100); ?>
                 </span>
             </li>
 
@@ -664,7 +658,7 @@
                     <?php _e('Transfer Tax:', 'jiwp'); ?>
                 </label>
                 <span class="ji-info__value">
-                    <?php echo $transfer_tax . '%'; ?>
+                    <?php echo Justimmo\Wordpress\Helper\NumberFormatter::formatPercent( $transfer_tax/100); ?>
                 </span>
             </li>
 
@@ -678,7 +672,7 @@
                     <?php _e('Additional Charges:', 'jiwp'); ?>
                 </label>
                 <span class="ji-info__value">
-                    <?php echo money_format("%!i $currency", $additional_charges) ?>
+                    <?php echo Justimmo\Wordpress\Helper\NumberFormatter::formatCurrency($additional_charges, $currency, 0); ?>
                 </span>
             </li>
 
@@ -692,7 +686,7 @@
                     <?php _e('Yearly Net Earning:', 'jiwp'); ?>
                 </label>
                 <span class="ji-info__value">
-                    <?php echo money_format("%!i $currency", $yearly_net_earn) ?>
+                    <?php echo Justimmo\Wordpress\Helper\NumberFormatter::formatCurrency($yearly_net_earn, $currency, 0) ?>
                 </span>
             </li>
 
@@ -706,7 +700,7 @@
                     <?php _e('Building Subsidence:', 'jiwp'); ?>
                 </label>
                 <span class="ji-info__value">
-                    <?php echo money_format("%!i $currency", $building_subsidence) ?>
+                    <?php echo Justimmo\Wordpress\Helper\NumberFormatter::formatCurrency($building_subsidence, $currency, 0) ?>
                 </span>
             </li>
 
@@ -720,7 +714,7 @@
                     <?php _e('Net Yield:', 'jiwp'); ?>
                 </label>
                 <span class="ji-info__value">
-                    <?php echo $net_yield . '%'; ?>
+                    <?php echo Justimmo\Wordpress\Helper\NumberFormatter::formatPercent($net_yield/100); ?>
                 </span>
             </li>
 

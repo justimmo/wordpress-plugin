@@ -1,3 +1,5 @@
+<?php /** @var Justimmo\Model\Realty $realty */ ?>
+
 <ul class="ji-info-list">
 
     <li class="ji-info">
@@ -37,24 +39,17 @@
     <?php
 
     $price_text = '';
-    $currency = $realty->getCurrency();
-
-    if (empty($currency)) {
-        $currency = 'EUR';
-    }
+    $currency = empty($realty->getCurrency()) ? 'EUR' : $realty->getCurrency();
 
     if ($marketingType['KAUF'] == true) {
-        $purchase_price = $realty->getPurchasePrice();
-        if (!empty($purchase_price)) {
-            $price_text = money_format("%!i $currency", $purchase_price);
+        if (!empty($realty->getPurchasePrice())) {
+            $price_text = Justimmo\Wordpress\Helper\NumberFormatter::formatCurrency($realty->getPurchasePrice(), $currency, 0);
         }
     } else {
-        $rent_price = $realty->getTotalRent();
-        if (!empty($rent_price)) {
-            $price_text = money_format("%!i $currency", $rent_price);
+        if (!empty($realty->getTotalRent())) {
+            $price_text = Justimmo\Wordpress\Helper\NumberFormatter::formatCurrency($realty->getTotalRent(), $currency, 0);
         }
     }
-
     ?>
 
     <?php if (!empty($price_text)) : ?>
@@ -81,7 +76,7 @@
             </label>
             
             <span class="ji-info__value">
-                <?php echo $surface_area . ' m&sup2;'; ?>
+                <?php echo Justimmo\Wordpress\Helper\NumberFormatter::format($surface_area) . ' m&sup2;'; ?>
             </span>
 
         </li>
@@ -97,7 +92,7 @@
             </label>
             
             <span class="ji-info__value">
-                <?php echo $room_count; ?>
+                <?php echo Justimmo\Wordpress\Helper\NumberFormatter::format($room_count); ?>
             </span>
 
         </li>

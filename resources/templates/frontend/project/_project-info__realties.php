@@ -34,24 +34,19 @@
                     <tr data-href="<?php echo Justimmo\Wordpress\Routing::getRealtyUrl($realty); ?>">
                         <td><?php echo $index + 1; ?></td>
                         <td><?php echo $realty->getTier(); ?></td>
-                        <td><?php echo $realty->getLivingArea(); ?></td>
-                        <td><?php echo $realty->getRoomCount(); ?></td>
-                        <td><?php echo $realty->getBalconyArea(); ?></td>
-                        <td><?php echo $realty->getTerraceArea(); ?></td>
-                        <td><?php echo $realty->getGardenArea(); ?></td>
+                        <td><?php echo Justimmo\Wordpress\Helper\NumberFormatter::format($realty->getLivingArea()); ?></td>
+                        <td><?php echo Justimmo\Wordpress\Helper\NumberFormatter::format($realty->getRoomCount()); ?></td>
+                        <td><?php echo Justimmo\Wordpress\Helper\NumberFormatter::format($realty->getBalconyArea()); ?></td>
+                        <td><?php echo Justimmo\Wordpress\Helper\NumberFormatter::format($realty->getTerraceArea()); ?></td>
+                        <td><?php echo Justimmo\Wordpress\Helper\NumberFormatter::format($realty->getGardenArea()); ?></td>
                         <td>
                             <?php
-
-                            $currency = $realty->getCurrency();
-
-                            if (empty($currency)) {
-                                $currency = 'EUR';
-                            }
+                            $currency = empty($realty->getCurrency()) ? 'EUR' : $realty->getCurrency();
 
                             if ($marketingType['KAUF'] == true) {
-                                echo money_format("%!i $currency", $realty->getPurchasePrice());
+                                echo Justimmo\Wordpress\Helper\NumberFormatter::formatCurrency($realty->getPurchasePrice(), $currency, 0);
                             } else {
-                                echo money_format("%!i $currency", $realty->getTotalRent());
+                                echo Justimmo\Wordpress\Helper\NumberFormatter::formatCurrency($realty->getTotalRent(), $currency, 0);
                             }
 
                             ?>
