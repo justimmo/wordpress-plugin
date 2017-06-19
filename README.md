@@ -4,6 +4,11 @@
 
 The JUSTIMMO Wordpress plugin allows brokers to list their properties stored in the JUSTIMMO software on their own Wordpress website.
 
+## Requirements
+ * >= PHP 5.3.4
+ * PHP Curl extension
+ * PHP Intl extension
+
 ## Installation
 
 #### Composer (recommended for advanced users)
