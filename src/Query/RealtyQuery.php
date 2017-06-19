@@ -17,7 +17,7 @@ class RealtyQuery extends BaseRealtyQuery
     {
         // realty number
         if (!empty($params['objektnummer'])) {
-            $this->filterByPropertyNumber($params['objektnummer']);
+            $this->filter('display_objektnummer', $params['objektnummer']);
         }
 
         // rent
@@ -83,8 +83,8 @@ class RealtyQuery extends BaseRealtyQuery
         }
 
         // federal states
-        if (!empty($params['states'])) {
-            $this->filter('bundesland_id', $params['states']);
+        if (!empty($params['state'])) {
+            $this->filter('bundesland_id', $params['state']);
         }
 
         // zip codes

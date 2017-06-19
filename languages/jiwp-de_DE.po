@@ -2,9 +2,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: JUSTIMMO WP Plugin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-06-13 10:05+0000\n"
-"PO-Revision-Date: 2017-06-13 10:40+0000\n"
-"Last-Translator: justimmo <support@justimmo.at>\n"
+"POT-Creation-Date: 2017-06-19 16:52+0000\n"
+"PO-Revision-Date: 2017-06-19 16:53+0000\n"
+"Last-Translator: justimmo <h.holzer@bgcc.at>\n"
 "Language-Team: German\n"
 "Language: de-DE\n"
 "MIME-Version: 1.0\n"
@@ -21,10 +21,73 @@ msgstr ""
 msgid "projects"
 msgstr ""
 
-#: src/Controller/RealtyController.php:231
-#: resources/templates/frontend/realty/_realty-list__item.php:34
+#: src/Controller/RealtyController.php:239
 #: resources/templates/frontend/realty/realty-template.php:14
+#: resources/templates/frontend/realty/_realty-list__item.php:34
 msgid "in"
+msgstr ""
+
+#: resources/templates/admin/admin-template.php:18
+msgid "JUSTIMMO Settings"
+msgstr ""
+
+#: resources/templates/admin/admin-template.php:23
+msgid "API Settings"
+msgstr ""
+
+#: resources/templates/admin/admin-template.php:26
+msgid "Shortcodes"
+msgstr ""
+
+#: resources/templates/admin/admin-template.php:29
+msgid "Theming"
+msgstr ""
+
+#: resources/templates/admin/api-settings-template.php:1
+msgid "Please enter your JUSTIMMO API credentials:"
+msgstr ""
+
+#: resources/templates/admin/api-settings-template.php:52
+msgid "How to obtain your JUSTIMMO API credentials:"
+msgstr ""
+
+#: resources/templates/admin/api-settings-template.php:57
+msgid "Log into the JUSTIMMO platform using your account."
+msgstr ""
+
+#: resources/templates/admin/api-settings-template.php:58
+#: resources/templates/admin/api-settings-template.php:62
+#: resources/templates/admin/api-settings-template.php:66
+#: resources/templates/admin/api-settings-template.php:70
+#: resources/templates/admin/api-settings-template.php:74
+#: resources/templates/admin/api-settings-template.php:78
+#: resources/templates/admin/shortcodes-template.php:321
+msgid "show image"
+msgstr ""
+
+#: resources/templates/admin/api-settings-template.php:61
+msgid "From the main menu go to \"more\" > \"Exports\"."
+msgstr ""
+
+#: resources/templates/admin/api-settings-template.php:65
+msgid "Switch to the \"Custom Exports\" tab."
+msgstr ""
+
+#: resources/templates/admin/api-settings-template.php:69
+msgid "Click the \"Create JUSTIMMO API\" button."
+msgstr ""
+
+#: resources/templates/admin/api-settings-template.php:73
+msgid "Complete the form with your desired options. Click the \"Save\" button."
+msgstr ""
+
+#: resources/templates/admin/api-settings-template.php:77
+msgid ""
+"You should now have a username and password in your export settings form."
+msgstr ""
+
+#: resources/templates/admin/api-settings-template.php:81
+msgid "You should use these credentials to complete the above form."
 msgstr ""
 
 #: resources/templates/admin/theming-template.php:1
@@ -63,8 +126,8 @@ msgid ""
 msgstr ""
 
 #: resources/templates/admin/shortcodes-template.php:15
-#: resources/templates/admin/shortcodes-template.php:266
-#: resources/templates/admin/shortcodes-template.php:291
+#: resources/templates/admin/shortcodes-template.php:290
+#: resources/templates/admin/shortcodes-template.php:315
 msgid "It has the following options which you can pass as parameters:"
 msgstr ""
 
@@ -77,30 +140,31 @@ msgstr ""
 #: resources/templates/admin/shortcodes-template.php:37
 #: resources/templates/admin/shortcodes-template.php:45
 #: resources/templates/admin/shortcodes-template.php:53
-#: resources/templates/admin/shortcodes-template.php:61
-#: resources/templates/admin/shortcodes-template.php:69
-#: resources/templates/admin/shortcodes-template.php:77
-#: resources/templates/admin/shortcodes-template.php:85
-#: resources/templates/admin/shortcodes-template.php:93
-#: resources/templates/admin/shortcodes-template.php:101
-#: resources/templates/admin/shortcodes-template.php:109
-#: resources/templates/admin/shortcodes-template.php:117
-#: resources/templates/admin/shortcodes-template.php:125
-#: resources/templates/admin/shortcodes-template.php:133
-#: resources/templates/admin/shortcodes-template.php:141
-#: resources/templates/admin/shortcodes-template.php:149
-#: resources/templates/admin/shortcodes-template.php:157
-#: resources/templates/admin/shortcodes-template.php:165
-#: resources/templates/admin/shortcodes-template.php:173
-#: resources/templates/admin/shortcodes-template.php:181
-#: resources/templates/admin/shortcodes-template.php:189
+#: resources/templates/admin/shortcodes-template.php:62
+#: resources/templates/admin/shortcodes-template.php:70
+#: resources/templates/admin/shortcodes-template.php:79
+#: resources/templates/admin/shortcodes-template.php:88
+#: resources/templates/admin/shortcodes-template.php:96
+#: resources/templates/admin/shortcodes-template.php:104
+#: resources/templates/admin/shortcodes-template.php:112
+#: resources/templates/admin/shortcodes-template.php:120
+#: resources/templates/admin/shortcodes-template.php:128
+#: resources/templates/admin/shortcodes-template.php:137
+#: resources/templates/admin/shortcodes-template.php:146
+#: resources/templates/admin/shortcodes-template.php:154
+#: resources/templates/admin/shortcodes-template.php:162
+#: resources/templates/admin/shortcodes-template.php:170
+#: resources/templates/admin/shortcodes-template.php:179
+#: resources/templates/admin/shortcodes-template.php:187
 #: resources/templates/admin/shortcodes-template.php:197
-#: resources/templates/admin/shortcodes-template.php:205
-#: resources/templates/admin/shortcodes-template.php:213
-#: resources/templates/admin/shortcodes-template.php:221
-#: resources/templates/admin/shortcodes-template.php:272
-#: resources/templates/admin/shortcodes-template.php:298
-#: resources/templates/admin/shortcodes-template.php:306
+#: resources/templates/admin/shortcodes-template.php:207
+#: resources/templates/admin/shortcodes-template.php:217
+#: resources/templates/admin/shortcodes-template.php:227
+#: resources/templates/admin/shortcodes-template.php:236
+#: resources/templates/admin/shortcodes-template.php:245
+#: resources/templates/admin/shortcodes-template.php:296
+#: resources/templates/admin/shortcodes-template.php:323
+#: resources/templates/admin/shortcodes-template.php:331
 msgid "Example:"
 msgstr ""
 
@@ -131,323 +195,270 @@ msgstr ""
 msgid "Lists only realties in certain category. Use JUSTIMMO category names."
 msgstr ""
 
-#: resources/templates/admin/shortcodes-template.php:54
+#: resources/templates/admin/shortcodes-template.php:55
 msgid "Shows only realties in \"MyCategory1\" and \"MyCategory2\" categories."
 msgstr ""
 
-#: resources/templates/admin/shortcodes-template.php:59
+#: resources/templates/admin/shortcodes-template.php:60
 msgid "Lists only realties with certain zipcode / zipcodes."
 msgstr ""
 
-#: resources/templates/admin/shortcodes-template.php:62
+#: resources/templates/admin/shortcodes-template.php:63
 msgid "Shows only realties with 123 or 456 zipcodes"
 msgstr ""
 
-#: resources/templates/admin/shortcodes-template.php:67
+#: resources/templates/admin/shortcodes-template.php:68
+msgid ""
+"Lists only realties from a specific country. The country is specified using "
+"it's JUSTIMMO id."
+msgstr ""
+
+#: resources/templates/admin/shortcodes-template.php:72
+msgid "Shows realties from the country with the id = 17."
+msgstr ""
+
+#: resources/templates/admin/shortcodes-template.php:77
 msgid ""
 "Lists only realties outside of a country. The country is excluded using it's "
 "JUSTIMMO id."
 msgstr ""
 
-#: resources/templates/admin/shortcodes-template.php:70
+#: resources/templates/admin/shortcodes-template.php:81
 msgid "Shows realties from outside the country with the id = 17."
 msgstr ""
 
-#: resources/templates/admin/shortcodes-template.php:75
+#: resources/templates/admin/shortcodes-template.php:86
 msgid "Formats realty list in grid format."
 msgstr ""
 
-#: resources/templates/admin/shortcodes-template.php:78
+#: resources/templates/admin/shortcodes-template.php:89
 msgid "Shows realties in grid format."
 msgstr ""
 
-#: resources/templates/admin/shortcodes-template.php:83
+#: resources/templates/admin/shortcodes-template.php:94
 msgid "Sets a minimum price (in euro)."
 msgstr ""
 
-#: resources/templates/admin/shortcodes-template.php:86
+#: resources/templates/admin/shortcodes-template.php:97
 msgid "Show realties with a minimum price of 100 euro."
 msgstr ""
 
-#: resources/templates/admin/shortcodes-template.php:91
+#: resources/templates/admin/shortcodes-template.php:102
 msgid "Sets a maximum price (in euro)."
 msgstr ""
 
-#: resources/templates/admin/shortcodes-template.php:94
+#: resources/templates/admin/shortcodes-template.php:105
 msgid "Show realties with a maximum price of 100 euro."
 msgstr ""
 
-#: resources/templates/admin/shortcodes-template.php:99
+#: resources/templates/admin/shortcodes-template.php:110
 msgid "Sets a minimum number of rooms."
 msgstr ""
 
-#: resources/templates/admin/shortcodes-template.php:102
+#: resources/templates/admin/shortcodes-template.php:113
 msgid "Shows realties with a minimum of 3 rooms."
 msgstr ""
 
-#: resources/templates/admin/shortcodes-template.php:107
+#: resources/templates/admin/shortcodes-template.php:118
 msgid "Sets a maximum number of rooms."
 msgstr ""
 
-#: resources/templates/admin/shortcodes-template.php:110
+#: resources/templates/admin/shortcodes-template.php:121
 msgid "Shows realties with a maximum of 3 rooms."
 msgstr ""
 
-#: resources/templates/admin/shortcodes-template.php:115
+#: resources/templates/admin/shortcodes-template.php:126
 msgid "Sets a minimum surface area (m&sup2;)."
 msgstr ""
 
-#: resources/templates/admin/shortcodes-template.php:118
+#: resources/templates/admin/shortcodes-template.php:130
 msgid "Shows realties with a minimum surface area of 100 m&sup2;"
 msgstr ""
 
-#: resources/templates/admin/shortcodes-template.php:123
+#: resources/templates/admin/shortcodes-template.php:135
 msgid "Sets a maximum surface area (m&sup2;)."
 msgstr ""
 
-#: resources/templates/admin/shortcodes-template.php:126
+#: resources/templates/admin/shortcodes-template.php:139
 msgid "Shows realties with a maximum surface area of 100 m&sup2;"
 msgstr ""
 
-#: resources/templates/admin/shortcodes-template.php:131
+#: resources/templates/admin/shortcodes-template.php:144
 msgid "Lists only realties that have a garden."
 msgstr ""
 
-#: resources/templates/admin/shortcodes-template.php:139
+#: resources/templates/admin/shortcodes-template.php:152
 msgid "Lists only realties that have a garage."
 msgstr ""
 
-#: resources/templates/admin/shortcodes-template.php:155
+#: resources/templates/admin/shortcodes-template.php:168
 msgid ""
 "Lists only realties having certain 'occupancy' status. Available values: "
 "'wohnen', 'gewerbe', 'anlage'"
 msgstr ""
 
-#: resources/templates/admin/shortcodes-template.php:158
+#: resources/templates/admin/shortcodes-template.php:172
 msgid "Shows only realties with 'wohnen' occupancy status."
 msgstr ""
 
-#: resources/templates/admin/shortcodes-template.php:163
+#: resources/templates/admin/shortcodes-template.php:177
 msgid ""
 "Orders realties by price. Available values: \"asc\" (ascending), \"desc\" "
 "(descending)."
 msgstr ""
 
-#: resources/templates/admin/shortcodes-template.php:166
+#: resources/templates/admin/shortcodes-template.php:180
 msgid "Shows realties in descending price order."
 msgstr ""
 
-#: resources/templates/admin/shortcodes-template.php:171
+#: resources/templates/admin/shortcodes-template.php:185
 msgid ""
 "Orders realties by created at date. Available values: \"asc\" (ascending), "
 "\"desc\" (descending)."
 msgstr ""
 
-#: resources/templates/admin/shortcodes-template.php:174
+#: resources/templates/admin/shortcodes-template.php:189
 msgid "Shows realties in descending created at date order."
 msgstr ""
 
-#: resources/templates/admin/shortcodes-template.php:179
+#: resources/templates/admin/shortcodes-template.php:194
 msgid ""
 "Orders realties by update at date. Available values: \"asc\" (ascending), "
 "\"desc\" (descending)."
 msgstr ""
 
-#: resources/templates/admin/shortcodes-template.php:182
+#: resources/templates/admin/shortcodes-template.php:199
 msgid "Shows realties in descending update at date order."
 msgstr ""
 
-#: resources/templates/admin/shortcodes-template.php:187
+#: resources/templates/admin/shortcodes-template.php:204
 msgid ""
 "Orders realties by surface area. Available values: \"asc\" (ascending), "
 "\"desc\" (descending)."
 msgstr ""
 
-#: resources/templates/admin/shortcodes-template.php:190
+#: resources/templates/admin/shortcodes-template.php:209
 msgid "Shows realties in descending surface area order."
 msgstr ""
 
-#: resources/templates/admin/shortcodes-template.php:195
+#: resources/templates/admin/shortcodes-template.php:214
 msgid ""
 "Orders realties by living area. Available values: \"asc\" (ascending), "
 "\"desc\" (descending)."
 msgstr ""
 
-#: resources/templates/admin/shortcodes-template.php:198
+#: resources/templates/admin/shortcodes-template.php:219
 msgid "Shows realties in descending living area order."
 msgstr ""
 
-#: resources/templates/admin/shortcodes-template.php:203
+#: resources/templates/admin/shortcodes-template.php:224
 msgid ""
 "Orders realties by floor area. Available values: \"asc\" (ascending), "
 "\"desc\" (descending)."
 msgstr ""
 
-#: resources/templates/admin/shortcodes-template.php:206
+#: resources/templates/admin/shortcodes-template.php:228
 msgid "Shows realties in descending floor area order."
 msgstr ""
 
-#: resources/templates/admin/shortcodes-template.php:211
+#: resources/templates/admin/shortcodes-template.php:233
 msgid ""
 "Orders realties by realty number. Available values: \"asc\" (ascending), "
 "\"desc\" (descending)."
 msgstr ""
 
-#: resources/templates/admin/shortcodes-template.php:214
+#: resources/templates/admin/shortcodes-template.php:237
 msgid "Shows realties in descending realty number order."
 msgstr ""
 
-#: resources/templates/admin/shortcodes-template.php:219
+#: resources/templates/admin/shortcodes-template.php:242
 msgid ""
 "Orders realties by zip code order. Available values: \"asc\" (ascending), "
 "\"desc\" (descending)."
 msgstr ""
 
-#: resources/templates/admin/shortcodes-template.php:222
+#: resources/templates/admin/shortcodes-template.php:246
 msgid "Shows realties in descending zip code order order."
 msgstr ""
 
-#: resources/templates/admin/shortcodes-template.php:227
+#: resources/templates/admin/shortcodes-template.php:251
 msgid ""
 "(Note: you cannot combine multiple ordering attributes. Only the last one "
 "will be used)"
 msgstr ""
 
-#: resources/templates/admin/shortcodes-template.php:235
+#: resources/templates/admin/shortcodes-template.php:259
 msgid "The search form shortcode:"
 msgstr ""
 
-#: resources/templates/admin/shortcodes-template.php:240
+#: resources/templates/admin/shortcodes-template.php:264
 msgid ""
 "Paste this shortcode in any page, post or sidebar tText widget to output a "
 "realty search form. This can also be achieved by using the \"JUSTIMMO Search "
 "Form\" widget."
 msgstr ""
 
-#: resources/templates/admin/shortcodes-template.php:248
+#: resources/templates/admin/shortcodes-template.php:272
 msgid "The realty number search form shortcode:"
 msgstr ""
 
-#: resources/templates/admin/shortcodes-template.php:259
+#: resources/templates/admin/shortcodes-template.php:283
 msgid "The project listing shortcode:"
 msgstr ""
 
-#: resources/templates/admin/shortcodes-template.php:264
+#: resources/templates/admin/shortcodes-template.php:288
 msgid ""
 "Paste this shortcode in any page, post or sidebar text widget to output a "
 "list of your available projects."
 msgstr ""
 
-#: resources/templates/admin/shortcodes-template.php:270
+#: resources/templates/admin/shortcodes-template.php:294
 msgid "Limits the number of projects displayed per page."
 msgstr ""
 
-#: resources/templates/admin/shortcodes-template.php:273
+#: resources/templates/admin/shortcodes-template.php:297
 msgid "Shows 5 projects per page."
 msgstr ""
 
-#: resources/templates/admin/shortcodes-template.php:284
+#: resources/templates/admin/shortcodes-template.php:308
 msgid "The project information shortcode:"
 msgstr ""
 
-#: resources/templates/admin/shortcodes-template.php:289
+#: resources/templates/admin/shortcodes-template.php:313
 msgid ""
 "Paste this shortcode in any page, post or sidebar text widget to output "
 "various project information."
 msgstr ""
 
-#: resources/templates/admin/shortcodes-template.php:295
+#: resources/templates/admin/shortcodes-template.php:319
 msgid "The project JUSTIMMO ID (mandatory)."
 msgstr ""
 
-#: resources/templates/admin/shortcodes-template.php:296
-#: resources/templates/admin/api-settings-template.php:58
-#: resources/templates/admin/api-settings-template.php:62
-#: resources/templates/admin/api-settings-template.php:66
-#: resources/templates/admin/api-settings-template.php:70
-#: resources/templates/admin/api-settings-template.php:74
-#: resources/templates/admin/api-settings-template.php:78
-msgid "show image"
-msgstr ""
-
-#: resources/templates/admin/shortcodes-template.php:299
+#: resources/templates/admin/shortcodes-template.php:324
 msgid "Shows information belonging to the project with the JUSTIMMO ID of 5."
 msgstr ""
 
-#: resources/templates/admin/shortcodes-template.php:303
+#: resources/templates/admin/shortcodes-template.php:328
 msgid "The project information to be shown (mandatory)."
 msgstr ""
 
-#: resources/templates/admin/shortcodes-template.php:307
+#: resources/templates/admin/shortcodes-template.php:332
 msgid ""
 "Shows project address information belonging to the project with the JUSTIMMO "
 "ID of 5."
 msgstr ""
 
-#: resources/templates/admin/shortcodes-template.php:311
+#: resources/templates/admin/shortcodes-template.php:336
 msgid "Here is a list of all the values available for the \"info\" option:"
 msgstr ""
 
-#: resources/templates/admin/admin-template.php:18
-msgid "JUSTIMMO Settings"
-msgstr ""
-
-#: resources/templates/admin/admin-template.php:23
-msgid "API Settings"
-msgstr ""
-
-#: resources/templates/admin/admin-template.php:26
-msgid "Shortcodes"
-msgstr ""
-
-#: resources/templates/admin/admin-template.php:29
-msgid "Theming"
-msgstr ""
-
-#: resources/templates/admin/api-settings-template.php:1
-msgid "Please enter your JUSTIMMO API credentials:"
-msgstr ""
-
-#: resources/templates/admin/api-settings-template.php:52
-msgid "How to obtain your JUSTIMMO API credentials:"
-msgstr ""
-
-#: resources/templates/admin/api-settings-template.php:57
-msgid "Log into the JUSTIMMO platform using your account."
-msgstr ""
-
-#: resources/templates/admin/api-settings-template.php:61
-msgid "From the main menu go to \"more\" > \"Exports\"."
-msgstr ""
-
-#: resources/templates/admin/api-settings-template.php:65
-msgid "Switch to the \"Custom Exports\" tab."
-msgstr ""
-
-#: resources/templates/admin/api-settings-template.php:69
-msgid "Click the \"Create JUSTIMMO API\" button."
-msgstr ""
-
-#: resources/templates/admin/api-settings-template.php:73
-msgid "Complete the form with your desired options. Click the \"Save\" button."
-msgstr ""
-
-#: resources/templates/admin/api-settings-template.php:77
-msgid ""
-"You should now have a username and password in your export settings form."
-msgstr ""
-
-#: resources/templates/admin/api-settings-template.php:81
-msgid "You should use these credentials to complete the above form."
-msgstr ""
-
-#: resources/templates/frontend/realty/_realty-extended-info.php:706
+#: resources/templates/frontend/realty/_realty-extended-info.php:700
 #: resources/templates/frontend/realty/realty-template__sidebar.php:708
 msgid "Building Subsidence:"
 msgstr ""
 
-#: resources/templates/frontend/realty/_realty-extended-info.php:754
-#: resources/templates/frontend/realty/_realty-extended-info.php:765
+#: resources/templates/frontend/realty/_realty-extended-info.php:748
+#: resources/templates/frontend/realty/_realty-extended-info.php:759
 #: resources/templates/frontend/realty/realty-template__sidebar.php:756
 #: resources/templates/frontend/realty/realty-template__sidebar.php:767
 msgid "class"
@@ -475,13 +486,27 @@ msgstr ""
 msgid "www.justimmo.at"
 msgstr ""
 
+#: src/Routing.php:23 src/Routing.php:51 src/Routing.php:149
+#: resources/templates/frontend/search-form/_search-form__realty-number.php:2
+#: resources/templates/frontend/search-form/_search-form.php:2
+#: resources/templates/frontend/search-form/_search-form.php:208
+msgid "properties"
+msgstr "immobilien"
+
+#: src/Routing.php:51
+#: resources/templates/frontend/search-form/_search-form__realty-number.php:2
+#: resources/templates/frontend/search-form/_search-form.php:2
+#: resources/templates/frontend/search-form/_search-form.php:208
+msgid "search"
+msgstr "suchen"
+
 #: src/Controller/WidgetController.php:118
 msgid "Inquiry successfully sent!"
 msgstr "Anfrage wurde erfolgreich versendet."
 
-#: resources/templates/admin/shortcodes-template.php:147
-msgid "Lists only realties that have a balcony/terrace."
-msgstr "Immobilien mit Balkon/Terrasse."
+#: resources/templates/admin/api-settings-template.php:7
+msgid "Username"
+msgstr "Benutzername"
 
 #: resources/templates/admin/api-settings-template.php:18
 msgid "Password"
@@ -496,21 +521,330 @@ msgstr "Speichern"
 msgid "Google API Key"
 msgstr "Google API Key"
 
+#: resources/templates/admin/shortcodes-template.php:160
+msgid "Lists only realties that have a balcony/terrace."
+msgstr "Immobilien mit Balkon/Terrasse."
+
+#: resources/templates/frontend/search-form/_search-form__realty-number.php:5
+#: resources/templates/frontend/realty/_realty-extended-info.php:8
+#: resources/templates/frontend/realty/realty-template__sidebar.php:10
+msgid "Realty Number:"
+msgstr "Objektnummer:"
+
+#: resources/templates/frontend/search-form/_search-form__realty-number.php:15
+#: resources/templates/frontend/search-form/_search-form.php:204
+msgid "Search"
+msgstr "Suchen"
+
+#: resources/templates/frontend/search-form/_search-form.php:6
+msgid "Advanced Realty Search"
+msgstr "Immobiliensuche"
+
+#: resources/templates/frontend/search-form/_search-form.php:17
+#: resources/templates/frontend/project/_project-info__realties.php:25
+#: resources/templates/frontend/realty/_realty-info.php:31
+#: resources/templates/frontend/realty/_realty-extended-info.php:158
+#: resources/templates/frontend/realty/realty-template__sidebar.php:160
+msgid "Rent"
+msgstr "Miete"
+
+#: resources/templates/frontend/search-form/_search-form.php:26
+msgid "Buy"
+msgstr "Kauf"
+
+#: resources/templates/frontend/search-form/_search-form.php:32
+#: resources/templates/frontend/realty/_realty-info.php:8
+#: resources/templates/frontend/realty/_realty-extended-info.php:101
+#: resources/templates/frontend/realty/realty-template__sidebar.php:112
+msgid "Realty Type:"
+msgstr "Objektart:"
+
+#: resources/templates/frontend/search-form/_search-form.php:55
+#: resources/templates/frontend/realty/_realty-info.php:60
+#: resources/templates/frontend/realty/_realty-extended-info.php:577
+#: resources/templates/frontend/realty/realty-template__sidebar.php:585
+msgid "Price:"
+msgstr "Preis:"
+
+#: resources/templates/frontend/search-form/_search-form.php:66
+#: resources/templates/frontend/search-form/_search-form.php:92
+#: resources/templates/frontend/search-form/_search-form.php:116
+msgid "to"
+msgstr "bis"
+
+#: resources/templates/frontend/search-form/_search-form.php:81
+#: resources/templates/frontend/realty/_realty-info.php:91
+#: resources/templates/frontend/realty/_realty-extended-info.php:412
+#: resources/templates/frontend/realty/realty-template__sidebar.php:414
+msgid "Rooms:"
+msgstr "Zimmer:"
+
+#: resources/templates/frontend/search-form/_search-form.php:105
+#: resources/templates/frontend/realty/_realty-extended-info.php:213
+#: resources/templates/frontend/realty/realty-template__sidebar.php:215
+msgid "Surface:"
+msgstr "Fläche:"
+
+#: resources/templates/frontend/search-form/_search-form.php:131
+msgid "Country:"
+msgstr "Land:"
+
+#: resources/templates/frontend/search-form/_search-form.php:154
+msgid "State:"
+msgstr "Bundesland:"
+
+#: resources/templates/frontend/search-form/_search-form.php:162
+msgid "Zip Codes:"
+msgstr "Bezirk:"
+
+#: resources/templates/frontend/search-form/_search-form.php:177
+msgid "Garden"
+msgstr "Garten"
+
+#: resources/templates/frontend/search-form/_search-form.php:188
+msgid "Garage"
+msgstr "Garage"
+
+#: resources/templates/frontend/search-form/_search-form.php:199
+msgid "Balcony/Terrace"
+msgstr "Balkon/Terrasse"
+
+#: resources/templates/frontend/search-form/_search-form.php:209
+msgid "Reset Filter"
+msgstr "Filter löschen"
+
+#: resources/templates/frontend/search-form/_search-form__states.php:27
+#: resources/templates/frontend/search-form/_search-form__cities.php:41
+msgid "Please select a country first"
+msgstr "Bitte wählen Sie ein Land"
+
+#: resources/templates/frontend/search-form/_search-form__states.php:33
+msgid "No states found for selected country"
+msgstr "Keine Bundesländer für dieses Land gefunden"
+
+#: resources/templates/frontend/search-form/_search-form__cities.php:47
+msgid "No zip codes found for selected country"
+msgstr "Keine Postleitzahlen für dieses Land gefunden"
+
+#: resources/templates/frontend/project/_project-info__address.php:5
+msgid "Locality:"
+msgstr ""
+"Nähe:\n"
+
+#: resources/templates/frontend/project/_project-info__address.php:13
+#: resources/templates/frontend/realty/_realty-extended-info.php:26
+#: resources/templates/frontend/realty/realty-template__sidebar.php:28
+msgid "Address:"
+msgstr "Adresse:"
+
+#: resources/templates/frontend/project/_project-info__photo-gallery.php:4
+msgid "Photo Gallery"
+msgstr "Bilder"
+
+#: resources/templates/frontend/project/_project-info__realties.php:7
+msgid "Project Realties:"
+msgstr "Immobilien des Projekts:"
+
+#: resources/templates/frontend/project/_project-info__realties.php:12
+msgid "Nb."
+msgstr "Nummer"
+
+#: resources/templates/frontend/project/_project-info__realties.php:13
+msgid "Floor"
+msgstr "Etage"
+
+#: resources/templates/frontend/project/_project-info__realties.php:14
+msgid "Living Area"
+msgstr "Wohnfläche"
+
+#: resources/templates/frontend/project/_project-info__realties.php:15
+msgid "Room Count"
+msgstr "Zimmeranzahl"
+
+#: resources/templates/frontend/project/_project-info__realties.php:16
+msgid "Balcony Surface"
+msgstr "Balkonfläche"
+
+#: resources/templates/frontend/project/_project-info__realties.php:17
+msgid "Terrace Surface"
+msgstr ""
+"Terrassenfläche\n"
+
+#: resources/templates/frontend/project/_project-info__realties.php:18
+msgid "Garden Surface"
+msgstr "Gartenfläche"
+
+#: resources/templates/frontend/project/_project-info__realties.php:23
+msgid "Purchase Price"
+msgstr "Kaufpreis"
+
+#: resources/templates/frontend/project/_project-info__realties.php:28
+msgid "Status"
+msgstr "Status"
+
+#: resources/templates/frontend/project/_project-info__realties.php:57
+msgid "VIEW"
+msgstr "Details"
+
+#: resources/templates/frontend/project/_project-info__contact.php:7
+msgid "Contact Name:"
+msgstr ""
+"Kontaktname:\n"
+
+#: resources/templates/frontend/project/_project-info__contact.php:16
+msgid "Contact Phone:"
+msgstr ""
+"Kontakttelefon:\n"
+
+#: resources/templates/frontend/project/_project-info__contact.php:25
+msgid "Contact E-mail:"
+msgstr ""
+"Kontakt E-Mail:\n"
+
+#: resources/templates/frontend/project/_project-list.php:19
+msgid "No projects found"
+msgstr "Keine Projekte gefunden"
+
+#: resources/templates/frontend/project/project-template.php:25
+msgid "No project found."
+msgstr "Keine Projekte gefunden."
+
+#: resources/templates/frontend/inquiry-form/_inquiry-form.php:7
+msgid "Salutation"
+msgstr "Anrede"
+
+#: resources/templates/frontend/inquiry-form/_inquiry-form.php:10
+msgid "Mr."
+msgstr "Herr"
+
+#: resources/templates/frontend/inquiry-form/_inquiry-form.php:11
+msgid "Ms."
+msgstr "Frau"
+
+#: resources/templates/frontend/inquiry-form/_inquiry-form.php:16
+#: resources/templates/frontend/inquiry-form/_inquiry-form.php:17
+msgid "First Name"
+msgstr "Vorname"
+
+#: resources/templates/frontend/inquiry-form/_inquiry-form.php:22
+#: resources/templates/frontend/inquiry-form/_inquiry-form.php:23
+msgid "Last Name"
+msgstr "Nachname"
+
 #: resources/templates/frontend/inquiry-form/_inquiry-form.php:27
 #: resources/templates/frontend/inquiry-form/_inquiry-form.php:28
 msgid "Email"
 msgstr "E-Mail"
+
+#: resources/templates/frontend/inquiry-form/_inquiry-form.php:32
+#: resources/templates/frontend/inquiry-form/_inquiry-form.php:33
+msgid "Phone"
+msgstr "Telefon"
+
+#: resources/templates/frontend/inquiry-form/_inquiry-form.php:36
+#: resources/templates/frontend/inquiry-form/_inquiry-form.php:37
+msgid "Street"
+msgstr "Straße"
+
+#: resources/templates/frontend/inquiry-form/_inquiry-form.php:41
+#: resources/templates/frontend/inquiry-form/_inquiry-form.php:42
+msgid "Zipcode"
+msgstr "PLZ"
+
+#: resources/templates/frontend/inquiry-form/_inquiry-form.php:46
+#: resources/templates/frontend/inquiry-form/_inquiry-form.php:47
+msgid "City"
+msgstr "Ort"
+
+#: resources/templates/frontend/inquiry-form/_inquiry-form.php:50
+msgid "Message"
+msgstr "Nachricht"
+
+#: resources/templates/frontend/inquiry-form/_inquiry-form.php:51
+msgid "I am interested in this property: "
+msgstr ""
+"Ich interessiere mich für folgende Objektnummer und ersuche um "
+"Kontaktaufnahme:"
+
+#: resources/templates/frontend/inquiry-form/_inquiry-form.php:54
+msgid "Fields marked with an * are mandatory."
+msgstr "Mit einem * markierte Felder sind Pflichtfelder."
+
+#: resources/templates/frontend/inquiry-form/_inquiry-form.php:56
+msgid "Request Info"
+msgstr "Infos anfordern"
+
+#: resources/templates/frontend/realty/_realty-info.php:20
+#: resources/templates/frontend/realty/_realty-extended-info.php:147
+#: resources/templates/frontend/realty/realty-template__sidebar.php:149
+msgid "For:"
+msgstr "Vermarktungsart:"
+
+#: resources/templates/frontend/realty/_realty-info.php:29
+#: resources/templates/frontend/realty/_realty-extended-info.php:156
+#: resources/templates/frontend/realty/realty-template__sidebar.php:158
+msgid "Purchase"
+msgstr "Kauf"
+
+#: resources/templates/frontend/realty/_realty-info.php:75
+#: resources/templates/frontend/realty/_realty-extended-info.php:234
+#: resources/templates/frontend/realty/realty-template__sidebar.php:236
+msgid "Surface Area:"
+msgstr "Grundfläche:"
+
+#: resources/templates/frontend/realty/realty-template.php:18
+msgid "Expose"
+msgstr "Exposé"
+
+#: resources/templates/frontend/realty/realty-template.php:55
+msgid "No realty found."
+msgstr "Keine Immobilien gefunden."
+
+#: resources/templates/frontend/realty/_realty-list.php:19
+msgid "No realties found"
+msgstr "Keine Immobilien gefunden"
+
+#: resources/templates/frontend/realty/_realty-extended-info.php:3
+#: resources/templates/frontend/realty/realty-template__sidebar.php:5
+msgid "Basic details:"
+msgstr ""
+"Merkmale:\n"
+
+#: resources/templates/frontend/realty/_realty-extended-info.php:17
+#: resources/templates/frontend/realty/realty-template__sidebar.php:19
+msgid "Country / State:"
+msgstr ""
+"Ort:\n"
+
+#: resources/templates/frontend/realty/_realty-extended-info.php:79
+#: resources/templates/frontend/realty/realty-template__sidebar.php:81
+msgid "Location:"
+msgstr "Lage:"
+
+#: resources/templates/frontend/realty/_realty-extended-info.php:91
+#: resources/templates/frontend/realty/realty-template__sidebar.php:93
+msgid "Proximity:"
+msgstr "Nähe:"
+
+#: resources/templates/frontend/realty/_realty-extended-info.php:110
+msgid "Realty Subtype:"
+msgstr "Unterobjektart:"
 
 #: resources/templates/frontend/realty/_realty-extended-info.php:122
 #: resources/templates/frontend/realty/realty-template__sidebar.php:124
 msgid "Building Age:"
 msgstr "Bauart:"
 
-#: resources/templates/frontend/realty/_realty-extended-info.php:156
-#: resources/templates/frontend/realty/realty-template__sidebar.php:158
-#: resources/templates/frontend/realty/_realty-info.php:27
-msgid "Purchase"
-msgstr "Kauf"
+#: resources/templates/frontend/realty/_realty-extended-info.php:136
+#: resources/templates/frontend/realty/realty-template__sidebar.php:138
+msgid "Categories:"
+msgstr ""
+"Kategorien:\n"
+
+#: resources/templates/frontend/realty/_realty-extended-info.php:171
+#: resources/templates/frontend/realty/realty-template__sidebar.php:173
+msgid "Your Contact Person"
+msgstr "Ihre Ansprechperson"
 
 #: resources/templates/frontend/realty/_realty-extended-info.php:179
 #: resources/templates/frontend/realty/realty-template__sidebar.php:181
@@ -523,6 +857,21 @@ msgstr ""
 msgid "Email:"
 msgstr "E-Mail:"
 
+#: resources/templates/frontend/realty/_realty-extended-info.php:202
+#: resources/templates/frontend/realty/realty-template__sidebar.php:204
+msgid "Phone:"
+msgstr "Telefon:"
+
+#: resources/templates/frontend/realty/_realty-extended-info.php:221
+#: resources/templates/frontend/realty/realty-template__sidebar.php:223
+msgid "Floor Area:"
+msgstr "Nutzfläche:"
+
+#: resources/templates/frontend/realty/_realty-extended-info.php:247
+#: resources/templates/frontend/realty/realty-template__sidebar.php:249
+msgid "Living Area:"
+msgstr "Wohnfläche:"
+
 #: resources/templates/frontend/realty/_realty-extended-info.php:260
 #: resources/templates/frontend/realty/realty-template__sidebar.php:262
 msgid "Total Area:"
@@ -532,6 +881,12 @@ msgstr "Gesamtfläche:"
 #: resources/templates/frontend/realty/realty-template__sidebar.php:275
 msgid "Balcony Area:"
 msgstr "Balkonfläche:"
+
+#: resources/templates/frontend/realty/_realty-extended-info.php:286
+#: resources/templates/frontend/realty/realty-template__sidebar.php:288
+msgid "Terrace Area:"
+msgstr ""
+"Terrassenfläche:\n"
 
 #: resources/templates/frontend/realty/_realty-extended-info.php:299
 #: resources/templates/frontend/realty/realty-template__sidebar.php:301
@@ -573,11 +928,33 @@ msgstr "Stellplatzfläche:"
 msgid "Buildable Area:"
 msgstr "Verbaubare Fläche:"
 
+#: resources/templates/frontend/realty/_realty-extended-info.php:404
+#: resources/templates/frontend/realty/realty-template__sidebar.php:406
+msgid "Room Count:"
+msgstr ""
+"Zimmeranzahl:\n"
+
+#: resources/templates/frontend/realty/_realty-extended-info.php:425
+#: resources/templates/frontend/realty/realty-template__sidebar.php:427
+msgid "Bathrooms:"
+msgstr "Bäder:"
+
+#: resources/templates/frontend/realty/_realty-extended-info.php:438
+#: resources/templates/frontend/realty/realty-template__sidebar.php:440
+msgid "Toilet Rooms:"
+msgstr "Toiletten:"
+
 #: resources/templates/frontend/realty/_realty-extended-info.php:451
 #: resources/templates/frontend/realty/realty-template__sidebar.php:453
 msgid "Balconies:"
 msgstr ""
 "Anzahl Balkone:\n"
+
+#: resources/templates/frontend/realty/_realty-extended-info.php:464
+#: resources/templates/frontend/realty/realty-template__sidebar.php:466
+msgid "Terraces:"
+msgstr ""
+"Terrassen:\n"
 
 #: resources/templates/frontend/realty/_realty-extended-info.php:477
 #: resources/templates/frontend/realty/_realty-extended-info.php:490
@@ -598,329 +975,6 @@ msgid "Parking Spaces:"
 msgstr ""
 "Anzahl Stellplätze:\n"
 
-#: resources/templates/frontend/realty/_realty-extended-info.php:610
-#: resources/templates/frontend/realty/realty-template__sidebar.php:612
-msgid "Additional Costs:"
-msgstr ""
-"Zusatzkosten:\n"
-
-#: resources/templates/frontend/realty/_realty-extended-info.php:636
-#: resources/templates/frontend/realty/realty-template__sidebar.php:638
-msgid "Contract Establishment Costs:"
-msgstr "Vertragserrichtungskosten:"
-
-#: resources/templates/frontend/realty/_realty-extended-info.php:678
-#: resources/templates/frontend/realty/realty-template__sidebar.php:680
-msgid "Additional Charges:"
-msgstr "Weitere Kosten:"
-
-#: resources/templates/frontend/realty/_realty-extended-info.php:692
-#: resources/templates/frontend/realty/realty-template__sidebar.php:694
-msgid "Yearly Net Earning:"
-msgstr ""
-"Nettoertrag pro Jahr:\n"
-
-#: resources/templates/frontend/realty/_realty-extended-info.php:720
-#: resources/templates/frontend/realty/realty-template__sidebar.php:722
-msgid "Net Yield:"
-msgstr "Nettorendite:"
-
-#: resources/templates/frontend/realty/_realty-extended-info.php:783
-msgid "Other Information"
-msgstr "Weitere Informationen"
-
-#: resources/templates/frontend/realty/_realty-list.php:19
-msgid "No realties found"
-msgstr "Keine Immobilien gefunden"
-
-#: resources/templates/frontend/realty/realty-template.php:18
-msgid "Expose"
-msgstr "Exposé"
-
-#: resources/templates/frontend/realty/realty-template.php:55
-msgid "No realty found."
-msgstr "Keine Immobilien gefunden."
-
-#: resources/templates/frontend/project/project-template.php:25
-msgid "No project found."
-msgstr "Keine Projekte gefunden."
-
-#: resources/templates/frontend/project/_project-info__photo-gallery.php:4
-msgid "Photo Gallery"
-msgstr "Bilder"
-
-#: resources/templates/frontend/project/_project-info__contact.php:7
-msgid "Contact Name:"
-msgstr ""
-"Kontaktname:\n"
-
-#: resources/templates/frontend/project/_project-info__contact.php:16
-msgid "Contact Phone:"
-msgstr ""
-"Kontakttelefon:\n"
-
-#: resources/templates/frontend/project/_project-info__contact.php:25
-msgid "Contact E-mail:"
-msgstr ""
-"Kontakt E-Mail:\n"
-
-#: resources/templates/frontend/project/_project-info__address.php:5
-msgid "Locality:"
-msgstr ""
-"Nähe:\n"
-
-#: resources/templates/frontend/project/_project-list.php:19
-msgid "No projects found"
-msgstr "Keine Projekte gefunden"
-
-#: resources/templates/frontend/project/_project-info__realties.php:7
-msgid "Project Realties:"
-msgstr "Immobilien des Projekts:"
-
-#: resources/templates/frontend/project/_project-info__realties.php:12
-msgid "Nb."
-msgstr "Nummer"
-
-#: resources/templates/frontend/project/_project-info__realties.php:13
-msgid "Floor"
-msgstr "Etage"
-
-#: resources/templates/frontend/project/_project-info__realties.php:15
-msgid "Room Count"
-msgstr "Zimmeranzahl"
-
-#: resources/templates/frontend/project/_project-info__realties.php:16
-msgid "Balcony Surface"
-msgstr "Balkonfläche"
-
-#: resources/templates/frontend/project/_project-info__realties.php:17
-msgid "Terrace Surface"
-msgstr ""
-"Terrassenfläche\n"
-
-#: resources/templates/frontend/project/_project-info__realties.php:28
-msgid "Status"
-msgstr "Status"
-
-#: resources/templates/frontend/search-form/_search-form__states.php:33
-msgid "No states found for selected country"
-msgstr "Keine Bundesländer für dieses Land gefunden"
-
-#: resources/templates/frontend/search-form/_search-form__cities.php:47
-msgid "No zip codes found for selected country"
-msgstr "Keine Postleitzahlen für dieses Land gefunden"
-
-#: resources/templates/frontend/search-form/_search-form.php:185
-msgid "Garage"
-msgstr "Garage"
-
-#: src/Routing.php:23 src/Routing.php:51 src/Routing.php:149
-#: resources/templates/frontend/search-form/_search-form__realty-number.php:1
-#: resources/templates/frontend/search-form/_search-form.php:1
-#: resources/templates/frontend/search-form/_search-form.php:205
-msgid "properties"
-msgstr "immobilien"
-
-#: src/Routing.php:51
-msgid "search"
-msgstr "suchen"
-
-#: resources/templates/admin/api-settings-template.php:7
-msgid "Username"
-msgstr "Benutzername"
-
-#: resources/templates/frontend/inquiry-form/_inquiry-form.php:7
-msgid "Salutation"
-msgstr "Anrede"
-
-#: resources/templates/frontend/inquiry-form/_inquiry-form.php:10
-msgid "Mr."
-msgstr "Herr"
-
-#: resources/templates/frontend/inquiry-form/_inquiry-form.php:11
-msgid "Ms."
-msgstr "Frau"
-
-#: resources/templates/frontend/inquiry-form/_inquiry-form.php:16
-#: resources/templates/frontend/inquiry-form/_inquiry-form.php:17
-msgid "First Name"
-msgstr "Vorname"
-
-#: resources/templates/frontend/inquiry-form/_inquiry-form.php:22
-#: resources/templates/frontend/inquiry-form/_inquiry-form.php:23
-msgid "Last Name"
-msgstr "Nachname"
-
-#: resources/templates/frontend/inquiry-form/_inquiry-form.php:32
-#: resources/templates/frontend/inquiry-form/_inquiry-form.php:33
-msgid "Phone"
-msgstr "Telefon"
-
-#: resources/templates/frontend/inquiry-form/_inquiry-form.php:36
-#: resources/templates/frontend/inquiry-form/_inquiry-form.php:37
-msgid "Street"
-msgstr "Straße"
-
-#: resources/templates/frontend/inquiry-form/_inquiry-form.php:41
-#: resources/templates/frontend/inquiry-form/_inquiry-form.php:42
-msgid "Zipcode"
-msgstr "PLZ"
-
-#: resources/templates/frontend/inquiry-form/_inquiry-form.php:46
-#: resources/templates/frontend/inquiry-form/_inquiry-form.php:47
-msgid "City"
-msgstr "Ort"
-
-#: resources/templates/frontend/inquiry-form/_inquiry-form.php:50
-msgid "Message"
-msgstr "Nachricht"
-
-#: resources/templates/frontend/inquiry-form/_inquiry-form.php:51
-msgid "I am interested in this property: "
-msgstr ""
-"Ich interessiere mich für folgende Objektnummer und ersuche um "
-"Kontaktaufnahme:"
-
-#: resources/templates/frontend/inquiry-form/_inquiry-form.php:54
-msgid "Fields marked with an * are mandatory."
-msgstr "Mit einem * markierte Felder sind Pflichtfelder."
-
-#: resources/templates/frontend/inquiry-form/_inquiry-form.php:56
-msgid "Request Info"
-msgstr "Infos anfordern"
-
-#: resources/templates/frontend/realty/_realty-extended-info.php:3
-#: resources/templates/frontend/realty/realty-template__sidebar.php:5
-msgid "Basic details:"
-msgstr ""
-"Merkmale:\n"
-
-#: resources/templates/frontend/realty/_realty-extended-info.php:8
-#: resources/templates/frontend/realty/realty-template__sidebar.php:10
-#: resources/templates/frontend/search-form/_search-form__realty-number.php:3
-msgid "Realty Number:"
-msgstr "Objektnummer:"
-
-#: resources/templates/frontend/realty/_realty-extended-info.php:17
-#: resources/templates/frontend/realty/realty-template__sidebar.php:19
-msgid "Country / State:"
-msgstr ""
-"Ort:\n"
-
-#: resources/templates/frontend/realty/_realty-extended-info.php:26
-#: resources/templates/frontend/realty/realty-template__sidebar.php:28
-#: resources/templates/frontend/project/_project-info__address.php:13
-msgid "Address:"
-msgstr "Adresse:"
-
-#: resources/templates/frontend/realty/_realty-extended-info.php:79
-#: resources/templates/frontend/realty/realty-template__sidebar.php:81
-msgid "Location:"
-msgstr "Lage:"
-
-#: resources/templates/frontend/realty/_realty-extended-info.php:91
-#: resources/templates/frontend/realty/realty-template__sidebar.php:93
-msgid "Proximity:"
-msgstr "Nähe:"
-
-#: resources/templates/frontend/realty/_realty-extended-info.php:101
-#: resources/templates/frontend/realty/realty-template__sidebar.php:112
-#: resources/templates/frontend/realty/_realty-info.php:6
-#: resources/templates/frontend/search-form/_search-form.php:29
-msgid "Realty Type:"
-msgstr "Objektart:"
-
-#: resources/templates/frontend/realty/_realty-extended-info.php:110
-msgid "Realty Subtype:"
-msgstr "Unterobjektart:"
-
-#: resources/templates/frontend/realty/_realty-extended-info.php:136
-#: resources/templates/frontend/realty/realty-template__sidebar.php:138
-msgid "Categories:"
-msgstr ""
-"Kategorien:\n"
-
-#: resources/templates/frontend/realty/_realty-extended-info.php:147
-#: resources/templates/frontend/realty/realty-template__sidebar.php:149
-#: resources/templates/frontend/realty/_realty-info.php:18
-msgid "For:"
-msgstr "Vermarktungsart:"
-
-#: resources/templates/frontend/realty/_realty-extended-info.php:158
-#: resources/templates/frontend/realty/realty-template__sidebar.php:160
-#: resources/templates/frontend/realty/_realty-info.php:29
-#: resources/templates/frontend/project/_project-info__realties.php:25
-#: resources/templates/frontend/search-form/_search-form.php:14
-msgid "Rent"
-msgstr "Miete"
-
-#: resources/templates/frontend/realty/_realty-extended-info.php:171
-#: resources/templates/frontend/realty/realty-template__sidebar.php:173
-msgid "Your Contact Person"
-msgstr "Ihre Ansprechperson"
-
-#: resources/templates/frontend/realty/_realty-extended-info.php:202
-#: resources/templates/frontend/realty/realty-template__sidebar.php:204
-msgid "Phone:"
-msgstr "Telefon:"
-
-#: resources/templates/frontend/realty/_realty-extended-info.php:213
-#: resources/templates/frontend/realty/realty-template__sidebar.php:215
-#: resources/templates/frontend/search-form/_search-form.php:102
-msgid "Surface:"
-msgstr "Fläche:"
-
-#: resources/templates/frontend/realty/_realty-extended-info.php:221
-#: resources/templates/frontend/realty/realty-template__sidebar.php:223
-msgid "Floor Area:"
-msgstr "Nutzfläche:"
-
-#: resources/templates/frontend/realty/_realty-extended-info.php:234
-#: resources/templates/frontend/realty/realty-template__sidebar.php:236
-#: resources/templates/frontend/realty/_realty-info.php:80
-msgid "Surface Area:"
-msgstr "Grundfläche:"
-
-#: resources/templates/frontend/realty/_realty-extended-info.php:247
-#: resources/templates/frontend/realty/realty-template__sidebar.php:249
-msgid "Living Area:"
-msgstr "Wohnfläche:"
-
-#: resources/templates/frontend/realty/_realty-extended-info.php:286
-#: resources/templates/frontend/realty/realty-template__sidebar.php:288
-msgid "Terrace Area:"
-msgstr ""
-"Terrassenfläche:\n"
-
-#: resources/templates/frontend/realty/_realty-extended-info.php:404
-#: resources/templates/frontend/realty/realty-template__sidebar.php:406
-msgid "Room Count:"
-msgstr ""
-"Zimmeranzahl:\n"
-
-#: resources/templates/frontend/realty/_realty-extended-info.php:412
-#: resources/templates/frontend/realty/realty-template__sidebar.php:414
-#: resources/templates/frontend/realty/_realty-info.php:96
-#: resources/templates/frontend/search-form/_search-form.php:78
-msgid "Rooms:"
-msgstr "Zimmer:"
-
-#: resources/templates/frontend/realty/_realty-extended-info.php:425
-#: resources/templates/frontend/realty/realty-template__sidebar.php:427
-msgid "Bathrooms:"
-msgstr "Bäder:"
-
-#: resources/templates/frontend/realty/_realty-extended-info.php:438
-#: resources/templates/frontend/realty/realty-template__sidebar.php:440
-msgid "Toilet Rooms:"
-msgstr "Toiletten:"
-
-#: resources/templates/frontend/realty/_realty-extended-info.php:464
-#: resources/templates/frontend/realty/realty-template__sidebar.php:466
-msgid "Terraces:"
-msgstr ""
-"Terrassen:\n"
-
 #: resources/templates/frontend/realty/_realty-extended-info.php:529
 #: resources/templates/frontend/realty/realty-template__sidebar.php:531
 msgid "Store Rooms:"
@@ -936,54 +990,78 @@ msgstr "Ausstattung"
 msgid "Prices / Costs"
 msgstr "Preisinformationen"
 
-#: resources/templates/frontend/realty/_realty-extended-info.php:583
-#: resources/templates/frontend/realty/realty-template__sidebar.php:585
-#: resources/templates/frontend/realty/_realty-info.php:65
-#: resources/templates/frontend/search-form/_search-form.php:52
-msgid "Price:"
-msgstr "Preis:"
-
-#: resources/templates/frontend/realty/_realty-extended-info.php:597
+#: resources/templates/frontend/realty/_realty-extended-info.php:591
 #: resources/templates/frontend/realty/realty-template__sidebar.php:599
 msgid "Commission:"
 msgstr "Provision:"
 
-#: resources/templates/frontend/realty/_realty-extended-info.php:650
+#: resources/templates/frontend/realty/_realty-extended-info.php:604
+#: resources/templates/frontend/realty/realty-template__sidebar.php:612
+msgid "Additional Costs:"
+msgstr ""
+"Zusatzkosten:\n"
+
+#: resources/templates/frontend/realty/_realty-extended-info.php:630
+#: resources/templates/frontend/realty/realty-template__sidebar.php:638
+msgid "Contract Establishment Costs:"
+msgstr "Vertragserrichtungskosten:"
+
+#: resources/templates/frontend/realty/_realty-extended-info.php:644
 #: resources/templates/frontend/realty/realty-template__sidebar.php:652
 msgid "Land Registration Tax:"
 msgstr "Grundbucheintragung:"
 
-#: resources/templates/frontend/realty/_realty-extended-info.php:664
+#: resources/templates/frontend/realty/_realty-extended-info.php:658
 #: resources/templates/frontend/realty/realty-template__sidebar.php:666
 msgid "Transfer Tax:"
 msgstr "Grunderwerbsteuer:"
 
-#: resources/templates/frontend/realty/_realty-extended-info.php:737
+#: resources/templates/frontend/realty/_realty-extended-info.php:672
+#: resources/templates/frontend/realty/realty-template__sidebar.php:680
+msgid "Additional Charges:"
+msgstr "Weitere Kosten:"
+
+#: resources/templates/frontend/realty/_realty-extended-info.php:686
+#: resources/templates/frontend/realty/realty-template__sidebar.php:694
+msgid "Yearly Net Earning:"
+msgstr ""
+"Nettoertrag pro Jahr:\n"
+
+#: resources/templates/frontend/realty/_realty-extended-info.php:714
+#: resources/templates/frontend/realty/realty-template__sidebar.php:722
+msgid "Net Yield:"
+msgstr "Nettorendite:"
+
+#: resources/templates/frontend/realty/_realty-extended-info.php:731
 #: resources/templates/frontend/realty/realty-template__sidebar.php:739
 msgid "Energy Efficiency Certificate"
 msgstr "Energieausweis"
 
-#: resources/templates/frontend/realty/_realty-extended-info.php:741
+#: resources/templates/frontend/realty/_realty-extended-info.php:735
 #: resources/templates/frontend/realty/realty-template__sidebar.php:743
 msgid "Valid until:"
 msgstr "Gültig bis:"
 
-#: resources/templates/frontend/realty/_realty-extended-info.php:750
+#: resources/templates/frontend/realty/_realty-extended-info.php:744
 #: resources/templates/frontend/realty/realty-template__sidebar.php:752
 msgid "Annual Thermal Energy Consumption:"
 msgstr "Heizwärmebedarf:"
 
-#: resources/templates/frontend/realty/_realty-extended-info.php:761
+#: resources/templates/frontend/realty/_realty-extended-info.php:755
 #: resources/templates/frontend/realty/realty-template__sidebar.php:763
 msgid "Energy Efficiency Factor:"
 msgstr ""
 "fGEE:\n"
 
-#: resources/templates/frontend/realty/_realty-extended-info.php:775
+#: resources/templates/frontend/realty/_realty-extended-info.php:769
 msgid "Description"
 msgstr "Beschreibung"
 
-#: resources/templates/frontend/realty/_realty-extended-info.php:809
+#: resources/templates/frontend/realty/_realty-extended-info.php:777
+msgid "Other Information"
+msgstr "Weitere Informationen"
+
+#: resources/templates/frontend/realty/_realty-extended-info.php:803
 msgid "Location"
 msgstr "Lage"
 
@@ -991,67 +1069,3 @@ msgstr "Lage"
 msgid "Commercial Type:"
 msgstr ""
 "Objektart:\n"
-
-#: resources/templates/frontend/project/_project-info__realties.php:14
-msgid "Living Area"
-msgstr "Wohnfläche"
-
-#: resources/templates/frontend/project/_project-info__realties.php:18
-msgid "Garden Surface"
-msgstr "Gartenfläche"
-
-#: resources/templates/frontend/project/_project-info__realties.php:23
-msgid "Purchase Price"
-msgstr "Kaufpreis"
-
-#: resources/templates/frontend/project/_project-info__realties.php:62
-msgid "VIEW"
-msgstr "Details"
-
-#: resources/templates/frontend/search-form/_search-form__states.php:27
-#: resources/templates/frontend/search-form/_search-form__cities.php:41
-msgid "Please select a country first"
-msgstr "Bitte wählen Sie ein Land"
-
-#: resources/templates/frontend/search-form/_search-form__realty-number.php:13
-#: resources/templates/frontend/search-form/_search-form.php:201
-msgid "Search"
-msgstr "Suchen"
-
-#: resources/templates/frontend/search-form/_search-form.php:3
-msgid "Advanced Realty Search"
-msgstr "Immobiliensuche"
-
-#: resources/templates/frontend/search-form/_search-form.php:23
-msgid "Buy"
-msgstr "Kauf"
-
-#: resources/templates/frontend/search-form/_search-form.php:63
-#: resources/templates/frontend/search-form/_search-form.php:89
-#: resources/templates/frontend/search-form/_search-form.php:113
-msgid "to"
-msgstr "bis"
-
-#: resources/templates/frontend/search-form/_search-form.php:128
-msgid "Country:"
-msgstr "Land:"
-
-#: resources/templates/frontend/search-form/_search-form.php:151
-msgid "State:"
-msgstr "Bundesland:"
-
-#: resources/templates/frontend/search-form/_search-form.php:159
-msgid "Zip Codes:"
-msgstr "Bezirk:"
-
-#: resources/templates/frontend/search-form/_search-form.php:174
-msgid "Garden"
-msgstr "Garten"
-
-#: resources/templates/frontend/search-form/_search-form.php:196
-msgid "Balcony/Terrace"
-msgstr "Balkon/Terrasse"
-
-#: resources/templates/frontend/search-form/_search-form.php:205
-msgid "Reset Filter"
-msgstr "Filter löschen"
