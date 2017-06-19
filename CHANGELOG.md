@@ -1,3 +1,7 @@
+## 1.0.6
+ * Bugfix post url for property number search widget
+ * Changes to state filter
+
 ## 1.0.5
  * Bugfix pagination parameter
  * Bugfix post url for search widget
