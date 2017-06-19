@@ -1,3 +1,7 @@
+## 1.0.5
+ * Bugfix pagination parameter
+ * Bugfix post url for search widget
+
 ## 1.0.4
  * Add support for regionalized number and currency formatting
 
