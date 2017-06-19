@@ -1,4 +1,4 @@
-<form action="<?php bloginfo( 'url' ); ?>/<?php _e('properties', 'jiwp'); ?>/search" class="ji-search-form">
+<form action="<?php bloginfo( 'url' ); ?>/<?php _e('properties', 'jiwp'); ?>/<?php _e('search', 'jiwp'); ?>" class="ji-search-form">
 
     <h3><?php _e( 'Advanced Realty Search', 'jiwp' ); ?></h3>
 
@@ -202,7 +202,7 @@
     </p>
 
     <p class="ji-search-form__row">
-        <a href="/<?php _e('properties', 'jiwp'); ?>/search"><?php _e( 'Reset Filter', 'jiwp' ); ?></a>
+        <a href="<?php bloginfo( 'url' ); ?>/<?php _e('properties', 'jiwp'); ?>/<?php _e('search', 'jiwp'); ?>"><?php _e( 'Reset Filter', 'jiwp' ); ?></a>
     </p>
     
 </form>
