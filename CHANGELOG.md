@@ -1,3 +1,6 @@
+## 1.0.4
+ * Add support for regionalized number and currency formatting
+
 ## 1.0.3
  * Update german translations
 
