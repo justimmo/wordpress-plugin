@@ -265,17 +265,21 @@ class RealtyController extends BaseController
         return 'article';
     }
 
-    public function getOgImage()
+    public function getOgImages()
     {
+        $images = [];
+
         if (!empty($this->currentRealty)) {
             /** @var Attachment[] $pictures */
             $pictures = $this->currentRealty->getPictures();
             if (!empty($pictures)) {
-                return $pictures[0]->getUrl();
+                foreach ($pictures as $picture) {
+                    $images[] = $picture->getUrl();
+                }
             }
         }
 
-        return '';
+        return $images;
     }
 
     public function getOgUrl()
@@ -291,7 +295,7 @@ class RealtyController extends BaseController
     {
         $title = $this->getOgTitle();
         $description = $this->getOgDescription();
-        $imgSrc = $this->getOgImage();
+        $imgSrcs = $this->getOgImages();
         $url = $this->getOgUrl();
         include(Templating::getPath('og-tags.php'));
     }

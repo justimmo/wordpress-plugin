@@ -29,13 +29,26 @@
 
                     <?php foreach ($photos_array as $photo) : ?>
 
-                        <li class="ji-photos-list__item" data-thumb="<?php echo $photo->getUrl('big2') ?>">
+                        <?php
+                        try {
+                            $imageBigUrl = $photo->getUrl('big2');
+                            $imageMediumUrl = $photo->getUrl('medium');
+                        } catch (\Exception $e) {
+                            $imageBigUrl = null;
+                            $imageMediumUrl = null;
+                        }
+                        ?>
 
-                            <a href="<?php echo $photo->getUrl('big2') ?>" class="fancybox" rel="gallery">
-                                <img src="<?php echo $photo->getUrl('medium') ?>" class="ji-photo" alt=""/>
-                            </a>
+                        <?php if ($imageBigUrl && $imageMediumUrl) : ?>
 
-                        </li>
+                            <li class="ji-photos-list__item" data-thumb="<?php echo $imageBigUrl ?>">
+                                <a href="<?php echo $imageBigUrl ?>" class="fancybox" rel="gallery">
+                                    <img src="<?php echo $imageMediumUrl ?>" class="ji-photo" alt=""/>
+                                </a>
+
+                            </li>
+
+                        <?php endif; ?>
 
                     <?php endforeach; ?>
 
