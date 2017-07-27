@@ -8,15 +8,15 @@
                 <?php
 
                 try {
-                    $img_src = $photos_array[0]->getUrl('medium');
+                    $img_src = $photo->getUrl('medium');
                 } catch (Exception $e) {
-                    $img_src = $photos_array[0]->getUrl();
+                    $img_src = $photo->getUrl();
                 }
 
                 try {
-                    $img_href = $photos_array[0]->getUrl('big2');
+                    $img_href = $photo->getUrl('big2');
                 } catch (Exception $e) {
-                    $img_href = $photos_array[0]->getUrl();
+                    $img_href = $photo->getUrl();
                 }
 
                 ?>
