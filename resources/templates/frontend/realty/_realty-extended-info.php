@@ -28,52 +28,51 @@
             <span class="ji-info__value">
                 <?php
 
-                $address_array = array();
+                $addressParts = array();
 
                 $zipCode =  $realty->getZipCode();
 
                 if (!empty($zipCode)) {
-                    $address_array[] = $zipCode;
+                    $addressParts[0] = $zipCode;
                 }
 
                 $place = $realty->getPlace();
 
                 if (!empty($place)) {
-                    $address_array[] = $place;
+                    $addressParts[0] .= ($addressParts[0] ? ' ' : '') . $place;
                 }
 
                 $street = $realty->getStreet();
 
                 if (!empty($street)) {
-                    $address_array[] = $street;
+                    $addressParts[1] = $street;
                 }
 
                 $houseNumber = $realty->getHouseNumber();
 
                 if (!empty($houseNumber)) {
-                    $address_array[] = $houseNumber;
+                    $addressParts[1] .= ($addressParts[1] ? ' ' : '') . $houseNumber;
                 }
 
                 $stair = $realty->getStair();
 
                 if (!empty($stair)) {
-                    $address_array[] = $stair;
+                    $addressParts[1] .= ($addressParts[1] ? '/' : '') . $stair;
                 }
 
                 $doorNumber = $realty->getDoorNumber();
 
                 if (!empty($doorNumber)) {
-                    $address_array[] = $doorNumber;
+                    $addressParts[1] .= ($addressParts[1] ? '/' : '') . $doorNumber;
                 }
 
-                echo implode(', ', $address_array);
-
+                echo implode(', ', $addressParts);
                 ?>
             </span>
         </li>
 
         <?php $locality = $realty->getLocality(); ?>
-        <?php if (!empty($locality)) : ?>
+        <?php if (!empty($locality)): ?>
             <li class="ji-info">
                 <label class="ji-info__label">
                     <?php _e('Location:', 'jiwp'); ?>
@@ -85,7 +84,7 @@
         <?php endif; ?>
 
         <?php $proximity = $realty->getProximity(); ?>
-        <?php if (!empty($proximity)) : ?>
+        <?php if (!empty($proximity)): ?>
             <li class="ji-info">
                 <label class="ji-info__label">
                     <?php _e('Proximity:', 'jiwp'); ?>
@@ -115,7 +114,7 @@
         </li>
 
         <?php $building_age = $realty->getStyleOfBuilding(); ?>
-        <?php if (!empty($building_age)) : ?>
+        <?php if (!empty($building_age)): ?>
 
             <li class="ji-info">
                 <label class="ji-info__label">
@@ -129,8 +128,7 @@
         <?php endif; ?>
 
         <?php $categories = $realty->getCategories(); ?>
-        <?php if (!empty($categories)) : ?>
-
+        <?php if (!empty($categories)): ?>
             <li class="ji-info">
                 <label class="ji-info__label">
                     <?php _e('Categories:', 'jiwp'); ?>
@@ -139,7 +137,6 @@
                     <?php echo implode(', ', $categories); ?>
                 </span>
             </li>
-
         <?php endif; ?>
 
         <li class="ji-info">
@@ -166,12 +163,12 @@
 
 <!-- Contact Details -->
 <?php $contact = $realty->getContact(); ?>
-<?php if (!empty($contact)) : ?>
+<?php if (!empty($contact)): ?>
     <section class="ji-info-section">
         <h2 class="ji-info-section__title"><?php _e('Your Contact Person', 'jiwp'); ?></h2>
         <div class="contact-person">
             <?php $pictures = $contact->getPictures(); ?>
-            <?php if (!empty($pictures)) : ?>
+            <?php if (!empty($pictures)): ?>
                 <img src="<?php echo $pictures[0]->getUrl('small'); ?>" class="contact-person__avatar" alt=""/>
             <?php endif; ?>
             <ul class="ji-info-list contact-person__info-list">
@@ -189,7 +186,7 @@
                 </li>
                 
                 <?php $contact_email = $contact->getEmail(); ?>
-                <?php if (!empty($contact_email)) : ?>
+                <?php if (!empty($contact_email)): ?>
                     <li class="ji-info">
                         <label class="ji-info__label"><?php _e('Email:', 'jiwp'); ?></label>
                         <span class="ji-info__value"><?php echo $contact_email; ?></span>
@@ -197,7 +194,7 @@
                 <?php endif; ?>
 
                 <?php $contact_phone = $contact->getPhone(); ?>
-                <?php if (!empty($contact_phone)) : ?>
+                <?php if (!empty($contact_phone)): ?>
                     <li class="ji-info">
                         <label class="ji-info__label"><?php _e('Phone:', 'jiwp'); ?></label>
                         <span class="ji-info__value"><?php echo $contact_phone; ?></span>
@@ -539,162 +536,218 @@
 </section>
 
 <!-- Equipment Details -->
-<section class="ji-info-section">
-    <h3 class="ji-info-section__title"><?php _e('Equipment Description', 'jiwp'); ?></h3>
-    <?php echo $realty->getEquipmentDescription(); ?>
-</section>
+<?php if ($realty->getEquipmentDescription()): ?>
+    <section class="ji-info-section">
+        <h3 class="ji-info-section__title"><?php _e('Equipment Description', 'jiwp'); ?></h3>
+        <?php echo $realty->getEquipmentDescription(); ?>
+    </section>
+<?php endif; ?>
 
 <!-- Price/Costs Details -->
 <section class="ji-info-section">
     <h3 class="ji-info-section__title"><?php _e('Prices / Costs', 'jiwp'); ?></h3>
 
-    <?php $currency = $realty->getCurrency(); ?>
-
     <ul class="ji-info-list">
+        <?php $currency = empty($realty->getCurrency()) ? 'EUR' : $realty->getCurrency(); ?>
+        <?php $vat = 0; ?>
 
-        <?php
-
-        $price_text = '';
-        $currency = empty($realty->getCurrency()) ? 'EUR' : $realty->getCurrency();
-
-        if ($realty->getMarketingType()['KAUF'] == true) {
-            if (!empty($realty->getPurchasePrice())) {
-                $price_text = Justimmo\Wordpress\Helper\NumberFormatter::formatCurrency($realty->getPurchasePrice(), $currency, 0);
-            }
-        } else {
-            if (!empty($realty->getTotalRent())) {
-                $price_text = Justimmo\Wordpress\Helper\NumberFormatter::formatCurrency($realty->getTotalRent(), $currency, 0);
-            }
-        }
-
-        ?>
-
-        <?php if (!empty($price_text)) : ?>
-
-            <li class="ji-info">
-
-                <label class="ji-info__label">
-                    <?php _e('Price:', 'jiwp'); ?>
-                </label>
-                
-                <span class="ji-info__value">
-                    <?php echo $price_text; ?>
-                </span>
-            </li>
-
-        <?php endif; ?>
-    
-        <?php $commision = $realty->getCommission(); ?>
-            <?php if (!empty($commision)) : ?>
+		<?php if ($realty->getMarketingType()['KAUF'] == true): ?>
             <li class="ji-info">
                 <label class="ji-info__label">
-                    <?php _e('Commission:', 'jiwp'); ?>
-                </label>
-                <span class="ji-info__value">
-                    <?php echo $realty->getCommission(); ?>
+				    <?php _e('Kaufpreis:', 'jiwp'); ?>
+				</label>
+				<span class="ji-info__value">
+                    <?php if ($realty->getPurchasePrice()): ?>
+					    <?php echo Justimmo\Wordpress\Helper\NumberFormatter::formatCurrency($realty->getPurchasePrice(), $currency, 0); ?>
+                    <?php else: ?>
+                        <?php _e('auf Anfrage', 'jiwp'); ?>
+                    <?php endif; ?>
                 </span>
             </li>
+        <?php else: ?>
+            <label class="ji-info__label">
+                <?php _e('Miete:', 'jiwp'); ?>
+            </label>
+            <span class="ji-info__value">
+                <?php if ($realty->getRentNet()): ?>
+                    <?php echo Justimmo\Wordpress\Helper\NumberFormatter::formatCurrency($realty->getRentNet(), $currency, 0); ?>
+                    <?php $vat += $realty->getRentGross() - $realty->getRentNet(); ?>
+                <?php else: ?>
+                    <?php _e('auf Anfrage', 'jiwp'); ?>
+                <?php endif; ?>
+            </span><br />
         <?php endif; ?>
 
         <?php $additional_costs = $realty->getAdditionalCosts(); ?>
-        <?php if (!empty($additional_costs)) : ?>
+        <?php $optionalCosts = 0; ?>
 
-            <li class="ji-info">
-                <label class="ji-info__label">
-                    <?php _e('Additional Costs:', 'jiwp'); ?>
-                </label>
-
-                <ul>
-                    <?php foreach ($additional_costs as $key => $additional_cost) :?>
-
-                        <li>
-                            <label class="ji-info__label">
-                                <?php echo $additional_cost->getName() . ':'; ?>
-                            </label>
-                            <span class="ji-info__value">
-                                <?php echo Justimmo\Wordpress\Helper\NumberFormatter::formatCurrency($additional_cost->getGross(), $currency, 0); ?>
-                            </span>
-                        </li>
-
-                    <?php endforeach; ?>
-                </ul>
-            </li>
-
+        <?php if (!empty($additional_costs)): ?>
+            <?php foreach ($additional_costs as $key => $additional_cost) :?>
+                <?php if ($additional_cost->getOptional()): ?>
+                    <?php $optionalCosts++; ?>
+                <?php else: ?>
+                    <label class="ji-info__label">
+                        <?php echo $additional_cost->getName() . ':'; ?>
+                    </label>
+                    <span class="ji-info__value">
+                        <?php echo Justimmo\Wordpress\Helper\NumberFormatter::formatCurrency($additional_cost->getNet(), $currency, 0); ?>
+                        <?php $vat += $additional_cost->getGross() - $additional_cost->getNet(); ?>
+                    </span><br />
+                <?php endif; ?>
+            <?php endforeach; ?>
         <?php endif; ?>
 
-        <?php $contract_establishment_costs = $realty->getContractEstablishmentCosts(); ?> 
-        <?php if (!empty($contract_establishment_costs)) : ?>
+        <?php if ($vat): ?>
+            <label class="ji-info__label">
+                <?php _e('Umsatzsteuer:', 'jiwp'); ?>
+            </label>
+            <span class="ji-info__value">
+                <?php echo Justimmo\Wordpress\Helper\NumberFormatter::formatCurrency($vat, $currency, 0); ?>
+            </span><br />
+        <?php endif; ?>
+
+        <?php $monthlyCosts = $realty->getMonthlyCosts() ? $realty->getMonthlyCosts() : $realty->getTotalRent(); ?>
+
+        <?php if ($monthlyCosts): ?>
+            <li class="ji-info"></li>
 
             <li class="ji-info">
                 <label class="ji-info__label">
-                    <?php _e('Contract Establishment Costs:', 'jiwp'); ?>
+                    <?php _e('monatliche Gesamtbelastung:', 'jiwp'); ?>
                 </label>
+
                 <span class="ji-info__value">
-                    <?php echo $contract_establishment_costs; ?>
+                    <?php echo Justimmo\Wordpress\Helper\NumberFormatter::formatCurrency($monthlyCosts, $currency, 0); ?>
                 </span>
             </li>
-
         <?php endif; ?>
+    </ul>
 
-        <?php $land_registration_tax = $realty->getLandRegistration(); ?>
-        <?php if (!empty($land_registration_tax)) : ?>
+    <?php if ($optionalCosts > 0): ?>
+        <h3 class="ji-info-section__title"><?php _e('Optional costs', 'jiwp'); ?></h3>
 
-            <li class="ji-info">
-                <label class="ji-info__label">
-                    <?php _e('Land Registration Tax:', 'jiwp'); ?>
-                </label>
-                <span class="ji-info__value">
-                    <?php echo Justimmo\Wordpress\Helper\NumberFormatter::formatPercent($land_registration_tax/100); ?>
-                </span>
-            </li>
+        <ul class="ji-info-list">
+            <?php foreach ($additional_costs as $key => $additional_cost) :?>
+                <?php if ($additional_cost->getOptional()): ?>
+                    <li class="ji-info">
+                        <label class="ji-info__label">
+                            <?php echo $additional_cost->getName() . ':'; ?>
+                        </label>
+                        <span class="ji-info__value">
+                            <?php echo Justimmo\Wordpress\Helper\NumberFormatter::formatCurrency($additional_cost->getGross(), $currency, 0); ?>
+                        </span>
+                    </li>
+                <?php endif; ?>
+            <?php endforeach; ?>
+        </ul>
+    <?php endif; ?>
 
-        <?php endif; ?>
+    <?php $commision = $realty->getCommission(); ?>
+    <?php $contract_establishment_costs = $realty->getContractEstablishmentCosts(); ?>
+    <?php $land_registration_tax = $realty->getLandRegistration(); ?>
+    <?php $transfer_tax = $realty->getTransferTax(); ?>
+    <?php $transfer_fee = $realty->getCompensation(); ?>
+    <?php $surety = $realty->getSurety(); ?>
+    <?php $financial_contribution = $realty->getFinancialContribution(); ?>
+    <?php $infrastructure_provision = $realty->getInfrastructureProvision(); ?>
 
-        <?php $transfer_tax = $realty->getTransferTax(); ?>
-        <?php if (!empty($transfer_tax)) : ?>
+    <?php if (!empty($commision) || !empty($transfer_fee) || !empty($surety) || !empty($financial_contribution) || !empty($contract_establishment_costs) || !empty($land_registration_tax) || !empty($transfer_tax) || !empty($infrastructure_provision)): ?>
+        <h3 class="ji-info-section__title"><?php _e('Ancillary expenses', 'jiwp'); ?></h3>
 
-            <li class="ji-info">
-                <label class="ji-info__label">
-                    <?php _e('Transfer Tax:', 'jiwp'); ?>
-                </label>
-                <span class="ji-info__value">
-                    <?php echo Justimmo\Wordpress\Helper\NumberFormatter::formatPercent( $transfer_tax/100); ?>
-                </span>
-            </li>
+        <ul class="ji-info-list">
+            <?php if (!empty($commision)): ?>
+                <li class="ji-info">
+                    <label class="ji-info__label">
+                        <?php _e('Commission:', 'jiwp'); ?>
+                    </label>
+                    <span class="ji-info__value">
+                        <?php echo $realty->getCommission(); ?>
+                    </span>
+                </li>
+            <?php endif; ?>
 
-        <?php endif; ?>
+            <?php if (!empty($contract_establishment_costs)): ?>
+                <li class="ji-info">
+                    <label class="ji-info__label">
+                        <?php _e('Contract Establishment Costs:', 'jiwp'); ?>
+                    </label>
+                    <span class="ji-info__value">
+                        <?php echo $contract_establishment_costs; ?>
+                    </span>
+                </li>
+            <?php endif; ?>
 
-        <?php $additional_charges = $realty->getAdditionalCharges(); ?>
-        <?php if (!empty($additional_charges)) : ?>
+            <?php if (!empty($land_registration_tax)): ?>
+                <li class="ji-info">
+                    <label class="ji-info__label">
+                        <?php _e('Land Registration Tax:', 'jiwp'); ?>
+                    </label>
+                    <span class="ji-info__value">
+                        <?php echo Justimmo\Wordpress\Helper\NumberFormatter::formatPercent($land_registration_tax / 100); ?>
+                    </span>
+                </li>
+            <?php endif; ?>
 
-            <li class="ji-info">
-                <label class="ji-info__label">
-                    <?php _e('Additional Charges:', 'jiwp'); ?>
-                </label>
-                <span class="ji-info__value">
-                    <?php echo Justimmo\Wordpress\Helper\NumberFormatter::formatCurrency($additional_charges, $currency, 0); ?>
-                </span>
-            </li>
+            <?php if (!empty($transfer_fee)): ?>
+                <li class="ji-info">
+                    <label class="ji-info__label">
+                        <?php _e('Transfer fee:', 'jiwp'); ?>
+                    </label>
+                    <span class="ji-info__value">
+                        <?php echo Justimmo\Wordpress\Helper\NumberFormatter::formatCurrency( $transfer_fee, $currency, 0); ?>
+                    </span>
+                </li>
+            <?php endif; ?>
 
-        <?php endif; ?>
+            <?php if (!empty($surety)): ?>
+                <li class="ji-info">
+                    <label class="ji-info__label">
+                        <?php _e('Surety:', 'jiwp'); ?>
+                    </label>
+                    <span class="ji-info__value">
+                        <?php echo Justimmo\Wordpress\Helper\NumberFormatter::formatCurrency( $surety, $currency, 0); ?>
+                    </span>
+                </li>
+            <?php endif; ?>
 
-        <?php $yearly_net_earn = $realty->getNetEarningYearly(); ?>
-        <?php if (!empty($yearly_net_earn)) : ?>
+            <?php if (!empty($financial_contribution)): ?>
+                <li class="ji-info">
+                    <label class="ji-info__label">
+                        <?php _e('Financial contribution:', 'jiwp'); ?>
+                    </label>
+                    <span class="ji-info__value">
+                        <?php echo Justimmo\Wordpress\Helper\NumberFormatter::formatCurrency( $financial_contribution, $currency, 0); ?>
+                    </span>
+                </li>
+            <?php endif; ?>
 
-            <li class="ji-info">
-                <label class="ji-info__label">
-                    <?php _e('Yearly Net Earning:', 'jiwp'); ?>
-                </label>
-                <span class="ji-info__value">
-                    <?php echo Justimmo\Wordpress\Helper\NumberFormatter::formatCurrency($yearly_net_earn, $currency, 0) ?>
-                </span>
-            </li>
+            <?php if (!empty($transfer_tax)): ?>
+                <li class="ji-info">
+                    <label class="ji-info__label">
+                        <?php _e('Transfer Tax:', 'jiwp'); ?>
+                    </label>
+                    <span class="ji-info__value">
+                        <?php echo Justimmo\Wordpress\Helper\NumberFormatter::formatPercent( $transfer_tax/100); ?>
+                    </span>
+                </li>
+            <?php endif; ?>
 
-        <?php endif; ?>
+            <?php if (!empty($infrastructure_provision)): ?>
+                <li class="ji-info">
+                    <label class="ji-info__label">
+                        <?php _e('Infrastructure Provision:', 'jiwp'); ?>
+                    </label>
+                    <span class="ji-info__value">
+                        <?php echo Justimmo\Wordpress\Helper\NumberFormatter::formatCurrency($infrastructure_provision, $currency, 0) ?>
+                    </span>
+                </li>
+            <?php endif; ?>
+        </ul>
+    <?php endif; ?>
 
+    <ul class="ji-info-list">
         <?php $building_subsidence = $realty->getBuildingSubsidies(); ?>
-        <?php if (!empty($building_subsidence)) : ?>
-
+        <?php if (!empty($building_subsidence)): ?>
             <li class="ji-info">
                 <label class="ji-info__label">
                     <?php _e('Building Subsidence:', 'jiwp'); ?>
@@ -703,30 +756,38 @@
                     <?php echo Justimmo\Wordpress\Helper\NumberFormatter::formatCurrency($building_subsidence, $currency, 0) ?>
                 </span>
             </li>
+        <?php endif; ?>
 
+        <?php $yearly_net_earn = $realty->getNetEarningYearly(); ?>
+        <?php if (!empty($yearly_net_earn)): ?>
+            <li class="ji-info">
+                <label class="ji-info__label">
+                    <?php _e('Yearly Net Earning:', 'jiwp'); ?>
+                </label>
+                <span class="ji-info__value">
+                    <?php echo Justimmo\Wordpress\Helper\NumberFormatter::formatCurrency($yearly_net_earn, $currency, 0) ?>
+                </span>
+            </li>
         <?php endif; ?>
 
         <?php $net_yield = $realty->getYield(); ?>
-        <?php if (!empty($net_yield)) : ?>
-
+        <?php if (!empty($net_yield)): ?>
             <li class="ji-info">
                 <label class="ji-info__label">
                     <?php _e('Net Yield:', 'jiwp'); ?>
                 </label>
                 <span class="ji-info__value">
-                    <?php echo Justimmo\Wordpress\Helper\NumberFormatter::formatPercent($net_yield/100); ?>
+                    <?php echo Justimmo\Wordpress\Helper\NumberFormatter::formatPercent($net_yield / 100); ?>
                 </span>
             </li>
-
         <?php endif; ?>
-
     </ul>
 </section>
 
 <!-- Energy Efficiency Certificate -->
 <?php $energy_pass = $realty->getEnergyPass(); ?>
 
-<?php if (!empty($energy_pass)) :?>
+<?php if (!empty($energy_pass)): ?>
     <section class="ji-info-section">
         <h3 class="ji-info-section__title"><?php _e('Energy Efficiency Certificate', 'jiwp'); ?></h3>
         <ul class="ji-info-list">
@@ -772,7 +833,7 @@
 
 <!-- Other Information Text -->
 <?php $other_information = $realty->getOtherInformation(); ?>
-<?php if (!empty($other_information)) : ?>
+<?php if (!empty($other_information)): ?>
     <section class="ji-info-section">
         <h3 class="ji-info-section__title"><?php _e('Other Information', 'jiwp'); ?></h3>
         <?php echo $other_information; ?>
@@ -782,9 +843,9 @@
 <!-- Documents -->
 <section class="ji-info-section">
     <?php $attachments = $realty->getDocuments(); ?>
-    <?php if (!empty($attachments)) : ?>
+    <?php if (!empty($attachments)): ?>
         <ul class="ji-info-list ji-info-list--extended">
-        <?php foreach ($attachments as $attachment) : ?>
+        <?php foreach ($attachments as $attachment): ?>
             <li class="ji-info-list__item">
                 <a href="<?php echo $attachment->getUrl(); ?>">
                     <?php echo $attachment->getTitle(); ?>
@@ -798,7 +859,7 @@
 <!-- Map -->
 <?php $lat = $realty->getLatitudePrecise(); ?>
 <?php $lng = $realty->getLongitudePrecise(); ?>
-<?php if ($lat && $lng && get_option(JIWP_GOOGLE_API_KEY_OPTION, '')) : ?>
+<?php if ($lat && $lng && get_option(JIWP_GOOGLE_API_KEY_OPTION, '')): ?>
 <section class="ji-info-section">
     <h3 class="ji-info-section__title"><?php _e('Location', 'jiwp'); ?></h3>
     <div class="jiwp-map"></div>
