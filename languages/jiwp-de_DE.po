@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: JUSTIMMO WP Plugin\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2017-08-30 12:43+0000\n"
-"PO-Revision-Date: 2017-08-30 12:44+0000\n"
+"PO-Revision-Date: 2017-08-30 12:48+0000\n"
 "Last-Translator: justimmo <h.holzer@bgcc.at>\n"
 "Language-Team: German\n"
 "Language: de-DE\n"
@@ -475,42 +475,42 @@ msgstr "Monatliche Gesamtbelastung:"
 
 #: resources/templates/frontend/realty/_realty-extended-info.php:614
 msgid "Optional costs"
-msgstr ""
+msgstr "Optionale Kosten"
 
 #: resources/templates/frontend/realty/_realty-extended-info.php:642
 msgid "Ancillary expenses"
-msgstr ""
+msgstr "Einmalige Kosten"
 
 #: resources/templates/frontend/realty/_realty-extended-info.php:681
 msgid "Transfer fee:"
-msgstr ""
+msgstr "Ablöse:"
 
 #: resources/templates/frontend/realty/_realty-extended-info.php:692
 msgid "Surety:"
-msgstr ""
+msgstr "Kaution:"
 
 #: resources/templates/frontend/realty/_realty-extended-info.php:703
 msgid "Financial contribution:"
-msgstr ""
+msgstr "Finanzierungsbeitrag:"
 
 #: resources/templates/frontend/realty/_realty-extended-info.php:725
 msgid "Infrastructure Provision:"
-msgstr ""
+msgstr "Aufschliessungskosten:"
 
 #: resources/templates/frontend/realty/_realty-extended-info.php:740
 #: resources/templates/frontend/realty/realty-template__sidebar.php:708
 msgid "Building Subsidence:"
-msgstr ""
+msgstr "Wohnbauförderung:"
 
 #: resources/templates/frontend/realty/_realty-extended-info.php:796
 #: resources/templates/frontend/realty/_realty-extended-info.php:807
 msgid "Class"
-msgstr ""
+msgstr "Klasse"
 
 #: resources/templates/frontend/realty/realty-template__sidebar.php:756
 #: resources/templates/frontend/realty/realty-template__sidebar.php:767
 msgid "class"
-msgstr ""
+msgstr "Klasse"
 
 #. Name of the plugin
 msgid "JUSTIMMO WP Plugin"
