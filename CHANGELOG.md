@@ -1,3 +1,7 @@
+## 1.0.8
+ * Bugfix: Translateable strings
+ * Translation: Added german translations
+
 ## 1.0.7
  * Bugfix: Wrong image in project detail template
  * Improvement: Better price display
