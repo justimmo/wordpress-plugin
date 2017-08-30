@@ -1,3 +1,8 @@
+## 1.0.7
+ * Bugfix: Wrong image in project detail template
+ * Improvement: Better price display
+ * Improvement: Multiple `og:image` tags
+
 ## 1.0.6
  * Bugfix post url for property number search widget
  * Changes to state filter
