@@ -480,19 +480,6 @@
 
         <?php endif; ?>
 
-        <?php if ($loggia_count = $realty->getLoggiaCount()) :?>
-
-            <li class="ji-info">
-                <label class="ji-info__label">
-                    <?php _e('Loggias:', 'jiwp'); ?>
-                </label>
-                <span class="ji-info__value">
-                    <?php echo $loggia_count; ?>
-                </span>
-            </li>
-
-        <?php endif; ?>
-
         <?php if ($garage_count = $realty->getGarageCount()) :?>
 
             <li class="ji-info">
@@ -554,26 +541,26 @@
 		<?php if ($realty->getMarketingType()['KAUF'] == true): ?>
             <li class="ji-info">
                 <label class="ji-info__label">
-				    <?php _e('Kaufpreis:', 'jiwp'); ?>
+				    <?php _e('Purchase Price:', 'jiwp'); ?>
 				</label>
 				<span class="ji-info__value">
                     <?php if ($realty->getPurchasePrice()): ?>
 					    <?php echo Justimmo\Wordpress\Helper\NumberFormatter::formatCurrency($realty->getPurchasePrice(), $currency, 0); ?>
                     <?php else: ?>
-                        <?php _e('auf Anfrage', 'jiwp'); ?>
+                        <?php _e('on request', 'jiwp'); ?>
                     <?php endif; ?>
                 </span>
             </li>
         <?php else: ?>
             <label class="ji-info__label">
-                <?php _e('Miete:', 'jiwp'); ?>
+                <?php _e('Rent:', 'jiwp'); ?>
             </label>
             <span class="ji-info__value">
                 <?php if ($realty->getRentNet()): ?>
                     <?php echo Justimmo\Wordpress\Helper\NumberFormatter::formatCurrency($realty->getRentNet(), $currency, 0); ?>
                     <?php $vat += $realty->getRentGross() - $realty->getRentNet(); ?>
                 <?php else: ?>
-                    <?php _e('auf Anfrage', 'jiwp'); ?>
+                    <?php _e('on request', 'jiwp'); ?>
                 <?php endif; ?>
             </span><br />
         <?php endif; ?>
@@ -599,7 +586,7 @@
 
         <?php if ($vat): ?>
             <label class="ji-info__label">
-                <?php _e('Umsatzsteuer:', 'jiwp'); ?>
+                <?php _e('VAT:', 'jiwp'); ?>
             </label>
             <span class="ji-info__value">
                 <?php echo Justimmo\Wordpress\Helper\NumberFormatter::formatCurrency($vat, $currency, 0); ?>
@@ -613,7 +600,7 @@
 
             <li class="ji-info">
                 <label class="ji-info__label">
-                    <?php _e('monatliche Gesamtbelastung:', 'jiwp'); ?>
+                    <?php _e('Monthly Costs:', 'jiwp'); ?>
                 </label>
 
                 <span class="ji-info__value">
@@ -806,7 +793,7 @@
                 </label>
                 <span class="ji-info__value">
                     <?php echo $energy_pass->getThermalHeatRequirementValue(); ?> kWh/m&sup2;a
-                    (<?php _e('class', 'jiwp'); ?>
+                    (<?php _e('Class', 'jiwp'); ?>
                     <?php echo $energy_pass->getThermalHeatRequirementClass(); ?>)
                 </span>
             </li>
@@ -817,7 +804,7 @@
                 </label>
                 <span class="ji-info__value">
                     <?php echo $energy_pass->getEnergyEfficiencyFactorValue(); ?>
-                    (<?php _e('class', 'jiwp'); ?>
+                    (<?php _e('Class', 'jiwp'); ?>
                     <?php echo $energy_pass->getEnergyEfficiencyFactorClass(); ?>)
                 </span>
             </li>
