@@ -80,25 +80,6 @@
 	margin-bottom: 20px;
 }
 
-/* .ji-photos-list__item {
-	width: 25%;
-	height: 150px;
-	padding: 0 10px;
-	margin: 0 0 20px 0;
-	float: left;
-	text-align: center;
-	overflow: hidden;
-}
-
-.ji-photos-list__item:nth-child(4n+1) {
-	clear: left;
-}
-
-.ji-photos-list__item img {
-	width: auto;
-	height: 100%;
-} */
-
 .ji-photos-list__item.lslide.active {
 	text-align: center;
 	background: #333;

@@ -15,4 +15,17 @@ class BaseController
     {
         $this->queryFactory =  new QueryFactory(get_option('ji_api_username'), get_option('ji_api_password'));
     }
+
+    /**
+     * @return array
+     */
+    public static function getFilterFromQueryString()
+    {
+        $filter = array();
+        if (!empty($_GET['filter'])) {
+            $filter = $_GET['filter'];
+        }
+
+        return $filter;
+    }
 }

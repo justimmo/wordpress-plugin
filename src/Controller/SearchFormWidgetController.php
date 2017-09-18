@@ -2,13 +2,10 @@
 
 namespace Justimmo\Wordpress\Controller;
 
-use Justimmo\Exception\NotFoundException;
 use Justimmo\Model\Mapper\V1\RealtyInquiryMapper;
 use Justimmo\Request\RealtyInquiryRequest;
-use Justimmo\Wordpress\Routing;
-use Justimmo\Wordpress\Templating;
 
-class WidgetController extends BaseController
+class SearchFormWidgetController extends BaseController
 {
     /**
      * Retrieves the list of states for a certain country.
@@ -17,6 +14,7 @@ class WidgetController extends BaseController
     {
         check_ajax_referer('justimmo_ajax', 'security');
 
+        $filter = BaseController::getFilterFromQueryString();
         $states = array();
 
         if (!empty($_POST['country'])) {
@@ -36,6 +34,8 @@ class WidgetController extends BaseController
     public function ajaxGetCities()
     {
         check_ajax_referer('justimmo_ajax', 'security');
+
+        $filter = BaseController::getFilterFromQueryString();
         $cities = array();
 
         if (!empty($_POST['country'])) {

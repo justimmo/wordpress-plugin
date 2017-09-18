@@ -2,7 +2,6 @@
 
 namespace Justimmo\Wordpress;
 
-use Justimmo\Exception\NotFoundException;
 use Justimmo\Wordpress\Translation\I18N;
 
 /**
@@ -84,18 +83,27 @@ class Plugin
         add_action('template_include', array($routing, 'connectActions'));
 
         add_action('widgets_init', function () {
-            register_widget('Justimmo\\Wordpress\\Widget\\SearchForm');
+            register_widget('Justimmo\\Wordpress\\Widget\\SearchFormWidget');
         });
 
-        $loadStates = $this->createLazyLoadCallback('Justimmo\\Wordpress\\Controller\\WidgetController', 'ajaxGetStates');
+        $loadStates = $this->createLazyLoadCallback(
+            'Justimmo\\Wordpress\\Controller\\SearchFormWidgetController',
+            'ajaxGetStates'
+        );
         add_action('wp_ajax_ajax_get_states', $loadStates);
         add_action('wp_ajax_nopriv_ajax_get_states', $loadStates);
 
-        $loadCities = $this->createLazyLoadCallback('Justimmo\\Wordpress\\Controller\\WidgetController', 'ajaxGetCities');
+        $loadCities = $this->createLazyLoadCallback(
+            'Justimmo\\Wordpress\\Controller\\SearchFormWidgetController',
+            'ajaxGetCities'
+        );
         add_action('wp_ajax_ajax_get_cities', $loadCities);
         add_action('wp_ajax_nopriv_ajax_get_cities', $loadCities);
 
-        $sendInquiry = $this->createLazyLoadCallback('Justimmo\\Wordpress\\Controller\\WidgetController', 'ajaxSendInquiry');
+        $sendInquiry = $this->createLazyLoadCallback(
+            'Justimmo\\Wordpress\\Controller\\SearchFormWidgetController',
+            'ajaxSendInquiry'
+        );
         add_action('wp_ajax_ajax_send_inquiry', $sendInquiry);
         add_action('wp_ajax_nopriv_ajax_send_inquiry', $sendInquiry);
     }
@@ -107,14 +115,46 @@ class Plugin
     {
         add_filter('widget_text', 'do_shortcode');
 
-        add_shortcode('ji_realty_list', $this->createLazyLoadCallback('Justimmo\\Wordpress\\Controller\\RealtyController', 'getShortcodeList'));
-        add_shortcode('ji_search_form', $this->createLazyLoadCallback('Justimmo\\Wordpress\\Controller\\RealtyController', 'getShortcodeSearchForm'));
-        add_shortcode('ji_number_search_form', $this->createLazyLoadCallback('Justimmo\\Wordpress\\Controller\\RealtyController', 'getShortcodeNumberForm'));
+        add_shortcode(
+            'ji_realty_list',
+            $this->createLazyLoadCallback(
+                'Justimmo\\Wordpress\\Controller\\RealtyController',
+                'getShortcodeList'
+            )
+        );
 
-        add_shortcode('ji_project_list', $this->createLazyLoadCallback('Justimmo\\Wordpress\\Controller\\ProjectController', 'getShortcodeList'));
-        add_shortcode('ji_project_info', $this->createLazyLoadCallback('Justimmo\\Wordpress\\Controller\\ProjectController', 'getShortcodeInfo'));
+        add_shortcode(
+            'ji_search_form',
+            $this->createLazyLoadCallback(
+                'Justimmo\\Wordpress\\Controller\\RealtyController',
+                'getShortcodeSearchForm'
+            )
+        );
+
+        add_shortcode(
+            'ji_number_search_form',
+            $this->createLazyLoadCallback(
+                'Justimmo\\Wordpress\\Controller\\RealtyController',
+                'getShortcodeNumberForm'
+            )
+        );
+
+        add_shortcode(
+            'ji_project_list',
+            $this->createLazyLoadCallback(
+                'Justimmo\\Wordpress\\Controller\\ProjectController',
+                'getShortcodeList'
+            )
+        );
+
+        add_shortcode(
+            'ji_project_info',
+            $this->createLazyLoadCallback(
+                'Justimmo\\Wordpress\\Controller\\ProjectController',
+                'getShortcodeInfo'
+            )
+        );
     }
-
 
     /**
      * Creates a closure callback wrapping an instance creation for lazy loading

@@ -2,13 +2,14 @@
 
 namespace Justimmo\Wordpress\Widget;
 
+use Justimmo\Wordpress\Controller\BaseController;
 use Justimmo\Wordpress\Query\QueryFactory;
 use Justimmo\Wordpress\Templating;
 
 /**
  * Justimmo search form widget
  */
-class SearchForm extends \WP_Widget
+class SearchFormWidget extends \WP_Widget
 {
     public function __construct()
     {
@@ -19,9 +20,8 @@ class SearchForm extends \WP_Widget
     {
         $queryFactory = new QueryFactory(get_option('ji_api_username'), get_option('ji_api_password'));
 
-        if (!empty($_GET['filter'])) {
-            $filter = $_GET['filter'];
-        }
+        // TODO Add parameters for preselected country, state, etc in widget options
+        $filter = BaseController::getFilterFromQueryString();
 
         try {
             $realty_types = $queryFactory->createBasicDataQuery()->findRealtyTypes();
@@ -29,16 +29,16 @@ class SearchForm extends \WP_Widget
             $states       = array();
             $cities       = array();
 
-            if (!empty($_GET['filter']) && !empty($_GET['filter']['country'])) {
-                $states = $queryFactory->createBasicDataQuery()->getStates($_GET['filter']['country']);
+            if (!empty($filter) && !empty($filter['country'])) {
+                $states = $queryFactory->createBasicDataQuery()->getStates($filter['country']);
                 
-                if (!empty($_GET['filter']['state'])) {
+                if (!empty($filter['state'])) {
                     $cities = $queryFactory->createBasicDataQuery()->getCities(
-                        $_GET['filter']['country'],
-                        $_GET['filter']['state']
+                        $filter['country'],
+                        $filter['state']
                     );
                 } else {
-                    $cities = $queryFactory->createBasicDataQuery()->getCities($_GET['filter']['country']);
+                    $cities = $queryFactory->createBasicDataQuery()->getCities($filter['country']);
                 }
             }
         } catch (\Exception $e) {

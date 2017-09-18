@@ -1,4 +1,9 @@
-<?php use Justimmo\Wordpress\Translation\CitynameTranslator; ?>
+<?php
+
+use Justimmo\Wordpress\Translation\CitynameTranslator;
+use Justimmo\Wordpress\Helper\NumberFormatter;
+
+?>
 
 <!-- Basic Details -->
 <section class="ji-info-section">
@@ -10,7 +15,8 @@
                 <?php _e('Realty Number:', 'jiwp'); ?>
             </label>
             <span class="ji-info__value">
-                <?php echo $realty->getPropertyNumber(); ?>
+                <?php /** @var \Justimmo\Model\Realty $realty */
+                echo $realty->getPropertyNumber(); ?>
             </span>
         </li>
 
@@ -171,6 +177,7 @@
 <?php if (!empty($contact)) : ?>
     <section class="ji-info-section">
         <h2 class="ji-info-section__title"><?php _e('Your Contact Person', 'jiwp'); ?></h2>
+
         <div class="contact-person">
             <?php $pictures = $contact->getPictures(); ?>
             <?php if (!empty($pictures)) : ?>
@@ -215,9 +222,8 @@
     <h3 class="ji-info-section__title"><?php _e('Surface:', 'jiwp'); ?></h3>
 
     <ul class="ji-info-list ji-info-list--extended">
-
-        <?php if ($floor_area = $realty->getFloorArea()) :?>
-
+        <?php $floor_area = $realty->getFloorArea(); ?>
+        <?php if (!empty($floor_area)) : ?>
             <li class="ji-info">
                 <label class="ji-info__label">
                     <?php _e('Floor Area:', 'jiwp'); ?>
@@ -226,11 +232,10 @@
                     <?php echo $floor_area . ' m&sup2;'; ?>
                 </span>
             </li>
-
         <?php endif; ?>
 
-        <?php if ($surface_area = $realty->getSurfaceArea()) :?>
-
+        <?php $surface_area = $realty->getSurfaceArea(); ?>
+        <?php if (!empty($surface_area)) : ?>
             <li class="ji-info">
                 <label class="ji-info__label">
                     <?php _e('Surface Area:', 'jiwp'); ?>
@@ -239,11 +244,10 @@
                     <?php echo $surface_area . ' m&sup2;'; ?>
                 </span>
             </li>
-
         <?php endif; ?>
 
-        <?php if ($living_area = $realty->getLivingArea()) :?>
-
+        <?php $living_area = $realty->getLivingArea(); ?>
+        <?php if (!empty($living_area)) : ?>
             <li class="ji-info">
                 <label class="ji-info__label">
                     <?php _e('Living Area:', 'jiwp'); ?>
@@ -252,11 +256,10 @@
                     <?php echo $living_area . ' m&sup2;'; ?>
                 </span>
             </li>
-
         <?php endif; ?>
 
-        <?php if ($total_area = $realty->getTotalArea()) :?>
-
+        <?php $total_area = $realty->getTotalArea(); ?>
+        <?php if (!empty($total_area)) : ?>
             <li class="ji-info">
                 <label class="ji-info__label">
                     <?php _e('Total Area:', 'jiwp'); ?>
@@ -265,11 +268,10 @@
                     <?php echo $total_area . ' m&sup2;'; ?>
                 </span>
             </li>
-
         <?php endif; ?>
 
-        <?php if ($balcony_area = $realty->getBalconyArea()) :?>
-
+        <?php $balcony_area = $realty->getBalconyArea(); ?>
+        <?php if (!empty($balcony_area)) : ?>
             <li class="ji-info">
                 <label class="ji-info__label">
                     <?php _e('Balcony Area:', 'jiwp'); ?>
@@ -278,11 +280,10 @@
                     <?php echo $balcony_area . ' m&sup2;'; ?>
                 </span>
             </li>
-
         <?php endif; ?>
 
-        <?php if ($terrace_area = $realty->getTerraceArea()) :?>
-
+        <?php $terrace_area = $realty->getTerraceArea(); ?>
+        <?php if (!empty($terrace_area)) : ?>
             <li class="ji-info">
                 <label class="ji-info__label">
                     <?php _e('Terrace Area:', 'jiwp'); ?>
@@ -291,11 +292,10 @@
                     <?php echo $terrace_area . ' m&sup2;'; ?>
                 </span>
             </li>
-
         <?php endif; ?>
 
-        <?php if ($garden_area = $realty->getGardenArea()) :?>
-
+        <?php $garden_area = $realty->getGardenArea(); ?>
+        <?php if (!empty($garage_area)) : ?>
             <li class="ji-info">
                 <label class="ji-info__label">
                     <?php _e('Garden Area:', 'jiwp'); ?>
@@ -304,11 +304,10 @@
                     <?php echo $garden_area . ' m&sup2;'; ?>
                 </span>
             </li>
-
         <?php endif; ?>
 
-        <?php if ($cellar_area = $realty->getCellarArea()) :?>
-
+        <?php $cellar_area = $realty->getCellarArea(); ?>
+        <?php if (!empty($cellar_area)) : ?>
             <li class="ji-info">
                 <label class="ji-info__label">
                     <?php _e('Cellar Area:', 'jiwp'); ?>
@@ -317,11 +316,10 @@
                     <?php echo $cellar_area . ' m&sup2;'; ?>
                 </span>
             </li>
-
         <?php endif; ?>
 
-        <?php if ($office_area = $realty->getOfficeArea()) :?>
-
+        <?php $office_area = $realty->getOfficeArea(); ?>
+        <?php if (!empty($office_area)) : ?>
             <li class="ji-info">
                 <label class="ji-info__label">
                     <?php _e('Office Area:', 'jiwp'); ?>
@@ -330,11 +328,10 @@
                     <?php echo $office_area . ' m&sup2;'; ?>
                 </span>
             </li>
-
         <?php endif; ?>
 
-        <?php if ($storage_area = $realty->getStorageArea()) :?>
-
+        <?php $storage_area = $realty->getStorageArea(); ?>
+        <?php if (!empty($storage_area)) : ?>
             <li class="ji-info">
                 <label class="ji-info__label">
                     <?php _e('Storage Area:', 'jiwp'); ?>
@@ -343,11 +340,10 @@
                     <?php echo $storage_area . ' m&sup2;'; ?>
                 </span>
             </li>
-
         <?php endif; ?>
 
-        <?php if ($loggia_area = $realty->getLoggiaArea()) :?>
-
+        <?php $loggia_area = $realty->getLoggiaArea(); ?>
+        <?php if (!empty($loggia_area)) : ?>
             <li class="ji-info">
                 <label class="ji-info__label">
                     <?php _e('Loggia Area:', 'jiwp'); ?>
@@ -356,10 +352,10 @@
                     <?php echo $loggia_area . ' m&sup2;'; ?>
                 </span>
             </li>
-
         <?php endif; ?>
 
-        <?php if ($garage_area = $realty->getGarageArea()) :?>
+        <?php $garage_area = $realty->getGarageArea(); ?>
+        <?php if (!empty($garage_area)) : ?>
 
             <li class="ji-info">
                 <label class="ji-info__label">
@@ -372,7 +368,8 @@
 
         <?php endif; ?>
 
-        <?php if ($parking_area = $realty->getParkingArea()) :?>
+        <?php $parking_area = $realty->getParkingArea(); ?>
+        <?php if (!empty($parking_area)) : ?>
 
             <li class="ji-info">
                 <label class="ji-info__label">
@@ -385,7 +382,8 @@
 
         <?php endif; ?>
 
-        <?php if ($buildable_area = $realty->getBuildableArea()) :?>
+        <?php $buildable_area = $realty->getBuildableArea(); ?>
+        <?php if (!empty($buildable_area)) : ?>
 
             <li class="ji-info">
                 <label class="ji-info__label">
@@ -406,9 +404,8 @@
     <h3 class="ji-info-section__title"><?php _e('Room Count:', 'jiwp'); ?></h3>
 
     <ul class="ji-info-list">
-
-        <?php if ($room_count = $realty->getRoomCount()) :?>
-
+        <?php $room_count = $realty->getRoomCount(); ?>
+        <?php if (!empty($room_count)) : ?>
             <li class="ji-info">
                 <label class="ji-info__label">
                     <?php _e('Rooms:', 'jiwp'); ?>
@@ -417,11 +414,10 @@
                     <?php echo $room_count; ?>
                 </span>
             </li>
-
         <?php endif; ?>
 
-        <?php if ($bathroom_count = $realty->getBathroomCount()) :?>
-
+        <?php $bathroom_count = $realty->getBathroomCount(); ?>
+        <?php if (!empty($bathroom_count)) : ?>
             <li class="ji-info">
                 <label class="ji-info__label">
                     <?php _e('Bathrooms:', 'jiwp'); ?>
@@ -430,11 +426,10 @@
                     <?php echo $bathroom_count; ?>
                 </span>
             </li>
-
         <?php endif; ?>
 
-        <?php if ($toiletroom_count = $realty->getToiletRoomCount()) :?>
-
+        <?php $toiletroom_count = $realty->getToiletRoomCount(); ?>
+        <?php if (!empty($toiletroom_count)) : ?>
             <li class="ji-info">
                 <label class="ji-info__label">
                     <?php _e('Toilet Rooms:', 'jiwp'); ?>
@@ -443,11 +438,10 @@
                     <?php echo $toiletroom_count; ?>
                 </span>
             </li>
-
         <?php endif; ?>
 
-        <?php if ($balcony_count = $realty->getBalconyCount()) :?>
-
+        <?php $balcony_count = $realty->getBalconyCount(); ?>
+        <?php if (!empty($balcony_count)) : ?>
             <li class="ji-info">
                 <label class="ji-info__label">
                     <?php _e('Balconies:', 'jiwp'); ?>
@@ -456,11 +450,10 @@
                     <?php echo $balcony_count; ?>
                 </span>
             </li>
-
         <?php endif; ?>
 
-        <?php if ($terrace_count = $realty->getTerraceCount()) :?>
-
+        <?php $terrace_count = $realty->getTerraceCount(); ?>
+        <?php if (!empty($terrace_count)) : ?>
             <li class="ji-info">
                 <label class="ji-info__label">
                     <?php _e('Terraces:', 'jiwp'); ?>
@@ -469,11 +462,10 @@
                     <?php echo $terrace_count; ?>
                 </span>
             </li>
-
         <?php endif; ?>
 
-        <?php if ($loggia_count = $realty->getLoggiaCount()) :?>
-
+        <?php $loggia_count = $realty->getLoggiaCount(); ?>
+        <?php if (!empty($loggia_count)) : ?>
             <li class="ji-info">
                 <label class="ji-info__label">
                     <?php _e('Loggias:', 'jiwp'); ?>
@@ -482,11 +474,10 @@
                     <?php echo $loggia_count; ?>
                 </span>
             </li>
-
         <?php endif; ?>
 
-        <?php if ($loggia_count = $realty->getLoggiaCount()) :?>
-
+        <?php $loggia_count = $realty->getLoggiaCount(); ?>
+        <?php if (!empty($loggia_count)) : ?>
             <li class="ji-info">
                 <label class="ji-info__label">
                     <?php _e('Loggias:', 'jiwp'); ?>
@@ -495,11 +486,10 @@
                     <?php echo $loggia_count; ?>
                 </span>
             </li>
-
         <?php endif; ?>
 
-        <?php if ($garage_count = $realty->getGarageCount()) :?>
-
+        <?php $garage_count = $realty->getGarageCount(); ?>
+        <?php if (!empty($garage_count)) : ?>
             <li class="ji-info">
                 <label class="ji-info__label">
                     <?php _e('Garages:', 'jiwp'); ?>
@@ -508,11 +498,10 @@
                     <?php echo $garage_count; ?>
                 </span>
             </li>
-
         <?php endif; ?>
 
-        <?php if ($parking_count = $realty->getParkingCount()) :?>
-
+        <?php $parking_count = $realty->getParkingCount(); ?>
+        <?php if (!empty($parking_count)) : ?>
             <li class="ji-info">
                 <label class="ji-info__label">
                     <?php _e('Parking Spaces:', 'jiwp'); ?>
@@ -521,11 +510,10 @@
                     <?php echo $parking_count; ?>
                 </span>
             </li>
-
         <?php endif; ?>
 
-        <?php if ($storeroom_count = $realty->getStoreRoomCount()) :?>
-
+        <?php $storeroom_count = $realty->getStoreRoomCount(); ?>
+        <?php if (!empty($storeroom_count)) : ?>
             <li class="ji-info">
                 <label class="ji-info__label">
                     <?php _e('Store Rooms:', 'jiwp'); ?>
@@ -534,62 +522,65 @@
                     <?php echo $storeroom_count; ?>
                 </span>
             </li>
-
         <?php endif; ?>
-
     </ul>
 </section>
 
 <!-- Equipment Details -->
+<?php $equipment_description = $realty->getEquipmentDescription(); ?>
+<?php if (!empty($equipment_description)) : ?>
 <section class="ji-info-section">
     <h3 class="ji-info-section__title"><?php _e('Equipment Description', 'jiwp'); ?></h3>
-    <?php echo $realty->getEquipmentDescription(); ?>
+
+    <?php echo $equipment_description; ?>
 </section>
+<?php endif; ?>
 
 <!-- Price/Costs Details -->
 <section class="ji-info-section">
     <h3 class="ji-info-section__title"><?php _e('Prices / Costs', 'jiwp'); ?></h3>
 
     <?php $currency = $realty->getCurrency(); ?>
-
     <ul class="ji-info-list">
-
         <?php
 
         $price_text = '';
         $currency = $realty->getCurrency();
+        $marketingType = $realty->getMarketingType();
 
         if (empty($currency)) {
             $currency = 'EUR';
         }
 
         if ($marketingType['KAUF'] == true) {
-            $purchase_price = $realty->getPurchasePrice();
-            if (!empty($purchase_price)) {
-                $price_text = money_format("%!i $currency", $purchase_price);
+            if (!empty($realty->getPurchasePrice())) {
+                $price_text = NumberFormatter::formatCurrency(
+                    $realty->getPurchasePrice(),
+                    $currency,
+                    0
+                );
             }
         } else {
-            $rent_price = $realty->getTotalRent();
-            if (!empty($rent_price)) {
-                $price_text = money_format("%!i $currency", $rent_price);
+            if (!empty($realty->getTotalRent())) {
+                $price_text = NumberFormatter::formatCurrency(
+                    $realty->getTotalRent(),
+                    $currency,
+                    0
+                );
             }
         }
 
         ?>
 
         <?php if (!empty($price_text)) : ?>
-
             <li class="ji-info">
-
                 <label class="ji-info__label">
                     <?php _e('Price:', 'jiwp'); ?>
                 </label>
-
                 <span class="ji-info__value">
                     <?php echo $price_text; ?>
                 </span>
             </li>
-
         <?php endif; ?>
 
         <?php $commision = $realty->getCommission(); ?>
@@ -606,15 +597,13 @@
 
         <?php $additional_costs = $realty->getAdditionalCosts(); ?>
         <?php if (!empty($additional_costs)) : ?>
-
             <li class="ji-info">
                 <label class="ji-info__label">
                     <?php _e('Additional Costs:', 'jiwp'); ?>
                 </label>
-
                 <ul>
+                    <?php /** @var \Justimmo\Model\AdditionalCosts $additional_cost */ ?>
                     <?php foreach ($additional_costs as $key => $additional_cost) :?>
-
                         <li>
                             <label class="ji-info__label">
                                 <?php echo $additional_cost->getName() . ':'; ?>
@@ -623,16 +612,13 @@
                                 <?php echo money_format("%!i $currency", $additional_cost->getGross()); ?>
                             </span>
                         </li>
-
                     <?php endforeach; ?>
                 </ul>
             </li>
-
         <?php endif; ?>
 
         <?php $contract_establishment_costs = $realty->getContractEstablishmentCosts(); ?>
         <?php if (!empty($contract_establishment_costs)) : ?>
-
             <li class="ji-info">
                 <label class="ji-info__label">
                     <?php _e('Contract Establishment Costs:', 'jiwp'); ?>
@@ -641,12 +627,10 @@
                     <?php echo $contract_establishment_costs; ?>
                 </span>
             </li>
-
         <?php endif; ?>
 
         <?php $land_registration_tax = $realty->getLandRegistration(); ?>
         <?php if (!empty($land_registration_tax)) : ?>
-
             <li class="ji-info">
                 <label class="ji-info__label">
                     <?php _e('Land Registration Tax:', 'jiwp'); ?>
@@ -655,12 +639,10 @@
                     <?php echo $land_registration_tax . '%'; ?>
                 </span>
             </li>
-
         <?php endif; ?>
 
         <?php $transfer_tax = $realty->getTransferTax(); ?>
         <?php if (!empty($transfer_tax)) : ?>
-
             <li class="ji-info">
                 <label class="ji-info__label">
                     <?php _e('Transfer Tax:', 'jiwp'); ?>
@@ -669,12 +651,10 @@
                     <?php echo $transfer_tax . '%'; ?>
                 </span>
             </li>
-
         <?php endif; ?>
 
         <?php $additional_charges = $realty->getAdditionalCharges(); ?>
         <?php if (!empty($additional_charges)) : ?>
-
             <li class="ji-info">
                 <label class="ji-info__label">
                     <?php _e('Additional Charges:', 'jiwp'); ?>
@@ -683,12 +663,10 @@
                     <?php echo money_format("%!i $currency", $additional_charges) ?>
                 </span>
             </li>
-
         <?php endif; ?>
 
         <?php $yearly_net_earn = $realty->getNetEarningYearly(); ?>
         <?php if (!empty($yearly_net_earn)) : ?>
-
             <li class="ji-info">
                 <label class="ji-info__label">
                     <?php _e('Yearly Net Earning:', 'jiwp'); ?>
@@ -697,12 +675,10 @@
                     <?php echo money_format("%!i $currency", $yearly_net_earn) ?>
                 </span>
             </li>
-
         <?php endif; ?>
 
         <?php $building_subsidence = $realty->getBuildingSubsidies(); ?>
         <?php if (!empty($building_subsidence)) : ?>
-
             <li class="ji-info">
                 <label class="ji-info__label">
                     <?php _e('Building Subsidence:', 'jiwp'); ?>
@@ -711,12 +687,10 @@
                     <?php echo money_format("%!i $currency", $building_subsidence) ?>
                 </span>
             </li>
-
         <?php endif; ?>
 
         <?php $net_yield = $realty->getYield(); ?>
         <?php if (!empty($net_yield)) : ?>
-
             <li class="ji-info">
                 <label class="ji-info__label">
                     <?php _e('Net Yield:', 'jiwp'); ?>
@@ -725,9 +699,7 @@
                     <?php echo $net_yield . '%'; ?>
                 </span>
             </li>
-
         <?php endif; ?>
-
     </ul>
 </section>
 
@@ -737,13 +709,14 @@
 <?php if (!empty($energy_pass)) :?>
     <section class="ji-info-section">
         <h3 class="ji-info-section__title"><?php _e('Energy Efficiency Certificate', 'jiwp'); ?></h3>
+
         <ul class="ji-info-list">
             <li class="ji-info">
                 <label class="ji-info__label">
                     <?php _e('Valid until:', 'jiwp'); ?>
                 </label>
                 <span class="ji-info__value">
-                    <?php echo $energy_pass->getValidUntil(); ?>
+                    <?php echo (string) $energy_pass->getValidUntil(); ?>
                 </span>
             </li>
 
@@ -774,6 +747,7 @@
 
 <!-- Inquiry Form -->
 <section class="ji-info-section">
-    <h3 class="ji-info-section__title">Kontaktformular</h3>
+    <h3 class="ji-info-section__title"><?php _e('Inquiry Form', 'jiwp'); ?></h3>
+
     <?php include(Justimmo\Wordpress\Templating::getPath('inquiry-form/_inquiry-form.php')); ?>
 </section>

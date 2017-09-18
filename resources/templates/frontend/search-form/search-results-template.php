@@ -2,7 +2,7 @@
 
 <section class="search-results content-area">
 
-    <?php include(Justimmo\Wordpress\Templating::getPath('realty/_realty-list.php')); ?>
+    <?php include(Justimmo\Wordpress\Templating::getPath('realty/realty-list.php')); ?>
 
 </section>
 

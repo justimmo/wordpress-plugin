@@ -170,7 +170,7 @@ class RealtyController extends BaseController
 
         ob_start();
 
-        include(Templating::getPath('realty/_realty-list.php'));
+        include(Templating::getPath('realty/realty-list.php'));
 
         return ob_get_clean();
     }
@@ -180,24 +180,33 @@ class RealtyController extends BaseController
      */
     public function getShortcodeSearchForm($atts)
     {
+        $atts = shortcode_atts(
+            array(
+                'country' => null,
+                'state' => null,
+                'zip_codes' => null
+            ),
+            $atts,
+            'ji_search_form'
+        );
+
+        $filter = BaseController::getFilterFromQueryString();
+        $filter = array_merge($filter, $this->formatSearchFormAttributes($atts));
+
         $realty_types = $this->queryFactory->createBasicDataQuery()->findRealtyTypes();
         $countries    = $this->queryFactory->createBasicDataQuery()->findCountries();
         $states       = array();
         $cities       = array();
 
-        if (!empty($_GET['filter'])) {
-            $filter = $_GET['filter'];
-        }
-
         if (!empty($filter['country'])) {
-            $states = $this->queryFactory->createBasicDataQuery()->getStates($_GET['filter']['country']);
-            if (!empty($_GET['filter']['state'])) {
+            $states = $this->queryFactory->createBasicDataQuery()->getStates($filter['country']);
+            if (!empty($filter['state'])) {
                 $cities = $this->queryFactory->createBasicDataQuery()->getCities(
-                    $_GET['filter']['country'],
-                    $_GET['filter']['state']
+                    $filter['country'],
+                    $filter['state']
                 );
             } else {
-                $cities = $this->queryFactory->createBasicDataQuery()->getCities($_GET['filter']['country']);
+                $cities = $this->queryFactory->createBasicDataQuery()->getCities($filter['country']);
             }
         }
 
@@ -298,5 +307,19 @@ class RealtyController extends BaseController
         $imgSrcs = $this->getOgImages();
         $url = $this->getOgUrl();
         include(Templating::getPath('og-tags.php'));
+    }
+
+    /**
+     * @param array $atts
+     *
+     * @return array
+     */
+    private function formatSearchFormAttributes($atts = [])
+    {
+        if (!empty($atts['zip_codes'])) {
+            $atts['zip_codes'] = explode(',', $atts['zip_codes']);
+        }
+
+        return $atts;
     }
 }
