@@ -180,18 +180,8 @@ class RealtyController extends BaseController
      */
     public function getShortcodeSearchForm($atts)
     {
-        $atts = shortcode_atts(
-            array(
-                'country' => null,
-                'state' => null,
-                'zip_codes' => null
-            ),
-            $atts,
-            'ji_search_form'
-        );
-
         $filter = BaseController::getFilterFromQueryString();
-        $filter = array_merge($filter, $this->formatSearchFormAttributes($atts));
+        $filter = array_merge($this->formatSearchFormAttributes($atts), $filter);
 
         $realty_types = $this->queryFactory->createBasicDataQuery()->findRealtyTypes();
         $countries    = $this->queryFactory->createBasicDataQuery()->findCountries();

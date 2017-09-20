@@ -4,6 +4,7 @@ namespace Justimmo\Wordpress\Controller;
 
 use Justimmo\Model\Mapper\V1\RealtyInquiryMapper;
 use Justimmo\Request\RealtyInquiryRequest;
+use Justimmo\Wordpress\Templating;
 
 class SearchFormWidgetController extends BaseController
 {
@@ -22,7 +23,7 @@ class SearchFormWidgetController extends BaseController
                 ->getStates($_POST['country']);
         }
 
-        include(JI_WP_PLUGIN_TEMPLATES_PATH . 'frontend/search-form/_search-form__states.php');
+        include(Templating::getPath('search-form/_search-form__states.php'));
 
         wp_die();
     }
@@ -49,7 +50,7 @@ class SearchFormWidgetController extends BaseController
             }
         }
 
-        include(JI_WP_PLUGIN_TEMPLATES_PATH . 'frontend/search-form/_search-form__cities.php');
+        include(Templating::getPath('search-form/_search-form__cities.php'));
 
         wp_die();
     }
