@@ -72,8 +72,8 @@ class Plugin
      */
     private function definePublicHooks()
     {
-        $templating       = new Templating();
-        $routing          = new Routing();
+        $templating = new Templating();
+        $routing = new Routing();
 
         add_action('wp_enqueue_scripts', array($templating, 'enqueueStyles'));
         add_action('wp_enqueue_scripts', array($templating, 'enqueueScripts'));
@@ -136,6 +136,14 @@ class Plugin
             $this->createLazyLoadCallback(
                 'Justimmo\\Wordpress\\Controller\\RealtyController',
                 'getShortcodeNumberForm'
+            )
+        );
+
+        add_shortcode(
+            'ji_similar_realties',
+            $this->createLazyLoadCallback(
+                'Justimmo\\Wordpress\\Controller\\RealtyController',
+                'getSimilarRealtiesShortCode'
             )
         );
 

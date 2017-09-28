@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Justimmo WP Plugin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-09-19 15:13+0300\n"
-"PO-Revision-Date: 2017-09-19 15:13+0300\n"
+"POT-Creation-Date: 2017-09-28 15:25+0300\n"
+"PO-Revision-Date: 2017-09-28 15:25+0300\n"
 "Last-Translator: justimmo <h.holzer@bgcc.at>\n"
 "Language-Team: English (EN)\n"
 "Language: en_EN\n"
@@ -606,7 +606,7 @@ msgstr ""
 
 #: resources/templates/frontend/realty/realty-list.php:44
 #: resources/templates/frontend/realty/realty-template.php:15
-#: src/Controller/RealtyController.php:248
+#: src/Controller/RealtyController.php:270
 msgid "in"
 msgstr ""
 
@@ -664,6 +664,10 @@ msgid "Location"
 msgstr ""
 
 #: resources/templates/frontend/realty/realty-template.php:118
+msgid "Similar Realties"
+msgstr ""
+
+#: resources/templates/frontend/realty/realty-template.php:121
 msgid "No realty found."
 msgstr ""
 
@@ -953,7 +957,7 @@ msgstr ""
 msgid "No states found for selected country"
 msgstr ""
 
-#: src/Controller/SearchFormWidgetController.php:118
+#: src/Controller/SearchFormWidgetController.php:119
 msgid "Inquiry successfully sent!"
 msgstr ""
 

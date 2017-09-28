@@ -82,15 +82,15 @@
         <?php if (!empty($attachments)) : ?>
             <section class="ji-info-section">
                 <ul class="ji-info-list ji-info-list--extended">
-                        <?php /** @var \Justimmo\Model\Attachment $attachment */ ?>
-                        <?php foreach ($attachments as $attachment) : ?>
-                            <li class="ji-info-list__item">
-                                <a href="<?php echo $attachment->getUrl(); ?>">
-                                    <?php echo $attachment->getTitle(); ?>
-                                </a>
-                            </li>
-                        <?php endforeach; ?>
-                    </ul>
+                    <?php /** @var \Justimmo\Model\Attachment $attachment */ ?>
+                    <?php foreach ($attachments as $attachment) : ?>
+                        <li class="ji-info-list__item">
+                            <a href="<?php echo $attachment->getUrl(); ?>">
+                                <?php echo $attachment->getTitle(); ?>
+                            </a>
+                        </li>
+                    <?php endforeach; ?>
+                </ul>
             </section>
         <?php endif; ?>
 
@@ -114,6 +114,8 @@
             </section>
         <?php endif; ?>
     </article>
+
+    <?php echo do_shortcode('[ji_similar_realties realty_id="' . $realty->getId() . '" max_nb="1" format="grid"]'); ?>
 <?php else : ?>
     <p><?php _e('No realty found.', 'jiwp'); ?></p>
 <?php endif; ?>
