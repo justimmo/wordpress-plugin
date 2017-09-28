@@ -142,6 +142,27 @@
 	height: 400px;
 }
 
+/* Search Form + Results */
+
+.search-results__ordering-options {
+    list-style-type: none;
+    overflow: hidden;
+    margin: 0 0 20px 0;
+}
+
+.search-results__ordering-option {
+    float: left;
+    margin: 0 20px 0 0;
+}
+
+.search-results__ordering-option a {
+    color: #000000;
+}
+
+.search-results__ordering-option .active {
+    color: #00ff00;
+}
+
 /* Inquiry Form */
 
 .ji-inquiry-form #contact_message {

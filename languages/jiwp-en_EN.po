@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Justimmo WP Plugin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-09-28 15:25+0300\n"
-"PO-Revision-Date: 2017-09-28 15:25+0300\n"
+"POT-Creation-Date: 2017-09-28 17:56+0300\n"
+"PO-Revision-Date: 2017-09-28 17:56+0300\n"
 "Last-Translator: justimmo <h.holzer@bgcc.at>\n"
 "Language-Team: English (EN)\n"
 "Language: en_EN\n"
@@ -606,7 +606,7 @@ msgstr ""
 
 #: resources/templates/frontend/realty/realty-list.php:44
 #: resources/templates/frontend/realty/realty-template.php:15
-#: src/Controller/RealtyController.php:270
+#: src/Controller/RealtyController.php:277
 msgid "in"
 msgstr ""
 
@@ -663,11 +663,7 @@ msgstr ""
 msgid "Location"
 msgstr ""
 
-#: resources/templates/frontend/realty/realty-template.php:118
-msgid "Similar Realties"
-msgstr ""
-
-#: resources/templates/frontend/realty/realty-template.php:121
+#: resources/templates/frontend/realty/realty-template.php:120
 msgid "No realty found."
 msgstr ""
 
@@ -883,6 +879,10 @@ msgstr ""
 msgid "Inquiry Form"
 msgstr ""
 
+#: resources/templates/frontend/realty/similar-realties.php:2
+msgid "Similar Realties"
+msgstr ""
+
 #: resources/templates/frontend/search-form/_search-form.php:2
 #: resources/templates/frontend/search-form/_search-form.php:171
 #: resources/templates/frontend/search-form/_search-form__realty-number.php:2
@@ -955,6 +955,30 @@ msgstr ""
 
 #: resources/templates/frontend/search-form/_search-form__states.php:26
 msgid "No states found for selected country"
+msgstr ""
+
+#: resources/templates/frontend/search-form/search-results-template.php:11
+msgid "Price Order"
+msgstr ""
+
+#: resources/templates/frontend/search-form/search-results-template.php:15
+msgid "low to high"
+msgstr ""
+
+#: resources/templates/frontend/search-form/search-results-template.php:19
+msgid "high to low"
+msgstr ""
+
+#: resources/templates/frontend/search-form/search-results-template.php:22
+msgid "Date Order"
+msgstr ""
+
+#: resources/templates/frontend/search-form/search-results-template.php:26
+msgid "oldest first"
+msgstr ""
+
+#: resources/templates/frontend/search-form/search-results-template.php:30
+msgid "newest first"
 msgstr ""
 
 #: src/Controller/SearchFormWidgetController.php:119

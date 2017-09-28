@@ -96,7 +96,6 @@ class RealtyController extends BaseController
             ->orderByParams($filter_params)
             ->paginate($page, get_option('posts_per_page', 10));
 
-
         include(Templating::getPath('search-form/search-results-template.php'));
     }
 
